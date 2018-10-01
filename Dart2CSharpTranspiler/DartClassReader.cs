@@ -732,7 +732,7 @@ namespace Transpiler
             return (list, rawParmeter);
         }
 
-     
+
         public static string GetClearName(string name)
         {
             if (name.Contains("<"))
@@ -1017,12 +1017,14 @@ namespace Transpiler
             var newDart = "";
             var insideString = false;
             var previousChar = ' ';
-            var insideComment = false;
+            var insideSingleLineComment = false;
+            var insideMultiLineComment = false;
             char stringMarker = ' ';
 
             foreach (var c in dart)
             {
-                if ((c == '"' || c == '\'') && previousChar != '\\' && !insideComment)
+                if ((c == '"' || c == '\'') && previousChar != '\\' 
+                    && !insideSingleLineComment && !insideMultiLineComment)
                 {
                     if (!insideString)
                     {
@@ -1037,21 +1039,33 @@ namespace Transpiler
                 }
 
                 if (!insideString)
-                    if (c == '/' && previousChar == '/')
+                {
+                    if (c == '/' && previousChar == '/' && !insideMultiLineComment)
                     {
                         newDart = newDart.TrimEnd('/');
-                        insideComment = true;
+                        insideSingleLineComment = true;
                     }
 
-                if (c == '\n' && insideComment)
-                    insideComment = false;
+                    if (c == '*' && previousChar=='/' && !insideSingleLineComment)
+                    {
+                        newDart = newDart.Remove(newDart.Length - 1);
+                        insideMultiLineComment = true;
+                    }
 
-                if (!insideComment)
+                }
+                                
+                if (!insideSingleLineComment && !insideMultiLineComment)
                     newDart += c;
+
+                if (c == '\n' && insideSingleLineComment)
+                    insideSingleLineComment = false;
+
+                if (c == '/' && previousChar == '*' && insideMultiLineComment)
+                    insideMultiLineComment = false;
 
                 previousChar = c;
             }
-
+          
             return newDart;
         }
 
