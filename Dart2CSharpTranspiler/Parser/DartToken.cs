@@ -586,7 +586,7 @@ namespace Dart2CSharpTranspiler
         {
             while (comment != null)
             {
-                comment.parent = this;
+                (comment as CommentToken).parent = this;
                 comment = comment.next;
             }
         }
@@ -612,7 +612,7 @@ namespace Dart2CSharpTranspiler
             this._value = StringUtilities.intern(value);
         }
 
-        public override bool isIdentifier => identical(kind, IDENTIFIER_TOKEN);
+        public override bool isIdentifier => kind == IDENTIFIER_TOKEN;
 
         public override String lexeme => _value;
 
