@@ -652,7 +652,7 @@ namespace Dart2CSharpTranspiler.Parser
          * @return an encoded representation of this source
          * See [SourceFactory.fromEncoding].
          */
-        String encoding { get; }
+        public String encoding { get; }
 
         /**
          * Return the full (long) version of the name that can be displayed to the
@@ -661,7 +661,7 @@ namespace Dart2CSharpTranspiler.Parser
          *
          * @return a name that can be displayed to the user to denote this source
          */
-        String fullName { get; }
+        public String fullName { get; }
 
         /**
          * Return a hash code for this source.
@@ -670,16 +670,16 @@ namespace Dart2CSharpTranspiler.Parser
          * See [Object.hashCode].
          */
 
-        int hashCode { get; }
+        public int hashCode { get; }
 
         /**
          * Return `true` if this source is in one of the system libraries.
          *
          * @return `true` if this is in a system library
          */
-        bool isInSystemLibrary { get; }
+        public bool isInSystemLibrary { get; }
 
-        Source librarySource => null;
+        public Source librarySource => null;
 
         /**
          * Return the modification stamp for this source, or a negative value if the
@@ -694,7 +694,7 @@ namespace Dart2CSharpTranspiler.Parser
          * [AnalysisContext.getModificationStamp] because contexts can have local
          * overrides of the content of a source that the source is not aware of.
          */
-        int modificationStamp { get; }
+        public int modificationStamp { get; }
 
         /**
          * Return a short version of the name that can be displayed to the user to
@@ -703,17 +703,17 @@ namespace Dart2CSharpTranspiler.Parser
          *
          * @return a name that can be displayed to the user to denote this source
          */
-        String shortName { get; }
+        public String shortName { get; }
 
 
-        Source source => this;
+        public Source source => this;
 
         /**
          * Return the URI from which this source was originally derived.
          *
          * @return the URI from which this source was originally derived
          */
-        Uri uri { get; }
+        public Uri uri { get; }
 
         /**
          * Return the kind of URI from which this source was originally derived. If
@@ -724,7 +724,7 @@ namespace Dart2CSharpTranspiler.Parser
          *
          * @return the kind of URI from which this source was originally derived
          */
-        UriKind uriKind { get; }
+        public UriKind uriKind { get; }
 
         /**
          * Return `true` if the given object is a source that represents the same

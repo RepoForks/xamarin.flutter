@@ -30,31 +30,31 @@ namespace Dart2CSharpTranspiler.Parser
     public class ParserErrorCode : ErrorCode
     {
         public static ParserErrorCode ABSTRACT_CLASS_MEMBER = new ParserErrorCode(
-           'ABSTRACT_CLASS_MEMBER',
+           "ABSTRACT_CLASS_MEMBER",
            "Members of classes can't be declared to be 'abstract'.",
            correction: "Try removing the keyword 'abstract'.");
 
         public static ParserErrorCode ABSTRACT_ENUM = new ParserErrorCode(
-         'ABSTRACT_ENUM', "Enums can't be declared to be 'abstract'.",
+         "ABSTRACT_ENUM", "Enums can't be declared to be 'abstract'.",
            correction: "Try removing the keyword 'abstract'.");
 
         public static ParserErrorCode ABSTRACT_STATIC_METHOD = new ParserErrorCode(
-         'ABSTRACT_STATIC_METHOD',
+         "ABSTRACT_STATIC_METHOD",
            "Static methods can't be declared to be 'abstract'.",
            correction: "Try removing the keyword 'abstract'.");
 
         public static ParserErrorCode ABSTRACT_TOP_LEVEL_FUNCTION =
-      const ParserErrorCode('ABSTRACT_TOP_LEVEL_FUNCTION',
+      new ParserErrorCode("ABSTRACT_TOP_LEVEL_FUNCTION",
           "Top-level functions can't be declared to be 'abstract'.",
           correction: "Try removing the keyword 'abstract'.");
 
         public static ParserErrorCode ABSTRACT_TOP_LEVEL_VARIABLE =
-      const ParserErrorCode('ABSTRACT_TOP_LEVEL_VARIABLE',
+      new ParserErrorCode("ABSTRACT_TOP_LEVEL_VARIABLE",
           "Top-level variables can't be declared to be 'abstract'.",
           correction: "Try removing the keyword 'abstract'.");
 
         public static ParserErrorCode ABSTRACT_TYPEDEF = new ParserErrorCode(
-         'ABSTRACT_TYPEDEF', "Typedefs can't be declared to be 'abstract'.",
+         "ABSTRACT_TYPEDEF", "Typedefs can't be declared to be 'abstract'.",
            correction: "Try removing the keyword 'abstract'.");
 
         /**
@@ -69,36 +69,36 @@ namespace Dart2CSharpTranspiler.Parser
              "identifiers in an asynchronous or generator function.");
 
         public static ParserErrorCode BREAK_OUTSIDE_OF_LOOP = new ParserErrorCode(
-         'BREAK_OUTSIDE_OF_LOOP',
+         "BREAK_OUTSIDE_OF_LOOP",
            "A break statement can't be used outside of a loop or switch statement.",
            correction: "Try removing the break statement.");
 
         public static ParserErrorCode CATCH_SYNTAX = new ParserErrorCode(
-         'CATCH_SYNTAX',
+         "CATCH_SYNTAX",
            "'catch' must be followed by '(identifier)' or '(identifier, identifier)'.",
            correction:
                "No types are needed, the first is given by 'on', the second is always 'StackTrace'.");
 
         public static ParserErrorCode CLASS_IN_CLASS = new ParserErrorCode(
-         'CLASS_IN_CLASS', "Classes can't be declared inside other classes.",
+         "CLASS_IN_CLASS", "Classes can't be declared inside other classes.",
            correction: "Try moving the class to the top-level.");
 
         public static ParserErrorCode COLON_IN_PLACE_OF_IN = new ParserErrorCode(
-         'COLON_IN_PLACE_OF_IN', "For-in loops use 'in' rather than a colon.",
+         "COLON_IN_PLACE_OF_IN", "For-in loops use 'in' rather than a colon.",
            correction: "Try replacing the colon with the keyword 'in'.");
 
         public static ParserErrorCode CONST_AFTER_FACTORY = new ParserErrorCode(
-         'CONST_AFTER_FACTORY',
+         "CONST_AFTER_FACTORY",
            "The modifier 'const' should be before the modifier 'factory'.",
            correction: "Try re-ordering the modifiers.");
 
         public static ParserErrorCode CONST_AND_COVARIANT = new ParserErrorCode(
-         'CONST_AND_COVARIANT',
+         "CONST_AND_COVARIANT",
            "Members can't be declared to be both 'const' and 'covariant'.",
            correction: "Try removing either the 'const' or 'covariant' keyword.");
 
         public static ParserErrorCode CONST_AND_FINAL = new ParserErrorCode(
-         'CONST_AND_FINAL',
+         "CONST_AND_FINAL",
            "Members can't be declared to be both 'const' and 'final'.",
            correction: "Try removing either the 'const' or 'final' keyword.");
 
@@ -108,7 +108,7 @@ namespace Dart2CSharpTranspiler.Parser
            correction: "Try removing either the 'const' or 'var' keyword.");
 
         public static ParserErrorCode CONST_CLASS = new ParserErrorCode(
-         'CONST_CLASS', "Classes can't be declared to be 'const'.",
+         "CONST_CLASS", "Classes can't be declared to be 'const'.",
            correction:
                "Try removing the 'const' keyword. If you're trying to indicate that " +
                "instances of the class can be constants, place the 'const' keyword on " +
@@ -120,26 +120,26 @@ namespace Dart2CSharpTranspiler.Parser
              correction: "Try removing either the 'const' keyword or the body.");
 
         public static ParserErrorCode CONST_ENUM = new ParserErrorCode(
-         'CONST_ENUM', "Enums can't be declared to be 'const'.",
+         "CONST_ENUM", "Enums can't be declared to be 'const'.",
            correction: "Try removing the 'const' keyword.");
 
         public static ParserErrorCode CONST_FACTORY = new ParserErrorCode(
-         'CONST_FACTORY',
+         "CONST_FACTORY",
            "Only redirecting factory constructors can be declared to be 'const'.",
            correction: "Try removing the 'const' keyword, or " +
                "replacing the body with '=' followed by a valid target.");
 
         public static ParserErrorCode CONST_METHOD = new ParserErrorCode(
-         'CONST_METHOD',
+         "CONST_METHOD",
            "Getters, setters and methods can't be declared to be 'const'.",
            correction: "Try removing the 'const' keyword.");
 
         public static ParserErrorCode CONST_TYPEDEF = new ParserErrorCode(
-         'CONST_TYPEDEF', "Type aliases can't be declared to be 'const'.",
+         "CONST_TYPEDEF", "Type aliases can't be declared to be 'const'.",
            correction: "Try removing the 'const' keyword.");
 
         public static ParserErrorCode CONSTRUCTOR_WITH_RETURN_TYPE =
-      const ParserErrorCode('CONSTRUCTOR_WITH_RETURN_TYPE',
+      new ParserErrorCode("CONSTRUCTOR_WITH_RETURN_TYPE",
           "Constructors can't have a return type.",
           correction: "Try removing the return type.");
 
@@ -147,25 +147,25 @@ namespace Dart2CSharpTranspiler.Parser
            _CONTINUE_OUTSIDE_OF_LOOP;
 
         public static ParserErrorCode CONTINUE_WITHOUT_LABEL_IN_CASE = new ParserErrorCode(
-         'CONTINUE_WITHOUT_LABEL_IN_CASE',
+         "CONTINUE_WITHOUT_LABEL_IN_CASE",
            "A continue statement in a switch statement must have a label as a target.",
            correction:
                "Try adding a label associated with one of the case clauses to the continue statement.");
 
         public static ParserErrorCode COVARIANT_AFTER_FINAL = new ParserErrorCode(
-         'COVARIANT_AFTER_FINAL',
+         "COVARIANT_AFTER_FINAL",
            "The modifier 'covariant' should be before the modifier 'final'.",
            correction: "Try re-ordering the modifiers.");
 
         public static ParserErrorCode COVARIANT_AFTER_VAR = _COVARIANT_AFTER_VAR;
 
         public static ParserErrorCode COVARIANT_AND_STATIC = new ParserErrorCode(
-         'COVARIANT_AND_STATIC',
+         "COVARIANT_AND_STATIC",
            "Members can't be declared to be both 'covariant' and 'static'.",
            correction: "Try removing either the 'covariant' or 'static' keyword.");
 
         public static ParserErrorCode COVARIANT_MEMBER = new ParserErrorCode(
-         'COVARIANT_MEMBER',
+         "COVARIANT_MEMBER",
            "Getters, setters and methods can't be declared to be 'covariant'.",
            correction: "Try removing the 'covariant' keyword.");
 
@@ -175,27 +175,23 @@ namespace Dart2CSharpTranspiler.Parser
              correction: "Try removing the keyword 'covariant'.");
 
         public static ParserErrorCode COVARIANT_CONSTRUCTOR = new ParserErrorCode(
-         'COVARIANT_CONSTRUCTOR',
+         "COVARIANT_CONSTRUCTOR",
            "A constructor can't be declared to be 'covariant'.",
            correction: "Try removing the keyword 'covariant'.");
 
         public static ParserErrorCode DEFERRED_AFTER_PREFIX = new ParserErrorCode(
-         'DEFERRED_AFTER_PREFIX',
-           "The deferred keyword should come"
-
-
-
-
+         "DEFERRED_AFTER_PREFIX",
+           "The deferred keyword should come"+
            " immediately before the prefix ('as' clause).",
            correction: "Try moving the deferred keyword before the prefix.");
 
         public static ParserErrorCode DEFAULT_VALUE_IN_FUNCTION_TYPE =
-         new ParserErrorCode('DEFAULT_VALUE_IN_FUNCTION_TYPE',
+         new ParserErrorCode("DEFAULT_VALUE_IN_FUNCTION_TYPE",
              "Parameters in a function type cannot have default values",
              correction: "Try removing the default value.");
 
         public static ParserErrorCode DIRECTIVE_AFTER_DECLARATION =
-         new ParserErrorCode('DIRECTIVE_AFTER_DECLARATION',
+         new ParserErrorCode("DIRECTIVE_AFTER_DECLARATION",
              "Directives must appear before any declarations.",
              correction: "Try moving the directive before any declarations.");
 
@@ -204,12 +200,12 @@ namespace Dart2CSharpTranspiler.Parser
          * 0: the label that was duplicated
          */
         public static ParserErrorCode DUPLICATE_LABEL_IN_SWITCH_STATEMENT =
-         new ParserErrorCode('DUPLICATE_LABEL_IN_SWITCH_STATEMENT',
+         new ParserErrorCode("DUPLICATE_LABEL_IN_SWITCH_STATEMENT",
              "The label '{0}' was already used in this switch statement.",
              correction: "Try choosing a different name for this label.");
 
         public static ParserErrorCode DUPLICATE_DEFERRED = new ParserErrorCode(
-         'DUPLICATE_DEFERRED',
+         "DUPLICATE_DEFERRED",
            "An import directive can only have one 'deferred' keyword.",
            correction: "Try removing all but one 'deferred' keyword.");
 
@@ -218,61 +214,61 @@ namespace Dart2CSharpTranspiler.Parser
          * 0: the modifier that was duplicated
          */
         public static ParserErrorCode DUPLICATED_MODIFIER = new ParserErrorCode(
-         'DUPLICATED_MODIFIER', "The modifier '{0}' was already specified.",
+         "DUPLICATED_MODIFIER", "The modifier '{0}' was already specified.",
            correction: "Try removing all but one occurance of the modifier.");
 
         public static ParserErrorCode DUPLICATE_PREFIX = new ParserErrorCode(
-         'DUPLICATE_PREFIX',
+        "DUPLICATE_PREFIX",
            "An import directive can only have one prefix ('as' clause).",
            correction: "Try removing all but one prefix.");
 
         public static ParserErrorCode EMPTY_ENUM_BODY = new ParserErrorCode(
-         'EMPTY_ENUM_BODY', "An enum must declare at least one constant name.",
+         "EMPTY_ENUM_BODY", "An enum must declare at least one constant name.",
            correction: "Try declaring a constant.");
 
         public static ParserErrorCode ENUM_IN_CLASS = new ParserErrorCode(
-         'ENUM_IN_CLASS', "Enums can't be declared inside classes.",
+         "ENUM_IN_CLASS", "Enums can't be declared inside classes.",
            correction: "Try moving the enum to the top-level.");
 
         public static ParserErrorCode EQUALITY_CANNOT_BE_EQUALITY_OPERAND =
            _EQUALITY_CANNOT_BE_EQUALITY_OPERAND;
 
         public static ParserErrorCode EXPECTED_CASE_OR_DEFAULT = new ParserErrorCode(
-         'EXPECTED_CASE_OR_DEFAULT', "Expected 'case' or 'default'.",
+         "EXPECTED_CASE_OR_DEFAULT", "Expected 'case' or 'default'.",
            correction: "Try placing this code inside a case clause.");
 
         public static ParserErrorCode EXPECTED_CLASS_MEMBER = new ParserErrorCode(
-         'EXPECTED_CLASS_MEMBER', "Expected a class member.",
+         "EXPECTED_CLASS_MEMBER", "Expected a class member.",
            correction: "Try placing this code inside a class member.");
 
         public static ParserErrorCode EXPECTED_EXECUTABLE = new ParserErrorCode(
-         'EXPECTED_EXECUTABLE',
+         "EXPECTED_EXECUTABLE",
            "Expected a method, getter, setter or operator declaration.",
            correction:
                "This appears to be incomplete code. Try removing it or completing it.");
 
         public static ParserErrorCode EXPECTED_LIST_OR_MAP_LITERAL = new ParserErrorCode(
-         'EXPECTED_LIST_OR_MAP_LITERAL', "Expected a list or map literal.",
+         "EXPECTED_LIST_OR_MAP_LITERAL", "Expected a list or map literal.",
            correction:
                "Try inserting a list or map literal, or remove the type arguments.");
 
         public static ParserErrorCode EXPECTED_STRING_LITERAL = new ParserErrorCode(
-         'EXPECTED_STRING_LITERAL', "Expected a string literal.");
+         "EXPECTED_STRING_LITERAL", "Expected a string literal.");
 
         /**
          * Parameters:
          * 0: the token that was expected but not found
          */
         public static ParserErrorCode EXPECTED_TOKEN =
-         new ParserErrorCode('EXPECTED_TOKEN', "Expected to find '{0}'.");
+         new ParserErrorCode("EXPECTED_TOKEN", "Expected to find '{0}'.");
 
         public static ParserErrorCode EXPECTED_INSTEAD = _EXPECTED_INSTEAD;
 
         public static ParserErrorCode EXPECTED_TYPE_NAME =
-         new ParserErrorCode('EXPECTED_TYPE_NAME', "Expected a type name.");
+         new ParserErrorCode("EXPECTED_TYPE_NAME", "Expected a type name.");
 
         public static ParserErrorCode EXPORT_DIRECTIVE_AFTER_PART_DIRECTIVE =
-         new ParserErrorCode('EXPORT_DIRECTIVE_AFTER_PART_DIRECTIVE',
+         new ParserErrorCode("EXPORT_DIRECTIVE_AFTER_PART_DIRECTIVE",
              "Export directives must preceed part directives.",
              correction:
                  "Try moving the export directives before the part directives.");
@@ -286,11 +282,9 @@ namespace Dart2CSharpTranspiler.Parser
         public static ParserErrorCode EXTERNAL_CLASS = _EXTERNAL_CLASS;
 
         public static ParserErrorCode EXTERNAL_CONSTRUCTOR_WITH_BODY =
-         new ParserErrorCode('EXTERNAL_CONSTRUCTOR_WITH_BODY',
+         new ParserErrorCode("EXTERNAL_CONSTRUCTOR_WITH_BODY",
              "External constructors can't have a body.",
-             correction: "Try removing the body of the constructor, or "
-
-
+             correction: "Try removing the body of the constructor, or "+
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_ENUM = _EXTERNAL_ENUM;
@@ -299,110 +293,100 @@ namespace Dart2CSharpTranspiler.Parser
 
         public static ParserErrorCode EXTERNAL_GETTER_WITH_BODY =
          new ParserErrorCode(
-             'EXTERNAL_GETTER_WITH_BODY', "External getters can't have a body.",
-             correction: "Try removing the body of the getter, or "
-
-
+             "EXTERNAL_GETTER_WITH_BODY", "External getters can't have a body.",
+             correction: "Try removing the body of the getter, or "+
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_METHOD_WITH_BODY =
            _EXTERNAL_METHOD_WITH_BODY;
 
         public static ParserErrorCode EXTERNAL_OPERATOR_WITH_BODY =
-         new ParserErrorCode('EXTERNAL_OPERATOR_WITH_BODY',
+         new ParserErrorCode("EXTERNAL_OPERATOR_WITH_BODY",
              "External operators can't have a body.",
-             correction: "Try removing the body of the operator, or "
-
-
+             correction: "Try removing the body of the operator, or "+
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_SETTER_WITH_BODY =
          new ParserErrorCode(
-             'EXTERNAL_SETTER_WITH_BODY', "External setters can't have a body.",
-             correction: "Try removing the body of the setter, or "
-
-
+             "EXTERNAL_SETTER_WITH_BODY", "External setters can't have a body.",
+             correction: "Try removing the body of the setter, or "+
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_TYPEDEF = new ParserErrorCode(
-         'EXTERNAL_TYPEDEF', "Typedefs can't be declared to be 'external'.",
+         "EXTERNAL_TYPEDEF", "Typedefs can't be declared to be 'external'.",
            correction: "Try removing the keyword 'external'.");
 
         public static ParserErrorCode EXTRANEOUS_MODIFIER = new ParserErrorCode(
-         'EXTRANEOUS_MODIFIER', "Can't have modifier '{0}' here.",
+         "EXTRANEOUS_MODIFIER", "Can't have modifier '{0}' here.",
            correction: "Try removing '{0}'.");
 
         public static ParserErrorCode FACTORY_TOP_LEVEL_DECLARATION =
-         new ParserErrorCode('FACTORY_TOP_LEVEL_DECLARATION',
+         new ParserErrorCode("FACTORY_TOP_LEVEL_DECLARATION",
              "Top-level declarations can't be declared to be 'factory'.",
              correction: "Try removing the keyword 'factory'.");
 
         public static ParserErrorCode FACTORY_WITH_INITIALIZERS = new ParserErrorCode(
-         'FACTORY_WITH_INITIALIZERS',
+         "FACTORY_WITH_INITIALIZERS",
            "A 'factory' constructor can't have initializers.",
            correction:
-               "Try removing the 'factory' keyword to make this a generative constructor, or "
-
-
-
-
+               "Try removing the 'factory' keyword to make this a generative constructor, or "+
                "removing the initializers.");
 
         public static ParserErrorCode FACTORY_WITHOUT_BODY = new ParserErrorCode(
-         'FACTORY_WITHOUT_BODY',
+         "FACTORY_WITHOUT_BODY",
            "A non-redirecting 'factory' constructor must have a body.",
            correction: "Try adding a body to the constructor.");
 
         public static ParserErrorCode FIELD_INITIALIZER_OUTSIDE_CONSTRUCTOR =
-         new ParserErrorCode('FIELD_INITIALIZER_OUTSIDE_CONSTRUCTOR',
+         new ParserErrorCode("FIELD_INITIALIZER_OUTSIDE_CONSTRUCTOR",
              "Field formal parameters can only be used in a constructor.",
              correction:
                  "Try replacing the field formal parameter with a normal parameter.");
 
         public static ParserErrorCode FINAL_AND_COVARIANT = new ParserErrorCode(
-         'FINAL_AND_COVARIANT',
+         "FINAL_AND_COVARIANT",
            "Members can't be declared to be both 'final' and 'covariant'.",
            correction: "Try removing either the 'final' or 'covariant' keyword.");
 
         public static ParserErrorCode FINAL_AND_VAR = new ParserErrorCode(
-         'FINAL_AND_VAR',
+         "FINAL_AND_VAR",
            "Members can't be declared to be both 'final' and 'var'.",
            correction: "Try removing the keyword 'var'.");
 
         public static ParserErrorCode FINAL_CLASS = new ParserErrorCode(
-         'FINAL_CLASS', "Classes can't be declared to be 'final'.",
+         "FINAL_CLASS", "Classes can't be declared to be 'final'.",
            correction: "Try removing the keyword 'final'.");
 
         public static ParserErrorCode FINAL_CONSTRUCTOR = new ParserErrorCode(
-         'FINAL_CONSTRUCTOR', "A constructor can't be declared to be 'final'.",
+         "FINAL_CONSTRUCTOR", "A constructor can't be declared to be 'final'.",
            correction: "Try removing the keyword 'final'.");
 
         public static ParserErrorCode FINAL_ENUM = new ParserErrorCode(
-         'FINAL_ENUM', "Enums can't be declared to be 'final'.",
+         "FINAL_ENUM", "Enums can't be declared to be 'final'.",
            correction: "Try removing the keyword 'final'.");
 
         public static ParserErrorCode FINAL_METHOD = new ParserErrorCode(
-         'FINAL_METHOD',
+         "FINAL_METHOD",
            "Getters, setters and methods can't be declared to be 'final'.",
            correction: "Try removing the keyword 'final'.");
 
         public static ParserErrorCode FINAL_TYPEDEF = new ParserErrorCode(
-         'FINAL_TYPEDEF', "Typedefs can't be declared to be 'final'.",
+         "FINAL_TYPEDEF", "Typedefs can't be declared to be 'final'.",
            correction: "Try removing the keyword 'final'.");
 
         public static ParserErrorCode FUNCTION_TYPED_PARAMETER_VAR = new ParserErrorCode(
-         'FUNCTION_TYPED_PARAMETER_VAR',
+         "FUNCTION_TYPED_PARAMETER_VAR",
            "Function-typed parameters can't specify 'const', 'final' or 'var' in place of a return type.",
            correction: "Try replacing the keyword with a return type.");
 
         public static ParserErrorCode GETTER_IN_FUNCTION = new ParserErrorCode(
-         'GETTER_IN_FUNCTION',
+         "GETTER_IN_FUNCTION",
            "Getters can't be defined within methods or functions.",
            correction: "Try moving the getter outside the method or function, or " +
                "converting the getter to a function.");
 
         public static ParserErrorCode GETTER_WITH_PARAMETERS = new ParserErrorCode(
-         'GETTER_WITH_PARAMETERS',
+         "GETTER_WITH_PARAMETERS",
            "Getters must be declared without a parameter list.",
            correction: "Try removing the parameter list, or " +
                "removing the keyword 'get' to define a method rather than a getter.");
@@ -421,7 +405,7 @@ namespace Dart2CSharpTranspiler.Parser
            _IMPORT_DIRECTIVE_AFTER_PART_DIRECTIVE;
 
         public static ParserErrorCode INITIALIZED_VARIABLE_IN_FOR_EACH =
-         new ParserErrorCode('INITIALIZED_VARIABLE_IN_FOR_EACH',
+         new ParserErrorCode("INITIALIZED_VARIABLE_IN_FOR_EACH",
              "The loop variable in a for-each loop can't be initialized.",
              correction:
                  "Try removing the initializer, or using a different kind of loop.");
@@ -433,33 +417,29 @@ namespace Dart2CSharpTranspiler.Parser
          * 0: the invalid escape sequence
          */
         public static ParserErrorCode INVALID_CODE_POINT = new ParserErrorCode(
-         'INVALID_CODE_POINT',
+         "INVALID_CODE_POINT",
            "The escape sequence '{0}' isn't a valid code point.");
 
         public static ParserErrorCode INVALID_COMMENT_REFERENCE = new ParserErrorCode(
-         'INVALID_COMMENT_REFERENCE',
-           "Comment references should contain a possibly prefixed identifier and "
-
-
-
-
+         "INVALID_COMMENT_REFERENCE",
+           "Comment references should contain a possibly prefixed identifier and "+
            "can start with 'new', but shouldn't contain anything else.");
 
         public static ParserErrorCode INVALID_CONSTRUCTOR_NAME = new ParserErrorCode(
-         'INVALID_CONSTRUCTOR_NAME',
+         "INVALID_CONSTRUCTOR_NAME",
            "The keyword '{0}' cannot be used to name a constructor.",
            correction: "Try giving the constructor a different name.");
 
         public static ParserErrorCode INVALID_GENERIC_FUNCTION_TYPE =
          new ParserErrorCode(
-             'INVALID_GENERIC_FUNCTION_TYPE', "Invalid generic function type.",
+             "INVALID_GENERIC_FUNCTION_TYPE", "Invalid generic function type.",
              correction:
                  "Try using a generic function type (returnType 'Function(' parameters ')').");
 
         public static ParserErrorCode INVALID_HEX_ESCAPE = _INVALID_HEX_ESCAPE;
 
         public static ParserErrorCode INVALID_LITERAL_IN_CONFIGURATION =
-         new ParserErrorCode('INVALID_LITERAL_IN_CONFIGURATION',
+         new ParserErrorCode("INVALID_LITERAL_IN_CONFIGURATION",
              "The literal in a configuration can't contain interpolation.",
              correction: "Try removing the interpolation expressions.");
 
@@ -474,16 +454,16 @@ namespace Dart2CSharpTranspiler.Parser
          * 0: the operator being applied to 'super'
          */
         public static ParserErrorCode INVALID_OPERATOR_FOR_SUPER =
-         new ParserErrorCode('INVALID_OPERATOR_FOR_SUPER',
+         new ParserErrorCode("INVALID_OPERATOR_FOR_SUPER",
              "The operator '{0}' can't be used with 'super'.");
 
         public static ParserErrorCode INVALID_STAR_AFTER_ASYNC = new ParserErrorCode(
-         'INVALID_STAR_AFTER_ASYNC',
+         "INVALID_STAR_AFTER_ASYNC",
            "The modifier 'async*' isn't allowed for an expression function body.",
            correction: "Try converting the body to a block.");
 
         public static ParserErrorCode INVALID_SYNC = new ParserErrorCode(
-         'INVALID_SYNC',
+         "INVALID_SYNC",
            "The modifier 'sync' isn't allowed for an expression function body.",
            correction: "Try converting the body to a block.");
 
@@ -493,7 +473,7 @@ namespace Dart2CSharpTranspiler.Parser
            _LIBRARY_DIRECTIVE_NOT_FIRST;
 
         public static ParserErrorCode LOCAL_FUNCTION_DECLARATION_MODIFIER =
-         new ParserErrorCode('LOCAL_FUNCTION_DECLARATION_MODIFIER',
+         new ParserErrorCode("LOCAL_FUNCTION_DECLARATION_MODIFIER",
              "Local function declarations can't specify any modifiers.",
              correction: "Try removing the modifier.");
 
@@ -504,62 +484,60 @@ namespace Dart2CSharpTranspiler.Parser
            _MISSING_ASSIGNMENT_IN_INITIALIZER;
 
         public static ParserErrorCode MISSING_CATCH_OR_FINALLY = new ParserErrorCode(
-         'MISSING_CATCH_OR_FINALLY',
+         "MISSING_CATCH_OR_FINALLY",
            "A try statement must have either a catch or finally clause.",
            correction: "Try adding either a catch or finally clause, or " +
                "remove the try statement.");
 
         /// TODO(danrubel): Consider splitting this into two separate error messages.
         public static ParserErrorCode MISSING_CLASS_BODY = new ParserErrorCode(
-         'MISSING_CLASS_BODY',
+         "MISSING_CLASS_BODY",
            "A class or mixin definition must have a body, even if it is empty.",
            correction: "Try adding a body to your class or mixin.");
 
         public static ParserErrorCode MISSING_CLOSING_PARENTHESIS =
          new ParserErrorCode(
-             'MISSING_CLOSING_PARENTHESIS', "The closing parenthesis is missing.",
+            "MISSING_CLOSING_PARENTHESIS", "The closing parenthesis is missing.",
              correction: "Try adding the closing parenthesis.");
 
         public static ParserErrorCode MISSING_CONST_FINAL_VAR_OR_TYPE =
            _MISSING_CONST_FINAL_VAR_OR_TYPE;
 
         public static ParserErrorCode MISSING_ENUM_BODY = new ParserErrorCode(
-         'MISSING_ENUM_BODY',
+         "MISSING_ENUM_BODY",
            "An enum definition must have a body with at least one constant name.",
            correction: "Try adding a body and defining at least one constant.");
 
         public static ParserErrorCode MISSING_EXPRESSION_IN_INITIALIZER =
-         new ParserErrorCode('MISSING_EXPRESSION_IN_INITIALIZER',
+         new ParserErrorCode("MISSING_EXPRESSION_IN_INITIALIZER",
              "Expected an expression after the assignment operator.",
-             correction: "Try adding the value to be assigned, or "
-
-
+             correction: "Try adding the value to be assigned, or "+
                  "remove the assignment operator.");
 
         public static ParserErrorCode MISSING_EXPRESSION_IN_THROW =
            _MISSING_EXPRESSION_IN_THROW;
 
         public static ParserErrorCode MISSING_FUNCTION_BODY = new ParserErrorCode(
-         'MISSING_FUNCTION_BODY', "A function body must be provided.",
+         "MISSING_FUNCTION_BODY", "A function body must be provided.",
            correction: "Try adding a function body.");
 
         public static ParserErrorCode MISSING_FUNCTION_KEYWORD = new ParserErrorCode(
-         'MISSING_FUNCTION_KEYWORD',
+         "MISSING_FUNCTION_KEYWORD",
            "Function types must have the keyword 'Function' before the parameter list.",
            correction: "Try adding the keyword 'Function'.");
 
         public static ParserErrorCode MISSING_FUNCTION_PARAMETERS =
-         new ParserErrorCode('MISSING_FUNCTION_PARAMETERS',
+         new ParserErrorCode("MISSING_FUNCTION_PARAMETERS",
              "Functions must have an explicit list of parameters.",
              correction: "Try adding a parameter list.");
 
         public static ParserErrorCode MISSING_GET = new ParserErrorCode(
-         'MISSING_GET',
+         "MISSING_GET",
            "Getters must have the keyword 'get' before the getter name.",
            correction: "Try adding the keyword 'get'.");
 
         public static ParserErrorCode MISSING_IDENTIFIER =
-         new ParserErrorCode('MISSING_IDENTIFIER', "Expected an identifier.");
+         new ParserErrorCode("MISSING_IDENTIFIER", "Expected an identifier.");
 
         public static ParserErrorCode MISSING_INITIALIZER = _MISSING_INITIALIZER;
 
@@ -567,27 +545,25 @@ namespace Dart2CSharpTranspiler.Parser
            _MISSING_KEYWORD_OPERATOR;
 
         public static ParserErrorCode MISSING_METHOD_PARAMETERS =
-         new ParserErrorCode('MISSING_METHOD_PARAMETERS',
+         new ParserErrorCode("MISSING_METHOD_PARAMETERS",
              "Methods must have an explicit list of parameters.",
              correction: "Try adding a parameter list.");
 
         public static ParserErrorCode MISSING_NAME_FOR_NAMED_PARAMETER =
-         new ParserErrorCode('MISSING_NAME_FOR_NAMED_PARAMETER',
+         new ParserErrorCode("MISSING_NAME_FOR_NAMED_PARAMETER",
              "Named parameters in a function type must have a name",
              correction:
                  "Try providing a name for the parameter or removing the curly braces.");
 
         public static ParserErrorCode MISSING_NAME_IN_LIBRARY_DIRECTIVE =
-         new ParserErrorCode('MISSING_NAME_IN_LIBRARY_DIRECTIVE',
+         new ParserErrorCode("MISSING_NAME_IN_LIBRARY_DIRECTIVE",
              "Library directives must include a library name.",
              correction:
-                 "Try adding a library name after the keyword 'library', or "
-
-
+                 "Try adding a library name after the keyword 'library', or "+
                  "remove the library directive if the library doesn't have any parts.");
 
         public static ParserErrorCode MISSING_NAME_IN_PART_OF_DIRECTIVE =
-         new ParserErrorCode('MISSING_NAME_IN_PART_OF_DIRECTIVE',
+         new ParserErrorCode("MISSING_NAME_IN_PART_OF_DIRECTIVE",
              "Part-of directives must include a library name.",
              correction: "Try adding a library name after the 'of'.");
 
@@ -595,7 +571,7 @@ namespace Dart2CSharpTranspiler.Parser
            _MISSING_PREFIX_IN_DEFERRED_IMPORT;
 
         public static ParserErrorCode MISSING_STAR_AFTER_SYNC = new ParserErrorCode(
-         'MISSING_STAR_AFTER_SYNC',
+         "MISSING_STAR_AFTER_SYNC",
            "The modifier 'sync' must be followed by a star ('*').",
            correction: "Try removing the modifier, or add a star.");
 
@@ -606,22 +582,22 @@ namespace Dart2CSharpTranspiler.Parser
          * 0: the terminator that is missing
          */
         public static ParserErrorCode MISSING_TERMINATOR_FOR_PARAMETER_GROUP =
-         new ParserErrorCode('MISSING_TERMINATOR_FOR_PARAMETER_GROUP',
+         new ParserErrorCode("MISSING_TERMINATOR_FOR_PARAMETER_GROUP",
              "There is no '{0}' to close the parameter group.",
              correction: "Try inserting a '{0}' at the end of the group.");
 
         public static ParserErrorCode MISSING_TYPEDEF_PARAMETERS =
-         new ParserErrorCode('MISSING_TYPEDEF_PARAMETERS',
+         new ParserErrorCode("MISSING_TYPEDEF_PARAMETERS",
              "Typedefs must have an explicit list of parameters.",
              correction: "Try adding a parameter list.");
 
         public static ParserErrorCode MISSING_VARIABLE_IN_FOR_EACH = new ParserErrorCode(
-         'MISSING_VARIABLE_IN_FOR_EACH',
+         "MISSING_VARIABLE_IN_FOR_EACH",
            "A loop variable must be declared in a for-each loop before the 'in', but none was found.",
            correction: "Try declaring a loop variable.");
 
         public static ParserErrorCode MIXED_PARAMETER_GROUPS = new ParserErrorCode(
-         'MIXED_PARAMETER_GROUPS',
+         "MIXED_PARAMETER_GROUPS",
            "Can't have both positional and named parameters in a single parameter list.",
            correction: "Try choosing a single style of optional parameters.");
 
@@ -629,7 +605,7 @@ namespace Dart2CSharpTranspiler.Parser
            _MULTIPLE_EXTENDS_CLAUSES;
 
         public static ParserErrorCode MULTIPLE_IMPLEMENTS_CLAUSES = new ParserErrorCode(
-         'MULTIPLE_IMPLEMENTS_CLAUSES',
+         "MULTIPLE_IMPLEMENTS_CLAUSES",
            "Each class or mixin definition can have at most one implements clause.",
            correction:
                "Try combining all of the implements clauses into a single clause.");
@@ -638,7 +614,7 @@ namespace Dart2CSharpTranspiler.Parser
            _MULTIPLE_LIBRARY_DIRECTIVES;
 
         public static ParserErrorCode MULTIPLE_NAMED_PARAMETER_GROUPS =
-         new ParserErrorCode('MULTIPLE_NAMED_PARAMETER_GROUPS',
+         new ParserErrorCode("MULTIPLE_NAMED_PARAMETER_GROUPS",
              "Can't have multiple groups of named parameters in a single parameter list.",
              correction: "Try combining all of the groups into a single group.");
 
@@ -648,7 +624,7 @@ namespace Dart2CSharpTranspiler.Parser
            _MULTIPLE_PART_OF_DIRECTIVES;
 
         public static ParserErrorCode MULTIPLE_POSITIONAL_PARAMETER_GROUPS =
-         new ParserErrorCode('MULTIPLE_POSITIONAL_PARAMETER_GROUPS',
+         new ParserErrorCode("MULTIPLE_POSITIONAL_PARAMETER_GROUPS",
              "Can't have multiple groups of positional parameters in a single parameter list.",
              correction: "Try combining all of the groups into a single group.");
 
@@ -658,10 +634,8 @@ namespace Dart2CSharpTranspiler.Parser
          */
         public static ParserErrorCode MULTIPLE_VARIABLES_IN_FOR_EACH =
          new ParserErrorCode(
-             'MULTIPLE_VARIABLES_IN_FOR_EACH',
-             "A single loop variable must be declared in a for-each loop before "
-
-
+             "MULTIPLE_VARIABLES_IN_FOR_EACH",
+             "A single loop variable must be declared in a for-each loop before "+
              "the 'in', but {0} were found.",
              correction:
                  "Try moving all but one of the declarations inside the loop body.");
@@ -669,20 +643,16 @@ namespace Dart2CSharpTranspiler.Parser
         public static ParserErrorCode MULTIPLE_WITH_CLAUSES = _MULTIPLE_WITH_CLAUSES;
 
         public static ParserErrorCode NAMED_FUNCTION_EXPRESSION = new ParserErrorCode(
-         'NAMED_FUNCTION_EXPRESSION', "Function expressions can't be named.",
-           correction: "Try removing the name, or "
-
-
-
-
+         "NAMED_FUNCTION_EXPRESSION", "Function expressions can't be named.",
+           correction: "Try removing the name, or "+
                "moving the function expression to a function declaration statement.");
 
         public static ParserErrorCode NAMED_FUNCTION_TYPE = new ParserErrorCode(
-         'NAMED_FUNCTION_TYPE', "Function types can't be named.",
+         "NAMED_FUNCTION_TYPE", "Function types can't be named.",
            correction: "Try replacing the name with the keyword 'Function'.");
 
         public static ParserErrorCode NAMED_PARAMETER_OUTSIDE_GROUP =
-         new ParserErrorCode('NAMED_PARAMETER_OUTSIDE_GROUP',
+         new ParserErrorCode("NAMED_PARAMETER_OUTSIDE_GROUP",
              "Named parameters must be enclosed in curly braces ('{' and '}').",
              correction: "Try surrounding the named parameters in curly braces.");
 

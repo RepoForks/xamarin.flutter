@@ -4,6 +4,14 @@ using System.Text;
 
 namespace Dart2CSharpTranspiler.Parser
 {
+
+    public class Comparable<T>
+    {
+
+    }
+
+
+
     public static class DartLibrary
     {
         public static bool identical(string first, string second)
@@ -21,6 +29,11 @@ namespace Dart2CSharpTranspiler.Parser
             return first == second;
         }
 
+        public static bool identical(object first, object second)
+        {
+            return first == second;
+        }
+
         public class StringBuffer
         {
             string value = "";
@@ -33,6 +46,11 @@ namespace Dart2CSharpTranspiler.Parser
             public void write(string text)
             {
                 value += text;
+            }
+
+            public void write(int text)
+            {
+                value += text.ToString();
             }
 
             public String toString()
