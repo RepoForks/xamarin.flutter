@@ -2720,16 +2720,20 @@ namespace Dart2CSharpTranspiler.Parser
         public readonly DartType contextType;
         public readonly DartType functionType;
 
-        _TypeConstraintFromFunctionContext(this.functionType, this.contextType);
-
-
-        formatError()
+        _TypeConstraintFromFunctionContext(DartType functionType, DartType contextType)
         {
-            return [
+            this.functionType = functionType;
+            this.contextType = contextType;
+        }
+
+
+        public override List<String> formatError()
+        {
+            return new List<string> {
               "Function type",
               "declared as '$functionType'",
               "used where  '$contextType' is required."
-            ];
+            };
         }
     }
 
@@ -2738,16 +2742,19 @@ namespace Dart2CSharpTranspiler.Parser
         public readonly DartType contextType;
         public readonly DartType declaredType;
 
-        _TypeConstraintFromReturnType(this.declaredType, this.contextType);
-
-
-        formatError()
+        _TypeConstraintFromReturnType(DartType declaredType, DartType contextType)
         {
-            return [
+            this.declaredType = declaredType;
+            this.contextType = contextType;
+        }
+
+        public override List<String> formatError()
+        {
+            return new List<string> {
               "Return type",
               "declared as '$declaredType'",
               "used where  '$contextType' is required."
-            ];
+            };
         }
     }
 
