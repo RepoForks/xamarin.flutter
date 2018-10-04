@@ -183,12 +183,12 @@ namespace Dart2CSharpTranspiler.Parser
             // In the downwards phase, they all start as `?` to offer reasonable
             // degradation for f-bounded type parameters.
             var inferredTypes = new List<DartType>.filled(
-                fnTypeParams.length, UnknownInferredType.instance);
+                fnTypeParams.Count, UnknownInferredType.instance);
             var _inferTypeParameter = downwardsInferPhase
                 ? _inferTypeParameterFromContext
                 : _inferTypeParameterFromAll;
 
-            for (int i = 0; i < fnTypeParams.length; i++)
+            for (int i = 0; i < fnTypeParams.Count; i++)
             {
                 TypeParameterType typeParam = fnTypeParams[i];
 
@@ -215,7 +215,7 @@ namespace Dart2CSharpTranspiler.Parser
             var knownTypes = new Dictionary<TypeParameterType, DartType>(
                 equals: (x, y) => x.element == y.element,
                 hashCode: (x) => x.element.hashCode);
-            for (int i = 0; i < fnTypeParams.length; i++)
+            for (int i = 0; i < fnTypeParams.Count; i++)
             {
                 TypeParameterType typeParam = fnTypeParams[i];
                 var constraints = this.constraints[typeParam.element];
@@ -271,12 +271,12 @@ namespace Dart2CSharpTranspiler.Parser
             }
 
             // Use instantiate to bounds to finish things off.
-            var hasError = new List<bool>.filled(fnTypeParams.length, false);
+            var hasError = new List<bool>.filled(fnTypeParams.Count, false);
             var result = _typeSystem.instantiateToBounds(genericType,
                 hasError: hasError, knownTypes: knownTypes) as T;
 
             // Report any errors from instantiateToBounds.
-            for (int i = 0; i < hasError.length; i++)
+            for (int i = 0; i < hasError.Count(); i++)
             {
                 if (hasError[i])
                 {
@@ -304,7 +304,7 @@ namespace Dart2CSharpTranspiler.Parser
         bool tryMatchSubtypeOf(DartType t1, DartType t2, _TypeConstraintOrigin origin,
             bool covariant = false)
         {
-            int previousRewindBufferLength = _undoBuffer.length;
+            int previousRewindBufferLength = _undoBuffer.Count;
             bool success = _matchSubtypeOf(t1, t2, null, origin, covariant: covariant);
             if (!success)
             {
@@ -499,12 +499,12 @@ namespace Dart2CSharpTranspiler.Parser
             // This gives us a chance to refine the choice, in case it would violate
             // the `extends` clause. For example:
             //
-            //     Object obj = math.min/*<infer Object, error>*/(1, 2);
+            //     Object obj = Math.Min/*<infer Object, error>*/(1, 2);
             //
             // If we consider the `T extends num` we conclude `<num>`, which works.
             if (extendsClause != null)
             {
-                constraints = constraints.toList()..add(extendsClause);
+                constraints = constraints.ToList()..add(extendsClause);
                 return _chooseTypeFromConstraints(constraints);
             }
             return t;
@@ -528,7 +528,7 @@ namespace Dart2CSharpTranspiler.Parser
             {
                 List<DartType> tArgs1 = i1.typeArguments;
                 List<DartType> tArgs2 = i2.typeArguments;
-                //assert(tArgs1.length == tArgs2.length);
+                //assert(tArgs1.Count == tArgs2.Count);
                 for (int i = 0; i < tArgs1.Count; i++)
                 {
                     if (!_matchSubtypeOf(tArgs1[i], tArgs2[i], visited, origin,
@@ -801,9 +801,9 @@ namespace Dart2CSharpTranspiler.Parser
             List<List<String>> lineParts =
                 new HashSet<_TypeConstraintOrigin>.from(constraints.map((c) => c.origin))
                     .map((o) => o.formatError())
-                    .toList();
+                    .ToList();
 
-            int prefixMax = lineParts.map((p) => p[0].length).fold(0, Math.Max);
+            int prefixMax = lineParts.map((p) => p[0].Count).fold(0, Math.Max);
 
             // Use a set to prevent identical message lines.
             // (It's not uncommon for the same constraint to show up in a few places.)
@@ -811,10 +811,10 @@ namespace Dart2CSharpTranspiler.Parser
             {
                 var prefix = parts[0];
                 var middle = parts[1];
-                var prefixPad = ' ' * (prefixMax - prefix.length);
+                var prefixPad = ' ' * (prefixMax - prefix.Count);
                 var middlePad = ' ' * (prefixMax);
                 var end = "";
-                if (parts.length > 2)
+                if (parts.Count > 2)
                 {
                     end = "\n  $middlePad ${parts[2]}";
                 }
@@ -1037,7 +1037,7 @@ namespace Dart2CSharpTranspiler.Parser
                 inferrer.constrainReturnType(declaredReturnType, returnContextType);
             }
 
-            for (int i = 0; i < argumentTypes.length; i++)
+            for (int i = 0; i < argumentTypes.Count; i++)
             {
                 // Try to pass each argument to each parameter, recording any type
                 // parameter bounds that were implied by this assignment.
@@ -1087,7 +1087,7 @@ namespace Dart2CSharpTranspiler.Parser
             List<bool> hasError = null,
            Dictionary<TypeParameterType, DartType> knownTypes = null)
         {
-            int count = typeFormals.length;
+            int count = typeFormals.Count;
             if (count == 0)
             {
                 return null;
@@ -1162,7 +1162,7 @@ namespace Dart2CSharpTranspiler.Parser
                     else if (freeParameters.every(defaults.containsKey))
                     {
                         defaults[parameter] = value.substitute2(
-                            defaults.values.toList(), defaults.keys.toList());
+                            defaults.values.ToList(), defaults.keys.ToList());
                         partials.remove(parameter);
                         hasProgress = true;
                         break;
@@ -1180,8 +1180,8 @@ namespace Dart2CSharpTranspiler.Parser
                 {
                     hasError[0] = true;
                 }
-                var domain = defaults.keys.toList();
-                var range = defaults.values.toList();
+                var domain = defaults.keys.ToList();
+                var range = defaults.values.ToList();
                 // Build a substitution Phi mapping each uncompleted type variable to
                 // dynamic, and each completed type variable to its default.
                 foreach (TypeParameterType parameter in partials.keys)
@@ -1198,7 +1198,7 @@ namespace Dart2CSharpTranspiler.Parser
             }
 
             List<DartType> orderedArguments =
-                typeFormals.map((p) => defaults[p.type]).toList();
+                typeFormals.map((p) => defaults[p.type]).ToList();
             return orderedArguments;
         }
 
@@ -1567,7 +1567,7 @@ namespace Dart2CSharpTranspiler.Parser
 
             // Parameters that are required in both functions are required in the
             // result.
-            int requiredCount = math.min(fRequired.length, gRequired.length);
+            int requiredCount = Math.Min(fRequired.Count, gRequired.Count);
             for (int i = 0; i < requiredCount; i++)
             {
                 addParameter(fRequiredNames[i], fRequired[i], gRequired[i],
@@ -1580,36 +1580,36 @@ namespace Dart2CSharpTranspiler.Parser
             List<String> fPositionalNames = f.optionalParameterNames;
             List<String> gPositionalNames = g.optionalParameterNames;
 
-            int totalPositional = Math.Max(fRequired.length + fPositional.length,
-                gRequired.length + gPositional.length);
+            int totalPositional = Math.Max(fRequired.Count + fPositional.Count,
+                gRequired.Count + gPositional.Count);
             for (int i = requiredCount; i < totalPositional; i++)
             {
                 // Find the corresponding positional parameters (required or optional) at
                 // this index, if there is one.
                 DartType fType;
                 String fName;
-                if (i < fRequired.length)
+                if (i < fRequired.Count)
                 {
                     fType = fRequired[i];
                     fName = fRequiredNames[i];
                 }
-                else if (i < fRequired.length + fPositional.length)
+                else if (i < fRequired.Count + fPositional.Count)
                 {
-                    fType = fPositional[i - fRequired.length];
-                    fName = fPositionalNames[i - fRequired.length];
+                    fType = fPositional[i - fRequired.Count];
+                    fName = fPositionalNames[i - fRequired.Count];
                 }
 
                 DartType gType;
                 String gName;
-                if (i < gRequired.length)
+                if (i < gRequired.Count)
                 {
                     gType = gRequired[i];
                     gName = gRequiredNames[i];
                 }
-                else if (i < gRequired.length + gPositional.length)
+                else if (i < gRequired.Count + gPositional.Count)
                 {
-                    gType = gPositional[i - gRequired.length];
-                    gName = gPositionalNames[i - gRequired.length];
+                    gType = gPositional[i - gRequired.Count];
+                    gName = gPositionalNames[i - gRequired.Count];
                 }
 
                 // The loop should not let us go past both f and g's positional params.
@@ -1679,9 +1679,9 @@ namespace Dart2CSharpTranspiler.Parser
                 List<DartType> tArgs1 = type1.typeArguments;
                 List<DartType> tArgs2 = type2.typeArguments;
 
-                assert(tArgs1.length == tArgs2.length);
-                List<DartType> tArgs = new List(tArgs1.length);
-                for (int i = 0; i < tArgs1.length; i++)
+                assert(tArgs1.Count == tArgs2.Count);
+                List<DartType> tArgs = new List(tArgs1.Count);
+                for (int i = 0; i < tArgs1.Count; i++)
                 {
                     tArgs[i] = getLeastUpperBound(tArgs1[i], tArgs2[i]);
                 }
@@ -1725,9 +1725,9 @@ namespace Dart2CSharpTranspiler.Parser
                 List<DartType> tArgs1 = i1.typeArguments;
                 List<DartType> tArgs2 = i2.typeArguments;
 
-                assert(tArgs1.length == tArgs2.length);
+                assert(tArgs1.Count == tArgs2.Count);
 
-                for (int i = 0; i < tArgs1.length; i++)
+                for (int i = 0; i < tArgs1.Count; i++)
                 {
                     DartType t1 = tArgs1[i];
                     DartType t2 = tArgs2[i];
@@ -1750,7 +1750,8 @@ namespace Dart2CSharpTranspiler.Parser
             // Dart 2 does not allow multiple implementations of the same generic type
             // with different type arguments. So we can track just the class element
             // to find cycles, rather than tracking the full interface type.
-            visitedTypes ??= new HashSet<ClassElement>();
+            if (visitedTypes == null)
+                visitedTypes = new HashSet<ClassElement>();
             if (!visitedTypes.add(i1Element)) return false;
 
             InterfaceType superclass = i1.superclass;
@@ -2125,14 +2126,14 @@ namespace Dart2CSharpTranspiler.Parser
         {
             var typeParameters = mixinElement.typeParameters;
             var inferrer = new GenericInferrer(typeProvider, this, typeParameters);
-            for (int i = 0; i < srcs.length; i++)
+            for (int i = 0; i < srcs.Count; i++)
             {
                 inferrer.constrainReturnType(srcs[i], dests[i]);
                 inferrer.constrainReturnType(dests[i], srcs[i]);
             }
             var result = inferrer.infer(mixinElement.type, typeParameters,
                 considerExtendsClause: false);
-            for (int i = 0; i < srcs.length; i++)
+            for (int i = 0; i < srcs.Count; i++)
             {
                 if (!srcs[i]
                     .substitute2(result.typeArguments, mixinElement.type.typeArguments)
@@ -2702,10 +2703,10 @@ namespace Dart2CSharpTranspiler.Parser
         public readonly TypeParameterType typeParam;
         public readonly DartType extendsType;
 
-    _TypeConstraintFromExtendsClause(this.typeParam, this.extendsType);
+        _TypeConstraintFromExtendsClause(this.typeParam, this.extendsType);
 
-       
-      formatError()
+
+        formatError()
         {
             return [
               "Type parameter '$typeParam'",
@@ -2719,10 +2720,10 @@ namespace Dart2CSharpTranspiler.Parser
         public readonly DartType contextType;
         public readonly DartType functionType;
 
-    _TypeConstraintFromFunctionContext(this.functionType, this.contextType);
+        _TypeConstraintFromFunctionContext(this.functionType, this.contextType);
 
-       
-      formatError()
+
+        formatError()
         {
             return [
               "Function type",
@@ -2737,10 +2738,10 @@ namespace Dart2CSharpTranspiler.Parser
         public readonly DartType contextType;
         public readonly DartType declaredType;
 
-    _TypeConstraintFromReturnType(this.declaredType, this.contextType);
+        _TypeConstraintFromReturnType(this.declaredType, this.contextType);
 
-       
-      formatError()
+
+        formatError()
         {
             return [
               "Return type",

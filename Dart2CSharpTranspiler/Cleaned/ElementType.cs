@@ -46,6 +46,8 @@ namespace Dart2CSharpTranspiler.Parser
         [Obsolete]
         public static List<DartType> EMPTY_LIST = new List<DartType> { };
 
+        public List<DartType> typeArguments;
+
         /**
          * Return the name of this type as it should appear when presented to users in
          * contexts such as error messages.
