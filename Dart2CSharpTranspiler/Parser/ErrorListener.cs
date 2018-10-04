@@ -225,7 +225,7 @@ namespace Dart2CSharpTranspiler.Parser
                 if (type is FunctionType)
                 {
                     String name = type.name;
-                    if (name != null && name.length > 0)
+                    if (name != null && name.Length > 0)
                     {
                         StringBuffer buffer = new StringBuffer();
                         buffer.write(name);
@@ -238,7 +238,7 @@ namespace Dart2CSharpTranspiler.Parser
 
             if (_hasEqualTypeNames(arguments))
             {
-                int count = arguments.length;
+                int count = arguments.Count;
                 for (int i = 0; i < count; i++)
                 {
                     Object argument = arguments[i];
@@ -259,7 +259,7 @@ namespace Dart2CSharpTranspiler.Parser
             }
             else
             {
-                int count = arguments.length;
+                int count = arguments.Count;
                 for (int i = 0; i < count; i++)
                 {
                     Object argument = arguments[i];
@@ -277,12 +277,12 @@ namespace Dart2CSharpTranspiler.Parser
          */
         bool _hasEqualTypeNames(List<Object> arguments)
         {
-            int count = arguments.length;
+            int count = arguments.Count;
             HashSet<String> typeNames = new HashSet<String>();
             for (int i = 0; i < count; i++)
             {
                 Object argument = arguments[i];
-                if (argument is DartType && !typeNames.add(argument.displayName))
+                if (argument is DartType && !typeNames.Add(argument.displayName))
                 {
                     return true;
                 }
@@ -309,15 +309,15 @@ namespace Dart2CSharpTranspiler.Parser
          */
         public List<AnalysisError> errors()
         {
-            int numEntries = _errors.length;
+            int numEntries = _errors.Count;
             if (numEntries == 0)
             {
                 return AnalysisError.NO_ERRORS;
             }
             List<AnalysisError> resultList = new List<AnalysisError>();
-            foreach (HashSet<AnalysisError> errors in _errors.values)
+            foreach (HashSet<AnalysisError> errors in _errors.Values)
             {
-                resultList.addAll(errors);
+                resultList.AddRange(errors);
             }
             return resultList;
         }
@@ -327,7 +327,7 @@ namespace Dart2CSharpTranspiler.Parser
          */
         public void addAll(RecordingErrorListener listener)
         {
-            foreach (AnalysisError error in listener.errors)
+            foreach (AnalysisError error in listener.errors())
             {
                 onError(error);
             }
@@ -345,11 +345,11 @@ namespace Dart2CSharpTranspiler.Parser
             }
             else
             {
-                return new List.from(errorsForSource);
+                return new List<AnalysisError>(errorsForSource);
             }
         }
 
-        public void onError(AnalysisError error)
+        public override void onError(AnalysisError error)
         {
             Source source = error.source;
             HashSet<AnalysisError> errorsForSource = _errors[source];

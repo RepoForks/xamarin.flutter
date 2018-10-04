@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Dart2CSharpTranspiler.Parser
 {
+    public class Iterable<T>: List<T>
+    {
+
+    }
 
     public class Comparable<T>
     {
 
     }
+    public class Comparator<T>
+    {
 
-
+    }
 
     public static class DartLibrary
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dart2CSharpTranspiler.Parser;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -137,9 +138,9 @@ namespace Dart2CSharpTranspiler
 
         public bool? isSynthetic { get; set; }
 
-        public int? length { get; set; }
+        public int length { get; set; }
 
-        public int? offset { get; set; }
+        public int offset { get; set; }
 
         public AstNode parent { get; set; }
 
