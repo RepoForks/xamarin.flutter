@@ -2614,18 +2614,18 @@ namespace Dart2CSharpTranspiler.Parser
             setModifier(Modifier.SYNTHETIC, true);
         }
 
-        @override
+        
         ElementKind get kind => ElementKind.DYNAMIC;
 
-        @override
+        
         UnknownInferredType get type => UnknownInferredType.instance;
 
-        @override
+        
         T accept<T>(ElementVisitor visitor) => null;
 }
 
     /// A constraint on a type parameter that we're inferring.
-    class _TypeConstraint : _TypeRange
+   public class _TypeConstraint : _TypeRange
     {
         /// The type parameter that is constrained by [lowerBound] or [upperBound].
         final TypeParameterType typeParameter;
@@ -2655,7 +2655,7 @@ namespace Dart2CSharpTranspiler.Parser
              : "'$lowerBound' must extend '$typeParameter'";
     }
 
-    class _TypeConstraintFromArgument : _TypeConstraintOrigin
+    public class _TypeConstraintFromArgument : _TypeConstraintOrigin
     {
         public readonly DartType argumentType;
         public readonly DartType parameterType;
@@ -2698,7 +2698,7 @@ namespace Dart2CSharpTranspiler.Parser
         }
     }
 
-    class _TypeConstraintFromExtendsClause : _TypeConstraintOrigin
+    public class _TypeConstraintFromExtendsClause : _TypeConstraintOrigin
     {
         public readonly TypeParameterType typeParam;
         public readonly DartType extendsType;
@@ -2715,7 +2715,7 @@ namespace Dart2CSharpTranspiler.Parser
         }
     }
 
-    class _TypeConstraintFromFunctionContext : _TypeConstraintOrigin
+    public class _TypeConstraintFromFunctionContext : _TypeConstraintOrigin
     {
         public readonly DartType contextType;
         public readonly DartType functionType;
@@ -2737,7 +2737,7 @@ namespace Dart2CSharpTranspiler.Parser
         }
     }
 
-    class _TypeConstraintFromReturnType : _TypeConstraintOrigin
+    public class _TypeConstraintFromReturnType : _TypeConstraintOrigin
     {
         public readonly DartType contextType;
         public readonly DartType declaredType;
@@ -2812,7 +2812,7 @@ namespace Dart2CSharpTranspiler.Parser
 
         _TypeRange(DartType lower = null, DartType upper = null)
         {
-            lowerBound = lower ?? UnknownInferredType.instance,
+            lowerBound = lower ?? UnknownInferredType.instance;
             upperBound = upper ?? UnknownInferredType.instance;
         }
         /// Formats the typeRange as a string suitable for unit testing.
