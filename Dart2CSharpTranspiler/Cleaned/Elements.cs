@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Dart2CSharpTranspiler.Parser
 {
@@ -28,21 +27,21 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public interface Element : AnalysisTarget
+    public abstract class Element : AnalysisTarget
     {
         /**
          * A comparator that can be used to sort elements by their name offset.
          * Elements with a smaller offset will be sorted to be before elements with a
          * larger name offset.
          */
-        //public static readonly Comparator<Element> SORT_BY_OFFSET =
-        //    (Element firstElement, Element secondElement) =>
-        //        firstElement.nameOffset - secondElement.nameOffset;
+        public static readonly Func<Element, Element, int> SORT_BY_OFFSET =
+            (Element firstElement, Element secondElement) =>
+                firstElement.nameOffset - secondElement.nameOffset;
 
         /**
          * Return the analysis context in which this element is defined.
          */
-        AnalysisContext context { get; }
+        public abstract AnalysisContext context { get; }
 
         /**
          * Return the display name of this element, or `null` if this element does not
@@ -52,146 +51,146 @@ namespace Dart2CSharpTranspiler.Parser
          * though are cases such as setters where the name of some setter `set f(x)`
          * is `f=`, instead of `f`.
          */
-        String displayName { get; }
+        public abstract String displayName { get; }
 
         /**
          * Return the content of the documentation comment (including delimiters) for
          * this element, or `null` if this element does not or cannot have
          * documentation.
          */
-        String documentationComment { get; }
+        public abstract String documentationComment { get; }
 
         /**
          * Return the element that either physically or logically encloses this
          * element. This will be `null` if this element is a library because libraries
          * are the top-level elements in the model.
          */
-        Element enclosingElement { get; }
+        public abstract Element enclosingElement { get; }
 
         /**
          * Return `true` if this element has an annotation of the form
          * `@alwaysThrows`.
          */
-        bool hasAlwaysThrows { get; }
+        public abstract bool hasAlwaysThrows { get; }
 
         /**
          * Return `true` if this element has an annotation of the form `[Obsolete]`
          * or `[Obsolete]('..')`.
          */
-        bool hasDeprecated { get; }
+        public abstract bool hasDeprecated { get; }
 
         /**
          * Return `true` if this element has an annotation of the form `@factory`.
          */
-        bool hasFactory { get; }
+        public abstract bool hasFactory { get; }
 
         /**
          * Return `true` if this element has an annotation of the form `@isTest`.
          */
-        bool hasIsTest { get; }
+        public abstract bool hasIsTest { get; }
 
         /**
          * Return `true` if this element has an annotation of the form `@isTestGroup`.
          */
-        bool hasIsTestGroup { get; }
+        public abstract bool hasIsTestGroup { get; }
 
         /**
          * Return `true` if this element has an annotation of the form `@JS(..)`.
          */
-        bool hasJS { get; }
+        public abstract bool hasJS { get; }
 
         /**
          * Return `true` if this element has an annotation of the form `@override`.
          */
-        bool hasOverride { get; }
+        public abstract bool hasOverride { get; }
 
         /**
          * Return `true` if this element has an annotation of the form `@protected`.
          */
-        bool hasProtected { get; }
+        public abstract bool hasProtected { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '@required'.
          */
-        bool hasRequired { get; }
+        public abstract bool hasRequired { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '@sealed'.
          */
-        bool hasSealed { get; }
+        public abstract bool hasSealed { get; }
 
         /**
          * Return `true` if this element has an annotation of the form
          * `@visibleForTemplate`.
          */
-        bool hasVisibleForTemplate { get; }
+        public abstract bool hasVisibleForTemplate { get; }
 
         /**
          * Return `true` if this element has an annotation of the form
          * `@visibleForTesting`.
          */
-        bool hasVisibleForTesting { get; }
+        public abstract bool hasVisibleForTesting { get; }
 
         /**
          * The unique integer identifier of this element.
          */
-        int id { get; }
+        public abstract int id { get; }
 
         /**
          * Return `true` if this element has an annotation of the form
          * '@alwaysThrows'.
          */
         [Obsolete]
-        bool isAlwaysThrows { get; }
+        public abstract bool isAlwaysThrows { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '[Obsolete]'
          * or '[Obsolete]('..')'.
          */
         [Obsolete]
-        bool isDeprecated { get; }
+        public abstract bool isDeprecated { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '@factory'.
          */
         [Obsolete]
-        bool isFactory { get; }
+        public abstract bool isFactory { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '@JS(..)'.
          */
         [Obsolete]
-        bool isJS { get; }
+        public abstract bool isJS { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '@override'.
          */
         [Obsolete]
-        bool isOverride { get; }
+        public abstract bool isOverride { get; }
 
         /**
          * Return `true` if this element is private. Private elements are visible only
          * within the library in which they are declared.
          */
-        bool isPrivate { get; }
+        public abstract bool isPrivate { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '@protected'.
          */
         [Obsolete]
-        bool isProtected { get; }
+        public abstract bool isProtected { get; }
 
         /**
          * Return `true` if this element is public. Public elements are visible within
          * any library that imports the library in which they are declared.
          */
-        bool isPublic { get; }
+        public abstract bool isPublic { get; }
 
         /**
          * Return `true` if this element has an annotation of the form '@required'.
          */
         [Obsolete]
-        bool isRequired { get; }
+        public abstract bool isRequired { get; }
 
         /**
          * Return `true` if this element is synthetic. A synthetic element is an
@@ -199,59 +198,59 @@ namespace Dart2CSharpTranspiler.Parser
          * implied by the source code, such as the default constructor for a class
          * that does not explicitly define any constructors.
          */
-        bool isSynthetic { get; }
+        public abstract bool isSynthetic { get; }
 
         /// Return `true` if this element has an annotation of the form
         /// '@visibleForTesting'.
         [Obsolete]
-        bool isVisibleForTesting { get; }
+        public abstract bool isVisibleForTesting { get; }
 
         /**
          * Return the kind of element that this is.
          */
-        ElementKind kind { get; }
+        public abstract ElementKind kind { get; }
 
         /**
          * Return the library that contains this element. This will be the element
          * itself if it is a library element. This will be `null` if this element is
          * an HTML file because HTML files are not contained in libraries.
          */
-        LibraryElement library { get; }
+        public abstract LibraryElement library { get; }
 
         /**
          * Return an object representing the location of this element in the element
          * model. The object can be used to locate this element at a later time.
          */
-        ElementLocation location { get; }
+        public abstract ElementLocation location { get; }
 
         /**
          * Return a list containing all of the metadata associated with this element.
          * The array will be empty if the element does not have any metadata or if the
          * library containing this element has not yet been resolved.
          */
-        List<ElementAnnotation> metadata { get; }
+        public abstract List<ElementAnnotation> metadata { get; }
 
         /**
          * Return the name of this element, or `null` if this element does not have a
          * name.
          */
-        String name { get; }
+        public abstract String name { get; }
 
         /**
          * Return the length of the name of this element in the file that contains the
          * declaration of this element, or `0` if this element does not have a name.
          */
-        int nameLength { get; }
+        public abstract int nameLength { get; }
 
         /**
          * Return the offset of the name of this element in the file that contains the
          * declaration of this element, or `-1` if this element is synthetic, does not
          * have a name, or otherwise does not have an offset.
          */
-        int nameOffset { get; }
+        public abstract int nameOffset { get; }
 
 
-        Source source { get; }
+        public abstract Source source { get; }
 
         /**
          * Return the resolved [CompilationUnit] that declares this element, or `null`
@@ -260,13 +259,13 @@ namespace Dart2CSharpTranspiler.Parser
          * This method is expensive, because resolved AST might have been already
          * evicted from cache, so parsing and resolving will be performed.
          */
-        CompilationUnit unit { get; }
+        public abstract CompilationUnit unit { get; }
 
         /**
          * Use the given [visitor] to visit this element. Return the value returned by
          * the visitor as a result of visiting this element.
          */
-        T accept<T>(ElementVisitor<T> visitor);
+        public abstract T accept<T>(ElementVisitor<T> visitor);
 
         /**
          * Return the documentation comment for this element as it appears in the
@@ -281,7 +280,7 @@ namespace Dart2CSharpTranspiler.Parser
          * Deprecated.  Use [documentationComment] instead.
          */
         [Obsolete]
-        String computeDocumentationComment();
+        public abstract String computeDocumentationComment();
 
         /**
          * Return the resolved [AstNode] node that declares this element, or `null` if
@@ -293,14 +292,14 @@ namespace Dart2CSharpTranspiler.Parser
          *
          * <b>Note:</b> This method cannot be used in an async environment.
          */
-        AstNode computeNode();
+        public abstract AstNode computeNode();
 
         /**
          * Return the most immediate ancestor of this element for which the
          * [predicate] returns `true`, or `null` if there is no such ancestor. Note
          * that this element will never be returned.
          */
-        E getAncestor<E>(Predicate<Element> predicate) where E : Element;
+        public abstract E getAncestor<E>(Predicate<Element> predicate) where E : Element;
 
         /**
          * Return a display name for the given element that includes the path to the
@@ -309,7 +308,7 @@ namespace Dart2CSharpTranspiler.Parser
          * the provided name will be used.
          */
         // TODO(brianwilkerson) Make the parameter optional.
-        String getExtendedDisplayName(String shortName);
+        public abstract String getExtendedDisplayName(String shortName);
 
         /**
          * Return `true` if this element, assuming that it is within scope, is
@@ -320,12 +319,12 @@ namespace Dart2CSharpTranspiler.Parser
          * declared in <i>L</i> or if <i>m</i> is public.
          * </blockquote>
          */
-        bool isAccessibleIn(LibraryElement library);
+        public abstract bool isAccessibleIn(LibraryElement library);
 
         /**
          * Use the given [visitor] to visit all of the children of this element. There
          * is no guarantee of the order in which the children will be visited.
          */
-        void visitChildren(ElementVisitor visitor);
+        public abstract void visitChildren<R>(ElementVisitor<R> visitor);
     }
 }

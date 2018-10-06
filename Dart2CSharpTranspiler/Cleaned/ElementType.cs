@@ -52,7 +52,7 @@ namespace Dart2CSharpTranspiler.Parser
          * Return the name of this type as it should appear when presented to users in
          * contexts such as error messages.
          */
-        public String displayName;
+        public abstract String displayName { get; }
 
         /**
          * Return the element representing the declaration of this type, or `null` if
@@ -60,7 +60,7 @@ namespace Dart2CSharpTranspiler.Parser
          * will occur if the element model is not yet complete; the latter case will
          * occur if this object represents an undefined type.
          */
-        public Element element;
+        public abstract Element element { get; }
 
         /**
          * Return `true` if this type represents the bottom type.
@@ -115,7 +115,7 @@ namespace Dart2CSharpTranspiler.Parser
          * Return the name of this type, or `null` if the type does not have a name,
          * such as when the type represents the type of an unnamed function.
          */
-        public String name;
+        public abstract String name { get; }
 
         /**
          * Implements the function "flatten" defined in the spec, where T is this
@@ -380,7 +380,7 @@ namespace Dart2CSharpTranspiler.Parser
         public List<ConstructorElement> constructors;
 
 
-        public ClassElement element;
+       // public ClassElement element;
 
         /**
          * Return a list containing all of the interfaces that are implemented by this
@@ -758,6 +758,6 @@ namespace Dart2CSharpTranspiler.Parser
         public ElementLocation definition;
 
 
-        public TypeParameterElement element;
+        //public abstract override TypeParameterElement element { get; }
     }
 }

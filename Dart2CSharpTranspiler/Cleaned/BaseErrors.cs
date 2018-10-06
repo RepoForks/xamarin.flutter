@@ -59,8 +59,13 @@ namespace Dart2CSharpTranspiler.Parser
          * template. The correction associated with the error will be created from the
          * given [correction] template.
          */
-        //const ErrorCode.temporary(this.name, this.message,
-        //    {this.correction, this.isUnresolvedIdentifier: false});
+        public ErrorCode(String name, String message, String correction = "", bool isUnresolvedIdentifier = false)
+        {
+            this.name = name;
+            this.message = message;
+            this.correction = correction;
+            this.isUnresolvedIdentifier = isUnresolvedIdentifier;
+        }
 
         /**
          * The severity of the error.
