@@ -4851,48 +4851,48 @@ namespace Dart2CSharpTranspiler.Parser
     /// the error code to indicate the problem that caused the error to be generated
     /// and for the error message to explain what is wrong and, when appropriate,
     /// how the problem can be corrected.
-    //class ResolverErrorCode : ErrorCode
-    //{
-    //    static const ResolverErrorCode BREAK_LABEL_ON_SWITCH_MEMBER =
-    //      const ResolverErrorCode('BREAK_LABEL_ON_SWITCH_MEMBER',
-    //          "Break label resolves to case or default statement");
+    public class ResolverErrorCode : ErrorCode
+    {
+        public static ResolverErrorCode BREAK_LABEL_ON_SWITCH_MEMBER =
+          new ResolverErrorCode("BREAK_LABEL_ON_SWITCH_MEMBER",
+              "Break label resolves to case or default statement");
 
-    //    static const ResolverErrorCode CONTINUE_LABEL_ON_SWITCH =
-    //      const ResolverErrorCode('CONTINUE_LABEL_ON_SWITCH',
-    //          "A continue label resolves to switch, must be loop or switch member");
+        public static ResolverErrorCode CONTINUE_LABEL_ON_SWITCH =
+          new ResolverErrorCode("CONTINUE_LABEL_ON_SWITCH",
+              "A continue label resolves to switch, must be loop or switch member");
 
-    //    static const ResolverErrorCode MISSING_LIBRARY_DIRECTIVE_WITH_PART =
-    //      const ResolverErrorCode('MISSING_LIBRARY_DIRECTIVE_WITH_PART',
-    //          "Libraries that have parts must have a library directive");
+        public static ResolverErrorCode MISSING_LIBRARY_DIRECTIVE_WITH_PART =
+          new ResolverErrorCode("MISSING_LIBRARY_DIRECTIVE_WITH_PART",
+              "Libraries that have parts must have a library directive");
 
-    //    /// Parts: It is a static warning if the referenced part declaration
-    //    /// <i>p</i> names a library that does not have a library tag.
-    //    ///
-    //    /// Parameters:
-    //    /// 0: the URI of the expected library
-    //    /// 1: the non-matching actual library name from the "part of" declaration
-    //    static const ResolverErrorCode PART_OF_UNNAMED_LIBRARY =
-    //      const ResolverErrorCode(
-    //          'PART_OF_UNNAMED_LIBRARY',
-    //          "Library is unnamed. Expected a URI not a library name '{0}' in the "
-    //          "part-of directive.",
-    //          correction:
-    //              "Try changing the part-of directive to a URI, or try including a"
-    //              " different part.");
+        /// Parts: It is a static warning if the referenced part declaration
+        /// <i>p</i> names a library that does not have a library tag.
+        ///
+        /// Parameters:
+        /// 0: the URI of the expected library
+        /// 1: the non-matching actual library name from the "part of" declaration
+        public static ResolverErrorCode PART_OF_UNNAMED_LIBRARY =
+          new ResolverErrorCode(
+              "PART_OF_UNNAMED_LIBRARY",
+              "Library is unnamed. Expected a URI not a library name '{0}' in the " +
+              "part-of directive.",
+              correction:
+                  "Try changing the part-of directive to a URI, or try including a" +
+                  " different part.");
 
-    //    /// Initialize a newly created error code to have the given [name]. The
-    //    /// message associated with the error will be created from the given [message]
-    //    /// template. The correction associated with the error will be created from
-    //    /// the given [correction] template.
-    //    const ResolverErrorCode(String name, String message, {String correction})
-    //      : super.temporary(name, message, correction: correction);
-
-
-    //  ErrorSeverity get errorSeverity => type.severity;
+        /// Initialize a newly created error code to have the given [name]. The
+        /// message associated with the error will be created from the given [message]
+        /// template. The correction associated with the error will be created from
+        /// the given [correction] template.
+        public ResolverErrorCode(String name, String message, String correction = "")
+          : base(name, message, correction: correction) { }
 
 
-    //ErrorType get type => ErrorType.COMPILE_TIME_ERROR;
-    //}
+        public ErrorSeverity errorSeverity => type.severity;
+
+
+        public ErrorType type => ErrorType.COMPILE_TIME_ERROR;
+    }
 
     /// Instances of the class `ResolverVisitor` are used to resolve the nodes
     /// within a single compilation unit.

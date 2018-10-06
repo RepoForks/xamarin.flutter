@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using static Dart2CSharpTranspiler.Parser.DartLibrary;
+using static Dart2CSharpTranspiler.Parser.JavaCore;
 
 //https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
 
@@ -898,7 +899,7 @@ namespace Dart2CSharpTranspiler.Parser
          * Merge all of the errors in the lists in the given list of [errorLists] into
          * a single list of errors.
          */
-        static List<AnalysisError> mergeLists(List<List<AnalysisError>> errorLists)
+        public static List<AnalysisError> mergeLists(List<List<AnalysisError>> errorLists)
         {
             HashSet<AnalysisError> errors = new HashSet<AnalysisError>();
             foreach (List<AnalysisError> errorList in errorLists)
