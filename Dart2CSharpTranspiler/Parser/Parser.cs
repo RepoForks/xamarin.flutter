@@ -293,7 +293,7 @@ namespace Dart2CSharpTranspiler.Parser
         //  }
         //}
 
-        public Parser withoutFasta(Source _source, AnalysisErrorListener _errorListener)
+        public Parser(Source _source, AnalysisErrorListener _errorListener)
         {
             this._source = _source;
             this._errorListener = _errorListener;
@@ -389,9 +389,9 @@ namespace Dart2CSharpTranspiler.Parser
         /**
          * Set whether parser is to parse function bodies.
          */
-        public void parseFunctionBodies(bool parseFunctionBodies)
+        public bool parseFunctionBodies
         {
-            this._parseFunctionBodies = parseFunctionBodies;
+            set => this._parseFunctionBodies = value;
         }
 
         /**

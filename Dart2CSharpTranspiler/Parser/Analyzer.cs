@@ -66,8 +66,10 @@ namespace Dart2CSharpTranspiler.Parser
             var errorCollector = new _ErrorCollector();
             var scanner = new Scanner(source, reader, errorCollector);
             var token = scanner.tokenize();
-            var parser = new Parser(source, errorCollector);
-            parser.parseFunctionBodies = parseFunctionBodies;
+            var parser = new Parser(source, errorCollector)
+            {
+                parseFunctionBodies = parseFunctionBodies
+            };
             var unit = parser.parseCompilationUnit(token);
             unit.lineInfo = new LineInfo(scanner.lineStarts);
 
@@ -82,15 +84,15 @@ namespace Dart2CSharpTranspiler.Parser
     {
         readonly List<AnalysisError> _errors = new List<AnalysisError> { };
 
-        private _ErrorCollector();
+        public _ErrorCollector() { }
 
         /// The group of errors collected.
         public AnalyzerErrorGroup group =>
         new AnalyzerErrorGroup.fromAnalysisErrors(_errors);
 
         /// Whether any errors where collected.
-        public bool hasErrors => !_errors.isEmpty;
+        public bool hasErrors => _errors.Count != 0;
 
-        public override void onError(AnalysisError error) => _errors.add(error);
+        public override void onError(AnalysisError error) => _errors.Add(error);
     }
 }

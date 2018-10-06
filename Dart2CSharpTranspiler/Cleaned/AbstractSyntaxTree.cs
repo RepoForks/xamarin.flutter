@@ -1,20 +1,17 @@
 ﻿using Dart2CSharpTranspiler.Parser;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 // https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/dart/ast/ast.dart
 
 namespace Dart2CSharpTranspiler
 {
 
-
     public class AdjacentStrings : StringLiteral
     {
 
         public NodeList<StringLiteral> strings { get; set; }
-
-
 
     }
     public class AnnotatedNode : AstNode
@@ -79,7 +76,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class AssertInitializer : Assertion, ConstructorInitializer
+    public class AssertInitializer : Assertion, IConstructorInitializer
     {
 
 
@@ -100,18 +97,15 @@ namespace Dart2CSharpTranspiler
 
         public Token rightParenthesis { get; set; }
 
-
-
     }
-    public class AssertStatement : Assertion, Statement
+    public class AssertStatement : Assertion, IStatement
     {
 
         public Token semicolon { get; set; }
-
-
-
+        public IStatement unlabeled { get; set; }
     }
-    public class AssignmentExpression : Expression, MethodReferenceExpression
+
+    public class AssignmentExpression : Expression, IMethodReferenceExpression
     {
 
         public Expression leftHandSide { get; set; }
@@ -120,27 +114,30 @@ namespace Dart2CSharpTranspiler
 
         public Expression rightHandSide { get; set; }
 
+        public MethodElement bestElement { get; set; }
+        public MethodElement propagatedElement { get; set; }
+        public MethodElement staticElement { get; set; }
     }
 
     public class AstNode : SyntacticEntity
     {
 
-        public static Comparator<AstNode> LEXICAL_ORDER =
-          (AstNode first, AstNode second) => first.offset - second.offset;
+        //public static Comparator<AstNode> LEXICAL_ORDER =
+        //(AstNode first, AstNode second) => new Comparator<AstNode>(first.offset - second.offset);
 
         public Token beginToken { get; set; }
 
         public Iterable<SyntacticEntity> childEntities { get; set; }
 
-        public int? end { get; set; }
+        public override int end { get; }
 
         public Token endToken { get; set; }
 
         public bool? isSynthetic { get; set; }
 
-        public int length { get; set; }
+        public override int length { get; }
 
-        public int offset { get; set; }
+        public override int offset { get; }
 
         public AstNode parent { get; set; }
 
@@ -161,7 +158,10 @@ namespace Dart2CSharpTranspiler
             return default(Token);
         }
 
-        E getAncestor<E as AstNode>(Predicate<AstNode> predicate);
+        public virtual E getAncestor<E>(Predicate<AstNode> predicate) where E : AstNode
+        {
+            return default(E); // This was abstract
+        }
 
         public E getProperty<E>(string name)
         {
@@ -177,7 +177,7 @@ namespace Dart2CSharpTranspiler
             return default(string);
         }
 
-        public void visitChildren(AstVisitor visitor)
+        public void visitChildren<R>(AstVisitor<R> visitor)
         {
         }
 
@@ -765,7 +765,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class BinaryExpression : Expression, MethodReferenceExpression
+    public class BinaryExpression : Expression, IMethodReferenceExpression
     {
 
         public Expression leftOperand { get; set; }
@@ -773,21 +773,19 @@ namespace Dart2CSharpTranspiler
         public Token @operator { get; set; }
 
         public Expression rightOperand { get; set; }
-
-
-
+        public MethodElement bestElement { get; set; }
+        public MethodElement propagatedElement { get; set; }
+        public MethodElement staticElement { get; set; }
     }
-    public class Block : Statement
+    public class Block : AstNode, IStatement
     {
-
         public Token leftBracket { get; set; }
 
         public Token rightBracket { get; set; }
 
-        public NodeList<Statement> statements { get; set; }
+        public NodeList<IStatement> statements { get; set; }
 
-
-
+        public IStatement unlabeled { get; set; }
     }
     public class BlockFunctionBody : FunctionBody
     {
@@ -811,7 +809,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class BreakStatement : Statement
+    public class BreakStatement : AstNode, IStatement
     {
 
         public Token breakKeyword { get; set; }
@@ -821,9 +819,7 @@ namespace Dart2CSharpTranspiler
         public Token semicolon { get; set; }
 
         public AstNode target { get; set; }
-
-
-
+        public IStatement unlabeled { get; set; }
     }
     public class CascadeExpression : Expression
     {
@@ -1065,7 +1061,7 @@ namespace Dart2CSharpTranspiler
 
         public Token factoryKeyword { get; set; }
 
-        public NodeList<ConstructorInitializer> initializers { get; set; }
+        public NodeList<IConstructorInitializer> initializers { get; set; }
 
         public SimpleIdentifier name { get; set; }
 
@@ -1082,7 +1078,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class ConstructorFieldInitializer : ConstructorInitializer
+    public class ConstructorFieldInitializer : AstNode, IConstructorInitializer
     {
 
         public Token equals { get; set; }
@@ -1098,13 +1094,13 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class ConstructorInitializer : AstNode
+    public interface IConstructorInitializer //: AstNode
     {
 
 
 
     }
-    public class ConstructorName : AstNode, ConstructorReferenceNode
+    public class ConstructorName : AstNode, IConstructorReferenceNode
     {
 
         public SimpleIdentifier name { get; set; }
@@ -1112,16 +1108,12 @@ namespace Dart2CSharpTranspiler
         public Token period { get; set; }
 
         public TypeName type { get; set; }
-
-
-
+        public ConstructorElement staticElement { get; set; }
     }
-    public class ConstructorReferenceNode
+    public interface IConstructorReferenceNode
     {
 
-        public ConstructorElement staticElement { get; set; }
-
-
+        ConstructorElement staticElement { get; set; }
 
     }
     public class ContinueStatement : Statement
@@ -1299,12 +1291,9 @@ namespace Dart2CSharpTranspiler
 
         public Expression unParenthesized { get; set; }
 
-        public List<Expression> EMPTY_LIST = new new List<Expression>();
+        public List<Expression> EMPTY_LIST = new List<Expression>();
 
-
-		
-
-}
+    }
     public class ExpressionFunctionBody : FunctionBody
     {
 
@@ -1691,18 +1680,18 @@ namespace Dart2CSharpTranspiler
             {
                 if (uriStr1 == null)
                 {
-                    return -1;
+                    return new Comparator<ImportDirective>(-1);
                 }
                 else if (uriStr2 == null)
                 {
-                    return 1;
+                    return new Comparator<ImportDirective>(1);
                 }
                 else
                 {
-                    int? compare = uriStr1.compareTo(uriStr2);
+                    int compare = uriStr1.compareTo(uriStr2);
                     if (compare != 0)
                     {
-                        return compare;
+                        return new Comparator<ImportDirective>(compare);
                     }
                 }
             }
@@ -1714,105 +1703,99 @@ namespace Dart2CSharpTranspiler
             {
                 if (prefixStr1 == null)
                 {
-                    return -1;
+                    return new Comparator<ImportDirective>(-1);
                 }
                 else if (prefixStr2 == null)
                 {
-                    return 1;
+                    return new Comparator<ImportDirective>(1);
                 }
                 else
                 {
-                    int? compare = prefixStr1.compareTo(prefixStr2);
+                    int compare = prefixStr1.compareTo(prefixStr2);
                     if (compare != 0)
                     {
-                        return compare;
+                        return new Comparator<ImportDirective>(compare);
                     }
                 }
             }
             NodeList<Combinator> combinators1 = import1.combinators;
             List<string> allHides1 = new List<string>();
             List<string> allShows1 = new List<string>();
-            int? length1 = combinators1.Count;
-            foreach (int? i = 0;
-            i < length1;
-            i++) {
+            int length1 = combinators1.Count;
+            for (int i = 0; i < length1; i++)
+            {
                 Combinator combinator = combinators1[i];
-                if (combinator is HideCombinator)
+                if (combinator is HideCombinator hideCombinator)
                 {
-                    NodeList<SimpleIdentifier> hides = combinator.hiddenNames;
-                    int? hideLength = hides.Count;
-                    foreach (int? j = 0;
-                    j < hideLength;
-                    j++) {
+                    NodeList<SimpleIdentifier> hides = hideCombinator.hiddenNames;
+                    int hideLength = hides.Count;
+                    for (int j = 0; j < hideLength; j++)
+                    {
                         SimpleIdentifier simpleIdentifier = hides[j];
-                        allHides1.add(simpleIdentifier.name);
+                        allHides1.Add(simpleIdentifier.name);
                     }
                 }
                 else
                 {
                     NodeList<SimpleIdentifier> shows = (combinator as ShowCombinator).shownNames;
-                    int? showLength = shows.Count;
-                    foreach (int? j = 0;
-                    j < showLength;
-                    j++) {
+                    int showLength = shows.Count;
+                    for (int j = 0; j < showLength; j++)
+                    {
                         SimpleIdentifier simpleIdentifier = shows[j];
-                        allShows1.add(simpleIdentifier.name);
+                        allShows1.Add(simpleIdentifier.name);
                     }
                 }
             }
             NodeList<Combinator> combinators2 = import2.combinators;
             List<string> allHides2 = new List<string>();
             List<string> allShows2 = new List<string>();
-            int? length2 = combinators2.Count;
-            foreach (int? i = 0;
-            i < length2;
-            i++) {
+            int length2 = combinators2.Count;
+            for (int i = 0; i < length2; i++)
+            {
                 Combinator combinator = combinators2[i];
-                if (combinator is HideCombinator)
+                if (combinator is HideCombinator hideCombinator)
                 {
-                    NodeList<SimpleIdentifier> hides = combinator.hiddenNames;
-                    int? hideLength = hides.Count;
-                    foreach (int? j = 0;
-                    j < hideLength;
-                    j++) {
+                    NodeList<SimpleIdentifier> hides = hideCombinator.hiddenNames;
+                    int hideLength = hides.Count;
+                    for (int j = 0; j < hideLength; j++)
+                    {
                         SimpleIdentifier simpleIdentifier = hides[j];
-                        allHides2.add(simpleIdentifier.name);
+                        allHides2.Add(simpleIdentifier.name);
                     }
                 }
                 else
                 {
                     NodeList<SimpleIdentifier> shows = (combinator as ShowCombinator).shownNames;
-                    int? showLength = shows.Count;
-                    foreach (int? j = 0;
-                    j < showLength;
-                    j++) {
+                    int showLength = shows.Count;
+                    for (int j = 0; j < showLength; j++)
+                    {
                         SimpleIdentifier simpleIdentifier = shows[j];
-                        allShows2.add(simpleIdentifier.name);
+                        allShows2.Add(simpleIdentifier.name);
                     }
                 }
             }
             if (allHides1.Count != allHides2.Count)
             {
-                return allHides1.Count - allHides2.Count;
+                return new Comparator<ImportDirective>(allHides1.Count - allHides2.Count);
             }
             if (allShows1.Count != allShows2.Count)
             {
-                return allShows1.Count - allShows2.Count;
+                return new Comparator<ImportDirective>(allShows1.Count - allShows2.Count);
             }
-            if (!allHides1.toSet().containsAll(allHides2))
+            if (allHides1.Intersect(allHides2).Count() != allHides1.Count())
             {
-                return -1;
+                return new Comparator<ImportDirective>(-1);
             }
-            if (!allShows1.toSet().containsAll(allShows2))
+            if (allShows1.Intersect(allShows2).Count() != allShows1.Count())
             {
-                return -1;
+                return new Comparator<ImportDirective>(-1);
             }
-            return 0;
+            return new Comparator<ImportDirective>(0);
         }
 
     }
 
-    public class IndexExpression : Expression, MethodReferenceExpression
+    public class IndexExpression : Expression, IMethodReferenceExpression
     {
 
         public AuxiliaryElements auxiliaryElements { get; set; }
@@ -1830,6 +1813,9 @@ namespace Dart2CSharpTranspiler
         public Token rightBracket { get; set; }
 
         public Expression target { get; set; }
+        public MethodElement bestElement { get; set; }
+        public MethodElement propagatedElement { get; set; }
+        public MethodElement staticElement { get; set; }
 
         public bool? inGetterContext()
         {
@@ -1844,7 +1830,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class InstanceCreationExpression : Expression, ConstructorReferenceNode
+    public class InstanceCreationExpression : Expression, IConstructorReferenceNode
     {
 
         public ArgumentList argumentList { get; set; }
@@ -1854,9 +1840,7 @@ namespace Dart2CSharpTranspiler
         public bool? isConst { get; set; }
 
         public Token keyword { get; set; }
-
-
-
+        public ConstructorElement staticElement { get; set; }
     }
     public class IntegerLiteral : Literal
     {
@@ -2070,14 +2054,14 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class MethodReferenceExpression
+    public interface IMethodReferenceExpression // Seems like a mixin
     {
 
-        public MethodElement bestElement { get; set; }
+        MethodElement bestElement { get; set; }
 
-        public MethodElement propagatedElement { get; set; }
+        MethodElement propagatedElement { get; set; }
 
-        public MethodElement staticElement { get; set; }
+        MethodElement staticElement { get; set; }
 
 
 
@@ -2168,7 +2152,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class NodeList<E> : List<E> where E : AstNode
+    public class NodeList<E> : List<E> //where E : AstNode
     {
 
         public Token beginToken { get; set; }
@@ -2177,20 +2161,17 @@ namespace Dart2CSharpTranspiler
 
         public AstNode owner { get; set; }
 
-        public operator [] (int? index)
-        {
-            return default(operator);
-        }
+        //public operator [] (int? index)
+        //{
+        //    return default(operator);
+        //}
 
-        public E node);
+        //public E node();
 
-        public NotValidReturnType accept(AstVisitor visitor)
-        {
-            return default(NotValidReturnType);
-        }
-
-
-
+        //public NotValidReturnType accept<R>(AstVisitor<R> visitor)
+        //{
+        //    return default(NotValidReturnType);
+        //}
     }
     public class NormalFormalParameter : FormalParameter
     {
@@ -2264,15 +2245,15 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class PostfixExpression : Expression, MethodReferenceExpression
+    public class PostfixExpression : Expression, IMethodReferenceExpression
     {
 
         public Expression operand { get; set; }
 
         public Token @operator { get; set; }
-
-
-
+        public MethodElement bestElement { get; set; }
+        public MethodElement propagatedElement { get; set; }
+        public MethodElement staticElement { get; set; }
     }
     public class PrefixedIdentifier : Identifier
     {
@@ -2288,15 +2269,15 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class PrefixExpression : Expression, MethodReferenceExpression
+    public class PrefixExpression : Expression, IMethodReferenceExpression
     {
 
         public Expression operand { get; set; }
 
         public Token @operator { get; set; }
-
-
-
+        public MethodElement bestElement { get; set; }
+        public MethodElement propagatedElement { get; set; }
+        public MethodElement staticElement { get; set; }
     }
     public class PropertyAccess : Expression
     {
@@ -2314,7 +2295,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class RedirectingConstructorInvocation : ConstructorInitializer, ConstructorReferenceNode
+    public class RedirectingConstructorInvocation : IConstructorInitializer, IConstructorReferenceNode
     {
 
         public ArgumentList argumentList { get; set; }
@@ -2324,9 +2305,7 @@ namespace Dart2CSharpTranspiler
         public Token period { get; set; }
 
         public Token thisKeyword { get; set; }
-
-
-
+        public ConstructorElement staticElement { get; set; }
     }
     public class RethrowExpression : Expression
     {
@@ -2431,14 +2410,21 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class Statement : AstNode
+
+    public interface IStatement //: AstNode
     {
 
-        public Statement unlabeled { get; set; }
-
-
+        IStatement unlabeled { get; set; }
 
     }
+    public class Statement : AstNode, IStatement
+    {
+
+        public IStatement unlabeled { get; set; }
+
+    }
+
+
     public class StringInterpolation : SingleStringLiteral
     {
 
@@ -2454,7 +2440,7 @@ namespace Dart2CSharpTranspiler
 
 
     }
-    public class SuperConstructorInvocation : ConstructorInitializer, ConstructorReferenceNode
+    public class SuperConstructorInvocation : IConstructorInitializer, IConstructorReferenceNode
     {
 
         public ArgumentList argumentList { get; set; }
@@ -2464,8 +2450,7 @@ namespace Dart2CSharpTranspiler
         public Token period { get; set; }
 
         public Token superKeyword { get; set; }
-
-
+        public ConstructorElement staticElement { get; set; }
     }
     public class SuperExpression : Expression
     {

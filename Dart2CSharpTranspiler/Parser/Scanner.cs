@@ -53,7 +53,7 @@ namespace Dart2CSharpTranspiler.Parser
          */
         bool _preserveComments = true;
 
-        readonly List<int> lineStarts = new List<int> { };
+        public readonly List<int> lineStarts = new List<int> { };
 
         public Token firstToken;
 
@@ -65,19 +65,26 @@ namespace Dart2CSharpTranspiler.Parser
          * in the source. The given [_errorListener] will be informed of any errors
          * that are found.
          */
-        //public Scanner Constructor(Source source,
-        //               CharacterReader reader,
-        //               AnalysisErrorListener errorListener) =>
-        //               new Scanner.fasta(source, errorListener,
-        //                                 contents: reader.getContents(), offset: reader.offset);
+        public Scanner(Source source,
+                       CharacterReader reader,
+                       AnalysisErrorListener errorListener)
+        {
+            this.source = source;
+            this._contents = reader.getContents();
+            this._readerOffset = reader.offset;
+            this._errorListener = errorListener;
+        }
 
-        //public Scanner fasta(Source source,
-        //                     AnalysisErrorListener errorListener,
-        //                     String contents = "",
-        //                     int offset = -1)
-        //{
-        //    return new Scanner._(source, contents ?? source.contents.data, offset, errorListener);
-        //}
+        public Scanner(Source source,
+                             AnalysisErrorListener errorListener,
+                             String contents = "",
+                             int offset = -1)
+        {
+            this.source = source;
+            this._contents = contents ?? source.contents.data;
+            this._readerOffset = offset;
+            this._errorListener = errorListener;
+        }
 
         public Scanner(Source source, string _contents, int _readerOffset, AnalysisErrorListener _errorListener)
         {
@@ -118,18 +125,18 @@ namespace Dart2CSharpTranspiler.Parser
 
         public Token tokenize()
         {
-            fasta.ScannerResult result = fasta.scanString(_contents,
+            FastaScannerResult result = fasta.scanString(_contents,
                 includeComments: _preserveComments,
                 scanLazyAssignmentOperators: scanLazyAssignmentOperators);
 
             // fasta pretends there is an additional line at EOF
-            result.lineStarts.removeLast();
+            result.lineStarts.RemoveLast();
 
             // for compatibility, there is already a first entry in lineStarts
-            result.lineStarts.removeAt(0);
+            result.lineStarts.RemoveAt(0);
 
             lineStarts.AddRange(result.lineStarts);
-            fasta.Token token = result.tokens;
+            Token token = result.tokens;
             // The default recovery strategy used by scanString
             // places all error tokens at the head of the stream.
             while (token.type == TokenType.BAD_INPUT)
@@ -157,65 +164,71 @@ namespace Dart2CSharpTranspiler.Parser
 
 
 
-    const int unicodeReplacementCharacter = unicodeReplacementCharacterRune;
+    //public const int unicodeReplacementCharacter = unicodeReplacementCharacterRune;
 
-   public delegate Token Recover(List<int> bytes, Token tokens, List<int> lineStarts);
+    public delegate Token Recover(List<int> bytes, Token tokens, List<int> lineStarts);
 
     public abstract class FastaScanner
     {
         /// Returns true if an error occured during [tokenize].
-        bool get hasErrors;
+        public abstract bool hasErrors { get; }
 
-  List<int> get lineStarts;
+        public abstract List<int> lineStarts { get; }
 
-  Token tokenize();
+        public abstract Token tokenize();
     }
 
-    class ScannerResult
+    public class FastaScannerResult
     {
-        final Token tokens;
-  final List<int> lineStarts;
-        final bool hasErrors;
+        public readonly Token tokens;
+        public readonly List<int> lineStarts;
+        public readonly bool hasErrors;
 
-        ScannerResult(this.tokens, this.lineStarts, this.hasErrors);
+        public FastaScannerResult(Token tokens, List<int> lineStarts, bool hasErrors)
+        {
+            this.tokens = tokens;
+            this.lineStarts = lineStarts;
+            this.hasErrors = hasErrors;
+        }
     }
 
     /// Scan/tokenize the given UTF8 [bytes].
     /// If [recover] is null, then the [defaultRecoveryStrategy] is used.
-    ScannerResult scan(List<int> bytes,
-        { bool includeComments: false, Recover recover}) {
-  if (bytes.last != 0) {
-    throw new ArgumentError("[bytes]: the last byte must be null.");
-}
-Scanner scanner =
-    new Utf8BytesScanner(bytes, includeComments: includeComments);
-  return _tokenizeAndRecover(scanner, recover, bytes: bytes);
-}
-
-/// Scan/tokenize the given [source].
-/// If [recover] is null, then the [defaultRecoveryStrategy] is used.
-ScannerResult scanString(String source,
+    public ScannerResult scan(List<int> bytes,
+         bool includeComments = false, Recover recover = null)
     {
-    bool includeComments: false,
-    bool scanLazyAssignmentOperators: false,
-    Recover recover}) {
-  assert(source != null, 'source must not be null');
-StringScanner scanner =
-    new StringScanner(source, includeComments: includeComments);
-  return _tokenizeAndRecover(scanner, recover, source: source);
-}
+        if (bytes.last != 0)
+        {
+            throw new ArgumentException("[bytes]: the last byte must be null.");
+        }
+        Scanner scanner =
+            new Utf8BytesScanner(bytes, includeComments: includeComments);
+        return _tokenizeAndRecover(scanner, recover, bytes: bytes);
+    }
 
-ScannerResult _tokenizeAndRecover(Scanner scanner, Recover recover,
-    { List<int> bytes, String source}) {
-  Token tokens = scanner.tokenize();
-  if (scanner.hasErrors) {
-    if (bytes == null) bytes = utf8.encode(source);
-    recover ??= defaultRecoveryStrategy;
-    tokens = recover(bytes, tokens, scanner.lineStarts);
-  }
-  return new ScannerResult(tokens, scanner.lineStarts, scanner.hasErrors);
-}
+    /// Scan/tokenize the given [source].
+    /// If [recover] is null, then the [defaultRecoveryStrategy] is used.
+    public ScannerResult scanString(String source,
+        bool includeComments = false,
+    bool scanLazyAssignmentOperators = false,
+    Recover recover = null)
+    {
+        //assert(source != null, "source must not be null");
+        StringScanner scanner =
+            new StringScanner(source, includeComments: includeComments);
+        return _tokenizeAndRecover(scanner, recover, source: source);
+    }
 
-
-
+    public ScannerResult _tokenizeAndRecover(Scanner scanner, Recover recover,
+       List<int> bytes = null, String source = "")
+    {
+        Token tokens = scanner.tokenize();
+        if (scanner.hasErrors)
+        {
+            if (bytes == null) bytes = utf8.encode(source);
+            recover ??= defaultRecoveryStrategy;
+            tokens = recover(bytes, tokens, scanner.lineStarts);
+        }
+        return new ScannerResult(tokens, scanner.lineStarts, scanner.hasErrors);
+    }
 }

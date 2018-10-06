@@ -568,7 +568,7 @@ namespace Dart2CSharpTranspiler.Parser
         public abstract ConstructorDeclaration computeNode();
     }
 
-   
+
 
     /**
      * A single annotation associated with an element.
@@ -1275,49 +1275,49 @@ namespace Dart2CSharpTranspiler.Parser
         /**
          * Return the compilation unit that defines this library.
          */
-        CompilationUnitElement definingCompilationUnit { get; }
+        public abstract CompilationUnitElement definingCompilationUnit { get; }
 
         /**
          * Return the entry point for this library, or `null` if this library does not
          * have an entry point. The entry point is defined to be a zero argument
          * top-level function whose name is `main`.
          */
-        FunctionElement entryPoint { get; }
+        public abstract FunctionElement entryPoint { get; }
 
         /**
          * Return a list containing all of the libraries that are exported from this
          * library.
          */
-        List<LibraryElement> exportedLibraries { get; }
+        public abstract List<LibraryElement> exportedLibraries { get; }
 
         /**
          * The export [Namespace] of this library, `null` if it has not been
          * computed yet.
          */
-        Namespace exportNamespace { get; }
+        public abstract Namespace exportNamespace { get; }
 
         /**
          * Return a list containing all of the exports defined in this library.
          */
-        List<ExportElement> exports { get; }
+        public abstract List<ExportElement> exports { get; }
 
         /**
          * Return `true` if the defining compilation unit of this library contains at
          * least one import directive whose URI uses the "dart-ext" scheme.
          */
-        bool hasExtUri { get; }
+        public abstract bool hasExtUri { get; }
 
         /**
          * Return `true` if this library defines a top-level function named
          * `loadLibrary`.
          */
-        bool hasLoadLibraryFunction { get; }
+        public abstract bool hasLoadLibraryFunction { get; }
 
         /**
          * Return an identifier that uniquely identifies this element among the
          * children of this element's parent.
          */
-        String identifier { get; }
+        public abstract String identifier { get; }
 
         /**
          * Return a list containing all of the libraries that are imported into this
@@ -1325,85 +1325,85 @@ namespace Dart2CSharpTranspiler.Parser
          * prefix (also available through the prefixes returned by [getPrefixes]) and
          * those that are imported without a prefix.
          */
-        List<LibraryElement> importedLibraries { get; }
+        public abstract List<LibraryElement> importedLibraries { get; }
 
         /**
          * Return a list containing all of the imports defined in this library.
          */
-        List<ImportElement> imports { get; }
+        public abstract List<ImportElement> imports { get; }
 
         /**
          * Return `true` if this library is an application that can be run in the
          * browser.
          */
-        bool isBrowserApplication { get; }
+        public abstract bool isBrowserApplication { get; }
 
         /**
          * Return `true` if this library is the dart:async library.
          */
-        bool isDartAsync { get; }
+        public abstract bool isDartAsync { get; }
 
         /**
          * Return `true` if this library is the dart:core library.
          */
-        bool isDartCore { get; }
+        public abstract bool isDartCore { get; }
 
         /**
          * Return `true` if this library is part of the SDK.
          */
-        bool isInSdk { get; }
+        public abstract bool isInSdk { get; }
 
         /**
          * Return a list containing the strongly connected component in the
          * import/export graph in which the current library resides.
          */
-        List<LibraryElement> libraryCycle { get; }
+        public abstract List<LibraryElement> libraryCycle { get; }
 
         /**
          * Return the element representing the synthetic function `loadLibrary` that
          * is implicitly defined for this library if the library is imported using a
          * deferred import.
          */
-        FunctionElement loadLibraryFunction { get; }
+        public abstract FunctionElement loadLibraryFunction { get; }
 
         /**
          * Return a list containing all of the compilation units that are included in
          * this library using a `part` directive. This does not include the defining
          * compilation unit that contains the `part` directives.
          */
-        List<CompilationUnitElement> parts { get; }
+        public abstract List<CompilationUnitElement> parts { get; }
 
         /**
          * Return a list containing elements for each of the prefixes used to `import`
          * libraries into this library. Each prefix can be used in more than one
          * `import` directive.
          */
-        List<PrefixElement> prefixes { get; }
+        public abstract List<PrefixElement> prefixes { get; }
 
         /**
          * The public [Namespace] of this library, `null` if it has not been
          * computed yet.
          */
-        Namespace publicNamespace { get; }
+        public abstract Namespace publicNamespace { get; }
 
         /**
          * Return a list containing all of the compilation units this library consists
          * of. This includes the defining compilation unit and units included using
          * the `part` directive.
          */
-        List<CompilationUnitElement> units { get; }
+        public abstract List<CompilationUnitElement> units { get; }
 
         /**
          * Return a list containing all of the imports that share the given [prefix],
          * or an empty array if there are no such imports.
          */
-        List<ImportElement> getImportsWithPrefix(PrefixElement prefix);
+        public abstract List<ImportElement> getImportsWithPrefix(PrefixElement prefix);
 
         /**
          * Return the class defined in this library that has the given [name], or
          * `null` if this library does not define a class with the given name.
          */
-        ClassElement getType(String className);
+        public abstract ClassElement getType(String className);
     }
 
     /**
@@ -1543,25 +1543,25 @@ namespace Dart2CSharpTranspiler.Parser
         /**
          * Return the Dart code of the default value, or `null` if no default value.
          */
-        String defaultValueCode { get; }
+        public abstract String defaultValueCode { get; }
 
         /**
          * Return `true` if this parameter is covariant, meaning it is allowed to have
          * a narrower type in an override.
          */
-        bool isCovariant { get; }
+        public abstract bool isCovariant { get; }
 
         /**
          * Return `true` if this parameter is an initializing formal parameter.
          */
-        bool isInitializingFormal { get; }
+        public abstract bool isInitializingFormal { get; }
 
         /**
          * Return `true` if this parameter is a named parameter. Named parameters are
          * always optional, even when they are annotated with the `@required`
          * annotation.
          */
-        bool isNamed { get; }
+        public abstract bool isNamed { get; }
 
         /**
          * Return `true` if this parameter is a required parameter. Required
@@ -1571,54 +1571,54 @@ namespace Dart2CSharpTranspiler.Parser
          * the `@required` annotation.
          */
         // TODO(brianwilkerson) Rename this to `isRequired`.
-        bool isNotOptional { get; }
+        public abstract bool isNotOptional { get; }
 
         /**
          * Return `true` if this parameter is an optional parameter. Optional
          * parameters can either be positional or named.
          */
-        bool isOptional { get; }
+        public abstract bool isOptional { get; }
 
         /**
          * Return `true` if this parameter is both an optional and positional
          * parameter.
          */
-        bool isOptionalPositional { get; }
+        public abstract bool isOptionalPositional { get; }
 
         /**
          * Return `true` if this parameter is a positional parameter. Positional
          * parameters can either be required or optional.
          */
-        bool isPositional { get; }
+        public abstract bool isPositional { get; }
 
         /**
          * Return the kind of this parameter.
          */
         [Obsolete]
-        ParameterKind parameterKind { get; }
+        public abstract ParameterKind parameterKind { get; }
 
         /**
          * Return a list containing all of the parameters defined by this parameter.
          * A parameter will only define other parameters if it is a function typed
          * parameter.
          */
-        List<ParameterElement> parameters { get; }
+        public abstract List<ParameterElement> parameters { get; }
 
         /**
          * Return a list containing all of the type parameters defined by this
          * parameter. A parameter will only define other parameters if it is a
          * function typed parameter.
          */
-        List<TypeParameterElement> typeParameters { get; }
+        public abstract List<TypeParameterElement> typeParameters { get; }
 
         /**
          * Append the type, name and possibly the default value of this parameter to
          * the given [buffer].
          */
-        void appendToWithoutDelimiters(StringBuffer buffer);
+        public abstract void appendToWithoutDelimiters(StringBuffer buffer);
 
-        @override
-        FormalParameter computeNode();
+
+        public abstract FormalParameter computeNode();
     }
 
     /**
@@ -1634,369 +1634,368 @@ namespace Dart2CSharpTranspiler.Parser
         [Obsolete]
         public static List<PrefixElement> EMPTY_LIST = new List<PrefixElement> { };
 
-        @override
-        LibraryElement enclosingElement { get; }
+        public abstract LibraryElement enclosingElement { get; }
+
+        /**
+         * Return the empty list.
+         *
+         * Deprecated: this getter was intended to return a list containing all of
+         * the libraries that are imported using this prefix, but it was never
+         * implemented.  Due to lack of demand, it is being removed.
+         */
+        [Obsolete]
+        public abstract List<LibraryElement> importedLibraries { get; }
+    }
 
     /**
-     * Return the empty list.
+     * A getter or a setter. Note that explicitly defined property accessors
+     * implicitly define a synthetic field. Symmetrically, synthetic accessors are
+     * implicitly created for explicitly defined fields. The following rules apply:
      *
-     * Deprecated: this getter was intended to return a list containing all of
-     * the libraries that are imported using this prefix, but it was never
-     * implemented.  Due to lack of demand, it is being removed.
-     */
-    [Obsolete]
-    List<LibraryElement> importedLibraries { get; }
-}
-
-/**
- * A getter or a setter. Note that explicitly defined property accessors
- * implicitly define a synthetic field. Symmetrically, synthetic accessors are
- * implicitly created for explicitly defined fields. The following rules apply:
- *
- * * Every explicit field is represented by a non-synthetic [FieldElement].
- * * Every explicit field induces a getter and possibly a setter, both of which
- *   are represented by synthetic [PropertyAccessorElement]s.
- * * Every explicit getter or setter is represented by a non-synthetic
- *   [PropertyAccessorElement].
- * * Every explicit getter or setter (or pair thereof if they have the same
- *   name) induces a field that is represented by a synthetic [FieldElement].
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class PropertyAccessorElement : ExecutableElement
-{
-    /**
-     * An empty list of property accessor elements.
-     */
-    [Obsolete]
-    public static List<PropertyAccessorElement> EMPTY_LIST =
-      new List<PropertyAccessorElement> { };
-
-    /**
-     * Return the accessor representing the getter that corresponds to (has the
-     * same name as) this setter, or `null` if this accessor is not a setter or if
-     * there is no corresponding getter.
-     */
-    PropertyAccessorElement correspondingGetter { get; }
-
-    /**
-     * Return the accessor representing the setter that corresponds to (has the
-     * same name as) this getter, or `null` if this accessor is not a getter or if
-     * there is no corresponding setter.
-     */
-    PropertyAccessorElement correspondingSetter { get; }
-
-    /**
-     * Return `true` if this accessor represents a getter.
-     */
-    bool isGetter { get; }
-
-    /**
-     * Return `true` if this accessor represents a setter.
-     */
-    bool isSetter { get; }
-
-    /**
-     * Return the field or top-level variable associated with this accessor. If
-     * this accessor was explicitly defined (is not synthetic) then the variable
-     * associated with it will be synthetic.
-     */
-    PropertyInducingElement variable { get; }
-}
-
-/**
- * A variable that has an associated getter and possibly a setter. Note that
- * explicitly defined variables implicitly define a synthetic getter and that
- * non-`final` explicitly defined variables implicitly define a synthetic
- * setter. Symmetrically, synthetic fields are implicitly created for explicitly
- * defined getters and setters. The following rules apply:
- *
- * * Every explicit variable is represented by a non-synthetic
- *   [PropertyInducingElement].
- * * Every explicit variable induces a getter and possibly a setter, both of
- *   which are represented by synthetic [PropertyAccessorElement]s.
- * * Every explicit getter or setter is represented by a non-synthetic
- *   [PropertyAccessorElement].
- * * Every explicit getter or setter (or pair thereof if they have the same
- *   name) induces a variable that is represented by a synthetic
- *   [PropertyInducingElement].
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class PropertyInducingElement : VariableElement
-{
-    /**
-     * An empty list of elements.
-     */
-    [Obsolete]
-    public static List<PropertyInducingElement> EMPTY_LIST =
-      new List<PropertyInducingElement> { };
-
-    /**
-     * Return the getter associated with this variable. If this variable was
-     * explicitly defined (is not synthetic) then the getter associated with it
-     * will be synthetic.
-     */
-    public abstract PropertyAccessorElement getter { get; }
-
-    /**
-     * Return the propagated type of this variable, or `null` if type propagation
-     * has not been performed, for example because the variable is not final.
-     */
-    [Obsolete]
-    public abstract DartType propagatedType { get; }
-
-    /**
-     * Return the setter associated with this variable, or `null` if the variable
-     * is effectively `final` and therefore does not have a setter associated with
-     * it. (This can happen either because the variable is explicitly defined as
-     * being `final` or because the variable is induced by an explicit getter that
-     * does not have a corresponding setter.) If this variable was explicitly
-     * defined (is not synthetic) then the setter associated with it will be
-     * synthetic.
-     */
-    public abstract PropertyAccessorElement setter { get; }
-}
-
-/**
- * A combinator that cause some of the names in a namespace to be visible (and
- * the rest hidden) when being imported.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class ShowElementCombinator : NamespaceCombinator
-{
-    /**
-     * Return the offset of the character immediately following the last character
-     * of this node.
-     */
-    public abstract int end { get; }
-
-    /**
-     * Return the offset of the 'show' keyword of this element.
-     */
-    public abstract int offset { get; }
-
-    /**
-     * Return a list containing the names that are to be made visible in the
-     * importing library if they are defined in the imported library.
-     */
-    public abstract List<String> shownNames { get; }
-}
-
-/**
- * A top-level variable.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class TopLevelVariableElement : PropertyInducingElement
-{
-    /**
-     * An empty list of top-level variable elements.
-     */
-    [Obsolete]
-    public static List<TopLevelVariableElement> EMPTY_LIST =
-      new List<TopLevelVariableElement> { };
-
-
-    public abstract VariableDeclaration computeNode();
-}
-
-/**
- * An element that defines a type.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public interface TypeDefiningElement : Element
-{
-    /**
-     * Return the type defined by this element.
-     */
-    public abstract DartType type { get; }
-}
-
-/**
- * A type parameter.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class TypeParameterElement : TypeDefiningElement
-{
-    /**
-     * An empty list of type parameter elements.
-     */
-    [Obsolete]
-    public static List<TypeParameterElement> EMPTY_LIST =
-      new List<TypeParameterElement> { };
-
-    /**
-     * Return the type representing the bound associated with this parameter, or
-     * `null` if this parameter does not have an explicit bound.
-     */
-    public abstract DartType bound { get; }
-
-
-    public abstract TypeParameterType type { get; }
-}
-
-/**
- * An element that has type parameters, such as a class or a typedef. This also
- * includes functions and methods if support for generic methods is enabled.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class TypeParameterizedElement : Element
-{
-    /**
-     * The type of this element, which will be a parameterized type.
-     */
-    public abstract ParameterizedType type { get; }
-
-    /**
-     * Return a list containing all of the type parameters declared by this
-     * element directly. This does not include type parameters that are declared
-     * by any enclosing elements.
-     */
-    public abstract List<TypeParameterElement> typeParameters { get; }
-}
-
-/**
- * A pseudo-elements that represents names that are undefined. This situation is
- * not allowed by the language, so objects implementing this interface always
- * represent an error. As a result, most of the normal operations on elements do
- * not make sense and will return useless results.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class UndefinedElement : Element { }
-
-/**
- * An element included into a library using some URI.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class UriReferencedElement : Element
-{
-    /**
-     * Return the URI that is used to include this element into the enclosing
-     * library, or `null` if this is the defining compilation unit of a library.
-     */
-    public abstract String uri { get; }
-
-    /**
-     * Return the offset of the character immediately following the last character
-     * of this node's URI, or `-1` for synthetic import.
-     */
-    public abstract int uriEnd { get; }
-
-    /**
-     * Return the offset of the URI in the file, or `-1` if this element is
-     * synthetic.
-     */
-    public abstract int uriOffset { get; }
-}
-
-/**
- * A variable. There are more specific subclasses for more specific kinds of
- * variables.
- *
- * Clients may not extend, implement or mix-in this class.
- */
-public abstract class VariableElement : Element, ConstantEvaluationTarget
-{
-    /**
-     * An empty list of variable elements.
-     */
-    [Obsolete]
-    public static List<VariableElement> EMPTY_LIST = new List<VariableElement> { };
-
-    /**
-     * Return a representation of the value of this variable.
+     * * Every explicit field is represented by a non-synthetic [FieldElement].
+     * * Every explicit field induces a getter and possibly a setter, both of which
+     *   are represented by synthetic [PropertyAccessorElement]s.
+     * * Every explicit getter or setter is represented by a non-synthetic
+     *   [PropertyAccessorElement].
+     * * Every explicit getter or setter (or pair thereof if they have the same
+     *   name) induces a field that is represented by a synthetic [FieldElement].
      *
-     * Return `null` if either this variable was not declared with the 'const'
-     * modifier or if the value of this variable could not be computed because of
-     * errors.
+     * Clients may not extend, implement or mix-in this class.
      */
-    public abstract DartObject constantValue { get; }
+    public abstract class PropertyAccessorElement : ExecutableElement
+    {
+        /**
+         * An empty list of property accessor elements.
+         */
+        [Obsolete]
+        public static List<PropertyAccessorElement> EMPTY_LIST =
+          new List<PropertyAccessorElement> { };
+
+        /**
+         * Return the accessor representing the getter that corresponds to (has the
+         * same name as) this setter, or `null` if this accessor is not a setter or if
+         * there is no corresponding getter.
+         */
+        public abstract PropertyAccessorElement correspondingGetter { get; }
+
+        /**
+         * Return the accessor representing the setter that corresponds to (has the
+         * same name as) this getter, or `null` if this accessor is not a getter or if
+         * there is no corresponding setter.
+         */
+        public abstract PropertyAccessorElement correspondingSetter { get; }
+
+        /**
+         * Return `true` if this accessor represents a getter.
+         */
+        public abstract bool isGetter { get; }
+
+        /**
+         * Return `true` if this accessor represents a setter.
+         */
+        public abstract bool isSetter { get; }
+
+        /**
+         * Return the field or top-level variable associated with this accessor. If
+         * this accessor was explicitly defined (is not synthetic) then the variable
+         * associated with it will be synthetic.
+         */
+        public abstract PropertyInducingElement variable { get; }
+    }
 
     /**
-     * Return `true` if this variable element did not have an explicit type
-     * specified for it.
-     */
-    public abstract bool hasImplicitType { get; }
-
-    /**
-     * Return a synthetic function representing this variable's initializer, or
-     * `null` if this variable does not have an initializer. The function will
-     * have no parameters. The return type of the function will be the
-     * compile-time type of the initialization expression.
-     */
-    public abstract FunctionElement initializer { get; }
-
-    /**
-     * Return `true` if this variable was declared with the 'const' modifier.
-     */
-    public abstract bool isnew { get; }
-
-    /**
-     * Return `true` if this variable was declared with the 'final' modifier.
-     * Variables that are declared with the 'const' modifier will return `false`
-     * even though they are implicitly final.
-     */
-    public abstract bool isFinal { get; }
-
-    /**
-     * Return `true` if this variable is potentially mutated somewhere in a
-     * closure. This information is only available for local variables (including
-     * parameters) and only after the compilation unit containing the variable has
-     * been resolved.
+     * A variable that has an associated getter and possibly a setter. Note that
+     * explicitly defined variables implicitly define a synthetic getter and that
+     * non-`final` explicitly defined variables implicitly define a synthetic
+     * setter. Symmetrically, synthetic fields are implicitly created for explicitly
+     * defined getters and setters. The following rules apply:
      *
-     * This getter is deprecated--it now returns `true` for all local variables
-     * and parameters.  Please use [FunctionBody.isPotentiallyMutatedInClosure]
-     * instead.
-     */
-    [Obsolete]
-    public abstract bool isPotentiallyMutatedInClosure { get; }
-
-    /**
-     * Return `true` if this variable is potentially mutated somewhere in its
-     * scope. This information is only available for local variables (including
-     * parameters) and only after the compilation unit containing the variable has
-     * been resolved.
+     * * Every explicit variable is represented by a non-synthetic
+     *   [PropertyInducingElement].
+     * * Every explicit variable induces a getter and possibly a setter, both of
+     *   which are represented by synthetic [PropertyAccessorElement]s.
+     * * Every explicit getter or setter is represented by a non-synthetic
+     *   [PropertyAccessorElement].
+     * * Every explicit getter or setter (or pair thereof if they have the same
+     *   name) induces a variable that is represented by a synthetic
+     *   [PropertyInducingElement].
      *
-     * This getter is deprecated--it now returns `true` for all local variables
-     * and parameters.  Please use [FunctionBody.isPotentiallyMutatedInClosure]
-     * instead.
+     * Clients may not extend, implement or mix-in this class.
      */
-    [Obsolete]
-    public abstract bool isPotentiallyMutatedInScope { get; }
+    public abstract class PropertyInducingElement : VariableElement
+    {
+        /**
+         * An empty list of elements.
+         */
+        [Obsolete]
+        public static List<PropertyInducingElement> EMPTY_LIST =
+          new List<PropertyInducingElement> { };
+
+        /**
+         * Return the getter associated with this variable. If this variable was
+         * explicitly defined (is not synthetic) then the getter associated with it
+         * will be synthetic.
+         */
+        public abstract PropertyAccessorElement getter { get; }
+
+        /**
+         * Return the propagated type of this variable, or `null` if type propagation
+         * has not been performed, for example because the variable is not final.
+         */
+        [Obsolete]
+        public abstract DartType propagatedType { get; }
+
+        /**
+         * Return the setter associated with this variable, or `null` if the variable
+         * is effectively `final` and therefore does not have a setter associated with
+         * it. (This can happen either because the variable is explicitly defined as
+         * being `final` or because the variable is induced by an explicit getter that
+         * does not have a corresponding setter.) If this variable was explicitly
+         * defined (is not synthetic) then the setter associated with it will be
+         * synthetic.
+         */
+        public abstract PropertyAccessorElement setter { get; }
+    }
 
     /**
-     * Return `true` if this element is a static variable, as per section 8 of the
-     * Dart Language Specification:
+     * A combinator that cause some of the names in a namespace to be visible (and
+     * the rest hidden) when being imported.
      *
-     * > A static variable is a variable that is not associated with a particular
-     * > instance, but rather with an entire library or class. Static variables
-     * > include library variables and class variables. Class variables are
-     * > variables whose declaration is immediately nested inside a class
-     * > declaration and includes the modifier static. A library variable is
-     * > implicitly static.
+     * Clients may not extend, implement or mix-in this class.
      */
-    public abstract bool isStatic { get; }
+    public abstract class ShowElementCombinator : NamespaceCombinator
+    {
+        /**
+         * Return the offset of the character immediately following the last character
+         * of this node.
+         */
+        public abstract int end { get; }
+
+        /**
+         * Return the offset of the 'show' keyword of this element.
+         */
+        public abstract int offset { get; }
+
+        /**
+         * Return a list containing the names that are to be made visible in the
+         * importing library if they are defined in the imported library.
+         */
+        public abstract List<String> shownNames { get; }
+    }
 
     /**
-     * Return the declared type of this variable, or `null` if the variable did
-     * not have a declared type (such as if it was declared using the keyword
-     * 'var').
+     * A top-level variable.
+     *
+     * Clients may not extend, implement or mix-in this class.
      */
-    public abstract DartType type { get; }
+    public abstract class TopLevelVariableElement : PropertyInducingElement
+    {
+        /**
+         * An empty list of top-level variable elements.
+         */
+        [Obsolete]
+        public static List<TopLevelVariableElement> EMPTY_LIST =
+          new List<TopLevelVariableElement> { };
+
+
+        public abstract VariableDeclaration computeNode();
+    }
 
     /**
-     * Return a representation of the value of this variable, forcing the value
-     * to be computed if it had not previously been computed, or `null` if either
-     * this variable was not declared with the 'const' modifier or if the value of
-     * this variable could not be computed because of errors.
+     * An element that defines a type.
+     *
+     * Clients may not extend, implement or mix-in this class.
      */
-    public abstract DartObject computeConstantValue();
-}
+    public abstract class TypeDefiningElement : Element
+    {
+        /**
+         * Return the type defined by this element.
+         */
+        public abstract DartType type { get; }
+    }
+
+    /**
+     * A type parameter.
+     *
+     * Clients may not extend, implement or mix-in this class.
+     */
+    public abstract class TypeParameterElement : TypeDefiningElement
+    {
+        /**
+         * An empty list of type parameter elements.
+         */
+        [Obsolete]
+        public static List<TypeParameterElement> EMPTY_LIST =
+          new List<TypeParameterElement> { };
+
+        /**
+         * Return the type representing the bound associated with this parameter, or
+         * `null` if this parameter does not have an explicit bound.
+         */
+        public abstract DartType bound { get; }
+
+
+        public abstract TypeParameterType type { get; }
+    }
+
+    /**
+     * An element that has type parameters, such as a class or a typedef. This also
+     * includes functions and methods if support for generic methods is enabled.
+     *
+     * Clients may not extend, implement or mix-in this class.
+     */
+    public abstract class TypeParameterizedElement : Element
+    {
+        /**
+         * The type of this element, which will be a parameterized type.
+         */
+        public abstract ParameterizedType type { get; }
+
+        /**
+         * Return a list containing all of the type parameters declared by this
+         * element directly. This does not include type parameters that are declared
+         * by any enclosing elements.
+         */
+        public abstract List<TypeParameterElement> typeParameters { get; }
+    }
+
+    /**
+     * A pseudo-elements that represents names that are undefined. This situation is
+     * not allowed by the language, so objects implementing this interface always
+     * represent an error. As a result, most of the normal operations on elements do
+     * not make sense and will return useless results.
+     *
+     * Clients may not extend, implement or mix-in this class.
+     */
+    public abstract class UndefinedElement : Element { }
+
+    /**
+     * An element included into a library using some URI.
+     *
+     * Clients may not extend, implement or mix-in this class.
+     */
+    public abstract class UriReferencedElement : Element
+    {
+        /**
+         * Return the URI that is used to include this element into the enclosing
+         * library, or `null` if this is the defining compilation unit of a library.
+         */
+        public abstract String uri { get; }
+
+        /**
+         * Return the offset of the character immediately following the last character
+         * of this node's URI, or `-1` for synthetic import.
+         */
+        public abstract int uriEnd { get; }
+
+        /**
+         * Return the offset of the URI in the file, or `-1` if this element is
+         * synthetic.
+         */
+        public abstract int uriOffset { get; }
+    }
+
+    /**
+     * A variable. There are more specific subclasses for more specific kinds of
+     * variables.
+     *
+     * Clients may not extend, implement or mix-in this class.
+     */
+    public abstract class VariableElement : Element, ConstantEvaluationTarget
+    {
+        /**
+         * An empty list of variable elements.
+         */
+        [Obsolete]
+        public static List<VariableElement> EMPTY_LIST = new List<VariableElement> { };
+
+        /**
+         * Return a representation of the value of this variable.
+         *
+         * Return `null` if either this variable was not declared with the 'const'
+         * modifier or if the value of this variable could not be computed because of
+         * errors.
+         */
+        public abstract DartObject constantValue { get; }
+
+        /**
+         * Return `true` if this variable element did not have an explicit type
+         * specified for it.
+         */
+        public abstract bool hasImplicitType { get; }
+
+        /**
+         * Return a synthetic function representing this variable's initializer, or
+         * `null` if this variable does not have an initializer. The function will
+         * have no parameters. The return type of the function will be the
+         * compile-time type of the initialization expression.
+         */
+        public abstract FunctionElement initializer { get; }
+
+        /**
+         * Return `true` if this variable was declared with the 'const' modifier.
+         */
+        public abstract bool isnew { get; }
+
+        /**
+         * Return `true` if this variable was declared with the 'final' modifier.
+         * Variables that are declared with the 'const' modifier will return `false`
+         * even though they are implicitly final.
+         */
+        public abstract bool isFinal { get; }
+
+        /**
+         * Return `true` if this variable is potentially mutated somewhere in a
+         * closure. This information is only available for local variables (including
+         * parameters) and only after the compilation unit containing the variable has
+         * been resolved.
+         *
+         * This getter is deprecated--it now returns `true` for all local variables
+         * and parameters.  Please use [FunctionBody.isPotentiallyMutatedInClosure]
+         * instead.
+         */
+        [Obsolete]
+        public abstract bool isPotentiallyMutatedInClosure { get; }
+
+        /**
+         * Return `true` if this variable is potentially mutated somewhere in its
+         * scope. This information is only available for local variables (including
+         * parameters) and only after the compilation unit containing the variable has
+         * been resolved.
+         *
+         * This getter is deprecated--it now returns `true` for all local variables
+         * and parameters.  Please use [FunctionBody.isPotentiallyMutatedInClosure]
+         * instead.
+         */
+        [Obsolete]
+        public abstract bool isPotentiallyMutatedInScope { get; }
+
+        /**
+         * Return `true` if this element is a static variable, as per section 8 of the
+         * Dart Language Specification:
+         *
+         * > A static variable is a variable that is not associated with a particular
+         * > instance, but rather with an entire library or class. Static variables
+         * > include library variables and class variables. Class variables are
+         * > variables whose declaration is immediately nested inside a class
+         * > declaration and includes the modifier static. A library variable is
+         * > implicitly static.
+         */
+        public abstract bool isStatic { get; }
+
+        /**
+         * Return the declared type of this variable, or `null` if the variable did
+         * not have a declared type (such as if it was declared using the keyword
+         * 'var').
+         */
+        public abstract DartType type { get; }
+
+        /**
+         * Return a representation of the value of this variable, forcing the value
+         * to be computed if it had not previously been computed, or `null` if either
+         * this variable was not declared with the 'const' modifier or if the value of
+         * this variable could not be computed because of errors.
+         */
+        public abstract DartObject computeConstantValue();
+    }
 }
