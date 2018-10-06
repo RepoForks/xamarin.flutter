@@ -78,6 +78,11 @@ namespace Dart2CSharpTranspiler.Parser
                 value += text.ToString();
             }
 
+            public void writeln()
+            {
+                value += "\n";
+            }
+
             public String toString()
             {
                 return value;

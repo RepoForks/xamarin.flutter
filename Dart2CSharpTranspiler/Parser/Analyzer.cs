@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 // https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/analyzer.dart
 
@@ -88,7 +87,7 @@ namespace Dart2CSharpTranspiler.Parser
 
         /// The group of errors collected.
         public AnalyzerErrorGroup group =>
-        new AnalyzerErrorGroup.fromAnalysisErrors(_errors);
+        new AnalyzerErrorGroup(_errors);
 
         /// Whether any errors where collected.
         public bool hasErrors => _errors.Count != 0;
