@@ -242,17 +242,17 @@ namespace Dart2CSharpTranspiler.Parser
                 for (int i = 0; i < count; i++)
                 {
                     Object argument = arguments[i];
-                    if (argument is DartType)
+                    if (argument is DartType arg)
                     {
-                        Element element = argument.element;
+                        Element element = arg.element;
                         if (element == null)
                         {
-                            arguments[i] = displayName(argument);
+                            arguments[i] = displayName(arg);
                         }
                         else
                         {
                             arguments[i] =
-                                element.getExtendedDisplayName(displayName(argument));
+                                element.getExtendedDisplayName(displayName(arg));
                         }
                     }
                 }
@@ -263,9 +263,9 @@ namespace Dart2CSharpTranspiler.Parser
                 for (int i = 0; i < count; i++)
                 {
                     Object argument = arguments[i];
-                    if (argument is DartType)
+                    if (argument is DartType arg)
                     {
-                        arguments[i] = displayName(argument);
+                        arguments[i] = displayName(arg);
                     }
                 }
             }
@@ -282,7 +282,7 @@ namespace Dart2CSharpTranspiler.Parser
             for (int i = 0; i < count; i++)
             {
                 Object argument = arguments[i];
-                if (argument is DartType && !typeNames.Add(argument.displayName))
+                if (argument is DartType && !typeNames.Add(((DartType)argument).displayName))
                 {
                     return true;
                 }
