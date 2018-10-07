@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
@@ -23,261 +23,335 @@ namespace Dart2CSharpTranspiler.Parser
     //import 'package:analyzer/src/summary/flat_buffers.dart' as fb;
 
     //import 'idl.dart' as idl;
+    public class _EntityRefKindReader : fb.Reader<idl.EntityRefKind>
+    {
+        public _EntityRefKindReader()
+        {
+        }
 
-    class _EntityRefKindReader extends fb.Reader<idl.EntityRefKind> {
-  const _EntityRefKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.EntityRefKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.EntityRefKind.values.length
                 ? idl.EntityRefKind.values[index]
                 : idl.EntityRefKind.named;
         }
+    }
+    public class _IndexNameKindReader : fb.Reader<idl.IndexNameKind>
+    {
+        public _IndexNameKindReader()
+        {
         }
 
-class _IndexNameKindReader extends fb.Reader<idl.IndexNameKind> {
-  const _IndexNameKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.IndexNameKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.IndexNameKind.values.length
                 ? idl.IndexNameKind.values[index]
                 : idl.IndexNameKind.topLevel;
         }
+    }
+    public class _IndexRelationKindReader : fb.Reader<idl.IndexRelationKind>
+    {
+        public _IndexRelationKindReader()
+        {
         }
 
-class _IndexRelationKindReader extends fb.Reader<idl.IndexRelationKind> {
-  const _IndexRelationKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.IndexRelationKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.IndexRelationKind.values.length
                 ? idl.IndexRelationKind.values[index]
                 : idl.IndexRelationKind.IS_ANCESTOR_OF;
         }
+    }
+    public class _IndexSyntheticElementKindReader
+        : fb.Reader<idl.IndexSyntheticElementKind>
+    {
+        public _IndexSyntheticElementKindReader()
+        {
         }
 
-class _IndexSyntheticElementKindReader
-    extends fb.Reader<idl.IndexSyntheticElementKind> {
-  const _IndexSyntheticElementKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.IndexSyntheticElementKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.IndexSyntheticElementKind.values.length
                 ? idl.IndexSyntheticElementKind.values[index]
                 : idl.IndexSyntheticElementKind.notSynthetic;
         }
+    }
+    public class _ReferenceKindReader : fb.Reader<idl.ReferenceKind>
+    {
+        public _ReferenceKindReader()
+        {
         }
 
-class _ReferenceKindReader extends fb.Reader<idl.ReferenceKind> {
-  const _ReferenceKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.ReferenceKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.ReferenceKind.values.length
                 ? idl.ReferenceKind.values[index]
                 : idl.ReferenceKind.classOrEnum;
         }
+    }
+    public class _TopLevelInferenceErrorKindReader
+        : fb.Reader<idl.TopLevelInferenceErrorKind>
+    {
+        public _TopLevelInferenceErrorKindReader()
+        {
         }
 
-class _TopLevelInferenceErrorKindReader
-    extends fb.Reader<idl.TopLevelInferenceErrorKind> {
-  const _TopLevelInferenceErrorKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.TopLevelInferenceErrorKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.TopLevelInferenceErrorKind.values.length
                 ? idl.TopLevelInferenceErrorKind.values[index]
                 : idl.TopLevelInferenceErrorKind.assignment;
         }
+    }
+    public class _TypedefStyleReader : fb.Reader<idl.TypedefStyle>
+    {
+        public _TypedefStyleReader()
+        {
         }
 
-class _TypedefStyleReader extends fb.Reader<idl.TypedefStyle> {
-  const _TypedefStyleReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.TypedefStyle read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.TypedefStyle.values.length
                 ? idl.TypedefStyle.values[index]
                 : idl.TypedefStyle.functionType;
         }
+    }
+    public class _UnlinkedConstructorInitializerKindReader
+        : fb.Reader<idl.UnlinkedConstructorInitializerKind>
+    {
+        public _UnlinkedConstructorInitializerKindReader()
+        {
         }
 
-class _UnlinkedConstructorInitializerKindReader
-    extends fb.Reader<idl.UnlinkedConstructorInitializerKind> {
-  const _UnlinkedConstructorInitializerKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.UnlinkedConstructorInitializerKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.UnlinkedConstructorInitializerKind.values.length
                 ? idl.UnlinkedConstructorInitializerKind.values[index]
                 : idl.UnlinkedConstructorInitializerKind.field;
         }
+    }
+    public class _UnlinkedExecutableKindReader
+        : fb.Reader<idl.UnlinkedExecutableKind>
+    {
+        public _UnlinkedExecutableKindReader()
+        {
         }
 
-class _UnlinkedExecutableKindReader
-    extends fb.Reader<idl.UnlinkedExecutableKind> {
-  const _UnlinkedExecutableKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.UnlinkedExecutableKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.UnlinkedExecutableKind.values.length
                 ? idl.UnlinkedExecutableKind.values[index]
                 : idl.UnlinkedExecutableKind.functionOrMethod;
         }
+    }
+    public class _UnlinkedExprAssignOperatorReader
+        : fb.Reader<idl.UnlinkedExprAssignOperator>
+    {
+        public _UnlinkedExprAssignOperatorReader()
+        {
         }
 
-class _UnlinkedExprAssignOperatorReader
-    extends fb.Reader<idl.UnlinkedExprAssignOperator> {
-  const _UnlinkedExprAssignOperatorReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.UnlinkedExprAssignOperator read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.UnlinkedExprAssignOperator.values.length
                 ? idl.UnlinkedExprAssignOperator.values[index]
                 : idl.UnlinkedExprAssignOperator.assign;
         }
+    }
+    public class _UnlinkedExprOperationReader
+        : fb.Reader<idl.UnlinkedExprOperation>
+    {
+        public _UnlinkedExprOperationReader()
+        {
         }
 
-class _UnlinkedExprOperationReader
-    extends fb.Reader<idl.UnlinkedExprOperation> {
-  const _UnlinkedExprOperationReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.UnlinkedExprOperation read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.UnlinkedExprOperation.values.length
                 ? idl.UnlinkedExprOperation.values[index]
                 : idl.UnlinkedExprOperation.pushInt;
         }
+    }
+    public class _UnlinkedParamKindReader : fb.Reader<idl.UnlinkedParamKind>
+    {
+        public _UnlinkedParamKindReader()
+        {
         }
 
-class _UnlinkedParamKindReader extends fb.Reader<idl.UnlinkedParamKind> {
-  const _UnlinkedParamKindReader() : super();
+        ////@override
+        public int size
+        {
+            get => 1;
+        }
 
-        //@override
-  int get size => 1;
-
-        //@override
+        ////@override
         idl.UnlinkedParamKind read(fb.BufferContext bc, int offset)
         {
-            int index = const fb.Uint8Reader().read(bc, offset);
+            int index = new fb.Uint8Reader().read(bc, offset);
             return index < idl.UnlinkedParamKind.values.length
                 ? idl.UnlinkedParamKind.values[index]
                 : idl.UnlinkedParamKind.required;
         }
-        }
+    }
+    public class AnalysisDriverExceptionContextBuilder : Object
 
-class AnalysisDriverExceptionContextBuilder extends Object
-    with _AnalysisDriverExceptionContextMixin
-    implements idl.AnalysisDriverExceptionContext
+
+        with _AnalysisDriverExceptionContextMixin
+    : idl.AnalysisDriverExceptionContext
     {
         String _exception;
         List<AnalysisDriverExceptionFileBuilder> _files;
         String _path;
         String _stackTrace;
 
-        //@override
-        String get exception => _exception ??= '';
+        ////@override
+        public String exception
+        {
+            get => _exception ??= "";
+        }
 
         /**
          * The exception string.
          */
-        void set exception(String value) {
+        void setexception(String value)
+        {
             this._exception = value;
         }
 
-        //@override
+        ////@override
         List<AnalysisDriverExceptionFileBuilder> get files =>
-            _files ??= < AnalysisDriverExceptionFileBuilder >[];
+            _files ??= new Dictionary<AnalysisDriverExceptionFileBuilder>{} };
 
-        /**
-         * The state of files when the exception happened.
-         */
-        void set files(List < AnalysisDriverExceptionFileBuilder > value) {
-            this._files = value;
-        }
+    /**
+     * The state of files when the exception happened.
+     */
+    void setfiles(List<AnalysisDriverExceptionFileBuilder> value)
+    {
+        this._files = value;
+    }
 
-        //@override
-        String get path => _path ??= '';
+    ////@override
+    public String path
+    {
+        get => _path ??= "";
+    }
 
-        /**
-         * The path of the file being analyzed when the exception happened.
-         */
-        void set path(String value) {
-            this._path = value;
-        }
+    /**
+     * The path of the file being analyzed when the exception happened.
+     */
+    void setpath(String value)
+    {
+        this._path = value;
+    }
 
-        //@override
-        String get stackTrace => _stackTrace ??= '';
+    ////@override
+    public String stackTrace
+    {
+        get => _stackTrace ??= "";
+    }
 
-        /**
-         * The exception stack trace string.
-         */
-        void set stackTrace(String value) {
-            this._stackTrace = value;
-        }
+    /**
+     * The exception stack trace string.
+     */
+    void setstackTrace(String value)
+    {
+        this._stackTrace = value;
+    }
 
-        AnalysisDriverExceptionContextBuilder(
+    AnalysisDriverExceptionContextBuilder(
             {
-            String exception,
-           List< AnalysisDriverExceptionFileBuilder > files,
+        String exception,
+       List< AnalysisDriverExceptionFileBuilder > files,
       String path,
-      String stackTrace})
+      String stackTrace)
       : _exception = exception,
         _files = files,
         _path = path,
@@ -296,9 +370,9 @@ class AnalysisDriverExceptionContextBuilder extends Object
          */
         void collectApiSignature(api_sig.ApiSignature signature)
         {
-            signature.addString(this._path ?? '');
-            signature.addString(this._exception ?? '');
-            signature.addString(this._stackTrace ?? '');
+            signature.addString(this._path ?? "");
+            signature.addString(this._exception ?? "");
+            signature.addString(this._stackTrace ?? "");
             if (this._files == null)
             {
                 signature.addInt(0);
@@ -306,7 +380,7 @@ class AnalysisDriverExceptionContextBuilder extends Object
             else
             {
                 signature.addInt(this._files.length);
-      for (var x in this._files)
+                foreach (var x in this._files)
                 {
                     x?.collectApiSignature(signature);
                 }
@@ -361,120 +435,128 @@ class AnalysisDriverExceptionContextBuilder extends Object
             }
             return fbBuilder.endTable();
         }
-        }
+    }
 
-        idl.AnalysisDriverExceptionContext readAnalysisDriverExceptionContext(
-    List<int> buffer) {
-            fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-            return const _AnalysisDriverExceptionContextReader().read(rootRef, 0);
-        }
+    idl.AnalysisDriverExceptionContext readAnalysisDriverExceptionContext(
+List<int> buffer)
+    {
+        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+        return new _AnalysisDriverExceptionContextReader().read(rootRef, 0);
+    }
+    public class _AnalysisDriverExceptionContextReader
+        : fb.TableReader<_AnalysisDriverExceptionContextImpl>
+    {
+        public _AnalysisDriverExceptionContextReader();
 
-class _AnalysisDriverExceptionContextReader
-    extends fb.TableReader<_AnalysisDriverExceptionContextImpl> {
-  const _AnalysisDriverExceptionContextReader();
-
-        //@override
+        ////@override
         _AnalysisDriverExceptionContextImpl createObject(
           fb.BufferContext bc, int offset) =>
       new _AnalysisDriverExceptionContextImpl(bc, offset);
-}
+    }
+    public class _AnalysisDriverExceptionContextImpl : Object
+    
+        with _AnalysisDriverExceptionContextMixin
+    : idl.AnalysisDriverExceptionContext
+    {
+        public readonly fb.BufferContext _bc;
+        public readonly int _bcOffset;
 
-class _AnalysisDriverExceptionContextImpl extends Object
-    with _AnalysisDriverExceptionContextMixin
-    implements idl.AnalysisDriverExceptionContext
-{
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+        _AnalysisDriverExceptionContextImpl(this._bc, this._bcOffset);
 
-    _AnalysisDriverExceptionContextImpl(this._bc, this._bcOffset);
+        String _exception;
+        List<idl.AnalysisDriverExceptionFile> _files;
+        String _path;
+        String _stackTrace;
 
-    String _exception;
-    List<idl.AnalysisDriverExceptionFile> _files;
-    String _path;
-    String _stackTrace;
-
-    //@override
-    String get exception {
-        _exception ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 1, '');
+        ////@override
+        String get exception {
+        _exception ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 1, "");
         return _exception;
     }
 
-    //@override
+    ////@override
     List<idl.AnalysisDriverExceptionFile> get files {
-        _files ??= const fb.ListReader<idl.AnalysisDriverExceptionFile>(
-              const _AnalysisDriverExceptionFileReader())
+        _files ??= new fb.ListReader<idl.AnalysisDriverExceptionFile>(
+public _AnalysisDriverExceptionFileReader())
         .vTableGet(
-            _bc, _bcOffset, 3, const <idl.AnalysisDriverExceptionFile>[]);
+            _bc, _bcOffset, 3, new List<idl.AnalysisDriverExceptionFile>{);
         return _files;
     }
 
-    //@override
-    String get path {
-        _path ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+////@override
+String get path {
+        _path ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _path;
     }
 
-    //@override
+    ////@override
     String get stackTrace {
-        _stackTrace ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 2, '');
+        _stackTrace ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 2, "");
         return _stackTrace;
     }
     }
-
-abstract class _AnalysisDriverExceptionContextMixin
-    implements idl.AnalysisDriverExceptionContext
+public abstract class _AnalysisDriverExceptionContextMixin
+    : idl.AnalysisDriverExceptionContext
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
-        if (exception != '') _result["exception"] = exception;
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
+        if (exception != "") _result["exception"] = exception;
         if (files.isNotEmpty)
             _result["files"] = files.map((_value) => _value.toJson()).toList();
-        if (path != '') _result["path"] = path;
-        if (stackTrace != '') _result["stackTrace"] = stackTrace;
+        if (path != "") _result["path"] = path;
+        if (stackTrace != "") _result["stackTrace"] = stackTrace;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "exception": exception,
         "files": files,
         "path": path,
         "stackTrace": stackTrace,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class AnalysisDriverExceptionFileBuilder extends Object
+public class AnalysisDriverExceptionFileBuilder : Object
     with _AnalysisDriverExceptionFileMixin
-    implements idl.AnalysisDriverExceptionFile
+    : idl.AnalysisDriverExceptionFile
 {
     String _content;
     String _path;
 
-    //@override
-    String get content => _content ??= '';
+    ////@override
+    public String content
+    {
+        get => _content ??= "";
+    }
 
     /**
      * The content of the file.
      */
-    void set content(String value) {
+    void setcontent(String value)
+    {
         this._content = value;
     }
 
-    //@override
-    String get path => _path ??= '';
+    ////@override
+    public String path
+    {
+        get => _path ??= "";
+    }
 
     /**
      * The path of the file.
      */
-    void set path(String value) {
+    void setpath(String value)
+    {
         this._path = value;
     }
 
-    AnalysisDriverExceptionFileBuilder({ String content, String path})
+    AnalysisDriverExceptionFileBuilder(String content, String path)
       : _content = content,
         _path = path;
 
@@ -488,8 +570,8 @@ class AnalysisDriverExceptionFileBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._path ?? '');
-        signature.addString(this._content ?? '');
+        signature.addString(this._path ?? "");
+        signature.addString(this._content ?? "");
     }
 
     fb.Offset finish(fb.Builder fbBuilder)
@@ -515,96 +597,99 @@ class AnalysisDriverExceptionFileBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _AnalysisDriverExceptionFileReader
+    : fb.TableReader<_AnalysisDriverExceptionFileImpl>
+{
+    public _AnalysisDriverExceptionFileReader();
 
-class _AnalysisDriverExceptionFileReader
-    extends fb.TableReader<_AnalysisDriverExceptionFileImpl> {
-  const _AnalysisDriverExceptionFileReader();
-
-    //@override
+    ////@override
     _AnalysisDriverExceptionFileImpl createObject(
           fb.BufferContext bc, int offset) =>
       new _AnalysisDriverExceptionFileImpl(bc, offset);
 }
-
-class _AnalysisDriverExceptionFileImpl extends Object
+public class _AnalysisDriverExceptionFileImpl : Object
     with _AnalysisDriverExceptionFileMixin
-    implements idl.AnalysisDriverExceptionFile
+    : idl.AnalysisDriverExceptionFile
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _AnalysisDriverExceptionFileImpl(this._bc, this._bcOffset);
 
     String _content;
     String _path;
 
-    //@override
+    ////@override
     String get content {
-        _content ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 1, '');
+        _content ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 1, "");
         return _content;
     }
 
-    //@override
-    String get path {
-        _path ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+////@override
+String get path {
+        _path ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _path;
     }
     }
-
-abstract class _AnalysisDriverExceptionFileMixin
-    implements idl.AnalysisDriverExceptionFile
+public abstract class _AnalysisDriverExceptionFileMixin
+    : idl.AnalysisDriverExceptionFile
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
-        if (content != '') _result["content"] = content;
-        if (path != '') _result["path"] = path;
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
+        if (content != "") _result["content"] = content;
+        if (path != "") _result["path"] = path;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "content": content,
         "path": path,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class AnalysisDriverResolvedUnitBuilder extends Object
+public class AnalysisDriverResolvedUnitBuilder : Object
     with _AnalysisDriverResolvedUnitMixin
-    implements idl.AnalysisDriverResolvedUnit
+    : idl.AnalysisDriverResolvedUnit
 {
     List<AnalysisDriverUnitErrorBuilder> _errors;
     AnalysisDriverUnitIndexBuilder _index;
 
-    //@override
+    ////@override
     List<AnalysisDriverUnitErrorBuilder> get errors =>
-        _errors ??= < AnalysisDriverUnitErrorBuilder >[];
+        _errors ??= new Dictionary<AnalysisDriverUnitErrorBuilder>{};
 
-    /**
-     * The full list of analysis errors, both syntactic and semantic.
-     */
-    void set errors(List < AnalysisDriverUnitErrorBuilder > value) {
-        this._errors = value;
-    }
+/**
+ * The full list of analysis errors, both syntactic and semantic.
+ */
+void seterrors(List<AnalysisDriverUnitErrorBuilder> value)
+{
+    this._errors = value;
+}
 
-    //@override
-    AnalysisDriverUnitIndexBuilder get index => _index;
+////@override
+public AnalysisDriverUnitIndexBuilder index
+{
+    get => _index;
+}
 
-    /**
-     * The index of the unit.
-     */
-    void set index(AnalysisDriverUnitIndexBuilder value) {
-        this._index = value;
-    }
+/**
+ * The index of the unit.
+ */
+void setindex(AnalysisDriverUnitIndexBuilder value)
+{
+    this._index = value;
+}
 
-    AnalysisDriverResolvedUnitBuilder(
+AnalysisDriverResolvedUnitBuilder(
         {
-        List<AnalysisDriverUnitErrorBuilder> errors,
-       AnalysisDriverUnitIndexBuilder index})
+    List<AnalysisDriverUnitErrorBuilder> errors,
+   AnalysisDriverUnitIndexBuilder index)
       : _errors = errors,
         _index = index;
 
@@ -629,7 +714,7 @@ class AnalysisDriverResolvedUnitBuilder extends Object
         else
         {
             signature.addInt(this._errors.length);
-      for (var x in this._errors)
+            foreach (var x in this._errors)
             {
                 x?.collectApiSignature(signature);
             }
@@ -668,107 +753,114 @@ class AnalysisDriverResolvedUnitBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.AnalysisDriverResolvedUnit readAnalysisDriverResolvedUnit(
-    List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _AnalysisDriverResolvedUnitReader().read(rootRef, 0);
-    }
+idl.AnalysisDriverResolvedUnit readAnalysisDriverResolvedUnit(
+List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _AnalysisDriverResolvedUnitReader().read(rootRef, 0);
+}
+public class _AnalysisDriverResolvedUnitReader
+    : fb.TableReader<_AnalysisDriverResolvedUnitImpl>
+{
+    public _AnalysisDriverResolvedUnitReader();
 
-class _AnalysisDriverResolvedUnitReader
-    extends fb.TableReader<_AnalysisDriverResolvedUnitImpl> {
-  const _AnalysisDriverResolvedUnitReader();
-
-    //@override
+    ////@override
     _AnalysisDriverResolvedUnitImpl createObject(
           fb.BufferContext bc, int offset) =>
       new _AnalysisDriverResolvedUnitImpl(bc, offset);
 }
-
-class _AnalysisDriverResolvedUnitImpl extends Object
+public class _AnalysisDriverResolvedUnitImpl : Object
     with _AnalysisDriverResolvedUnitMixin
-    implements idl.AnalysisDriverResolvedUnit
+    : idl.AnalysisDriverResolvedUnit
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _AnalysisDriverResolvedUnitImpl(this._bc, this._bcOffset);
 
     List<idl.AnalysisDriverUnitError> _errors;
     idl.AnalysisDriverUnitIndex _index;
 
-    //@override
+    ////@override
     List<idl.AnalysisDriverUnitError> get errors {
-        _errors ??= const fb.ListReader<idl.AnalysisDriverUnitError>(
-              const _AnalysisDriverUnitErrorReader())
-        .vTableGet(_bc, _bcOffset, 0, const <idl.AnalysisDriverUnitError>[]);
+        _errors ??= new fb.ListReader<idl.AnalysisDriverUnitError>(
+public _AnalysisDriverUnitErrorReader())
+        .vTableGet(_bc, _bcOffset, 0, new List<idl.AnalysisDriverUnitError>{);
         return _errors;
     }
 
-    //@override
-    idl.AnalysisDriverUnitIndex get index {
-        _index ??= const _AnalysisDriverUnitIndexReader()
+////@override
+idl.AnalysisDriverUnitIndex get index {
+        _index ??= new _AnalysisDriverUnitIndexReader()
           .vTableGet(_bc, _bcOffset, 1, null);
         return _index;
     }
     }
-
-abstract class _AnalysisDriverResolvedUnitMixin
-    implements idl.AnalysisDriverResolvedUnit
+public abstract class _AnalysisDriverResolvedUnitMixin
+    : idl.AnalysisDriverResolvedUnit
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (errors.isNotEmpty)
             _result["errors"] = errors.map((_value) => _value.toJson()).toList();
         if (index != null) _result["index"] = index.toJson();
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "errors": errors,
         "index": index,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class AnalysisDriverSubtypeBuilder extends Object
+public class AnalysisDriverSubtypeBuilder : Object
     with _AnalysisDriverSubtypeMixin
-    implements idl.AnalysisDriverSubtype
+    : idl.AnalysisDriverSubtype
 {
     List<int> _members;
-  int _name;
+    int _name;
 
-    //@override
-    List<int> get members => _members ??= < int >[];
+    ////@override
+    public List<int> members
+    {
+        get => _members ??= new Dictionary<int> { };
+    }
 
     /**
      * The names of defined instance members.
      * They are indexes into [AnalysisDriverUnitError.strings] list.
      * The list is sorted in ascending order.
      */
-    void set members(List<int> value) {
+    void setmembers(List<int> value)
+    {
         assert(value == null || value.every((e) => e >= 0));
         this._members = value;
     }
 
-    //@override
-    int get name => _name ??= 0;
+    ////@override
+    public int name
+    {
+        get => _name ??= 0;
+    }
 
     /**
      * The name of the class.
      * It is an index into [AnalysisDriverUnitError.strings] list.
      */
-    void set name(int value) {
+    void setname(int value)
+    {
         assert(value == null || value >= 0);
         this._name = value;
     }
 
-    AnalysisDriverSubtypeBuilder({ List<int> members, int name})
+    AnalysisDriverSubtypeBuilder(List<int> members, int name)
       : _members = members,
         _name = name;
 
@@ -790,7 +882,7 @@ class AnalysisDriverSubtypeBuilder extends Object
         else
         {
             signature.addInt(this._members.length);
-      for (var x in this._members)
+            foreach (var x in this._members)
             {
                 signature.addInt(x);
             }
@@ -815,123 +907,141 @@ class AnalysisDriverSubtypeBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _AnalysisDriverSubtypeReader
+    : fb.TableReader<_AnalysisDriverSubtypeImpl>
+{
+    public _AnalysisDriverSubtypeReader();
 
-class _AnalysisDriverSubtypeReader
-    extends fb.TableReader<_AnalysisDriverSubtypeImpl> {
-  const _AnalysisDriverSubtypeReader();
-
-    //@override
+    ////@override
     _AnalysisDriverSubtypeImpl createObject(fb.BufferContext bc, int offset) =>
       new _AnalysisDriverSubtypeImpl(bc, offset);
 }
-
-class _AnalysisDriverSubtypeImpl extends Object
+public class _AnalysisDriverSubtypeImpl : Object
     with _AnalysisDriverSubtypeMixin
-    implements idl.AnalysisDriverSubtype
+    : idl.AnalysisDriverSubtype
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _AnalysisDriverSubtypeImpl(this._bc, this._bcOffset);
 
     List<int> _members;
-  int _name;
+    int _name;
 
-    //@override
+    ////@override
     List<int> get members {
         _members ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, new List<int>{);
         return _members;
     }
 
-    //@override
-    int get name {
-        _name ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+////@override
+int get name {
+        _name ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _name;
     }
     }
-
-abstract class _AnalysisDriverSubtypeMixin
-    implements idl.AnalysisDriverSubtype
+public abstract class _AnalysisDriverSubtypeMixin
+    : idl.AnalysisDriverSubtype
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (members.isNotEmpty) _result["members"] = members;
         if (name != 0) _result["name"] = name;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "members": members,
         "name": name,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class AnalysisDriverUnitErrorBuilder extends Object
+public class AnalysisDriverUnitErrorBuilder : Object
     with _AnalysisDriverUnitErrorMixin
-    implements idl.AnalysisDriverUnitError
+    : idl.AnalysisDriverUnitError
 {
     String _correction;
-  int _length;
+    int _length;
     String _message;
-  int _offset;
+    int _offset;
     String _uniqueName;
 
-    //@override
-    String get correction => _correction ??= '';
+    ////@override
+    public String correction
+    {
+        get => _correction ??= "";
+    }
 
     /**
      * The optional correction hint for the error.
      */
-    void set correction(String value) {
+    void setcorrection(String value)
+    {
         this._correction = value;
     }
 
-    //@override
-    int get length => _length ??= 0;
+    ////@override
+    public int length
+    {
+        get => _length ??= 0;
+    }
 
     /**
      * The length of the error in the file.
      */
-    void set length(int value) {
+    void setlength(int value)
+    {
         assert(value == null || value >= 0);
         this._length = value;
     }
 
-    //@override
-    String get message => _message ??= '';
+    ////@override
+    public String message
+    {
+        get => _message ??= "";
+    }
 
     /**
      * The message of the error.
      */
-    void set message(String value) {
+    void setmessage(String value)
+    {
         this._message = value;
     }
 
-    //@override
-    int get offset => _offset ??= 0;
+    ////@override
+    public int offset
+    {
+        get => _offset ??= 0;
+    }
 
     /**
      * The offset from the beginning of the file.
      */
-    void set offset(int value) {
+    void setoffset(int value)
+    {
         assert(value == null || value >= 0);
         this._offset = value;
     }
 
-    //@override
-    String get uniqueName => _uniqueName ??= '';
+    ////@override
+    public String uniqueName
+    {
+        get => _uniqueName ??= "";
+    }
 
     /**
      * The unique name of the error code.
      */
-    void set uniqueName(String value) {
+    void setuniqueName(String value)
+    {
         this._uniqueName = value;
     }
 
@@ -941,143 +1051,143 @@ class AnalysisDriverUnitErrorBuilder extends Object
       int length,
       String message,
       int offset,
-      String uniqueName})
+      String uniqueName)
       : _correction = correction,
         _length = length,
         _message = message,
         _offset = offset,
         _uniqueName = uniqueName;
 
-    /**
-     * Flush [informative] data recursively.
-     */
-    void flushInformative() { }
+        /**
+         * Flush [informative] data recursively.
+         */
+        void flushInformative() { }
 
-    /**
-     * Accumulate non-[informative] data into [signature].
-     */
-    void collectApiSignature(api_sig.ApiSignature signature)
+        /**
+         * Accumulate non-[informative] data into [signature].
+         */
+        void collectApiSignature(api_sig.ApiSignature signature)
+        {
+            signature.addInt(this._offset ?? 0);
+            signature.addInt(this._length ?? 0);
+            signature.addString(this._uniqueName ?? "");
+            signature.addString(this._message ?? "");
+            signature.addString(this._correction ?? "");
+        }
+
+        fb.Offset finish(fb.Builder fbBuilder)
+        {
+            fb.Offset offset_correction;
+            fb.Offset offset_message;
+            fb.Offset offset_uniqueName;
+            if (_correction != null)
+            {
+                offset_correction = fbBuilder.writeString(_correction);
+            }
+            if (_message != null)
+            {
+                offset_message = fbBuilder.writeString(_message);
+            }
+            if (_uniqueName != null)
+            {
+                offset_uniqueName = fbBuilder.writeString(_uniqueName);
+            }
+            fbBuilder.startTable();
+            if (offset_correction != null)
+            {
+                fbBuilder.addOffset(4, offset_correction);
+            }
+            if (_length != null && _length != 0)
+            {
+                fbBuilder.addUint32(1, _length);
+            }
+            if (offset_message != null)
+            {
+                fbBuilder.addOffset(3, offset_message);
+            }
+            if (_offset != null && _offset != 0)
+            {
+                fbBuilder.addUint32(0, _offset);
+            }
+            if (offset_uniqueName != null)
+            {
+                fbBuilder.addOffset(2, offset_uniqueName);
+            }
+            return fbBuilder.endTable();
+        }
+    }
+    public class _AnalysisDriverUnitErrorReader
+        : fb.TableReader<_AnalysisDriverUnitErrorImpl>
     {
-        signature.addInt(this._offset ?? 0);
-        signature.addInt(this._length ?? 0);
-        signature.addString(this._uniqueName ?? '');
-        signature.addString(this._message ?? '');
-        signature.addString(this._correction ?? '');
-    }
+        public _AnalysisDriverUnitErrorReader();
 
-    fb.Offset finish(fb.Builder fbBuilder)
+        ////@override
+        _AnalysisDriverUnitErrorImpl createObject(fb.BufferContext bc, int offset) =>
+          new _AnalysisDriverUnitErrorImpl(bc, offset);
+    }
+    public class _AnalysisDriverUnitErrorImpl : Object
+    
+        with _AnalysisDriverUnitErrorMixin
+    : idl.AnalysisDriverUnitError
     {
-        fb.Offset offset_correction;
-        fb.Offset offset_message;
-        fb.Offset offset_uniqueName;
-        if (_correction != null)
-        {
-            offset_correction = fbBuilder.writeString(_correction);
-        }
-        if (_message != null)
-        {
-            offset_message = fbBuilder.writeString(_message);
-        }
-        if (_uniqueName != null)
-        {
-            offset_uniqueName = fbBuilder.writeString(_uniqueName);
-        }
-        fbBuilder.startTable();
-        if (offset_correction != null)
-        {
-            fbBuilder.addOffset(4, offset_correction);
-        }
-        if (_length != null && _length != 0)
-        {
-            fbBuilder.addUint32(1, _length);
-        }
-        if (offset_message != null)
-        {
-            fbBuilder.addOffset(3, offset_message);
-        }
-        if (_offset != null && _offset != 0)
-        {
-            fbBuilder.addUint32(0, _offset);
-        }
-        if (offset_uniqueName != null)
-        {
-            fbBuilder.addOffset(2, offset_uniqueName);
-        }
-        return fbBuilder.endTable();
-    }
-    }
+        public readonly fb.BufferContext _bc;
+        public readonly int _bcOffset;
 
-class _AnalysisDriverUnitErrorReader
-    extends fb.TableReader<_AnalysisDriverUnitErrorImpl> {
-  const _AnalysisDriverUnitErrorReader();
+        _AnalysisDriverUnitErrorImpl(this._bc, this._bcOffset);
 
-    //@override
-    _AnalysisDriverUnitErrorImpl createObject(fb.BufferContext bc, int offset) =>
-      new _AnalysisDriverUnitErrorImpl(bc, offset);
-}
+        String _correction;
+        int _length;
+        String _message;
+        int _offset;
+        String _uniqueName;
 
-class _AnalysisDriverUnitErrorImpl extends Object
-    with _AnalysisDriverUnitErrorMixin
-    implements idl.AnalysisDriverUnitError
-{
-    final fb.BufferContext _bc;
-    final int _bcOffset;
-
-    _AnalysisDriverUnitErrorImpl(this._bc, this._bcOffset);
-
-    String _correction;
-  int _length;
-    String _message;
-  int _offset;
-    String _uniqueName;
-
-    //@override
-    String get correction {
-        _correction ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 4, '');
+        ////@override
+        String get correction {
+        _correction ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 4, "");
         return _correction;
     }
 
-    //@override
+    ////@override
     int get length {
-        _length ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _length ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _length;
     }
 
-    //@override
-    String get message {
-        _message ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 3, '');
+////@override
+String get message {
+        _message ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 3, "");
         return _message;
     }
 
-    //@override
+    ////@override
     int get offset {
-        _offset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+        _offset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _offset;
     }
 
-    //@override
+    ////@override
     String get uniqueName {
-        _uniqueName ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 2, '');
+        _uniqueName ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 2, "");
         return _uniqueName;
     }
     }
-
-abstract class _AnalysisDriverUnitErrorMixin
-    implements idl.AnalysisDriverUnitError
+public abstract class _AnalysisDriverUnitErrorMixin
+    : idl.AnalysisDriverUnitError
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
-        if (correction != '') _result["correction"] = correction;
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
+        if (correction != "") _result["correction"] = correction;
         if (length != 0) _result["length"] = length;
-        if (message != '') _result["message"] = message;
+        if (message != "") _result["message"] = message;
         if (offset != 0) _result["offset"] = offset;
-        if (uniqueName != '') _result["uniqueName"] = uniqueName;
+        if (uniqueName != "") _result["uniqueName"] = uniqueName;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "correction": correction,
         "length": length,
         "message": message,
@@ -1085,20 +1195,19 @@ abstract class _AnalysisDriverUnitErrorMixin
         "uniqueName": uniqueName,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class AnalysisDriverUnitIndexBuilder extends Object
+public class AnalysisDriverUnitIndexBuilder : Object
     with _AnalysisDriverUnitIndexMixin
-    implements idl.AnalysisDriverUnitIndex
+    : idl.AnalysisDriverUnitIndex
 {
     List<idl.IndexSyntheticElementKind> _elementKinds;
     List<int> _elementNameClassMemberIds;
     List<int> _elementNameParameterIds;
     List<int> _elementNameUnitMemberIds;
     List<int> _elementUnits;
-  int _nullStringId;
+    int _nullStringId;
     List<String> _strings;
     List<AnalysisDriverSubtypeBuilder> _subtypes;
     List<int> _supertypes;
@@ -1114,21 +1223,22 @@ class AnalysisDriverUnitIndexBuilder extends Object
     List<int> _usedNameOffsets;
     List<int> _usedNames;
 
-    //@override
+    ////@override
     List<idl.IndexSyntheticElementKind> get elementKinds =>
-        _elementKinds ??= < idl.IndexSyntheticElementKind >[];
+        _elementKinds ??= new Dictionary<idl.IndexSyntheticElementKind>{};
 
-    /**
-     * Each item of this list corresponds to a unique referenced element.  It is
-     * the kind of the synthetic element.
-     */
-    void set elementKinds(List < idl.IndexSyntheticElementKind > value) {
-        this._elementKinds = value;
-    }
+/**
+ * Each item of this list corresponds to a unique referenced element.  It is
+ * the kind of the synthetic element.
+ */
+void setelementKinds(List<idl.IndexSyntheticElementKind> value)
+{
+    this._elementKinds = value;
+}
 
-    //@override
-    List<int> get elementNameClassMemberIds =>
-        _elementNameClassMemberIds ??= < int >[];
+////@override
+List<int> get elementNameClassMemberIds =>
+        _elementNameClassMemberIds ??= new List<int>{};
 
     /**
      * Each item of this list corresponds to a unique referenced element.  It is
@@ -1136,28 +1246,33 @@ class AnalysisDriverUnitIndexBuilder extends Object
      * is a top-level element.  The list is sorted in ascending order, so that the
      * client can quickly check whether an element is referenced in this index.
      */
-    void set elementNameClassMemberIds(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementNameClassMemberIds = value;
-    }
+    void setelementNameClassMemberIds(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementNameClassMemberIds = value;
+}
 
-    //@override
-    List<int> get elementNameParameterIds => _elementNameParameterIds ??= < int >[];
+////@override
+public List<int> elementNameParameterIds
+{
+    get => _elementNameParameterIds ??= new Dictionary<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to a unique referenced element.  It is
-     * the identifier of the named parameter name, or `null` if the element is not
-     * a named parameter.  The list is sorted in ascending order, so that the
-     * client can quickly check whether an element is referenced in this index.
-     */
-    void set elementNameParameterIds(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementNameParameterIds = value;
-    }
+/**
+ * Each item of this list corresponds to a unique referenced element.  It is
+ * the identifier of the named parameter name, or `null` if the element is not
+ * a named parameter.  The list is sorted in ascending order, so that the
+ * client can quickly check whether an element is referenced in this index.
+ */
+void setelementNameParameterIds(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementNameParameterIds = value;
+}
 
-    //@override
-    List<int> get elementNameUnitMemberIds =>
-        _elementNameUnitMemberIds ??= < int >[];
+////@override
+List<int> get elementNameUnitMemberIds =>
+        _elementNameUnitMemberIds ??= new Dictionary<int>{};
 
     /**
      * Each item of this list corresponds to a unique referenced element.  It is
@@ -1165,208 +1280,258 @@ class AnalysisDriverUnitIndexBuilder extends Object
      * the unit.  The list is sorted in ascending order, so that the client can
      * quickly check whether an element is referenced in this index.
      */
-    void set elementNameUnitMemberIds(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementNameUnitMemberIds = value;
-    }
+    void setelementNameUnitMemberIds(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementNameUnitMemberIds = value;
+}
 
-    //@override
-    List<int> get elementUnits => _elementUnits ??= < int >[];
+////@override
+public List<int> elementUnits
+{
+    get => _elementUnits ??= new Dictionary<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to a unique referenced element.  It is
-     * the index into [unitLibraryUris] and [unitUnitUris] for the library
-     * specific unit where the element is declared.
-     */
-    void set elementUnits(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementUnits = value;
-    }
+/**
+ * Each item of this list corresponds to a unique referenced element.  It is
+ * the index into [unitLibraryUris] and [unitUnitUris] for the library
+ * specific unit where the element is declared.
+ */
+void setelementUnits(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementUnits = value;
+}
 
-    //@override
-    int get nullStringId => _nullStringId ??= 0;
+////@override
+public int nullStringId
+{
+    get => _nullStringId ??= 0;
+}
 
-    /**
-     * Identifier of the null string in [strings].
-     */
-    void set nullStringId(int value) {
-        assert(value == null || value >= 0);
-        this._nullStringId = value;
-    }
+/**
+ * Identifier of the null string in [strings].
+ */
+void setnullStringId(int value)
+{
+    assert(value == null || value >= 0);
+    this._nullStringId = value;
+}
 
-    //@override
-    List<String> get strings => _strings ??= < String >[];
+////@override
+public List<String> strings
+{
+    get => _strings ??= new List<String> { };
+}
 
-    /**
-     * List of unique element strings used in this index.  The list is sorted in
-     * ascending order, so that the client can quickly check the presence of a
-     * string in this index.
-     */
-    void set strings(List < String > value) {
-        this._strings = value;
-    }
+/**
+ * List of unique element strings used in this index.  The list is sorted in
+ * ascending order, so that the client can quickly check the presence of a
+ * string in this index.
+ */
+void setstrings(List<String> value)
+{
+    this._strings = value;
+}
 
-    //@override
-    List<AnalysisDriverSubtypeBuilder> get subtypes =>
-        _subtypes ??= < AnalysisDriverSubtypeBuilder >[];
+////@override
+List<AnalysisDriverSubtypeBuilder> get subtypes =>
+        _subtypes ??= new Dictionary<AnalysisDriverSubtypeBuilder>{};
 
     /**
      * The list of classes declared in the unit.
      */
-    void set subtypes(List < AnalysisDriverSubtypeBuilder > value) {
-        this._subtypes = value;
-    }
+    void setsubtypes(List<AnalysisDriverSubtypeBuilder> value)
+{
+    this._subtypes = value;
+}
 
-    //@override
-    List<int> get supertypes => _supertypes ??= < int >[];
+////@override
+public List<int> supertypes
+{
+    get => _supertypes ??= new List<int> { };
+}
 
-    /**
-     * The identifiers of supertypes of elements at corresponding indexes
-     * in [subtypes].  They are indexes into [strings] list. The list is sorted
-     * in ascending order.  There might be more than one element with the same
-     * value if there is more than one subtype of this supertype.
-     */
-    void set supertypes(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._supertypes = value;
-    }
+/**
+ * The identifiers of supertypes of elements at corresponding indexes
+ * in [subtypes].  They are indexes into [strings] list. The list is sorted
+ * in ascending order.  There might be more than one element with the same
+ * value if there is more than one subtype of this supertype.
+ */
+void setsupertypes(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._supertypes = value;
+}
 
-    //@override
-    List<int> get unitLibraryUris => _unitLibraryUris ??= < int >[];
+////@override
+public List<int> unitLibraryUris
+{
+    get => _unitLibraryUris ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to the library URI of a unique library
-     * specific unit referenced in the index.  It is an index into [strings] list.
-     */
-    void set unitLibraryUris(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._unitLibraryUris = value;
-    }
+/**
+ * Each item of this list corresponds to the library URI of a unique library
+ * specific unit referenced in the index.  It is an index into [strings] list.
+ */
+void setunitLibraryUris(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._unitLibraryUris = value;
+}
 
-    //@override
-    List<int> get unitUnitUris => _unitUnitUris ??= < int >[];
+////@override
+public List<int> unitUnitUris
+{
+    get => _unitUnitUris ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to the unit URI of a unique library
-     * specific unit referenced in the index.  It is an index into [strings] list.
-     */
-    void set unitUnitUris(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._unitUnitUris = value;
-    }
+/**
+ * Each item of this list corresponds to the unit URI of a unique library
+ * specific unit referenced in the index.  It is an index into [strings] list.
+ */
+void setunitUnitUris(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._unitUnitUris = value;
+}
 
-    //@override
-    List<bool> get usedElementIsQualifiedFlags =>
-        _usedElementIsQualifiedFlags ??= < bool >[];
+////@override
+List<bool> get usedElementIsQualifiedFlags =>
+        _usedElementIsQualifiedFlags ??= new List<bool>{};
 
     /**
      * Each item of this list is the `true` if the corresponding element usage
      * is qualified with some prefix.
      */
-    void set usedElementIsQualifiedFlags(List<bool> value) {
-        this._usedElementIsQualifiedFlags = value;
-    }
+    void setusedElementIsQualifiedFlags(List<bool> value)
+{
+    this._usedElementIsQualifiedFlags = value;
+}
 
-    //@override
-    List<idl.IndexRelationKind> get usedElementKinds =>
-        _usedElementKinds ??= < idl.IndexRelationKind >[];
+////@override
+List<idl.IndexRelationKind> get usedElementKinds =>
+        _usedElementKinds ??= new List<idl.IndexRelationKind>{};
 
     /**
      * Each item of this list is the kind of the element usage.
      */
-    void set usedElementKinds(List < idl.IndexRelationKind > value) {
-        this._usedElementKinds = value;
-    }
+    void setusedElementKinds(List<idl.IndexRelationKind> value)
+{
+    this._usedElementKinds = value;
+}
 
-    //@override
-    List<int> get usedElementLengths => _usedElementLengths ??= < int >[];
+////@override
+public List<int> usedElementLengths
+{
+    get => _usedElementLengths ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the length of the element usage.
-     */
-    void set usedElementLengths(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedElementLengths = value;
-    }
+/**
+ * Each item of this list is the length of the element usage.
+ */
+void setusedElementLengths(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedElementLengths = value;
+}
 
-    //@override
-    List<int> get usedElementOffsets => _usedElementOffsets ??= < int >[];
+////@override
+public List<int> usedElementOffsets
+{
+    get => _usedElementOffsets ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the offset of the element usage relative to the
-     * beginning of the file.
-     */
-    void set usedElementOffsets(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedElementOffsets = value;
-    }
+/**
+ * Each item of this list is the offset of the element usage relative to the
+ * beginning of the file.
+ */
+void setusedElementOffsets(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedElementOffsets = value;
+}
 
-    //@override
-    List<int> get usedElements => _usedElements ??= < int >[];
+////@override
+public List<int> usedElements
+{
+    get => _usedElements ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the index into [elementUnits],
-     * [elementNameUnitMemberIds], [elementNameClassMemberIds] and
-     * [elementNameParameterIds].  The list is sorted in ascending order, so
-     * that the client can quickly find element references in this index.
-     */
-    void set usedElements(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedElements = value;
-    }
+/**
+ * Each item of this list is the index into [elementUnits],
+ * [elementNameUnitMemberIds], [elementNameClassMemberIds] and
+ * [elementNameParameterIds].  The list is sorted in ascending order, so
+ * that the client can quickly find element references in this index.
+ */
+void setusedElements(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedElements = value;
+}
 
-    //@override
-    List<bool> get usedNameIsQualifiedFlags =>
-        _usedNameIsQualifiedFlags ??= < bool >[];
+////@override
+List<bool> get usedNameIsQualifiedFlags =>
+        _usedNameIsQualifiedFlags ??= new Dictionary<bool>{};
 
     /**
      * Each item of this list is the `true` if the corresponding name usage
      * is qualified with some prefix.
      */
-    void set usedNameIsQualifiedFlags(List<bool> value) {
-        this._usedNameIsQualifiedFlags = value;
-    }
+    void setusedNameIsQualifiedFlags(List<bool> value)
+{
+    this._usedNameIsQualifiedFlags = value;
+}
 
-    //@override
-    List<idl.IndexRelationKind> get usedNameKinds =>
-        _usedNameKinds ??= < idl.IndexRelationKind >[];
+////@override
+List<idl.IndexRelationKind> get usedNameKinds =>
+        _usedNameKinds ??= new List<idl.IndexRelationKind>{};
 
     /**
      * Each item of this list is the kind of the name usage.
      */
-    void set usedNameKinds(List < idl.IndexRelationKind > value) {
-        this._usedNameKinds = value;
-    }
+    void setusedNameKinds(List<idl.IndexRelationKind> value)
+{
+    this._usedNameKinds = value;
+}
 
-    //@override
-    List<int> get usedNameOffsets => _usedNameOffsets ??= < int >[];
+////@override
+public List<int> usedNameOffsets
+{
+    get => _usedNameOffsets ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the offset of the name usage relative to the
-     * beginning of the file.
-     */
-    void set usedNameOffsets(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedNameOffsets = value;
-    }
+/**
+ * Each item of this list is the offset of the name usage relative to the
+ * beginning of the file.
+ */
+void setusedNameOffsets(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedNameOffsets = value;
+}
 
-    //@override
-    List<int> get usedNames => _usedNames ??= < int >[];
+////@override
+public List<int> usedNames
+{
+    get => _usedNames ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the index into [strings] for a used name.  The
-     * list is sorted in ascending order, so that the client can quickly find
-     * whether a name is used in this index.
-     */
-    void set usedNames(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedNames = value;
-    }
+/**
+ * Each item of this list is the index into [strings] for a used name.  The
+ * list is sorted in ascending order, so that the client can quickly find
+ * whether a name is used in this index.
+ */
+void setusedNames(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedNames = value;
+}
 
-    AnalysisDriverUnitIndexBuilder(
+AnalysisDriverUnitIndexBuilder(
         {
-        List<idl.IndexSyntheticElementKind> elementKinds,
-       List< int > elementNameClassMemberIds,
+    List<idl.IndexSyntheticElementKind> elementKinds,
+   List< int > elementNameClassMemberIds,
       List<int> elementNameParameterIds,
       List< int > elementNameUnitMemberIds,
       List<int> elementUnits,
@@ -1384,7 +1549,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
       List< bool > usedNameIsQualifiedFlags,
       List<idl.IndexRelationKind> usedNameKinds,
       List< int > usedNameOffsets,
-      List<int> usedNames})
+      List<int> usedNames)
       : _elementKinds = elementKinds,
         _elementNameClassMemberIds = elementNameClassMemberIds,
         _elementNameParameterIds = elementNameParameterIds,
@@ -1426,7 +1591,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._strings.length);
-      for (var x in this._strings)
+            foreach (var x in this._strings)
             {
                 signature.addString(x);
             }
@@ -1439,7 +1604,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._unitLibraryUris.length);
-      for (var x in this._unitLibraryUris)
+            foreach (var x in this._unitLibraryUris)
             {
                 signature.addInt(x);
             }
@@ -1451,7 +1616,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._unitUnitUris.length);
-      for (var x in this._unitUnitUris)
+            foreach (var x in this._unitUnitUris)
             {
                 signature.addInt(x);
             }
@@ -1463,7 +1628,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementKinds.length);
-      for (var x in this._elementKinds)
+            foreach (var x in this._elementKinds)
             {
                 signature.addInt(x.index);
             }
@@ -1475,7 +1640,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementUnits.length);
-      for (var x in this._elementUnits)
+            foreach (var x in this._elementUnits)
             {
                 signature.addInt(x);
             }
@@ -1487,7 +1652,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementNameUnitMemberIds.length);
-      for (var x in this._elementNameUnitMemberIds)
+            foreach (var x in this._elementNameUnitMemberIds)
             {
                 signature.addInt(x);
             }
@@ -1499,7 +1664,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementNameClassMemberIds.length);
-      for (var x in this._elementNameClassMemberIds)
+            foreach (var x in this._elementNameClassMemberIds)
             {
                 signature.addInt(x);
             }
@@ -1511,7 +1676,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementNameParameterIds.length);
-      for (var x in this._elementNameParameterIds)
+            foreach (var x in this._elementNameParameterIds)
             {
                 signature.addInt(x);
             }
@@ -1523,7 +1688,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElements.length);
-      for (var x in this._usedElements)
+            foreach (var x in this._usedElements)
             {
                 signature.addInt(x);
             }
@@ -1535,7 +1700,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementKinds.length);
-      for (var x in this._usedElementKinds)
+            foreach (var x in this._usedElementKinds)
             {
                 signature.addInt(x.index);
             }
@@ -1547,7 +1712,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementOffsets.length);
-      for (var x in this._usedElementOffsets)
+            foreach (var x in this._usedElementOffsets)
             {
                 signature.addInt(x);
             }
@@ -1559,7 +1724,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementLengths.length);
-      for (var x in this._usedElementLengths)
+            foreach (var x in this._usedElementLengths)
             {
                 signature.addInt(x);
             }
@@ -1571,7 +1736,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementIsQualifiedFlags.length);
-      for (var x in this._usedElementIsQualifiedFlags)
+            foreach (var x in this._usedElementIsQualifiedFlags)
             {
                 signature.addBool(x);
             }
@@ -1583,7 +1748,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNames.length);
-      for (var x in this._usedNames)
+            foreach (var x in this._usedNames)
             {
                 signature.addInt(x);
             }
@@ -1595,7 +1760,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNameKinds.length);
-      for (var x in this._usedNameKinds)
+            foreach (var x in this._usedNameKinds)
             {
                 signature.addInt(x.index);
             }
@@ -1607,7 +1772,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNameOffsets.length);
-      for (var x in this._usedNameOffsets)
+            foreach (var x in this._usedNameOffsets)
             {
                 signature.addInt(x);
             }
@@ -1619,7 +1784,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNameIsQualifiedFlags.length);
-      for (var x in this._usedNameIsQualifiedFlags)
+            foreach (var x in this._usedNameIsQualifiedFlags)
             {
                 signature.addBool(x);
             }
@@ -1631,7 +1796,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._supertypes.length);
-      for (var x in this._supertypes)
+            foreach (var x in this._supertypes)
             {
                 signature.addInt(x);
             }
@@ -1643,7 +1808,7 @@ class AnalysisDriverUnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._subtypes.length);
-      for (var x in this._subtypes)
+            foreach (var x in this._subtypes)
             {
                 x?.collectApiSignature(signature);
             }
@@ -1853,28 +2018,28 @@ class AnalysisDriverUnitIndexBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.AnalysisDriverUnitIndex readAnalysisDriverUnitIndex(List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _AnalysisDriverUnitIndexReader().read(rootRef, 0);
-    }
+idl.AnalysisDriverUnitIndex readAnalysisDriverUnitIndex(List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _AnalysisDriverUnitIndexReader().read(rootRef, 0);
+}
+public class _AnalysisDriverUnitIndexReader
+    : fb.TableReader<_AnalysisDriverUnitIndexImpl>
+{
+    public _AnalysisDriverUnitIndexReader();
 
-class _AnalysisDriverUnitIndexReader
-    extends fb.TableReader<_AnalysisDriverUnitIndexImpl> {
-  const _AnalysisDriverUnitIndexReader();
-
-    //@override
+    ////@override
     _AnalysisDriverUnitIndexImpl createObject(fb.BufferContext bc, int offset) =>
       new _AnalysisDriverUnitIndexImpl(bc, offset);
 }
-
-class _AnalysisDriverUnitIndexImpl extends Object
+public class _AnalysisDriverUnitIndexImpl : Object
     with _AnalysisDriverUnitIndexMixin
-    implements idl.AnalysisDriverUnitIndex
+    : idl.AnalysisDriverUnitIndex
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _AnalysisDriverUnitIndexImpl(this._bc, this._bcOffset);
 
@@ -1883,7 +2048,7 @@ class _AnalysisDriverUnitIndexImpl extends Object
     List<int> _elementNameParameterIds;
     List<int> _elementNameUnitMemberIds;
     List<int> _elementUnits;
-  int _nullStringId;
+    int _nullStringId;
     List<String> _strings;
     List<idl.AnalysisDriverSubtype> _subtypes;
     List<int> _supertypes;
@@ -1899,159 +2064,159 @@ class _AnalysisDriverUnitIndexImpl extends Object
     List<int> _usedNameOffsets;
     List<int> _usedNames;
 
-    //@override
+    ////@override
     List<idl.IndexSyntheticElementKind> get elementKinds {
-        _elementKinds ??= const fb.ListReader<idl.IndexSyntheticElementKind>(
-              const _IndexSyntheticElementKindReader())
-        .vTableGet(_bc, _bcOffset, 4, const <idl.IndexSyntheticElementKind>[]);
+        _elementKinds ??= new fb.ListReader<idl.IndexSyntheticElementKind>(
+public _IndexSyntheticElementKindReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<idl.IndexSyntheticElementKind>{);
         return _elementKinds;
     }
 
-    //@override
-    List<int> get elementNameClassMemberIds {
+////@override
+List<int> get elementNameClassMemberIds {
         _elementNameClassMemberIds ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 7, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 7, new List<int>{);
         return _elementNameClassMemberIds;
     }
 
-    //@override
+    ////@override
     List<int> get elementNameParameterIds {
         _elementNameParameterIds ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 8, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 8, new List<int>{);
         return _elementNameParameterIds;
     }
 
-    //@override
+    ////@override
     List<int> get elementNameUnitMemberIds {
         _elementNameUnitMemberIds ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 6, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 6, new List<int>{);
         return _elementNameUnitMemberIds;
     }
 
-    //@override
+    ////@override
     List<int> get elementUnits {
         _elementUnits ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 5, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 5, new List<int>{);
         return _elementUnits;
     }
 
-    //@override
+    ////@override
     int get nullStringId {
-        _nullStringId ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nullStringId ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nullStringId;
     }
 
-    //@override
+    ////@override
     List<String> get strings {
-        _strings ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 0, const <String>[]);
+        _strings ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 0, new List<String>{);
         return _strings;
     }
 
-    //@override
+    ////@override
     List<idl.AnalysisDriverSubtype> get subtypes {
-        _subtypes ??= const fb.ListReader<idl.AnalysisDriverSubtype>(
-              const _AnalysisDriverSubtypeReader())
-        .vTableGet(_bc, _bcOffset, 19, const <idl.AnalysisDriverSubtype>[]);
+        _subtypes ??= new fb.ListReader<idl.AnalysisDriverSubtype>(
+public _AnalysisDriverSubtypeReader())
+        .vTableGet(_bc, _bcOffset, 19, new List<idl.AnalysisDriverSubtype>{);
         return _subtypes;
     }
 
-    //@override
+    ////@override
     List<int> get supertypes {
-        _supertypes ??= const fb.Uint32ListReader()
-          .vTableGet(_bc, _bcOffset, 18, const <int>[]);
+        _supertypes ??= new fb.Uint32ListReader()
+          .vTableGet(_bc, _bcOffset, 18, new List<int>{);
         return _supertypes;
     }
 
-    //@override
+    ////@override
     List<int> get unitLibraryUris {
         _unitLibraryUris ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, new List<int>{);
         return _unitLibraryUris;
     }
 
-    //@override
+    ////@override
     List<int> get unitUnitUris {
         _unitUnitUris ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, new List<int>{);
         return _unitUnitUris;
     }
 
-    //@override
+    ////@override
     List<bool> get usedElementIsQualifiedFlags {
         _usedElementIsQualifiedFlags ??=
-          const fb.BoolListReader().vTableGet(_bc, _bcOffset, 13, const <bool>[]);
+public fb.BoolListReader().vTableGet(_bc, _bcOffset, 13, new List<bool>{);
         return _usedElementIsQualifiedFlags;
     }
 
-    //@override
+    ////@override
     List<idl.IndexRelationKind> get usedElementKinds {
-        _usedElementKinds ??= const fb.ListReader<idl.IndexRelationKind>(
-              const _IndexRelationKindReader())
-        .vTableGet(_bc, _bcOffset, 10, const <idl.IndexRelationKind>[]);
+        _usedElementKinds ??= new fb.ListReader<idl.IndexRelationKind>(
+public _IndexRelationKindReader())
+        .vTableGet(_bc, _bcOffset, 10, new List<idl.IndexRelationKind>{);
         return _usedElementKinds;
     }
 
-    //@override
+    ////@override
     List<int> get usedElementLengths {
-        _usedElementLengths ??= const fb.Uint32ListReader()
-          .vTableGet(_bc, _bcOffset, 12, const <int>[]);
+        _usedElementLengths ??= new fb.Uint32ListReader()
+          .vTableGet(_bc, _bcOffset, 12, new List<int>{);
         return _usedElementLengths;
     }
 
-    //@override
+    ////@override
     List<int> get usedElementOffsets {
-        _usedElementOffsets ??= const fb.Uint32ListReader()
-          .vTableGet(_bc, _bcOffset, 11, const <int>[]);
+        _usedElementOffsets ??= new fb.Uint32ListReader()
+          .vTableGet(_bc, _bcOffset, 11, new List<int>{);
         return _usedElementOffsets;
     }
 
-    //@override
+    ////@override
     List<int> get usedElements {
         _usedElements ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 9, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 9, new List<int>{);
         return _usedElements;
     }
 
-    //@override
+    ////@override
     List<bool> get usedNameIsQualifiedFlags {
         _usedNameIsQualifiedFlags ??=
-          const fb.BoolListReader().vTableGet(_bc, _bcOffset, 17, const <bool>[]);
+public fb.BoolListReader().vTableGet(_bc, _bcOffset, 17, new List<bool>{);
         return _usedNameIsQualifiedFlags;
     }
 
-    //@override
+    ////@override
     List<idl.IndexRelationKind> get usedNameKinds {
-        _usedNameKinds ??= const fb.ListReader<idl.IndexRelationKind>(
-              const _IndexRelationKindReader())
-        .vTableGet(_bc, _bcOffset, 15, const <idl.IndexRelationKind>[]);
+        _usedNameKinds ??= new fb.ListReader<idl.IndexRelationKind>(
+public _IndexRelationKindReader())
+        .vTableGet(_bc, _bcOffset, 15, new List<idl.IndexRelationKind>{);
         return _usedNameKinds;
     }
 
-    //@override
+    ////@override
     List<int> get usedNameOffsets {
-        _usedNameOffsets ??= const fb.Uint32ListReader()
-          .vTableGet(_bc, _bcOffset, 16, const <int>[]);
+        _usedNameOffsets ??= new fb.Uint32ListReader()
+          .vTableGet(_bc, _bcOffset, 16, new List<int>{);
         return _usedNameOffsets;
     }
 
-    //@override
+    ////@override
     List<int> get usedNames {
-        _usedNames ??= const fb.Uint32ListReader()
-          .vTableGet(_bc, _bcOffset, 14, const <int>[]);
+        _usedNames ??= new fb.Uint32ListReader()
+          .vTableGet(_bc, _bcOffset, 14, new List<int>{);
         return _usedNames;
     }
     }
-
-abstract class _AnalysisDriverUnitIndexMixin
-    implements idl.AnalysisDriverUnitIndex
+public abstract class _AnalysisDriverUnitIndexMixin
+    : idl.AnalysisDriverUnitIndex
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (elementKinds.isNotEmpty)
             _result["elementKinds"] = elementKinds
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (elementNameClassMemberIds.isNotEmpty)
             _result["elementNameClassMemberIds"] = elementNameClassMemberIds;
@@ -2072,7 +2237,7 @@ abstract class _AnalysisDriverUnitIndexMixin
             _result["usedElementIsQualifiedFlags"] = usedElementIsQualifiedFlags;
         if (usedElementKinds.isNotEmpty)
             _result["usedElementKinds"] = usedElementKinds
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (usedElementLengths.isNotEmpty)
             _result["usedElementLengths"] = usedElementLengths;
@@ -2083,7 +2248,7 @@ abstract class _AnalysisDriverUnitIndexMixin
             _result["usedNameIsQualifiedFlags"] = usedNameIsQualifiedFlags;
         if (usedNameKinds.isNotEmpty)
             _result["usedNameKinds"] = usedNameKinds
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (usedNameOffsets.isNotEmpty)
             _result["usedNameOffsets"] = usedNameOffsets;
@@ -2091,8 +2256,8 @@ abstract class _AnalysisDriverUnitIndexMixin
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "elementKinds": elementKinds,
         "elementNameClassMemberIds": elementNameClassMemberIds,
         "elementNameParameterIds": elementNameParameterIds,
@@ -2115,13 +2280,12 @@ abstract class _AnalysisDriverUnitIndexMixin
         "usedNames": usedNames,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class AnalysisDriverUnlinkedUnitBuilder extends Object
+public class AnalysisDriverUnlinkedUnitBuilder : Object
     with _AnalysisDriverUnlinkedUnitMixin
-    implements idl.AnalysisDriverUnlinkedUnit
+    : idl.AnalysisDriverUnlinkedUnit
 {
     List<String> _definedClassMemberNames;
     List<String> _definedTopLevelNames;
@@ -2129,65 +2293,82 @@ class AnalysisDriverUnlinkedUnitBuilder extends Object
     List<String> _subtypedNames;
     UnlinkedUnitBuilder _unit;
 
-    //@override
+    ////@override
     List<String> get definedClassMemberNames =>
-        _definedClassMemberNames ??= < String >[];
+        _definedClassMemberNames ??= new Dictionary<String>{};
 
-    /**
-     * List of class member names defined by the unit.
-     */
-    void set definedClassMemberNames(List < String > value) {
-        this._definedClassMemberNames = value;
-    }
+/**
+ * List of class member names defined by the unit.
+ */
+void setdefinedClassMemberNames(List<String> value)
+{
+    this._definedClassMemberNames = value;
+}
 
-    //@override
-    List<String> get definedTopLevelNames => _definedTopLevelNames ??= < String >[];
+////@override
+public List<String> definedTopLevelNames
+{
+    get => _definedTopLevelNames ??= new List<String> { };
+}
 
-    /**
-     * List of top-level names defined by the unit.
-     */
-    void set definedTopLevelNames(List < String > value) {
-        this._definedTopLevelNames = value;
-    }
+/**
+ * List of top-level names defined by the unit.
+ */
+void setdefinedTopLevelNames(List<String> value)
+{
+    this._definedTopLevelNames = value;
+}
 
-    //@override
-    List<String> get referencedNames => _referencedNames ??= < String >[];
+////@override
+public List<String> referencedNames
+{
+    get => _referencedNames ??= new List<String> { };
+}
 
-    /**
-     * List of external names referenced by the unit.
-     */
-    void set referencedNames(List < String > value) {
-        this._referencedNames = value;
-    }
+/**
+ * List of external names referenced by the unit.
+ */
+void setreferencedNames(List<String> value)
+{
+    this._referencedNames = value;
+}
 
-    //@override
-    List<String> get subtypedNames => _subtypedNames ??= < String >[];
+////@override
+public List<String> subtypedNames
+{
+    get => _subtypedNames ??= new List<String> { };
+}
 
-    /**
-     * List of names which are used in `extends`, `with` or `implements` clauses
-     * in the file. Import prefixes and type arguments are not included.
-     */
-    void set subtypedNames(List < String > value) {
-        this._subtypedNames = value;
-    }
+/**
+ * List of names which are used in `extends`, `with` or `implements` clauses
+ * in the file. Import prefixes and type arguments are not included.
+ */
+void setsubtypedNames(List<String> value)
+{
+    this._subtypedNames = value;
+}
 
-    //@override
-    UnlinkedUnitBuilder get unit => _unit;
+////@override
+public UnlinkedUnitBuilder unit
+{
+    get => _unit;
+}
 
-    /**
-     * Unlinked information for the unit.
-     */
-    void set unit(UnlinkedUnitBuilder value) {
-        this._unit = value;
-    }
+/**
+ * Unlinked information for the unit.
+ */
+void setunit(UnlinkedUnitBuilder value)
+{
+    this._unit = value;
+}
 
-    AnalysisDriverUnlinkedUnitBuilder(
+AnalysisDriverUnlinkedUnitBuilder(
         {
-        List<String> definedClassMemberNames,
-       List< String > definedTopLevelNames,
+    List<String> definedClassMemberNames,
+   List< String > definedTopLevelNames,
       List<String> referencedNames,
       List< String > subtypedNames,
-      UnlinkedUnitBuilder unit})
+      UnlinkedUnitBuilder unit)
       : _definedClassMemberNames = definedClassMemberNames,
         _definedTopLevelNames = definedTopLevelNames,
         _referencedNames = referencedNames,
@@ -2214,7 +2395,7 @@ class AnalysisDriverUnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._referencedNames.length);
-      for (var x in this._referencedNames)
+            foreach (var x in this._referencedNames)
             {
                 signature.addString(x);
             }
@@ -2228,7 +2409,7 @@ class AnalysisDriverUnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._definedTopLevelNames.length);
-      for (var x in this._definedTopLevelNames)
+            foreach (var x in this._definedTopLevelNames)
             {
                 signature.addString(x);
             }
@@ -2240,7 +2421,7 @@ class AnalysisDriverUnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._definedClassMemberNames.length);
-      for (var x in this._definedClassMemberNames)
+            foreach (var x in this._definedClassMemberNames)
             {
                 signature.addString(x);
             }
@@ -2252,7 +2433,7 @@ class AnalysisDriverUnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._subtypedNames.length);
-      for (var x in this._subtypedNames)
+            foreach (var x in this._subtypedNames)
             {
                 signature.addString(x);
             }
@@ -2322,30 +2503,30 @@ class AnalysisDriverUnlinkedUnitBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.AnalysisDriverUnlinkedUnit readAnalysisDriverUnlinkedUnit(
-    List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _AnalysisDriverUnlinkedUnitReader().read(rootRef, 0);
-    }
+idl.AnalysisDriverUnlinkedUnit readAnalysisDriverUnlinkedUnit(
+List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _AnalysisDriverUnlinkedUnitReader().read(rootRef, 0);
+}
+public class _AnalysisDriverUnlinkedUnitReader
+    : fb.TableReader<_AnalysisDriverUnlinkedUnitImpl>
+{
+    public _AnalysisDriverUnlinkedUnitReader();
 
-class _AnalysisDriverUnlinkedUnitReader
-    extends fb.TableReader<_AnalysisDriverUnlinkedUnitImpl> {
-  const _AnalysisDriverUnlinkedUnitReader();
-
-    //@override
+    ////@override
     _AnalysisDriverUnlinkedUnitImpl createObject(
           fb.BufferContext bc, int offset) =>
       new _AnalysisDriverUnlinkedUnitImpl(bc, offset);
 }
-
-class _AnalysisDriverUnlinkedUnitImpl extends Object
+public class _AnalysisDriverUnlinkedUnitImpl : Object
     with _AnalysisDriverUnlinkedUnitMixin
-    implements idl.AnalysisDriverUnlinkedUnit
+    : idl.AnalysisDriverUnlinkedUnit
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _AnalysisDriverUnlinkedUnitImpl(this._bc, this._bcOffset);
 
@@ -2355,49 +2536,49 @@ class _AnalysisDriverUnlinkedUnitImpl extends Object
     List<String> _subtypedNames;
     idl.UnlinkedUnit _unit;
 
-    //@override
+    ////@override
     List<String> get definedClassMemberNames {
         _definedClassMemberNames ??=
-          const fb.ListReader<String>(const fb.StringReader())
-            .vTableGet(_bc, _bcOffset, 3, const <String>[]);
+public fb.ListReader<String>(const fb.StringReader())
+            .vTableGet(_bc, _bcOffset, 3, new List<String>{);
         return _definedClassMemberNames;
     }
 
-    //@override
-    List<String> get definedTopLevelNames {
+////@override
+List<String> get definedTopLevelNames {
         _definedTopLevelNames ??=
-          const fb.ListReader<String>(const fb.StringReader())
-            .vTableGet(_bc, _bcOffset, 2, const <String>[]);
+public fb.ListReader<String>(const fb.StringReader())
+            .vTableGet(_bc, _bcOffset, 2, new List<String>{);
         return _definedTopLevelNames;
     }
 
-    //@override
+    ////@override
     List<String> get referencedNames {
-        _referencedNames ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 0, const <String>[]);
+        _referencedNames ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 0, new List<String>{);
         return _referencedNames;
     }
 
-    //@override
+    ////@override
     List<String> get subtypedNames {
-        _subtypedNames ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 4, const <String>[]);
+        _subtypedNames ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<String>{);
         return _subtypedNames;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedUnit get unit {
-        _unit ??= const _UnlinkedUnitReader().vTableGet(_bc, _bcOffset, 1, null);
+        _unit ??= new _UnlinkedUnitReader().vTableGet(_bc, _bcOffset, 1, null);
         return _unit;
     }
     }
-
-abstract class _AnalysisDriverUnlinkedUnitMixin
-    implements idl.AnalysisDriverUnlinkedUnit
+public abstract class _AnalysisDriverUnlinkedUnitMixin
+    : idl.AnalysisDriverUnlinkedUnit
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (definedClassMemberNames.isNotEmpty)
             _result["definedClassMemberNames"] = definedClassMemberNames;
         if (definedTopLevelNames.isNotEmpty)
@@ -2409,8 +2590,8 @@ abstract class _AnalysisDriverUnlinkedUnitMixin
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "definedClassMemberNames": definedClassMemberNames,
         "definedTopLevelNames": definedTopLevelNames,
         "referencedNames": referencedNames,
@@ -2418,40 +2599,47 @@ abstract class _AnalysisDriverUnlinkedUnitMixin
         "unit": unit,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class CodeRangeBuilder extends Object
+public class CodeRangeBuilder : Object
     with _CodeRangeMixin
-    implements idl.CodeRange
+    : idl.CodeRange
 {
-  int _length;
-  int _offset;
+    int _length;
+    int _offset;
 
-    //@override
-  int get length => _length ??= 0;
+    ////@override
+    public int length
+    {
+        get => _length ??= 0;
+    }
 
     /**
      * Length of the element code.
      */
-    void set length(int value) {
+    void setlength(int value)
+    {
         assert(value == null || value >= 0);
         this._length = value;
     }
 
-    //@override
-    int get offset => _offset ??= 0;
+    ////@override
+    public int offset
+    {
+        get => _offset ??= 0;
+    }
 
     /**
      * Offset of the element code relative to the beginning of the file.
      */
-    void set offset(int value) {
+    void setoffset(int value)
+    {
         assert(value == null || value >= 0);
         this._offset = value;
     }
 
-    CodeRangeBuilder({ int length, int offset})
+    CodeRangeBuilder(int length, int offset)
       : _length = length,
         _offset = offset;
 
@@ -2482,199 +2670,218 @@ class CodeRangeBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _CodeRangeReader : fb.TableReader<_CodeRangeImpl>
+{
+    public _CodeRangeReader();
 
-class _CodeRangeReader extends fb.TableReader<_CodeRangeImpl> {
-  const _CodeRangeReader();
-
-    //@override
+    ////@override
     _CodeRangeImpl createObject(fb.BufferContext bc, int offset) =>
       new _CodeRangeImpl(bc, offset);
 }
-
-class _CodeRangeImpl extends Object
+public class _CodeRangeImpl : Object
     with _CodeRangeMixin
-    implements idl.CodeRange
+    : idl.CodeRange
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _CodeRangeImpl(this._bc, this._bcOffset);
 
-  int _length;
-  int _offset;
+    int _length;
+    int _offset;
 
-    //@override
-  int get length {
-        _length ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+    ////@override
+    int get length {
+        _length ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _length;
     }
 
-    //@override
-    int get offset {
-        _offset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+////@override
+int get offset {
+        _offset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _offset;
     }
     }
-
-abstract class _CodeRangeMixin implements idl.CodeRange
+public abstract class _CodeRangeMixin : idl.CodeRange
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (length != 0) _result["length"] = length;
         if (offset != 0) _result["offset"] = offset;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "length": length,
         "offset": offset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class EntityRefBuilder extends Object
+public class EntityRefBuilder : Object
     with _EntityRefMixin
-    implements idl.EntityRef
+    : idl.EntityRef
 {
     idl.EntityRefKind _entityKind;
     List<int> _implicitFunctionTypeIndices;
-  int _paramReference;
-  int _reference;
-  int _refinedSlot;
-  int _slot;
+    int _paramReference;
+    int _reference;
+    int _refinedSlot;
+    int _slot;
     List<UnlinkedParamBuilder> _syntheticParams;
     EntityRefBuilder _syntheticReturnType;
     List<EntityRefBuilder> _typeArguments;
     List<UnlinkedTypeParamBuilder> _typeParameters;
 
-    //@override
-    idl.EntityRefKind get entityKind => _entityKind ??= idl.EntityRefKind.named;
+    ////@override
+    public idl.EntityRefKind entityKind
+    {
+        get => _entityKind ??= idl.EntityRefKind.named;
+    }
 
     /**
      * The kind of entity being represented.
      */
-    void set entityKind(idl.EntityRefKind value) {
+    void setentityKind(idl.EntityRefKind value)
+    {
         this._entityKind = value;
     }
 
-    //@override
+    ////@override
     List<int> get implicitFunctionTypeIndices =>
-        _implicitFunctionTypeIndices ??= < int >[];
+        _implicitFunctionTypeIndices ??= new Dictionary<int>{};
 
-    /**
-     * Notice: This will be deprecated. However, its not deprecated yet, as we're
-     * keeping it for backwards compatibilty, and marking it deprecated makes it
-     * unreadable.
-     *
-     * TODO(mfairhurst) mark this deprecated, and remove its logic.
-     *
-     * If this is a reference to a function type implicitly defined by a
-     * function-typed parameter, a list of zero-based indices indicating the path
-     * from the entity referred to by [reference] to the appropriate type
-     * parameter.  Otherwise the empty list.
-     *
-     * If there are N indices in this list, then the entity being referred to is
-     * the function type implicitly defined by a function-typed parameter of a
-     * function-typed parameter, to N levels of nesting.  The first index in the
-     * list refers to the outermost level of nesting; for example if [reference]
-     * refers to the entity defined by:
-     *
-     *     void f(x, void g(y, z, int h(String w))) { ... }
-     *
-     * Then to refer to the function type implicitly defined by parameter `h`
-     * (which is parameter 2 of parameter 1 of `f`), then
-     * [implicitFunctionTypeIndices] should be [1, 2].
-     *
-     * Note that if the entity being referred to is a generic method inside a
-     * generic class, then the type arguments in [typeArguments] are applied
-     * first to the class and then to the method.
-     */
-    void set implicitFunctionTypeIndices(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._implicitFunctionTypeIndices = value;
-    }
+/**
+ * Notice: This will be deprecated. However, its not deprecated yet, as we're
+ * keeping it for backwards compatibilty, and marking it deprecated makes it
+ * unreadable.
+ *
+ * TODO(mfairhurst) mark this deprecated, and remove its logic.
+ *
+ * If this is a reference to a function type implicitly defined by a
+ * function-typed parameter, a list of zero-based indices indicating the path
+ * from the entity referred to by [reference] to the appropriate type
+ * parameter.  Otherwise the empty list.
+ *
+ * If there are N indices in this list, then the entity being referred to is
+ * the function type implicitly defined by a function-typed parameter of a
+ * function-typed parameter, to N levels of nesting.  The first index in the
+ * list refers to the outermost level of nesting; for example if [reference]
+ * refers to the entity defined by:
+ *
+ *     void f(x, void g(y, z, int h(String w))) { ... }
+ *
+ * Then to refer to the function type implicitly defined by parameter `h`
+ * (which is parameter 2 of parameter 1 of `f`), then
+ * [implicitFunctionTypeIndices] should be [1, 2].
+ *
+ * Note that if the entity being referred to is a generic method inside a
+ * generic class, then the type arguments in [typeArguments] are applied
+ * first to the class and then to the method.
+ */
+void setimplicitFunctionTypeIndices(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._implicitFunctionTypeIndices = value;
+}
 
-    //@override
-    int get paramReference => _paramReference ??= 0;
+////@override
+public int paramReference
+{
+    get => _paramReference ??= 0;
+}
 
-    /**
-     * If this is a reference to a type parameter, one-based index into the list
-     * of [UnlinkedTypeParam]s currently in effect.  Indexing is done using De
-     * Bruijn index conventions; that is, innermost parameters come first, and
-     * if a class or method has multiple parameters, they are indexed from right
-     * to left.  So for instance, if the enclosing declaration is
-     *
-     *     class C<T,U> {
-     *       m<V,W> {
-     *         ...
-     *       }
-     *     }
-     *
-     * Then [paramReference] values of 1, 2, 3, and 4 represent W, V, U, and T,
-     * respectively.
-     *
-     * If the type being referred to is not a type parameter, [paramReference] is
-     * zero.
-     */
-    void set paramReference(int value) {
-        assert(value == null || value >= 0);
-        this._paramReference = value;
-    }
+/**
+ * If this is a reference to a type parameter, one-based index into the list
+ * of [UnlinkedTypeParam]s currently in effect.  Indexing is done using De
+ * Bruijn index conventions; that is, innermost parameters come first, and
+ * if a class or method has multiple parameters, they are indexed from right
+ * to left.  So for instance, if the enclosing declaration is
+ *
+ *     class C<T,U> {
+ *       m<V,W> {
+ *         ...
+ *       }
+ *     }
+ *
+ * Then [paramReference] values of 1, 2, 3, and 4 represent W, V, U, and T,
+ * respectively.
+ *
+ * If the type being referred to is not a type parameter, [paramReference] is
+ * zero.
+ */
+void setparamReference(int value)
+{
+    assert(value == null || value >= 0);
+    this._paramReference = value;
+}
 
-    //@override
-    int get reference => _reference ??= 0;
+////@override
+public int reference
+{
+    get => _reference ??= 0;
+}
 
-    /**
-     * Index into [UnlinkedUnit.references] for the entity being referred to, or
-     * zero if this is a reference to a type parameter.
-     */
-    void set reference(int value) {
-        assert(value == null || value >= 0);
-        this._reference = value;
-    }
+/**
+ * Index into [UnlinkedUnit.references] for the entity being referred to, or
+ * zero if this is a reference to a type parameter.
+ */
+void setreference(int value)
+{
+    assert(value == null || value >= 0);
+    this._reference = value;
+}
 
-    //@override
-    int get refinedSlot => _refinedSlot ??= 0;
+////@override
+public int refinedSlot
+{
+    get => _refinedSlot ??= 0;
+}
 
-    /**
-     * If this [EntityRef] appears in a syntactic context where its type arguments
-     * might need to be inferred by a method other than instantiate-to-bounds,
-     * and [typeArguments] is empty, a slot id (which is unique within the
-     * compilation unit).  If an entry appears in [LinkedUnit.types] whose [slot]
-     * matches this value, that entry will contain the complete inferred type.
-     *
-     * This is called `refinedSlot` to clarify that if it points to an inferred
-     * type, it points to a type that is a "refinement" of this one (one in which
-     * some type arguments have been inferred).
-     */
-    void set refinedSlot(int value) {
-        assert(value == null || value >= 0);
-        this._refinedSlot = value;
-    }
+/**
+ * If this [EntityRef] appears in a syntactic context where its type arguments
+ * might need to be inferred by a method other than instantiate-to-bounds,
+ * and [typeArguments] is empty, a slot id (which is unique within the
+ * compilation unit).  If an entry appears in [LinkedUnit.types] whose [slot]
+ * matches this value, that entry will contain the complete inferred type.
+ *
+ * This is called `refinedSlot` to clarify that if it points to an inferred
+ * type, it points to a type that is a "refinement" of this one (one in which
+ * some type arguments have been inferred).
+ */
+void setrefinedSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._refinedSlot = value;
+}
 
-    //@override
-    int get slot => _slot ??= 0;
+////@override
+public int slot
+{
+    get => _slot ??= 0;
+}
 
-    /**
-     * If this [EntityRef] is contained within [LinkedUnit.types], slot id (which
-     * is unique within the compilation unit) identifying the target of type
-     * propagation or type inference with which this [EntityRef] is associated.
-     *
-     * Otherwise zero.
-     */
-    void set slot(int value) {
-        assert(value == null || value >= 0);
-        this._slot = value;
-    }
+/**
+ * If this [EntityRef] is contained within [LinkedUnit.types], slot id (which
+ * is unique within the compilation unit) identifying the target of type
+ * propagation or type inference with which this [EntityRef] is associated.
+ *
+ * Otherwise zero.
+ */
+void setslot(int value)
+{
+    assert(value == null || value >= 0);
+    this._slot = value;
+}
 
-    //@override
-    List<UnlinkedParamBuilder> get syntheticParams =>
-        _syntheticParams ??= < UnlinkedParamBuilder >[];
+////@override
+List<UnlinkedParamBuilder> get syntheticParams =>
+        _syntheticParams ??= new Dictionary<UnlinkedParamBuilder>{};
 
     /**
      * If this [EntityRef] is a reference to a function type whose
@@ -2682,51 +2889,58 @@ class EntityRefBuilder extends Object
      * synthesized by a LUB computation), the function parameters.  Otherwise
      * empty.
      */
-    void set syntheticParams(List < UnlinkedParamBuilder > value) {
-        this._syntheticParams = value;
-    }
+    void setsyntheticParams(List<UnlinkedParamBuilder> value)
+{
+    this._syntheticParams = value;
+}
 
-    //@override
-    EntityRefBuilder get syntheticReturnType => _syntheticReturnType;
+////@override
+public EntityRefBuilder syntheticReturnType
+{
+    get => _syntheticReturnType;
+}
 
-    /**
-     * If this [EntityRef] is a reference to a function type whose
-     * [FunctionElement] is not in any library (e.g. a function type that was
-     * synthesized by a LUB computation), the return type of the function.
-     * Otherwise `null`.
-     */
-    void set syntheticReturnType(EntityRefBuilder value) {
-        this._syntheticReturnType = value;
-    }
+/**
+ * If this [EntityRef] is a reference to a function type whose
+ * [FunctionElement] is not in any library (e.g. a function type that was
+ * synthesized by a LUB computation), the return type of the function.
+ * Otherwise `null`.
+ */
+void setsyntheticReturnType(EntityRefBuilder value)
+{
+    this._syntheticReturnType = value;
+}
 
-    //@override
-    List<EntityRefBuilder> get typeArguments =>
-        _typeArguments ??= < EntityRefBuilder >[];
+////@override
+List<EntityRefBuilder> get typeArguments =>
+        _typeArguments ??= new Dictionary<EntityRefBuilder>{};
 
     /**
      * If this is an instantiation of a generic type or generic executable, the
      * type arguments used to instantiate it (if any).
      */
-    void set typeArguments(List < EntityRefBuilder > value) {
-        this._typeArguments = value;
-    }
+    void settypeArguments(List<EntityRefBuilder> value)
+{
+    this._typeArguments = value;
+}
 
-    //@override
-    List<UnlinkedTypeParamBuilder> get typeParameters =>
-        _typeParameters ??= < UnlinkedTypeParamBuilder >[];
+////@override
+List<UnlinkedTypeParamBuilder> get typeParameters =>
+        _typeParameters ??= new Dictionary<UnlinkedTypeParamBuilder>{};
 
     /**
      * If this is a function type, the type parameters defined for the function
      * type (if any).
      */
-    void set typeParameters(List < UnlinkedTypeParamBuilder > value) {
-        this._typeParameters = value;
-    }
+    void settypeParameters(List<UnlinkedTypeParamBuilder> value)
+{
+    this._typeParameters = value;
+}
 
-    EntityRefBuilder(
+EntityRefBuilder(
         {
-        idl.EntityRefKind entityKind,
-       List< int > implicitFunctionTypeIndices,
+    idl.EntityRefKind entityKind,
+   List< int > implicitFunctionTypeIndices,
       int paramReference,
       int reference,
       int refinedSlot,
@@ -2734,7 +2948,7 @@ class EntityRefBuilder extends Object
       List< UnlinkedParamBuilder > syntheticParams,
       EntityRefBuilder syntheticReturnType,
       List< EntityRefBuilder > typeArguments,
-      List<UnlinkedTypeParamBuilder> typeParameters})
+      List<UnlinkedTypeParamBuilder> typeParameters)
       : _entityKind = entityKind,
         _implicitFunctionTypeIndices = implicitFunctionTypeIndices,
         _paramReference = paramReference,
@@ -2770,7 +2984,7 @@ class EntityRefBuilder extends Object
         else
         {
             signature.addInt(this._typeArguments.length);
-      for (var x in this._typeArguments)
+            foreach (var x in this._typeArguments)
             {
                 x?.collectApiSignature(signature);
             }
@@ -2784,7 +2998,7 @@ class EntityRefBuilder extends Object
         else
         {
             signature.addInt(this._implicitFunctionTypeIndices.length);
-      for (var x in this._implicitFunctionTypeIndices)
+            foreach (var x in this._implicitFunctionTypeIndices)
             {
                 signature.addInt(x);
             }
@@ -2798,7 +3012,7 @@ class EntityRefBuilder extends Object
         else
         {
             signature.addInt(this._syntheticParams.length);
-      for (var x in this._syntheticParams)
+            foreach (var x in this._syntheticParams)
             {
                 x?.collectApiSignature(signature);
             }
@@ -2810,7 +3024,7 @@ class EntityRefBuilder extends Object
         else
         {
             signature.addInt(this._typeParameters.length);
-      for (var x in this._typeParameters)
+            foreach (var x in this._typeParameters)
             {
                 x?.collectApiSignature(signature);
             }
@@ -2894,113 +3108,112 @@ class EntityRefBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _EntityRefReader : fb.TableReader<_EntityRefImpl>
+{
+    public _EntityRefReader();
 
-class _EntityRefReader extends fb.TableReader<_EntityRefImpl> {
-  const _EntityRefReader();
-
-    //@override
+    ////@override
     _EntityRefImpl createObject(fb.BufferContext bc, int offset) =>
       new _EntityRefImpl(bc, offset);
 }
-
-class _EntityRefImpl extends Object
+public class _EntityRefImpl : Object
     with _EntityRefMixin
-    implements idl.EntityRef
+    : idl.EntityRef
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _EntityRefImpl(this._bc, this._bcOffset);
 
     idl.EntityRefKind _entityKind;
     List<int> _implicitFunctionTypeIndices;
-  int _paramReference;
-  int _reference;
-  int _refinedSlot;
-  int _slot;
+    int _paramReference;
+    int _reference;
+    int _refinedSlot;
+    int _slot;
     List<idl.UnlinkedParam> _syntheticParams;
     idl.EntityRef _syntheticReturnType;
     List<idl.EntityRef> _typeArguments;
     List<idl.UnlinkedTypeParam> _typeParameters;
 
-    //@override
+    ////@override
     idl.EntityRefKind get entityKind {
-        _entityKind ??= const _EntityRefKindReader()
+        _entityKind ??= new _EntityRefKindReader()
           .vTableGet(_bc, _bcOffset, 8, idl.EntityRefKind.named);
         return _entityKind;
     }
 
-    //@override
-    List<int> get implicitFunctionTypeIndices {
+////@override
+List<int> get implicitFunctionTypeIndices {
         _implicitFunctionTypeIndices ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 4, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 4, new List<int>{);
         return _implicitFunctionTypeIndices;
     }
 
-    //@override
+    ////@override
     int get paramReference {
-        _paramReference ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
+        _paramReference ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
         return _paramReference;
     }
 
-    //@override
+    ////@override
     int get reference {
-        _reference ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+        _reference ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _reference;
     }
 
-    //@override
+    ////@override
     int get refinedSlot {
-        _refinedSlot ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 9, 0);
+        _refinedSlot ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 9, 0);
         return _refinedSlot;
     }
 
-    //@override
+    ////@override
     int get slot {
-        _slot ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+        _slot ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _slot;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedParam> get syntheticParams {
         _syntheticParams ??=
-          const fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
-            .vTableGet(_bc, _bcOffset, 6, const <idl.UnlinkedParam>[]);
+public fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
+            .vTableGet(_bc, _bcOffset, 6, new List<idl.UnlinkedParam>{);
         return _syntheticParams;
     }
 
-    //@override
+    ////@override
     idl.EntityRef get syntheticReturnType {
         _syntheticReturnType ??=
-          const _EntityRefReader().vTableGet(_bc, _bcOffset, 5, null);
+public _EntityRefReader().vTableGet(_bc, _bcOffset, 5, null);
         return _syntheticReturnType;
     }
 
-    //@override
+    ////@override
     List<idl.EntityRef> get typeArguments {
         _typeArguments ??=
-          const fb.ListReader<idl.EntityRef>(const _EntityRefReader())
-            .vTableGet(_bc, _bcOffset, 1, const <idl.EntityRef>[]);
+public fb.ListReader<idl.EntityRef>(const _EntityRefReader())
+            .vTableGet(_bc, _bcOffset, 1, new List<idl.EntityRef>{);
         return _typeArguments;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedTypeParam> get typeParameters {
-        _typeParameters ??= const fb.ListReader<idl.UnlinkedTypeParam>(
-              const _UnlinkedTypeParamReader())
-        .vTableGet(_bc, _bcOffset, 7, const <idl.UnlinkedTypeParam>[]);
+        _typeParameters ??= new fb.ListReader<idl.UnlinkedTypeParam>(
+public _UnlinkedTypeParamReader())
+        .vTableGet(_bc, _bcOffset, 7, new List<idl.UnlinkedTypeParam>{);
         return _typeParameters;
     }
     }
-
-abstract class _EntityRefMixin implements idl.EntityRef
+public abstract class _EntityRefMixin : idl.EntityRef
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (entityKind != idl.EntityRefKind.named)
-            _result["entityKind"] = entityKind.toString().split('.')[1];
+            _result["entityKind"] = entityKind.toString().split(".")[1];
         if (implicitFunctionTypeIndices.isNotEmpty)
             _result["implicitFunctionTypeIndices"] = implicitFunctionTypeIndices;
         if (paramReference != 0) _result["paramReference"] = paramReference;
@@ -3021,8 +3234,8 @@ abstract class _EntityRefMixin implements idl.EntityRef
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "entityKind": entityKind,
         "implicitFunctionTypeIndices": implicitFunctionTypeIndices,
         "paramReference": paramReference,
@@ -3035,39 +3248,46 @@ abstract class _EntityRefMixin implements idl.EntityRef
         "typeParameters": typeParameters,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class LinkedDependencyBuilder extends Object
+public class LinkedDependencyBuilder : Object
     with _LinkedDependencyMixin
-    implements idl.LinkedDependency
+    : idl.LinkedDependency
 {
     List<String> _parts;
     String _uri;
 
-    //@override
-    List<String> get parts => _parts ??= < String >[];
+    ////@override
+    public List<String> parts
+    {
+        get => _parts ??= new Dictionary<String> { };
+    }
 
     /**
      * Absolute URI for the compilation units listed in the library's `part`
      * declarations, empty string for invalid URI.
      */
-    void set parts(List < String > value) {
+    void setparts(List<String> value)
+    {
         this._parts = value;
     }
 
-    //@override
-    String get uri => _uri ??= '';
+    ////@override
+    public String uri
+    {
+        get => _uri ??= "";
+    }
 
     /**
      * The absolute URI of the dependent library, e.g. `package:foo/bar.dart`.
      */
-    void set uri(String value) {
+    void seturi(String value)
+    {
         this._uri = value;
     }
 
-    LinkedDependencyBuilder({ List<String> parts, String uri})
+    LinkedDependencyBuilder(List<String> parts, String uri)
       : _parts = parts,
         _uri = uri;
 
@@ -3081,7 +3301,7 @@ class LinkedDependencyBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._uri ?? '');
+        signature.addString(this._uri ?? "");
         if (this._parts == null)
         {
             signature.addInt(0);
@@ -3089,7 +3309,7 @@ class LinkedDependencyBuilder extends Object
         else
         {
             signature.addInt(this._parts.length);
-      for (var x in this._parts)
+            foreach (var x in this._parts)
             {
                 signature.addString(x);
             }
@@ -3120,106 +3340,119 @@ class LinkedDependencyBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _LinkedDependencyReader : fb.TableReader<_LinkedDependencyImpl>
+{
+    public _LinkedDependencyReader();
 
-class _LinkedDependencyReader extends fb.TableReader<_LinkedDependencyImpl> {
-  const _LinkedDependencyReader();
-
-    //@override
+    ////@override
     _LinkedDependencyImpl createObject(fb.BufferContext bc, int offset) =>
       new _LinkedDependencyImpl(bc, offset);
 }
-
-class _LinkedDependencyImpl extends Object
+public class _LinkedDependencyImpl : Object
     with _LinkedDependencyMixin
-    implements idl.LinkedDependency
+    : idl.LinkedDependency
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _LinkedDependencyImpl(this._bc, this._bcOffset);
 
     List<String> _parts;
     String _uri;
 
-    //@override
+    ////@override
     List<String> get parts {
-        _parts ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 1, const <String>[]);
+        _parts ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 1, new List<String>{);
         return _parts;
     }
 
-    //@override
-    String get uri {
-        _uri ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+////@override
+String get uri {
+        _uri ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _uri;
     }
     }
-
-abstract class _LinkedDependencyMixin implements idl.LinkedDependency
+public abstract class _LinkedDependencyMixin : idl.LinkedDependency
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (parts.isNotEmpty) _result["parts"] = parts;
-        if (uri != '') _result["uri"] = uri;
+        if (uri != "") _result["uri"] = uri;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "parts": parts,
         "uri": uri,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class LinkedExportNameBuilder extends Object
+public class LinkedExportNameBuilder : Object
     with _LinkedExportNameMixin
-    implements idl.LinkedExportName
+    : idl.LinkedExportName
 {
-  int _dependency;
+    int _dependency;
     idl.ReferenceKind _kind;
     String _name;
-  int _unit;
+    int _unit;
 
-    //@override
-  int get dependency => _dependency ??= 0;
+    ////@override
+    public int dependency
+    {
+        get => _dependency ??= 0;
+    }
 
     /**
      * Index into [LinkedLibrary.dependencies] for the library in which the
      * entity is defined.
      */
-    void set dependency(int value) {
+    void setdependency(int value)
+    {
         assert(value == null || value >= 0);
         this._dependency = value;
     }
 
-    //@override
-    idl.ReferenceKind get kind => _kind ??= idl.ReferenceKind.classOrEnum;
+    ////@override
+    public idl.ReferenceKind kind
+    {
+        get => _kind ??= idl.ReferenceKind.classOrEnum;
+    }
 
     /**
      * The kind of the entity being referred to.
      */
-    void set kind(idl.ReferenceKind value) {
+    void setkind(idl.ReferenceKind value)
+    {
         this._kind = value;
     }
 
-    //@override
-    String get name => _name ??= '';
+    ////@override
+    public String name
+    {
+        get => _name ??= "";
+    }
 
     /**
      * Name of the exported entity.  For an exported setter, this name includes
      * the trailing '='.
      */
-    void set name(String value) {
+    void setname(String value)
+    {
         this._name = value;
     }
 
-    //@override
-    int get unit => _unit ??= 0;
+    ////@override
+    public int unit
+    {
+        get => _unit ??= 0;
+    }
 
     /**
      * Integer index indicating which unit in the exported library contains the
@@ -3227,185 +3460,191 @@ class LinkedExportNameBuilder extends Object
      * zero represents the defining compilation unit, and nonzero values
      * represent parts in the order of the corresponding `part` declarations.
      */
-    void set unit(int value) {
+    void setunit(int value)
+    {
         assert(value == null || value >= 0);
         this._unit = value;
     }
 
     LinkedExportNameBuilder(
-      { int dependency, idl.ReferenceKind kind, String name, int unit})
+      {
+        int dependency, idl.ReferenceKind kind, String name, int unit)
       : _dependency = dependency,
         _kind = kind,
         _name = name,
         _unit = unit;
 
-    /**
-     * Flush [informative] data recursively.
-     */
-    void flushInformative() { }
+        /**
+         * Flush [informative] data recursively.
+         */
+        void flushInformative() { }
 
-    /**
-     * Accumulate non-[informative] data into [signature].
-     */
-    void collectApiSignature(api_sig.ApiSignature signature)
+        /**
+         * Accumulate non-[informative] data into [signature].
+         */
+        void collectApiSignature(api_sig.ApiSignature signature)
+        {
+            signature.addInt(this._dependency ?? 0);
+            signature.addString(this._name ?? "");
+            signature.addInt(this._unit ?? 0);
+            signature.addInt(this._kind == null ? 0 : this._kind.index);
+        }
+
+        fb.Offset finish(fb.Builder fbBuilder)
+        {
+            fb.Offset offset_name;
+            if (_name != null)
+            {
+                offset_name = fbBuilder.writeString(_name);
+            }
+            fbBuilder.startTable();
+            if (_dependency != null && _dependency != 0)
+            {
+                fbBuilder.addUint32(0, _dependency);
+            }
+            if (_kind != null && _kind != idl.ReferenceKind.classOrEnum)
+            {
+                fbBuilder.addUint8(3, _kind.index);
+            }
+            if (offset_name != null)
+            {
+                fbBuilder.addOffset(1, offset_name);
+            }
+            if (_unit != null && _unit != 0)
+            {
+                fbBuilder.addUint32(2, _unit);
+            }
+            return fbBuilder.endTable();
+        }
+    }
+    public class _LinkedExportNameReader : fb.TableReader<_LinkedExportNameImpl>
     {
-        signature.addInt(this._dependency ?? 0);
-        signature.addString(this._name ?? '');
-        signature.addInt(this._unit ?? 0);
-        signature.addInt(this._kind == null ? 0 : this._kind.index);
-    }
+        public _LinkedExportNameReader();
 
-    fb.Offset finish(fb.Builder fbBuilder)
+        ////@override
+        _LinkedExportNameImpl createObject(fb.BufferContext bc, int offset) =>
+          new _LinkedExportNameImpl(bc, offset);
+    }
+    public class _LinkedExportNameImpl : Object
+    
+        with _LinkedExportNameMixin
+    : idl.LinkedExportName
     {
-        fb.Offset offset_name;
-        if (_name != null)
-        {
-            offset_name = fbBuilder.writeString(_name);
-        }
-        fbBuilder.startTable();
-        if (_dependency != null && _dependency != 0)
-        {
-            fbBuilder.addUint32(0, _dependency);
-        }
-        if (_kind != null && _kind != idl.ReferenceKind.classOrEnum)
-        {
-            fbBuilder.addUint8(3, _kind.index);
-        }
-        if (offset_name != null)
-        {
-            fbBuilder.addOffset(1, offset_name);
-        }
-        if (_unit != null && _unit != 0)
-        {
-            fbBuilder.addUint32(2, _unit);
-        }
-        return fbBuilder.endTable();
-    }
-    }
+        public readonly fb.BufferContext _bc;
+        public readonly int _bcOffset;
 
-class _LinkedExportNameReader extends fb.TableReader<_LinkedExportNameImpl> {
-  const _LinkedExportNameReader();
+        _LinkedExportNameImpl(this._bc, this._bcOffset);
 
-    //@override
-    _LinkedExportNameImpl createObject(fb.BufferContext bc, int offset) =>
-      new _LinkedExportNameImpl(bc, offset);
-}
+        int _dependency;
+        idl.ReferenceKind _kind;
+        String _name;
+        int _unit;
 
-class _LinkedExportNameImpl extends Object
-    with _LinkedExportNameMixin
-    implements idl.LinkedExportName
-{
-    final fb.BufferContext _bc;
-    final int _bcOffset;
-
-    _LinkedExportNameImpl(this._bc, this._bcOffset);
-
-  int _dependency;
-    idl.ReferenceKind _kind;
-    String _name;
-  int _unit;
-
-    //@override
-  int get dependency {
-        _dependency ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+        ////@override
+        int get dependency {
+        _dependency ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _dependency;
     }
 
-    //@override
+    ////@override
     idl.ReferenceKind get kind {
-        _kind ??= const _ReferenceKindReader()
+        _kind ??= new _ReferenceKindReader()
           .vTableGet(_bc, _bcOffset, 3, idl.ReferenceKind.classOrEnum);
         return _kind;
     }
 
-    //@override
-    String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 1, '');
+////@override
+String get name {
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 1, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get unit {
-        _unit ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+        _unit ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _unit;
     }
     }
-
-abstract class _LinkedExportNameMixin implements idl.LinkedExportName
+public abstract class _LinkedExportNameMixin : idl.LinkedExportName
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (dependency != 0) _result["dependency"] = dependency;
         if (kind != idl.ReferenceKind.classOrEnum)
-            _result["kind"] = kind.toString().split('.')[1];
-        if (name != '') _result["name"] = name;
+            _result["kind"] = kind.toString().split(".")[1];
+        if (name != "") _result["name"] = name;
         if (unit != 0) _result["unit"] = unit;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "dependency": dependency,
         "kind": kind,
         "name": name,
         "unit": unit,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class LinkedLibraryBuilder extends Object
+public class LinkedLibraryBuilder : Object
     with _LinkedLibraryMixin
-    implements idl.LinkedLibrary
+    : idl.LinkedLibrary
 {
     List<LinkedDependencyBuilder> _dependencies;
     List<int> _exportDependencies;
     List<LinkedExportNameBuilder> _exportNames;
     List<int> _importDependencies;
-  int _numPrelinkedDependencies;
+    int _numPrelinkedDependencies;
     List<LinkedUnitBuilder> _units;
 
-    //@override
+    ////@override
     List<LinkedDependencyBuilder> get dependencies =>
-        _dependencies ??= < LinkedDependencyBuilder >[];
+        _dependencies ??= new Dictionary<LinkedDependencyBuilder>{};
 
-    /**
-     * The libraries that this library depends on (either via an explicit import
-     * statement or via the implicit dependencies on `dart:core` and
-     * `dart:async`).  The first element of this array is a pseudo-dependency
-     * representing the library itself (it is also used for `dynamic` and
-     * `void`).  This is followed by elements representing "prelinked"
-     * dependencies (direct imports and the transitive closure of exports).
-     * After the prelinked dependencies are elements representing "linked"
-     * dependencies.
-     *
-     * A library is only included as a "linked" dependency if it is a true
-     * dependency (e.g. a propagated or inferred type or constant value
-     * implicitly refers to an element declared in the library) or
-     * anti-dependency (e.g. the result of type propagation or type inference
-     * depends on the lack of a certain declaration in the library).
-     */
-    void set dependencies(List < LinkedDependencyBuilder > value) {
-        this._dependencies = value;
-    }
+/**
+ * The libraries that this library depends on (either via an explicit import
+ * statement or via the implicit dependencies on `dart:core` and
+ * `dart:async`).  The first element of this array is a pseudo-dependency
+ * representing the library itself (it is also used for `dynamic` and
+ * `void`).  This is followed by elements representing "prelinked"
+ * dependencies (direct imports and the transitive closure of exports).
+ * After the prelinked dependencies are elements representing "linked"
+ * dependencies.
+ *
+ * A library is only included as a "linked" dependency if it is a true
+ * dependency (e.g. a propagated or inferred type or constant value
+ * implicitly refers to an element declared in the library) or
+ * anti-dependency (e.g. the result of type propagation or type inference
+ * depends on the lack of a certain declaration in the library).
+ */
+void setdependencies(List<LinkedDependencyBuilder> value)
+{
+    this._dependencies = value;
+}
 
-    //@override
-    List<int> get exportDependencies => _exportDependencies ??= < int >[];
+////@override
+public List<int> exportDependencies
+{
+    get => _exportDependencies ??= new List<int> { };
+}
 
-    /**
-     * For each export in [UnlinkedUnit.exports], an index into [dependencies]
-     * of the library being exported.
-     */
-    void set exportDependencies(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._exportDependencies = value;
-    }
+/**
+ * For each export in [UnlinkedUnit.exports], an index into [dependencies]
+ * of the library being exported.
+ */
+void setexportDependencies(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._exportDependencies = value;
+}
 
-    //@override
-    List<LinkedExportNameBuilder> get exportNames =>
-        _exportNames ??= < LinkedExportNameBuilder >[];
+////@override
+List<LinkedExportNameBuilder> get exportNames =>
+        _exportNames ??= new Dictionary<LinkedExportNameBuilder>{};
 
     /**
      * Information about entities in the export namespace of the library that are
@@ -3414,60 +3653,73 @@ class LinkedLibraryBuilder extends Object
      *
      * Sorted by name.
      */
-    void set exportNames(List < LinkedExportNameBuilder > value) {
-        this._exportNames = value;
-    }
+    void setexportNames(List<LinkedExportNameBuilder> value)
+{
+    this._exportNames = value;
+}
 
-    //@override
-    Null get fallbackMode =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get fallbackMode =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    List<int> get importDependencies => _importDependencies ??= < int >[];
+////@override
+public List<int> importDependencies
+{
+    get => _importDependencies ??= new Dictionary<int> { };
+}
 
-    /**
-     * For each import in [UnlinkedUnit.imports], an index into [dependencies]
-     * of the library being imported.
-     */
-    void set importDependencies(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._importDependencies = value;
-    }
+/**
+ * For each import in [UnlinkedUnit.imports], an index into [dependencies]
+ * of the library being imported.
+ */
+void setimportDependencies(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._importDependencies = value;
+}
 
-    //@override
-    int get numPrelinkedDependencies => _numPrelinkedDependencies ??= 0;
+////@override
+public int numPrelinkedDependencies
+{
+    get => _numPrelinkedDependencies ??= 0;
+}
 
-    /**
-     * The number of elements in [dependencies] which are not "linked"
-     * dependencies (that is, the number of libraries in the direct imports plus
-     * the transitive closure of exports, plus the library itself).
-     */
-    void set numPrelinkedDependencies(int value) {
-        assert(value == null || value >= 0);
-        this._numPrelinkedDependencies = value;
-    }
+/**
+ * The number of elements in [dependencies] which are not "linked"
+ * dependencies (that is, the number of libraries in the direct imports plus
+ * the transitive closure of exports, plus the library itself).
+ */
+void setnumPrelinkedDependencies(int value)
+{
+    assert(value == null || value >= 0);
+    this._numPrelinkedDependencies = value;
+}
 
-    //@override
-    List<LinkedUnitBuilder> get units => _units ??= < LinkedUnitBuilder >[];
+////@override
+public List<LinkedUnitBuilder> units
+{
+    get => _units ??= new Dictionary<LinkedUnitBuilder> { };
+}
 
-    /**
-     * The linked summary of all the compilation units constituting the
-     * library.  The summary of the defining compilation unit is listed first,
-     * followed by the summary of each part, in the order of the `part`
-     * declarations in the defining compilation unit.
-     */
-    void set units(List < LinkedUnitBuilder > value) {
-        this._units = value;
-    }
+/**
+ * The linked summary of all the compilation units constituting the
+ * library.  The summary of the defining compilation unit is listed first,
+ * followed by the summary of each part, in the order of the `part`
+ * declarations in the defining compilation unit.
+ */
+void setunits(List<LinkedUnitBuilder> value)
+{
+    this._units = value;
+}
 
-    LinkedLibraryBuilder(
+LinkedLibraryBuilder(
         {
-        List<LinkedDependencyBuilder> dependencies,
-       List< int > exportDependencies,
+    List<LinkedDependencyBuilder> dependencies,
+   List< int > exportDependencies,
       List<LinkedExportNameBuilder> exportNames,
       List< int > importDependencies,
       int numPrelinkedDependencies,
-      List< LinkedUnitBuilder > units})
+      List< LinkedUnitBuilder > units)
       : _dependencies = dependencies,
         _exportDependencies = exportDependencies,
         _exportNames = exportNames,
@@ -3497,7 +3749,7 @@ class LinkedLibraryBuilder extends Object
         else
         {
             signature.addInt(this._dependencies.length);
-      for (var x in this._dependencies)
+            foreach (var x in this._dependencies)
             {
                 x?.collectApiSignature(signature);
             }
@@ -3509,7 +3761,7 @@ class LinkedLibraryBuilder extends Object
         else
         {
             signature.addInt(this._importDependencies.length);
-      for (var x in this._importDependencies)
+            foreach (var x in this._importDependencies)
             {
                 signature.addInt(x);
             }
@@ -3522,7 +3774,7 @@ class LinkedLibraryBuilder extends Object
         else
         {
             signature.addInt(this._units.length);
-      for (var x in this._units)
+            foreach (var x in this._units)
             {
                 x?.collectApiSignature(signature);
             }
@@ -3534,7 +3786,7 @@ class LinkedLibraryBuilder extends Object
         else
         {
             signature.addInt(this._exportNames.length);
-      for (var x in this._exportNames)
+            foreach (var x in this._exportNames)
             {
                 x?.collectApiSignature(signature);
             }
@@ -3546,7 +3798,7 @@ class LinkedLibraryBuilder extends Object
         else
         {
             signature.addInt(this._exportDependencies.length);
-      for (var x in this._exportDependencies)
+            foreach (var x in this._exportDependencies)
             {
                 signature.addInt(x);
             }
@@ -3618,27 +3870,27 @@ class LinkedLibraryBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.LinkedLibrary readLinkedLibrary(List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _LinkedLibraryReader().read(rootRef, 0);
-    }
+idl.LinkedLibrary readLinkedLibrary(List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _LinkedLibraryReader().read(rootRef, 0);
+}
+public class _LinkedLibraryReader : fb.TableReader<_LinkedLibraryImpl>
+{
+    public _LinkedLibraryReader();
 
-class _LinkedLibraryReader extends fb.TableReader<_LinkedLibraryImpl> {
-  const _LinkedLibraryReader();
-
-    //@override
+    ////@override
     _LinkedLibraryImpl createObject(fb.BufferContext bc, int offset) =>
       new _LinkedLibraryImpl(bc, offset);
 }
-
-class _LinkedLibraryImpl extends Object
+public class _LinkedLibraryImpl : Object
     with _LinkedLibraryMixin
-    implements idl.LinkedLibrary
+    : idl.LinkedLibrary
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _LinkedLibraryImpl(this._bc, this._bcOffset);
 
@@ -3646,63 +3898,63 @@ class _LinkedLibraryImpl extends Object
     List<int> _exportDependencies;
     List<idl.LinkedExportName> _exportNames;
     List<int> _importDependencies;
-  int _numPrelinkedDependencies;
+    int _numPrelinkedDependencies;
     List<idl.LinkedUnit> _units;
 
-    //@override
+    ////@override
     List<idl.LinkedDependency> get dependencies {
-        _dependencies ??= const fb.ListReader<idl.LinkedDependency>(
-              const _LinkedDependencyReader())
-        .vTableGet(_bc, _bcOffset, 0, const <idl.LinkedDependency>[]);
+        _dependencies ??= new fb.ListReader<idl.LinkedDependency>(
+public _LinkedDependencyReader())
+        .vTableGet(_bc, _bcOffset, 0, new List<idl.LinkedDependency>{);
         return _dependencies;
     }
 
-    //@override
-    List<int> get exportDependencies {
+////@override
+List<int> get exportDependencies {
         _exportDependencies ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 6, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 6, new List<int>{);
         return _exportDependencies;
     }
 
-    //@override
+    ////@override
     List<idl.LinkedExportName> get exportNames {
-        _exportNames ??= const fb.ListReader<idl.LinkedExportName>(
-              const _LinkedExportNameReader())
-        .vTableGet(_bc, _bcOffset, 4, const <idl.LinkedExportName>[]);
+        _exportNames ??= new fb.ListReader<idl.LinkedExportName>(
+public _LinkedExportNameReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<idl.LinkedExportName>{);
         return _exportNames;
     }
 
-    //@override
+    ////@override
     Null get fallbackMode =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    List<int> get importDependencies {
+////@override
+List<int> get importDependencies {
         _importDependencies ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, new List<int>{);
         return _importDependencies;
     }
 
-    //@override
+    ////@override
     int get numPrelinkedDependencies {
         _numPrelinkedDependencies ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _numPrelinkedDependencies;
     }
 
-    //@override
+    ////@override
     List<idl.LinkedUnit> get units {
-        _units ??= const fb.ListReader<idl.LinkedUnit>(const _LinkedUnitReader())
-        .vTableGet(_bc, _bcOffset, 3, const <idl.LinkedUnit>[]);
+        _units ??= new fb.ListReader<idl.LinkedUnit>(const _LinkedUnitReader())
+        .vTableGet(_bc, _bcOffset, 3, new List<idl.LinkedUnit>{);
         return _units;
     }
     }
-
-abstract class _LinkedLibraryMixin implements idl.LinkedLibrary
+public abstract class _LinkedLibraryMixin : idl.LinkedLibrary
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (dependencies.isNotEmpty)
             _result["dependencies"] =
                 dependencies.map((_value) => _value.toJson()).toList();
@@ -3720,8 +3972,8 @@ abstract class _LinkedLibraryMixin implements idl.LinkedLibrary
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "dependencies": dependencies,
         "exportDependencies": exportDependencies,
         "exportNames": exportNames,
@@ -3730,23 +3982,25 @@ abstract class _LinkedLibraryMixin implements idl.LinkedLibrary
         "units": units,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class LinkedReferenceBuilder extends Object
+public class LinkedReferenceBuilder : Object
     with _LinkedReferenceMixin
-    implements idl.LinkedReference
+    : idl.LinkedReference
 {
-  int _containingReference;
-  int _dependency;
+    int _containingReference;
+    int _dependency;
     idl.ReferenceKind _kind;
     String _name;
-  int _numTypeParameters;
-  int _unit;
+    int _numTypeParameters;
+    int _unit;
 
-    //@override
-  int get containingReference => _containingReference ??= 0;
+    ////@override
+    public int containingReference
+    {
+        get => _containingReference ??= 0;
+    }
 
     /**
      * If this [LinkedReference] doesn't have an associated [UnlinkedReference],
@@ -3759,13 +4013,17 @@ class LinkedReferenceBuilder extends Object
      * LinkedUnit.references[i].containingReference != 0, then
      * LinkedUnit.references[i].containingReference < i.
      */
-    void set containingReference(int value) {
+    void setcontainingReference(int value)
+    {
         assert(value == null || value >= 0);
         this._containingReference = value;
     }
 
-    //@override
-    int get dependency => _dependency ??= 0;
+    ////@override
+    public int dependency
+    {
+        get => _dependency ??= 0;
+    }
 
     /**
      * Index into [LinkedLibrary.dependencies] indicating which imported library
@@ -3774,53 +4032,69 @@ class LinkedReferenceBuilder extends Object
      * Zero if this entity is contained within another entity (e.g. a class
      * member), or if [kind] is [ReferenceKind.prefix].
      */
-    void set dependency(int value) {
+    void setdependency(int value)
+    {
         assert(value == null || value >= 0);
         this._dependency = value;
     }
 
-    //@override
-    idl.ReferenceKind get kind => _kind ??= idl.ReferenceKind.classOrEnum;
+    ////@override
+    public idl.ReferenceKind kind
+    {
+        get => _kind ??= idl.ReferenceKind.classOrEnum;
+    }
 
     /**
      * The kind of the entity being referred to.  For the pseudo-types `dynamic`
      * and `void`, the kind is [ReferenceKind.classOrEnum].
      */
-    void set kind(idl.ReferenceKind value) {
+    void setkind(idl.ReferenceKind value)
+    {
         this._kind = value;
     }
 
-    //@override
+    ////@override
     Null get localIndex =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    String get name => _name ??= '';
+    ////@override
+    public String name
+    {
+        get => _name ??= "";
+    }
 
     /**
      * If this [LinkedReference] doesn't have an associated [UnlinkedReference],
      * name of the entity being referred to.  For the pseudo-type `dynamic`, the
      * string is "dynamic".  For the pseudo-type `void`, the string is "void".
      */
-    void set name(String value) {
+    void setname(String value)
+    {
         this._name = value;
     }
 
-    //@override
-    int get numTypeParameters => _numTypeParameters ??= 0;
+    ////@override
+    public int numTypeParameters
+    {
+        get => _numTypeParameters ??= 0;
+    }
 
     /**
      * If the entity being referred to is generic, the number of type parameters
      * it declares (does not include type parameters of enclosing entities).
      * Otherwise zero.
      */
-    void set numTypeParameters(int value) {
+    void setnumTypeParameters(int value)
+    {
         assert(value == null || value >= 0);
         this._numTypeParameters = value;
     }
 
-    //@override
-    int get unit => _unit ??= 0;
+    ////@override
+    public int unit
+    {
+        get => _unit ??= 0;
+    }
 
     /**
      * Integer index indicating which unit in the imported library contains the
@@ -3831,7 +4105,8 @@ class LinkedReferenceBuilder extends Object
      * Zero if this entity is contained within another entity (e.g. a class
      * member).
      */
-    void set unit(int value) {
+    void setunit(int value)
+    {
         assert(value == null || value >= 0);
         this._unit = value;
     }
@@ -3843,7 +4118,7 @@ class LinkedReferenceBuilder extends Object
       idl.ReferenceKind kind,
       String name,
       int numTypeParameters,
-      int unit})
+      int unit)
       : _containingReference = containingReference,
         _dependency = dependency,
         _kind = kind,
@@ -3851,147 +4126,147 @@ class LinkedReferenceBuilder extends Object
         _numTypeParameters = numTypeParameters,
         _unit = unit;
 
-    /**
-     * Flush [informative] data recursively.
-     */
-    void flushInformative() { }
+        /**
+         * Flush [informative] data recursively.
+         */
+        void flushInformative() { }
 
-    /**
-     * Accumulate non-[informative] data into [signature].
-     */
-    void collectApiSignature(api_sig.ApiSignature signature)
+        /**
+         * Accumulate non-[informative] data into [signature].
+         */
+        void collectApiSignature(api_sig.ApiSignature signature)
+        {
+            signature.addInt(this._unit ?? 0);
+            signature.addInt(this._dependency ?? 0);
+            signature.addInt(this._kind == null ? 0 : this._kind.index);
+            signature.addString(this._name ?? "");
+            signature.addInt(this._numTypeParameters ?? 0);
+            signature.addInt(this._containingReference ?? 0);
+        }
+
+        fb.Offset finish(fb.Builder fbBuilder)
+        {
+            fb.Offset offset_name;
+            if (_name != null)
+            {
+                offset_name = fbBuilder.writeString(_name);
+            }
+            fbBuilder.startTable();
+            if (_containingReference != null && _containingReference != 0)
+            {
+                fbBuilder.addUint32(5, _containingReference);
+            }
+            if (_dependency != null && _dependency != 0)
+            {
+                fbBuilder.addUint32(1, _dependency);
+            }
+            if (_kind != null && _kind != idl.ReferenceKind.classOrEnum)
+            {
+                fbBuilder.addUint8(2, _kind.index);
+            }
+            if (offset_name != null)
+            {
+                fbBuilder.addOffset(3, offset_name);
+            }
+            if (_numTypeParameters != null && _numTypeParameters != 0)
+            {
+                fbBuilder.addUint32(4, _numTypeParameters);
+            }
+            if (_unit != null && _unit != 0)
+            {
+                fbBuilder.addUint32(0, _unit);
+            }
+            return fbBuilder.endTable();
+        }
+    }
+    public class _LinkedReferenceReader : fb.TableReader<_LinkedReferenceImpl>
     {
-        signature.addInt(this._unit ?? 0);
-        signature.addInt(this._dependency ?? 0);
-        signature.addInt(this._kind == null ? 0 : this._kind.index);
-        signature.addString(this._name ?? '');
-        signature.addInt(this._numTypeParameters ?? 0);
-        signature.addInt(this._containingReference ?? 0);
-    }
+        public _LinkedReferenceReader();
 
-    fb.Offset finish(fb.Builder fbBuilder)
+        ////@override
+        _LinkedReferenceImpl createObject(fb.BufferContext bc, int offset) =>
+          new _LinkedReferenceImpl(bc, offset);
+    }
+    public class _LinkedReferenceImpl : Object
+    
+        with _LinkedReferenceMixin
+    : idl.LinkedReference
     {
-        fb.Offset offset_name;
-        if (_name != null)
-        {
-            offset_name = fbBuilder.writeString(_name);
-        }
-        fbBuilder.startTable();
-        if (_containingReference != null && _containingReference != 0)
-        {
-            fbBuilder.addUint32(5, _containingReference);
-        }
-        if (_dependency != null && _dependency != 0)
-        {
-            fbBuilder.addUint32(1, _dependency);
-        }
-        if (_kind != null && _kind != idl.ReferenceKind.classOrEnum)
-        {
-            fbBuilder.addUint8(2, _kind.index);
-        }
-        if (offset_name != null)
-        {
-            fbBuilder.addOffset(3, offset_name);
-        }
-        if (_numTypeParameters != null && _numTypeParameters != 0)
-        {
-            fbBuilder.addUint32(4, _numTypeParameters);
-        }
-        if (_unit != null && _unit != 0)
-        {
-            fbBuilder.addUint32(0, _unit);
-        }
-        return fbBuilder.endTable();
-    }
-    }
+        public readonly fb.BufferContext _bc;
+        public readonly int _bcOffset;
 
-class _LinkedReferenceReader extends fb.TableReader<_LinkedReferenceImpl> {
-  const _LinkedReferenceReader();
+        _LinkedReferenceImpl(this._bc, this._bcOffset);
 
-    //@override
-    _LinkedReferenceImpl createObject(fb.BufferContext bc, int offset) =>
-      new _LinkedReferenceImpl(bc, offset);
-}
+        int _containingReference;
+        int _dependency;
+        idl.ReferenceKind _kind;
+        String _name;
+        int _numTypeParameters;
+        int _unit;
 
-class _LinkedReferenceImpl extends Object
-    with _LinkedReferenceMixin
-    implements idl.LinkedReference
-{
-    final fb.BufferContext _bc;
-    final int _bcOffset;
-
-    _LinkedReferenceImpl(this._bc, this._bcOffset);
-
-  int _containingReference;
-  int _dependency;
-    idl.ReferenceKind _kind;
-    String _name;
-  int _numTypeParameters;
-  int _unit;
-
-    //@override
-  int get containingReference {
+        ////@override
+        int get containingReference {
         _containingReference ??=
-        const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 5, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 5, 0);
         return _containingReference;
     }
 
-    //@override
+    ////@override
     int get dependency {
-        _dependency ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _dependency ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _dependency;
     }
 
-    //@override
-    idl.ReferenceKind get kind {
-        _kind ??= const _ReferenceKindReader()
+////@override
+idl.ReferenceKind get kind {
+        _kind ??= new _ReferenceKindReader()
           .vTableGet(_bc, _bcOffset, 2, idl.ReferenceKind.classOrEnum);
         return _kind;
     }
 
-    //@override
+    ////@override
     Null get localIndex =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 3, '');
+////@override
+String get name {
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 3, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get numTypeParameters {
         _numTypeParameters ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 4, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 4, 0);
         return _numTypeParameters;
     }
 
-    //@override
+    ////@override
     int get unit {
-        _unit ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+        _unit ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _unit;
     }
     }
-
-abstract class _LinkedReferenceMixin implements idl.LinkedReference
+public abstract class _LinkedReferenceMixin : idl.LinkedReference
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (containingReference != 0)
             _result["containingReference"] = containingReference;
         if (dependency != 0) _result["dependency"] = dependency;
         if (kind != idl.ReferenceKind.classOrEnum)
-            _result["kind"] = kind.toString().split('.')[1];
-        if (name != '') _result["name"] = name;
+            _result["kind"] = kind.toString().split(".")[1];
+        if (name != "") _result["name"] = name;
         if (numTypeParameters != 0)
             _result["numTypeParameters"] = numTypeParameters;
         if (unit != 0) _result["unit"] = unit;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "containingReference": containingReference,
         "dependency": dependency,
         "kind": kind,
@@ -4000,13 +4275,12 @@ abstract class _LinkedReferenceMixin implements idl.LinkedReference
         "unit": unit,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class LinkedUnitBuilder extends Object
+public class LinkedUnitBuilder : Object
     with _LinkedUnitMixin
-    implements idl.LinkedUnit
+    : idl.LinkedUnit
 {
     List<int> _constCycles;
     List<int> _parametersInheritingCovariant;
@@ -4014,35 +4288,40 @@ class LinkedUnitBuilder extends Object
     List<TopLevelInferenceErrorBuilder> _topLevelInferenceErrors;
     List<EntityRefBuilder> _types;
 
-    //@override
-    List<int> get constCycles => _constCycles ??= < int >[];
+    ////@override
+    public List<int> constCycles
+    {
+        get => _constCycles ??= new Dictionary<int> { };
+    }
 
     /**
      * List of slot ids (referring to [UnlinkedExecutable.constCycleSlot])
      * corresponding to const constructors that are part of cycles.
      */
-    void set constCycles(List<int> value) {
+    void setconstCycles(List<int> value)
+    {
         assert(value == null || value.every((e) => e >= 0));
         this._constCycles = value;
     }
 
-    //@override
+    ////@override
     List<int> get parametersInheritingCovariant =>
-        _parametersInheritingCovariant ??= < int >[];
+        _parametersInheritingCovariant ??= new List<int>{};
 
-    /**
-     * List of slot ids (referring to [UnlinkedParam.inheritsCovariantSlot] or
-     * [UnlinkedVariable.inheritsCovariantSlot]) corresponding to parameters
-     * that inherit `//@covariant` behavior from a base class.
-     */
-    void set parametersInheritingCovariant(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._parametersInheritingCovariant = value;
-    }
+/**
+ * List of slot ids (referring to [UnlinkedParam.inheritsCovariantSlot] or
+ * [UnlinkedVariable.inheritsCovariantSlot]) corresponding to parameters
+ * that inherit `//@covariant` behavior from a base class.
+ */
+void setparametersInheritingCovariant(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._parametersInheritingCovariant = value;
+}
 
-    //@override
-    List<LinkedReferenceBuilder> get references =>
-        _references ??= < LinkedReferenceBuilder >[];
+////@override
+List<LinkedReferenceBuilder> get references =>
+        _references ??= new List<LinkedReferenceBuilder>{};
 
     /**
      * Information about the resolution of references within the compilation
@@ -4052,39 +4331,45 @@ class LinkedUnitBuilder extends Object
      * additional elements are references that are only referred to implicitly
      * (e.g. elements involved in inferred or propagated types).
      */
-    void set references(List < LinkedReferenceBuilder > value) {
-        this._references = value;
-    }
+    void setreferences(List<LinkedReferenceBuilder> value)
+{
+    this._references = value;
+}
 
-    //@override
-    List<TopLevelInferenceErrorBuilder> get topLevelInferenceErrors =>
-        _topLevelInferenceErrors ??= < TopLevelInferenceErrorBuilder >[];
+////@override
+List<TopLevelInferenceErrorBuilder> get topLevelInferenceErrors =>
+        _topLevelInferenceErrors ??= new Dictionary<TopLevelInferenceErrorBuilder>{};
 
     /**
      * The list of type inference errors.
      */
-    void set topLevelInferenceErrors(List < TopLevelInferenceErrorBuilder > value) {
-        this._topLevelInferenceErrors = value;
-    }
+    void settopLevelInferenceErrors(List<TopLevelInferenceErrorBuilder> value)
+{
+    this._topLevelInferenceErrors = value;
+}
 
-    //@override
-    List<EntityRefBuilder> get types => _types ??= < EntityRefBuilder >[];
+////@override
+public List<EntityRefBuilder> types
+{
+    get => _types ??= new List<EntityRefBuilder> { };
+}
 
-    /**
-     * List associating slot ids found inside the unlinked summary for the
-     * compilation unit with propagated and inferred types.
-     */
-    void set types(List < EntityRefBuilder > value) {
-        this._types = value;
-    }
+/**
+ * List associating slot ids found inside the unlinked summary for the
+ * compilation unit with propagated and inferred types.
+ */
+void settypes(List<EntityRefBuilder> value)
+{
+    this._types = value;
+}
 
-    LinkedUnitBuilder(
+LinkedUnitBuilder(
         {
-        List<int> constCycles,
-       List< int > parametersInheritingCovariant,
+    List<int> constCycles,
+   List< int > parametersInheritingCovariant,
       List<LinkedReferenceBuilder> references,
       List< TopLevelInferenceErrorBuilder > topLevelInferenceErrors,
-      List<EntityRefBuilder> types})
+      List<EntityRefBuilder> types)
       : _constCycles = constCycles,
         _parametersInheritingCovariant = parametersInheritingCovariant,
         _references = references,
@@ -4113,7 +4398,7 @@ class LinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._references.length);
-      for (var x in this._references)
+            foreach (var x in this._references)
             {
                 x?.collectApiSignature(signature);
             }
@@ -4125,7 +4410,7 @@ class LinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._types.length);
-      for (var x in this._types)
+            foreach (var x in this._types)
             {
                 x?.collectApiSignature(signature);
             }
@@ -4137,7 +4422,7 @@ class LinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._constCycles.length);
-      for (var x in this._constCycles)
+            foreach (var x in this._constCycles)
             {
                 signature.addInt(x);
             }
@@ -4149,7 +4434,7 @@ class LinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._parametersInheritingCovariant.length);
-      for (var x in this._parametersInheritingCovariant)
+            foreach (var x in this._parametersInheritingCovariant)
             {
                 signature.addInt(x);
             }
@@ -4161,7 +4446,7 @@ class LinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._topLevelInferenceErrors.length);
-      for (var x in this._topLevelInferenceErrors)
+            foreach (var x in this._topLevelInferenceErrors)
             {
                 x?.collectApiSignature(signature);
             }
@@ -4224,22 +4509,21 @@ class LinkedUnitBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _LinkedUnitReader : fb.TableReader<_LinkedUnitImpl>
+{
+    public _LinkedUnitReader();
 
-class _LinkedUnitReader extends fb.TableReader<_LinkedUnitImpl> {
-  const _LinkedUnitReader();
-
-    //@override
+    ////@override
     _LinkedUnitImpl createObject(fb.BufferContext bc, int offset) =>
       new _LinkedUnitImpl(bc, offset);
 }
-
-class _LinkedUnitImpl extends Object
+public class _LinkedUnitImpl : Object
     with _LinkedUnitMixin
-    implements idl.LinkedUnit
+    : idl.LinkedUnit
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _LinkedUnitImpl(this._bc, this._bcOffset);
 
@@ -4249,50 +4533,50 @@ class _LinkedUnitImpl extends Object
     List<idl.TopLevelInferenceError> _topLevelInferenceErrors;
     List<idl.EntityRef> _types;
 
-    //@override
+    ////@override
     List<int> get constCycles {
         _constCycles ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, new List<int>{);
         return _constCycles;
     }
 
-    //@override
-    List<int> get parametersInheritingCovariant {
+////@override
+List<int> get parametersInheritingCovariant {
         _parametersInheritingCovariant ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, new List<int>{);
         return _parametersInheritingCovariant;
     }
 
-    //@override
+    ////@override
     List<idl.LinkedReference> get references {
         _references ??=
-          const fb.ListReader<idl.LinkedReference>(const _LinkedReferenceReader())
-            .vTableGet(_bc, _bcOffset, 0, const <idl.LinkedReference>[]);
+public fb.ListReader<idl.LinkedReference>(const _LinkedReferenceReader())
+            .vTableGet(_bc, _bcOffset, 0, new List<idl.LinkedReference>{);
         return _references;
     }
 
-    //@override
+    ////@override
     List<idl.TopLevelInferenceError> get topLevelInferenceErrors {
         _topLevelInferenceErrors ??=
-          const fb.ListReader<idl.TopLevelInferenceError>(
-                  const _TopLevelInferenceErrorReader())
-            .vTableGet(_bc, _bcOffset, 4, const <idl.TopLevelInferenceError>[]);
+public fb.ListReader<idl.TopLevelInferenceError>(
+public _TopLevelInferenceErrorReader())
+            .vTableGet(_bc, _bcOffset, 4, new List<idl.TopLevelInferenceError>{);
         return _topLevelInferenceErrors;
     }
 
-    //@override
+    ////@override
     List<idl.EntityRef> get types {
-        _types ??= const fb.ListReader<idl.EntityRef>(const _EntityRefReader())
-        .vTableGet(_bc, _bcOffset, 1, const <idl.EntityRef>[]);
+        _types ??= new fb.ListReader<idl.EntityRef>(const _EntityRefReader())
+        .vTableGet(_bc, _bcOffset, 1, new List<idl.EntityRef>{);
         return _types;
     }
     }
-
-abstract class _LinkedUnitMixin implements idl.LinkedUnit
+public abstract class _LinkedUnitMixin : idl.LinkedUnit
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (constCycles.isNotEmpty) _result["constCycles"] = constCycles;
         if (parametersInheritingCovariant.isNotEmpty)
             _result["parametersInheritingCovariant"] = parametersInheritingCovariant;
@@ -4307,8 +4591,8 @@ abstract class _LinkedUnitMixin implements idl.LinkedUnit
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "constCycles": constCycles,
         "parametersInheritingCovariant": parametersInheritingCovariant,
         "references": references,
@@ -4316,108 +4600,125 @@ abstract class _LinkedUnitMixin implements idl.LinkedUnit
         "types": types,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class PackageBundleBuilder extends Object
+public class PackageBundleBuilder : Object
     with _PackageBundleMixin
-    implements idl.PackageBundle
+    : idl.PackageBundle
 {
     List<LinkedLibraryBuilder> _linkedLibraries;
     List<String> _linkedLibraryUris;
-  int _majorVersion;
-  int _minorVersion;
+    int _majorVersion;
+    int _minorVersion;
     List<UnlinkedUnitBuilder> _unlinkedUnits;
     List<String> _unlinkedUnitUris;
 
-    //@override
+    ////@override
     Null get apiSignature =>
-        throw new UnimplementedError('attempt to access deprecated field');
+        throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
+    ////@override
     Null get dependencies =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
+    ////@override
     List<LinkedLibraryBuilder> get linkedLibraries =>
-        _linkedLibraries ??= < LinkedLibraryBuilder >[];
+        _linkedLibraries ??= new Dictionary<LinkedLibraryBuilder>{};
 
-    /**
-     * Linked libraries.
-     */
-    void set linkedLibraries(List < LinkedLibraryBuilder > value) {
-        this._linkedLibraries = value;
-    }
+/**
+ * Linked libraries.
+ */
+void setlinkedLibraries(List<LinkedLibraryBuilder> value)
+{
+    this._linkedLibraries = value;
+}
 
-    //@override
-    List<String> get linkedLibraryUris => _linkedLibraryUris ??= < String >[];
+////@override
+public List<String> linkedLibraryUris
+{
+    get => _linkedLibraryUris ??= new List<String> { };
+}
 
-    /**
-     * The list of URIs of items in [linkedLibraries], e.g. `dart:core` or
-     * `package:foo/bar.dart`.
-     */
-    void set linkedLibraryUris(List < String > value) {
-        this._linkedLibraryUris = value;
-    }
+/**
+ * The list of URIs of items in [linkedLibraries], e.g. `dart:core` or
+ * `package:foo/bar.dart`.
+ */
+void setlinkedLibraryUris(List<String> value)
+{
+    this._linkedLibraryUris = value;
+}
 
-    //@override
-    int get majorVersion => _majorVersion ??= 0;
+////@override
+public int majorVersion
+{
+    get => _majorVersion ??= 0;
+}
 
-    /**
-     * Major version of the summary format.  See
-     * [PackageBundleAssembler.currentMajorVersion].
-     */
-    void set majorVersion(int value) {
-        assert(value == null || value >= 0);
-        this._majorVersion = value;
-    }
+/**
+ * Major version of the summary format.  See
+ * [PackageBundleAssembler.currentMajorVersion].
+ */
+void setmajorVersion(int value)
+{
+    assert(value == null || value >= 0);
+    this._majorVersion = value;
+}
 
-    //@override
-    int get minorVersion => _minorVersion ??= 0;
+////@override
+public int minorVersion
+{
+    get => _minorVersion ??= 0;
+}
 
-    /**
-     * Minor version of the summary format.  See
-     * [PackageBundleAssembler.currentMinorVersion].
-     */
-    void set minorVersion(int value) {
-        assert(value == null || value >= 0);
-        this._minorVersion = value;
-    }
+/**
+ * Minor version of the summary format.  See
+ * [PackageBundleAssembler.currentMinorVersion].
+ */
+void setminorVersion(int value)
+{
+    assert(value == null || value >= 0);
+    this._minorVersion = value;
+}
 
-    //@override
-    Null get unlinkedUnitHashes =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get unlinkedUnitHashes =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    List<UnlinkedUnitBuilder> get unlinkedUnits =>
-        _unlinkedUnits ??= < UnlinkedUnitBuilder >[];
+////@override
+List<UnlinkedUnitBuilder> get unlinkedUnits =>
+        _unlinkedUnits ??= new Dictionary<UnlinkedUnitBuilder>{};
 
     /**
      * Unlinked information for the compilation units constituting the package.
      */
-    void set unlinkedUnits(List < UnlinkedUnitBuilder > value) {
-        this._unlinkedUnits = value;
-    }
+    void setunlinkedUnits(List<UnlinkedUnitBuilder> value)
+{
+    this._unlinkedUnits = value;
+}
 
-    //@override
-    List<String> get unlinkedUnitUris => _unlinkedUnitUris ??= < String >[];
+////@override
+public List<String> unlinkedUnitUris
+{
+    get => _unlinkedUnitUris ??= new List<String> { };
+}
 
-    /**
-     * The list of URIs of items in [unlinkedUnits], e.g. `dart:core/bool.dart`.
-     */
-    void set unlinkedUnitUris(List < String > value) {
-        this._unlinkedUnitUris = value;
-    }
+/**
+ * The list of URIs of items in [unlinkedUnits], e.g. `dart:core/bool.dart`.
+ */
+void setunlinkedUnitUris(List<String> value)
+{
+    this._unlinkedUnitUris = value;
+}
 
-    PackageBundleBuilder(
+PackageBundleBuilder(
         {
-        List<LinkedLibraryBuilder> linkedLibraries,
-       List< String > linkedLibraryUris,
+    List<LinkedLibraryBuilder> linkedLibraries,
+   List< String > linkedLibraryUris,
       int majorVersion,
       int minorVersion,
       List< UnlinkedUnitBuilder > unlinkedUnits,
-      List<String> unlinkedUnitUris})
+      List<String> unlinkedUnitUris)
       : _linkedLibraries = linkedLibraries,
         _linkedLibraryUris = linkedLibraryUris,
         _majorVersion = majorVersion,
@@ -4446,7 +4747,7 @@ class PackageBundleBuilder extends Object
         else
         {
             signature.addInt(this._linkedLibraries.length);
-      for (var x in this._linkedLibraries)
+            foreach (var x in this._linkedLibraries)
             {
                 x?.collectApiSignature(signature);
             }
@@ -4458,7 +4759,7 @@ class PackageBundleBuilder extends Object
         else
         {
             signature.addInt(this._linkedLibraryUris.length);
-      for (var x in this._linkedLibraryUris)
+            foreach (var x in this._linkedLibraryUris)
             {
                 signature.addString(x);
             }
@@ -4470,7 +4771,7 @@ class PackageBundleBuilder extends Object
         else
         {
             signature.addInt(this._unlinkedUnits.length);
-      for (var x in this._unlinkedUnits)
+            foreach (var x in this._unlinkedUnits)
             {
                 x?.collectApiSignature(signature);
             }
@@ -4482,7 +4783,7 @@ class PackageBundleBuilder extends Object
         else
         {
             signature.addInt(this._unlinkedUnitUris.length);
-      for (var x in this._unlinkedUnitUris)
+            foreach (var x in this._unlinkedUnitUris)
             {
                 signature.addString(x);
             }
@@ -4550,97 +4851,97 @@ class PackageBundleBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.PackageBundle readPackageBundle(List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _PackageBundleReader().read(rootRef, 0);
-    }
+idl.PackageBundle readPackageBundle(List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _PackageBundleReader().read(rootRef, 0);
+}
+public class _PackageBundleReader : fb.TableReader<_PackageBundleImpl>
+{
+    public _PackageBundleReader();
 
-class _PackageBundleReader extends fb.TableReader<_PackageBundleImpl> {
-  const _PackageBundleReader();
-
-    //@override
+    ////@override
     _PackageBundleImpl createObject(fb.BufferContext bc, int offset) =>
       new _PackageBundleImpl(bc, offset);
 }
-
-class _PackageBundleImpl extends Object
+public class _PackageBundleImpl : Object
     with _PackageBundleMixin
-    implements idl.PackageBundle
+    : idl.PackageBundle
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _PackageBundleImpl(this._bc, this._bcOffset);
 
     List<idl.LinkedLibrary> _linkedLibraries;
     List<String> _linkedLibraryUris;
-  int _majorVersion;
-  int _minorVersion;
+    int _majorVersion;
+    int _minorVersion;
     List<idl.UnlinkedUnit> _unlinkedUnits;
     List<String> _unlinkedUnitUris;
 
-    //@override
+    ////@override
     Null get apiSignature =>
-        throw new UnimplementedError('attempt to access deprecated field');
+        throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
+    ////@override
     Null get dependencies =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
+    ////@override
     List<idl.LinkedLibrary> get linkedLibraries {
         _linkedLibraries ??=
-          const fb.ListReader<idl.LinkedLibrary>(const _LinkedLibraryReader())
-            .vTableGet(_bc, _bcOffset, 0, const <idl.LinkedLibrary>[]);
+public fb.ListReader<idl.LinkedLibrary>(const _LinkedLibraryReader())
+            .vTableGet(_bc, _bcOffset, 0, new List<idl.LinkedLibrary>{);
         return _linkedLibraries;
     }
 
-    //@override
-    List<String> get linkedLibraryUris {
-        _linkedLibraryUris ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 1, const <String>[]);
+////@override
+List<String> get linkedLibraryUris {
+        _linkedLibraryUris ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 1, new List<String>{);
         return _linkedLibraryUris;
     }
 
-    //@override
+    ////@override
     int get majorVersion {
-        _majorVersion ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 5, 0);
+        _majorVersion ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 5, 0);
         return _majorVersion;
     }
 
-    //@override
+    ////@override
     int get minorVersion {
-        _minorVersion ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 6, 0);
+        _minorVersion ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 6, 0);
         return _minorVersion;
     }
 
-    //@override
+    ////@override
     Null get unlinkedUnitHashes =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    List<idl.UnlinkedUnit> get unlinkedUnits {
+////@override
+List<idl.UnlinkedUnit> get unlinkedUnits {
         _unlinkedUnits ??=
-          const fb.ListReader<idl.UnlinkedUnit>(const _UnlinkedUnitReader())
-            .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedUnit>[]);
+public fb.ListReader<idl.UnlinkedUnit>(const _UnlinkedUnitReader())
+            .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedUnit>{);
         return _unlinkedUnits;
     }
 
-    //@override
+    ////@override
     List<String> get unlinkedUnitUris {
-        _unlinkedUnitUris ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 3, const <String>[]);
+        _unlinkedUnitUris ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 3, new List<String>{);
         return _unlinkedUnitUris;
     }
     }
-
-abstract class _PackageBundleMixin implements idl.PackageBundle
+public abstract class _PackageBundleMixin : idl.PackageBundle
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (linkedLibraries.isNotEmpty)
             _result["linkedLibraries"] =
                 linkedLibraries.map((_value) => _value.toJson()).toList();
@@ -4656,8 +4957,8 @@ abstract class _PackageBundleMixin implements idl.PackageBundle
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "linkedLibraries": linkedLibraries,
         "linkedLibraryUris": linkedLibraryUris,
         "majorVersion": majorVersion,
@@ -4666,13 +4967,12 @@ abstract class _PackageBundleMixin implements idl.PackageBundle
         "unlinkedUnitUris": unlinkedUnitUris,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class PackageIndexBuilder extends Object
+public class PackageIndexBuilder : Object
     with _PackageIndexMixin
-    implements idl.PackageIndex
+    : idl.PackageIndex
 {
     List<idl.IndexSyntheticElementKind> _elementKinds;
     List<int> _elementNameClassMemberIds;
@@ -4684,21 +4984,22 @@ class PackageIndexBuilder extends Object
     List<UnitIndexBuilder> _units;
     List<int> _unitUnitUris;
 
-    //@override
+    ////@override
     List<idl.IndexSyntheticElementKind> get elementKinds =>
-        _elementKinds ??= < idl.IndexSyntheticElementKind >[];
+        _elementKinds ??= new Dictionary<idl.IndexSyntheticElementKind>{};
 
-    /**
-     * Each item of this list corresponds to a unique referenced element.  It is
-     * the kind of the synthetic element.
-     */
-    void set elementKinds(List < idl.IndexSyntheticElementKind > value) {
-        this._elementKinds = value;
-    }
+/**
+ * Each item of this list corresponds to a unique referenced element.  It is
+ * the kind of the synthetic element.
+ */
+void setelementKinds(List<idl.IndexSyntheticElementKind> value)
+{
+    this._elementKinds = value;
+}
 
-    //@override
-    List<int> get elementNameClassMemberIds =>
-        _elementNameClassMemberIds ??= < int >[];
+////@override
+List<int> get elementNameClassMemberIds =>
+        _elementNameClassMemberIds ??= new List<int>{};
 
     /**
      * Each item of this list corresponds to a unique referenced element.  It is
@@ -4707,29 +5008,34 @@ class PackageIndexBuilder extends Object
      * client can quickly check whether an element is referenced in this
      * [PackageIndex].
      */
-    void set elementNameClassMemberIds(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementNameClassMemberIds = value;
-    }
+    void setelementNameClassMemberIds(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementNameClassMemberIds = value;
+}
 
-    //@override
-    List<int> get elementNameParameterIds => _elementNameParameterIds ??= < int >[];
+////@override
+public List<int> elementNameParameterIds
+{
+    get => _elementNameParameterIds ??= new Dictionary<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to a unique referenced element.  It is
-     * the identifier of the named parameter name, or `null` if the element is not
-     * a named parameter.  The list is sorted in ascending order, so that the
-     * client can quickly check whether an element is referenced in this
-     * [PackageIndex].
-     */
-    void set elementNameParameterIds(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementNameParameterIds = value;
-    }
+/**
+ * Each item of this list corresponds to a unique referenced element.  It is
+ * the identifier of the named parameter name, or `null` if the element is not
+ * a named parameter.  The list is sorted in ascending order, so that the
+ * client can quickly check whether an element is referenced in this
+ * [PackageIndex].
+ */
+void setelementNameParameterIds(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementNameParameterIds = value;
+}
 
-    //@override
-    List<int> get elementNameUnitMemberIds =>
-        _elementNameUnitMemberIds ??= < int >[];
+////@override
+List<int> get elementNameUnitMemberIds =>
+        _elementNameUnitMemberIds ??= new Dictionary<int>{};
 
     /**
      * Each item of this list corresponds to a unique referenced element.  It is
@@ -4737,83 +5043,104 @@ class PackageIndexBuilder extends Object
      * the unit.  The list is sorted in ascending order, so that the client can
      * quickly check whether an element is referenced in this [PackageIndex].
      */
-    void set elementNameUnitMemberIds(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementNameUnitMemberIds = value;
-    }
+    void setelementNameUnitMemberIds(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementNameUnitMemberIds = value;
+}
 
-    //@override
-    List<int> get elementUnits => _elementUnits ??= < int >[];
+////@override
+public List<int> elementUnits
+{
+    get => _elementUnits ??= new Dictionary<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to a unique referenced element.  It is
-     * the index into [unitLibraryUris] and [unitUnitUris] for the library
-     * specific unit where the element is declared.
-     */
-    void set elementUnits(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._elementUnits = value;
-    }
+/**
+ * Each item of this list corresponds to a unique referenced element.  It is
+ * the index into [unitLibraryUris] and [unitUnitUris] for the library
+ * specific unit where the element is declared.
+ */
+void setelementUnits(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._elementUnits = value;
+}
 
-    //@override
-    List<String> get strings => _strings ??= < String >[];
+////@override
+public List<String> strings
+{
+    get => _strings ??= new List<String> { };
+}
 
-    /**
-     * List of unique element strings used in this [PackageIndex].  The list is
-     * sorted in ascending order, so that the client can quickly check the
-     * presence of a string in this [PackageIndex].
-     */
-    void set strings(List < String > value) {
-        this._strings = value;
-    }
+/**
+ * List of unique element strings used in this [PackageIndex].  The list is
+ * sorted in ascending order, so that the client can quickly check the
+ * presence of a string in this [PackageIndex].
+ */
+void setstrings(List<String> value)
+{
+    this._strings = value;
+}
 
-    //@override
-    List<int> get unitLibraryUris => _unitLibraryUris ??= < int >[];
+////@override
+public List<int> unitLibraryUris
+{
+    get => _unitLibraryUris ??= new Dictionary<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to the library URI of a unique library
-     * specific unit referenced in the [PackageIndex].  It is an index into
-     * [strings] list.
-     */
-    void set unitLibraryUris(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._unitLibraryUris = value;
-    }
+/**
+ * Each item of this list corresponds to the library URI of a unique library
+ * specific unit referenced in the [PackageIndex].  It is an index into
+ * [strings] list.
+ */
+void setunitLibraryUris(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._unitLibraryUris = value;
+}
 
-    //@override
-    List<UnitIndexBuilder> get units => _units ??= < UnitIndexBuilder >[];
+////@override
+public List<UnitIndexBuilder> units
+{
+    get => _units ??= new List<UnitIndexBuilder> { };
+}
 
-    /**
-     * List of indexes of each unit in this [PackageIndex].
-     */
-    void set units(List < UnitIndexBuilder > value) {
-        this._units = value;
-    }
+/**
+ * List of indexes of each unit in this [PackageIndex].
+ */
+void setunits(List<UnitIndexBuilder> value)
+{
+    this._units = value;
+}
 
-    //@override
-    List<int> get unitUnitUris => _unitUnitUris ??= < int >[];
+////@override
+public List<int> unitUnitUris
+{
+    get => _unitUnitUris ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to the unit URI of a unique library
-     * specific unit referenced in the [PackageIndex].  It is an index into
-     * [strings] list.
-     */
-    void set unitUnitUris(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._unitUnitUris = value;
-    }
+/**
+ * Each item of this list corresponds to the unit URI of a unique library
+ * specific unit referenced in the [PackageIndex].  It is an index into
+ * [strings] list.
+ */
+void setunitUnitUris(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._unitUnitUris = value;
+}
 
-    PackageIndexBuilder(
+PackageIndexBuilder(
         {
-        List<idl.IndexSyntheticElementKind> elementKinds,
-       List< int > elementNameClassMemberIds,
+    List<idl.IndexSyntheticElementKind> elementKinds,
+   List< int > elementNameClassMemberIds,
       List<int> elementNameParameterIds,
       List< int > elementNameUnitMemberIds,
       List<int> elementUnits,
       List< String > strings,
       List<int> unitLibraryUris,
       List< UnitIndexBuilder > units,
-      List<int> unitUnitUris})
+      List<int> unitUnitUris)
       : _elementKinds = elementKinds,
         _elementNameClassMemberIds = elementNameClassMemberIds,
         _elementNameParameterIds = elementNameParameterIds,
@@ -4844,7 +5171,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementUnits.length);
-      for (var x in this._elementUnits)
+            foreach (var x in this._elementUnits)
             {
                 signature.addInt(x);
             }
@@ -4856,7 +5183,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementNameUnitMemberIds.length);
-      for (var x in this._elementNameUnitMemberIds)
+            foreach (var x in this._elementNameUnitMemberIds)
             {
                 signature.addInt(x);
             }
@@ -4868,7 +5195,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._unitLibraryUris.length);
-      for (var x in this._unitLibraryUris)
+            foreach (var x in this._unitLibraryUris)
             {
                 signature.addInt(x);
             }
@@ -4880,7 +5207,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._unitUnitUris.length);
-      for (var x in this._unitUnitUris)
+            foreach (var x in this._unitUnitUris)
             {
                 signature.addInt(x);
             }
@@ -4892,7 +5219,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._units.length);
-      for (var x in this._units)
+            foreach (var x in this._units)
             {
                 x?.collectApiSignature(signature);
             }
@@ -4904,7 +5231,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementKinds.length);
-      for (var x in this._elementKinds)
+            foreach (var x in this._elementKinds)
             {
                 signature.addInt(x.index);
             }
@@ -4916,7 +5243,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._strings.length);
-      for (var x in this._strings)
+            foreach (var x in this._strings)
             {
                 signature.addString(x);
             }
@@ -4928,7 +5255,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementNameClassMemberIds.length);
-      for (var x in this._elementNameClassMemberIds)
+            foreach (var x in this._elementNameClassMemberIds)
             {
                 signature.addInt(x);
             }
@@ -4940,7 +5267,7 @@ class PackageIndexBuilder extends Object
         else
         {
             signature.addInt(this._elementNameParameterIds.length);
-      for (var x in this._elementNameParameterIds)
+            foreach (var x in this._elementNameParameterIds)
             {
                 signature.addInt(x);
             }
@@ -5048,27 +5375,27 @@ class PackageIndexBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.PackageIndex readPackageIndex(List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _PackageIndexReader().read(rootRef, 0);
-    }
+idl.PackageIndex readPackageIndex(List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _PackageIndexReader().read(rootRef, 0);
+}
+public class _PackageIndexReader : fb.TableReader<_PackageIndexImpl>
+{
+    public _PackageIndexReader();
 
-class _PackageIndexReader extends fb.TableReader<_PackageIndexImpl> {
-  const _PackageIndexReader();
-
-    //@override
+    ////@override
     _PackageIndexImpl createObject(fb.BufferContext bc, int offset) =>
       new _PackageIndexImpl(bc, offset);
 }
-
-class _PackageIndexImpl extends Object
+public class _PackageIndexImpl : Object
     with _PackageIndexMixin
-    implements idl.PackageIndex
+    : idl.PackageIndex
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _PackageIndexImpl(this._bc, this._bcOffset);
 
@@ -5082,79 +5409,79 @@ class _PackageIndexImpl extends Object
     List<idl.UnitIndex> _units;
     List<int> _unitUnitUris;
 
-    //@override
+    ////@override
     List<idl.IndexSyntheticElementKind> get elementKinds {
-        _elementKinds ??= const fb.ListReader<idl.IndexSyntheticElementKind>(
-              const _IndexSyntheticElementKindReader())
-        .vTableGet(_bc, _bcOffset, 5, const <idl.IndexSyntheticElementKind>[]);
+        _elementKinds ??= new fb.ListReader<idl.IndexSyntheticElementKind>(
+public _IndexSyntheticElementKindReader())
+        .vTableGet(_bc, _bcOffset, 5, new List<idl.IndexSyntheticElementKind>{);
         return _elementKinds;
     }
 
-    //@override
-    List<int> get elementNameClassMemberIds {
+////@override
+List<int> get elementNameClassMemberIds {
         _elementNameClassMemberIds ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 7, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 7, new List<int>{);
         return _elementNameClassMemberIds;
     }
 
-    //@override
+    ////@override
     List<int> get elementNameParameterIds {
         _elementNameParameterIds ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 8, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 8, new List<int>{);
         return _elementNameParameterIds;
     }
 
-    //@override
+    ////@override
     List<int> get elementNameUnitMemberIds {
         _elementNameUnitMemberIds ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, new List<int>{);
         return _elementNameUnitMemberIds;
     }
 
-    //@override
+    ////@override
     List<int> get elementUnits {
         _elementUnits ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 0, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 0, new List<int>{);
         return _elementUnits;
     }
 
-    //@override
+    ////@override
     List<String> get strings {
-        _strings ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 6, const <String>[]);
+        _strings ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 6, new List<String>{);
         return _strings;
     }
 
-    //@override
+    ////@override
     List<int> get unitLibraryUris {
         _unitLibraryUris ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, new List<int>{);
         return _unitLibraryUris;
     }
 
-    //@override
+    ////@override
     List<idl.UnitIndex> get units {
-        _units ??= const fb.ListReader<idl.UnitIndex>(const _UnitIndexReader())
-        .vTableGet(_bc, _bcOffset, 4, const <idl.UnitIndex>[]);
+        _units ??= new fb.ListReader<idl.UnitIndex>(const _UnitIndexReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<idl.UnitIndex>{);
         return _units;
     }
 
-    //@override
+    ////@override
     List<int> get unitUnitUris {
         _unitUnitUris ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, new List<int>{);
         return _unitUnitUris;
     }
     }
-
-abstract class _PackageIndexMixin implements idl.PackageIndex
+public abstract class _PackageIndexMixin : idl.PackageIndex
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (elementKinds.isNotEmpty)
             _result["elementKinds"] = elementKinds
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (elementNameClassMemberIds.isNotEmpty)
             _result["elementNameClassMemberIds"] = elementNameClassMemberIds;
@@ -5172,8 +5499,8 @@ abstract class _PackageIndexMixin implements idl.PackageIndex
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "elementKinds": elementKinds,
         "elementNameClassMemberIds": elementNameClassMemberIds,
         "elementNameParameterIds": elementNameParameterIds,
@@ -5185,184 +5512,192 @@ abstract class _PackageIndexMixin implements idl.PackageIndex
         "unitUnitUris": unitUnitUris,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class TopLevelInferenceErrorBuilder extends Object
+public class TopLevelInferenceErrorBuilder : Object
     with _TopLevelInferenceErrorMixin
-    implements idl.TopLevelInferenceError
+    : idl.TopLevelInferenceError
 {
     List<String> _arguments;
     idl.TopLevelInferenceErrorKind _kind;
-  int _slot;
+    int _slot;
 
-    //@override
-    List<String> get arguments => _arguments ??= < String >[];
+    ////@override
+    public List<String> arguments
+    {
+        get => _arguments ??= new Dictionary<String> { };
+    }
 
     /**
      * The [kind] specific arguments.
      */
-    void set arguments(List < String > value) {
+    void setarguments(List<String> value)
+    {
         this._arguments = value;
     }
 
-    //@override
+    ////@override
     idl.TopLevelInferenceErrorKind get kind =>
         _kind ??= idl.TopLevelInferenceErrorKind.assignment;
 
     /**
      * The kind of the error.
      */
-    void set kind(idl.TopLevelInferenceErrorKind value) {
+    void setkind(idl.TopLevelInferenceErrorKind value)
+    {
         this._kind = value;
     }
 
-    //@override
-    int get slot => _slot ??= 0;
+    ////@override
+    public int slot
+    {
+        get => _slot ??= 0;
+    }
 
     /**
      * The slot id (which is unique within the compilation unit) identifying the
      * target of type inference with which this [TopLevelInferenceError] is
      * associated.
      */
-    void set slot(int value) {
+    void setslot(int value)
+    {
         assert(value == null || value >= 0);
         this._slot = value;
     }
 
     TopLevelInferenceErrorBuilder(
-        { List<String> arguments, idl.TopLevelInferenceErrorKind kind, int slot})
+        {
+        List<String> arguments, idl.TopLevelInferenceErrorKind kind, int slot)
       : _arguments = arguments,
         _kind = kind,
         _slot = slot;
 
-    /**
-     * Flush [informative] data recursively.
-     */
-    void flushInformative() { }
+        /**
+         * Flush [informative] data recursively.
+         */
+        void flushInformative() { }
 
-    /**
-     * Accumulate non-[informative] data into [signature].
-     */
-    void collectApiSignature(api_sig.ApiSignature signature)
-    {
-        signature.addInt(this._slot ?? 0);
-        signature.addInt(this._kind == null ? 0 : this._kind.index);
-        if (this._arguments == null)
+        /**
+         * Accumulate non-[informative] data into [signature].
+         */
+        void collectApiSignature(api_sig.ApiSignature signature)
         {
-            signature.addInt(0);
-        }
-        else
-        {
-            signature.addInt(this._arguments.length);
-      for (var x in this._arguments)
+            signature.addInt(this._slot ?? 0);
+            signature.addInt(this._kind == null ? 0 : this._kind.index);
+            if (this._arguments == null)
             {
-                signature.addString(x);
+                signature.addInt(0);
+            }
+            else
+            {
+                signature.addInt(this._arguments.length);
+                foreach (var x in this._arguments)
+                {
+                    signature.addString(x);
+                }
             }
         }
-    }
 
-    fb.Offset finish(fb.Builder fbBuilder)
+        fb.Offset finish(fb.Builder fbBuilder)
+        {
+            fb.Offset offset_arguments;
+            if (!(_arguments == null || _arguments.isEmpty))
+            {
+                offset_arguments = fbBuilder
+                    .writeList(_arguments.map((b) => fbBuilder.writeString(b)).toList());
+            }
+            fbBuilder.startTable();
+            if (offset_arguments != null)
+            {
+                fbBuilder.addOffset(2, offset_arguments);
+            }
+            if (_kind != null && _kind != idl.TopLevelInferenceErrorKind.assignment)
+            {
+                fbBuilder.addUint8(1, _kind.index);
+            }
+            if (_slot != null && _slot != 0)
+            {
+                fbBuilder.addUint32(0, _slot);
+            }
+            return fbBuilder.endTable();
+        }
+    }
+    public class _TopLevelInferenceErrorReader
+        : fb.TableReader<_TopLevelInferenceErrorImpl>
     {
-        fb.Offset offset_arguments;
-        if (!(_arguments == null || _arguments.isEmpty))
-        {
-            offset_arguments = fbBuilder
-                .writeList(_arguments.map((b) => fbBuilder.writeString(b)).toList());
-        }
-        fbBuilder.startTable();
-        if (offset_arguments != null)
-        {
-            fbBuilder.addOffset(2, offset_arguments);
-        }
-        if (_kind != null && _kind != idl.TopLevelInferenceErrorKind.assignment)
-        {
-            fbBuilder.addUint8(1, _kind.index);
-        }
-        if (_slot != null && _slot != 0)
-        {
-            fbBuilder.addUint32(0, _slot);
-        }
-        return fbBuilder.endTable();
+        public _TopLevelInferenceErrorReader();
+
+        ////@override
+        _TopLevelInferenceErrorImpl createObject(fb.BufferContext bc, int offset) =>
+          new _TopLevelInferenceErrorImpl(bc, offset);
     }
-    }
+    public class _TopLevelInferenceErrorImpl : Object
+    
+        with _TopLevelInferenceErrorMixin
+    : idl.TopLevelInferenceError
+    {
+        public readonly fb.BufferContext _bc;
+        public readonly int _bcOffset;
 
-class _TopLevelInferenceErrorReader
-    extends fb.TableReader<_TopLevelInferenceErrorImpl> {
-  const _TopLevelInferenceErrorReader();
+        _TopLevelInferenceErrorImpl(this._bc, this._bcOffset);
 
-    //@override
-    _TopLevelInferenceErrorImpl createObject(fb.BufferContext bc, int offset) =>
-      new _TopLevelInferenceErrorImpl(bc, offset);
-}
+        List<String> _arguments;
+        idl.TopLevelInferenceErrorKind _kind;
+        int _slot;
 
-class _TopLevelInferenceErrorImpl extends Object
-    with _TopLevelInferenceErrorMixin
-    implements idl.TopLevelInferenceError
-{
-    final fb.BufferContext _bc;
-    final int _bcOffset;
-
-    _TopLevelInferenceErrorImpl(this._bc, this._bcOffset);
-
-    List<String> _arguments;
-    idl.TopLevelInferenceErrorKind _kind;
-  int _slot;
-
-    //@override
-    List<String> get arguments {
-        _arguments ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 2, const <String>[]);
+        ////@override
+        List<String> get arguments {
+        _arguments ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 2, new List<String>{);
         return _arguments;
     }
 
-    //@override
+    ////@override
     idl.TopLevelInferenceErrorKind get kind {
-        _kind ??= const _TopLevelInferenceErrorKindReader().vTableGet(
+        _kind ??= new _TopLevelInferenceErrorKindReader().vTableGet(
             _bc, _bcOffset, 1, idl.TopLevelInferenceErrorKind.assignment);
         return _kind;
     }
 
-    //@override
-    int get slot {
-        _slot ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+////@override
+int get slot {
+        _slot ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _slot;
     }
     }
-
-abstract class _TopLevelInferenceErrorMixin
-    implements idl.TopLevelInferenceError
+public abstract class _TopLevelInferenceErrorMixin
+    : idl.TopLevelInferenceError
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (arguments.isNotEmpty) _result["arguments"] = arguments;
         if (kind != idl.TopLevelInferenceErrorKind.assignment)
-            _result["kind"] = kind.toString().split('.')[1];
+            _result["kind"] = kind.toString().split(".")[1];
         if (slot != 0) _result["slot"] = slot;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "arguments": arguments,
         "kind": kind,
         "slot": slot,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnitIndexBuilder extends Object
+public class UnitIndexBuilder : Object
     with _UnitIndexMixin
-    implements idl.UnitIndex
+    : idl.UnitIndex
 {
     List<idl.IndexNameKind> _definedNameKinds;
     List<int> _definedNameOffsets;
     List<int> _definedNames;
-  int _unit;
+    int _unit;
     List<bool> _usedElementIsQualifiedFlags;
     List<idl.IndexRelationKind> _usedElementKinds;
     List<int> _usedElementLengths;
@@ -5373,166 +5708,203 @@ class UnitIndexBuilder extends Object
     List<int> _usedNameOffsets;
     List<int> _usedNames;
 
-    //@override
+    ////@override
     List<idl.IndexNameKind> get definedNameKinds =>
-        _definedNameKinds ??= < idl.IndexNameKind >[];
+        _definedNameKinds ??= new Dictionary<idl.IndexNameKind>{};
 
-    /**
-     * Each item of this list is the kind of an element defined in this unit.
-     */
-    void set definedNameKinds(List < idl.IndexNameKind > value) {
-        this._definedNameKinds = value;
-    }
+/**
+ * Each item of this list is the kind of an element defined in this unit.
+ */
+void setdefinedNameKinds(List<idl.IndexNameKind> value)
+{
+    this._definedNameKinds = value;
+}
 
-    //@override
-    List<int> get definedNameOffsets => _definedNameOffsets ??= < int >[];
+////@override
+public List<int> definedNameOffsets
+{
+    get => _definedNameOffsets ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the name offset of an element defined in this
-     * unit relative to the beginning of the file.
-     */
-    void set definedNameOffsets(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._definedNameOffsets = value;
-    }
+/**
+ * Each item of this list is the name offset of an element defined in this
+ * unit relative to the beginning of the file.
+ */
+void setdefinedNameOffsets(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._definedNameOffsets = value;
+}
 
-    //@override
-    List<int> get definedNames => _definedNames ??= < int >[];
+////@override
+public List<int> definedNames
+{
+    get => _definedNames ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list corresponds to an element defined in this unit.  It
-     * is an index into [PackageIndex.strings] list.  The list is sorted in
-     * ascending order, so that the client can quickly find name definitions in
-     * this [UnitIndex].
-     */
-    void set definedNames(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._definedNames = value;
-    }
+/**
+ * Each item of this list corresponds to an element defined in this unit.  It
+ * is an index into [PackageIndex.strings] list.  The list is sorted in
+ * ascending order, so that the client can quickly find name definitions in
+ * this [UnitIndex].
+ */
+void setdefinedNames(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._definedNames = value;
+}
 
-    //@override
-    int get unit => _unit ??= 0;
+////@override
+public int unit
+{
+    get => _unit ??= 0;
+}
 
-    /**
-     * Index into [PackageIndex.unitLibraryUris] and [PackageIndex.unitUnitUris]
-     * for the library specific unit that corresponds to this [UnitIndex].
-     */
-    void set unit(int value) {
-        assert(value == null || value >= 0);
-        this._unit = value;
-    }
+/**
+ * Index into [PackageIndex.unitLibraryUris] and [PackageIndex.unitUnitUris]
+ * for the library specific unit that corresponds to this [UnitIndex].
+ */
+void setunit(int value)
+{
+    assert(value == null || value >= 0);
+    this._unit = value;
+}
 
-    //@override
-    List<bool> get usedElementIsQualifiedFlags =>
-        _usedElementIsQualifiedFlags ??= < bool >[];
+////@override
+List<bool> get usedElementIsQualifiedFlags =>
+        _usedElementIsQualifiedFlags ??= new Dictionary<bool>{};
 
     /**
      * Each item of this list is the `true` if the corresponding element usage
      * is qualified with some prefix.
      */
-    void set usedElementIsQualifiedFlags(List<bool> value) {
-        this._usedElementIsQualifiedFlags = value;
-    }
+    void setusedElementIsQualifiedFlags(List<bool> value)
+{
+    this._usedElementIsQualifiedFlags = value;
+}
 
-    //@override
-    List<idl.IndexRelationKind> get usedElementKinds =>
-        _usedElementKinds ??= < idl.IndexRelationKind >[];
+////@override
+List<idl.IndexRelationKind> get usedElementKinds =>
+        _usedElementKinds ??= new List<idl.IndexRelationKind>{};
 
     /**
      * Each item of this list is the kind of the element usage.
      */
-    void set usedElementKinds(List < idl.IndexRelationKind > value) {
-        this._usedElementKinds = value;
-    }
+    void setusedElementKinds(List<idl.IndexRelationKind> value)
+{
+    this._usedElementKinds = value;
+}
 
-    //@override
-    List<int> get usedElementLengths => _usedElementLengths ??= < int >[];
+////@override
+public List<int> usedElementLengths
+{
+    get => _usedElementLengths ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the length of the element usage.
-     */
-    void set usedElementLengths(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedElementLengths = value;
-    }
+/**
+ * Each item of this list is the length of the element usage.
+ */
+void setusedElementLengths(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedElementLengths = value;
+}
 
-    //@override
-    List<int> get usedElementOffsets => _usedElementOffsets ??= < int >[];
+////@override
+public List<int> usedElementOffsets
+{
+    get => _usedElementOffsets ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the offset of the element usage relative to the
-     * beginning of the file.
-     */
-    void set usedElementOffsets(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedElementOffsets = value;
-    }
+/**
+ * Each item of this list is the offset of the element usage relative to the
+ * beginning of the file.
+ */
+void setusedElementOffsets(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedElementOffsets = value;
+}
 
-    //@override
-    List<int> get usedElements => _usedElements ??= < int >[];
+////@override
+public List<int> usedElements
+{
+    get => _usedElements ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the index into [PackageIndex.elementUnits] and
-     * [PackageIndex.elementOffsets].  The list is sorted in ascending order, so
-     * that the client can quickly find element references in this [UnitIndex].
-     */
-    void set usedElements(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedElements = value;
-    }
+/**
+ * Each item of this list is the index into [PackageIndex.elementUnits] and
+ * [PackageIndex.elementOffsets].  The list is sorted in ascending order, so
+ * that the client can quickly find element references in this [UnitIndex].
+ */
+void setusedElements(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedElements = value;
+}
 
-    //@override
-    List<bool> get usedNameIsQualifiedFlags =>
-        _usedNameIsQualifiedFlags ??= < bool >[];
+////@override
+List<bool> get usedNameIsQualifiedFlags =>
+        _usedNameIsQualifiedFlags ??= new Dictionary<bool>{};
 
     /**
      * Each item of this list is the `true` if the corresponding name usage
      * is qualified with some prefix.
      */
-    void set usedNameIsQualifiedFlags(List<bool> value) {
-        this._usedNameIsQualifiedFlags = value;
-    }
+    void setusedNameIsQualifiedFlags(List<bool> value)
+{
+    this._usedNameIsQualifiedFlags = value;
+}
 
-    //@override
-    List<idl.IndexRelationKind> get usedNameKinds =>
-        _usedNameKinds ??= < idl.IndexRelationKind >[];
+////@override
+List<idl.IndexRelationKind> get usedNameKinds =>
+        _usedNameKinds ??= new List<idl.IndexRelationKind>{};
 
     /**
      * Each item of this list is the kind of the name usage.
      */
-    void set usedNameKinds(List < idl.IndexRelationKind > value) {
-        this._usedNameKinds = value;
-    }
+    void setusedNameKinds(List<idl.IndexRelationKind> value)
+{
+    this._usedNameKinds = value;
+}
 
-    //@override
-    List<int> get usedNameOffsets => _usedNameOffsets ??= < int >[];
+////@override
+public List<int> usedNameOffsets
+{
+    get => _usedNameOffsets ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the offset of the name usage relative to the
-     * beginning of the file.
-     */
-    void set usedNameOffsets(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedNameOffsets = value;
-    }
+/**
+ * Each item of this list is the offset of the name usage relative to the
+ * beginning of the file.
+ */
+void setusedNameOffsets(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedNameOffsets = value;
+}
 
-    //@override
-    List<int> get usedNames => _usedNames ??= < int >[];
+////@override
+public List<int> usedNames
+{
+    get => _usedNames ??= new List<int> { };
+}
 
-    /**
-     * Each item of this list is the index into [PackageIndex.strings] for a
-     * used name.  The list is sorted in ascending order, so that the client can
-     * quickly find name uses in this [UnitIndex].
-     */
-    void set usedNames(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._usedNames = value;
-    }
+/**
+ * Each item of this list is the index into [PackageIndex.strings] for a
+ * used name.  The list is sorted in ascending order, so that the client can
+ * quickly find name uses in this [UnitIndex].
+ */
+void setusedNames(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._usedNames = value;
+}
 
-    UnitIndexBuilder(
+UnitIndexBuilder(
         {
-        List<idl.IndexNameKind> definedNameKinds,
-       List< int > definedNameOffsets,
+    List<idl.IndexNameKind> definedNameKinds,
+   List< int > definedNameOffsets,
       List<int> definedNames,
       int unit,
       List< bool > usedElementIsQualifiedFlags,
@@ -5543,7 +5915,7 @@ class UnitIndexBuilder extends Object
       List<bool> usedNameIsQualifiedFlags,
       List< idl.IndexRelationKind > usedNameKinds,
       List<int> usedNameOffsets,
-      List< int > usedNames})
+      List< int > usedNames)
       : _definedNameKinds = definedNameKinds,
         _definedNameOffsets = definedNameOffsets,
         _definedNames = definedNames,
@@ -5576,7 +5948,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementLengths.length);
-      for (var x in this._usedElementLengths)
+            foreach (var x in this._usedElementLengths)
             {
                 signature.addInt(x);
             }
@@ -5588,7 +5960,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementOffsets.length);
-      for (var x in this._usedElementOffsets)
+            foreach (var x in this._usedElementOffsets)
             {
                 signature.addInt(x);
             }
@@ -5600,7 +5972,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElements.length);
-      for (var x in this._usedElements)
+            foreach (var x in this._usedElements)
             {
                 signature.addInt(x);
             }
@@ -5612,7 +5984,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementKinds.length);
-      for (var x in this._usedElementKinds)
+            foreach (var x in this._usedElementKinds)
             {
                 signature.addInt(x.index);
             }
@@ -5624,7 +5996,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._definedNames.length);
-      for (var x in this._definedNames)
+            foreach (var x in this._definedNames)
             {
                 signature.addInt(x);
             }
@@ -5636,7 +6008,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._definedNameKinds.length);
-      for (var x in this._definedNameKinds)
+            foreach (var x in this._definedNameKinds)
             {
                 signature.addInt(x.index);
             }
@@ -5648,7 +6020,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._definedNameOffsets.length);
-      for (var x in this._definedNameOffsets)
+            foreach (var x in this._definedNameOffsets)
             {
                 signature.addInt(x);
             }
@@ -5660,7 +6032,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNames.length);
-      for (var x in this._usedNames)
+            foreach (var x in this._usedNames)
             {
                 signature.addInt(x);
             }
@@ -5672,7 +6044,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNameOffsets.length);
-      for (var x in this._usedNameOffsets)
+            foreach (var x in this._usedNameOffsets)
             {
                 signature.addInt(x);
             }
@@ -5684,7 +6056,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNameKinds.length);
-      for (var x in this._usedNameKinds)
+            foreach (var x in this._usedNameKinds)
             {
                 signature.addInt(x.index);
             }
@@ -5696,7 +6068,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedElementIsQualifiedFlags.length);
-      for (var x in this._usedElementIsQualifiedFlags)
+            foreach (var x in this._usedElementIsQualifiedFlags)
             {
                 signature.addBool(x);
             }
@@ -5708,7 +6080,7 @@ class UnitIndexBuilder extends Object
         else
         {
             signature.addInt(this._usedNameIsQualifiedFlags.length);
-      for (var x in this._usedNameIsQualifiedFlags)
+            foreach (var x in this._usedNameIsQualifiedFlags)
             {
                 signature.addBool(x);
             }
@@ -5842,29 +6214,28 @@ class UnitIndexBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnitIndexReader : fb.TableReader<_UnitIndexImpl>
+{
+    public _UnitIndexReader();
 
-class _UnitIndexReader extends fb.TableReader<_UnitIndexImpl> {
-  const _UnitIndexReader();
-
-    //@override
+    ////@override
     _UnitIndexImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnitIndexImpl(bc, offset);
 }
-
-class _UnitIndexImpl extends Object
+public class _UnitIndexImpl : Object
     with _UnitIndexMixin
-    implements idl.UnitIndex
+    : idl.UnitIndex
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnitIndexImpl(this._bc, this._bcOffset);
 
     List<idl.IndexNameKind> _definedNameKinds;
     List<int> _definedNameOffsets;
     List<int> _definedNames;
-  int _unit;
+    int _unit;
     List<bool> _usedElementIsQualifiedFlags;
     List<idl.IndexRelationKind> _usedElementKinds;
     List<int> _usedElementLengths;
@@ -5875,108 +6246,108 @@ class _UnitIndexImpl extends Object
     List<int> _usedNameOffsets;
     List<int> _usedNames;
 
-    //@override
+    ////@override
     List<idl.IndexNameKind> get definedNameKinds {
         _definedNameKinds ??=
-          const fb.ListReader<idl.IndexNameKind>(const _IndexNameKindReader())
-            .vTableGet(_bc, _bcOffset, 6, const <idl.IndexNameKind>[]);
+public fb.ListReader<idl.IndexNameKind>(const _IndexNameKindReader())
+            .vTableGet(_bc, _bcOffset, 6, new List<idl.IndexNameKind>{);
         return _definedNameKinds;
     }
 
-    //@override
-    List<int> get definedNameOffsets {
+////@override
+List<int> get definedNameOffsets {
         _definedNameOffsets ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 7, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 7, new List<int>{);
         return _definedNameOffsets;
     }
 
-    //@override
+    ////@override
     List<int> get definedNames {
         _definedNames ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 5, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 5, new List<int>{);
         return _definedNames;
     }
 
-    //@override
+    ////@override
     int get unit {
-        _unit ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+        _unit ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _unit;
     }
 
-    //@override
+    ////@override
     List<bool> get usedElementIsQualifiedFlags {
         _usedElementIsQualifiedFlags ??=
-          const fb.BoolListReader().vTableGet(_bc, _bcOffset, 11, const <bool>[]);
+public fb.BoolListReader().vTableGet(_bc, _bcOffset, 11, new List<bool>{);
         return _usedElementIsQualifiedFlags;
     }
 
-    //@override
+    ////@override
     List<idl.IndexRelationKind> get usedElementKinds {
-        _usedElementKinds ??= const fb.ListReader<idl.IndexRelationKind>(
-              const _IndexRelationKindReader())
-        .vTableGet(_bc, _bcOffset, 4, const <idl.IndexRelationKind>[]);
+        _usedElementKinds ??= new fb.ListReader<idl.IndexRelationKind>(
+public _IndexRelationKindReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<idl.IndexRelationKind>{);
         return _usedElementKinds;
     }
 
-    //@override
+    ////@override
     List<int> get usedElementLengths {
         _usedElementLengths ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, new List<int>{);
         return _usedElementLengths;
     }
 
-    //@override
+    ////@override
     List<int> get usedElementOffsets {
         _usedElementOffsets ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 2, new List<int>{);
         return _usedElementOffsets;
     }
 
-    //@override
+    ////@override
     List<int> get usedElements {
         _usedElements ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 3, new List<int>{);
         return _usedElements;
     }
 
-    //@override
+    ////@override
     List<bool> get usedNameIsQualifiedFlags {
         _usedNameIsQualifiedFlags ??=
-          const fb.BoolListReader().vTableGet(_bc, _bcOffset, 12, const <bool>[]);
+public fb.BoolListReader().vTableGet(_bc, _bcOffset, 12, new List<bool>{);
         return _usedNameIsQualifiedFlags;
     }
 
-    //@override
+    ////@override
     List<idl.IndexRelationKind> get usedNameKinds {
-        _usedNameKinds ??= const fb.ListReader<idl.IndexRelationKind>(
-              const _IndexRelationKindReader())
-        .vTableGet(_bc, _bcOffset, 10, const <idl.IndexRelationKind>[]);
+        _usedNameKinds ??= new fb.ListReader<idl.IndexRelationKind>(
+public _IndexRelationKindReader())
+        .vTableGet(_bc, _bcOffset, 10, new List<idl.IndexRelationKind>{);
         return _usedNameKinds;
     }
 
-    //@override
+    ////@override
     List<int> get usedNameOffsets {
         _usedNameOffsets ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 9, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 9, new List<int>{);
         return _usedNameOffsets;
     }
 
-    //@override
+    ////@override
     List<int> get usedNames {
         _usedNames ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 8, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 8, new List<int>{);
         return _usedNames;
     }
     }
-
-abstract class _UnitIndexMixin implements idl.UnitIndex
+public abstract class _UnitIndexMixin : idl.UnitIndex
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (definedNameKinds.isNotEmpty)
             _result["definedNameKinds"] = definedNameKinds
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (definedNameOffsets.isNotEmpty)
             _result["definedNameOffsets"] = definedNameOffsets;
@@ -5986,7 +6357,7 @@ abstract class _UnitIndexMixin implements idl.UnitIndex
             _result["usedElementIsQualifiedFlags"] = usedElementIsQualifiedFlags;
         if (usedElementKinds.isNotEmpty)
             _result["usedElementKinds"] = usedElementKinds
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (usedElementLengths.isNotEmpty)
             _result["usedElementLengths"] = usedElementLengths;
@@ -5997,7 +6368,7 @@ abstract class _UnitIndexMixin implements idl.UnitIndex
             _result["usedNameIsQualifiedFlags"] = usedNameIsQualifiedFlags;
         if (usedNameKinds.isNotEmpty)
             _result["usedNameKinds"] = usedNameKinds
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (usedNameOffsets.isNotEmpty)
             _result["usedNameOffsets"] = usedNameOffsets;
@@ -6005,8 +6376,8 @@ abstract class _UnitIndexMixin implements idl.UnitIndex
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "definedNameKinds": definedNameKinds,
         "definedNameOffsets": definedNameOffsets,
         "definedNames": definedNames,
@@ -6022,210 +6393,255 @@ abstract class _UnitIndexMixin implements idl.UnitIndex
         "usedNames": usedNames,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedClassBuilder extends Object
+public class UnlinkedClassBuilder : Object
     with _UnlinkedClassMixin
-    implements idl.UnlinkedClass
+    : idl.UnlinkedClass
 {
     List<UnlinkedExprBuilder> _annotations;
     CodeRangeBuilder _codeRange;
     UnlinkedDocumentationCommentBuilder _documentationComment;
     List<UnlinkedExecutableBuilder> _executables;
     List<UnlinkedVariableBuilder> _fields;
-  bool _hasNoSupertype;
+    bool _hasNoSupertype;
     List<EntityRefBuilder> _interfaces;
-  bool _isAbstract;
-  bool _isMixinApplication;
+    bool _isAbstract;
+    bool _isMixinApplication;
     List<EntityRefBuilder> _mixins;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<EntityRefBuilder> _superclassConstraints;
     List<String> _superInvokedNames;
     EntityRefBuilder _supertype;
     List<UnlinkedTypeParamBuilder> _typeParameters;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this class.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this class.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the class.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the class.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    UnlinkedDocumentationCommentBuilder get documentationComment =>
+////@override
+UnlinkedDocumentationCommentBuilder get documentationComment =>
       _documentationComment;
 
     /**
      * Documentation comment for the class, or `null` if there is no
      * documentation comment.
      */
-    void set documentationComment(UnlinkedDocumentationCommentBuilder value) {
-        this._documentationComment = value;
-    }
+    void setdocumentationComment(UnlinkedDocumentationCommentBuilder value)
+{
+    this._documentationComment = value;
+}
 
-    //@override
-    List<UnlinkedExecutableBuilder> get executables =>
-        _executables ??= < UnlinkedExecutableBuilder >[];
+////@override
+List<UnlinkedExecutableBuilder> get executables =>
+        _executables ??= new Dictionary<UnlinkedExecutableBuilder>{};
 
     /**
      * Executable objects (methods, getters, and setters) contained in the class.
      */
-    void set executables(List < UnlinkedExecutableBuilder > value) {
-        this._executables = value;
-    }
+    void setexecutables(List<UnlinkedExecutableBuilder> value)
+{
+    this._executables = value;
+}
 
-    //@override
-    List<UnlinkedVariableBuilder> get fields =>
-        _fields ??= < UnlinkedVariableBuilder >[];
+////@override
+List<UnlinkedVariableBuilder> get fields =>
+        _fields ??= new Dictionary<UnlinkedVariableBuilder>{};
 
     /**
      * Field declarations contained in the class.
      */
-    void set fields(List < UnlinkedVariableBuilder > value) {
-        this._fields = value;
-    }
+    void setfields(List<UnlinkedVariableBuilder> value)
+{
+    this._fields = value;
+}
 
-    //@override
-    bool get hasNoSupertype => _hasNoSupertype ??= false;
+////@override
+public bool hasNoSupertype
+{
+    get => _hasNoSupertype ??= false;
+}
 
-    /**
-     * Indicates whether this class is the core "Object" class (and hence has no
-     * supertype)
-     */
-    void set hasNoSupertype(bool value) {
-        this._hasNoSupertype = value;
-    }
+/**
+ * Indicates whether this class is the core "Object" class (and hence has no
+ * supertype)
+ */
+void sethasNoSupertype(bool value)
+{
+    this._hasNoSupertype = value;
+}
 
-    //@override
-    List<EntityRefBuilder> get interfaces => _interfaces ??= < EntityRefBuilder >[];
+////@override
+public List<EntityRefBuilder> interfaces
+{
+    get => _interfaces ??= new List<EntityRefBuilder> { };
+}
 
-    /**
-     * Interfaces appearing in an `implements` clause, if any.
-     */
-    void set interfaces(List < EntityRefBuilder > value) {
-        this._interfaces = value;
-    }
+/**
+ * Interfaces appearing in an `implements` clause, if any.
+ */
+void setinterfaces(List<EntityRefBuilder> value)
+{
+    this._interfaces = value;
+}
 
-    //@override
-    bool get isAbstract => _isAbstract ??= false;
+////@override
+public bool isAbstract
+{
+    get => _isAbstract ??= false;
+}
 
-    /**
-     * Indicates whether the class is declared with the `abstract` keyword.
-     */
-    void set isAbstract(bool value) {
-        this._isAbstract = value;
-    }
+/**
+ * Indicates whether the class is declared with the `abstract` keyword.
+ */
+void setisAbstract(bool value)
+{
+    this._isAbstract = value;
+}
 
-    //@override
-    bool get isMixinApplication => _isMixinApplication ??= false;
+////@override
+public bool isMixinApplication
+{
+    get => _isMixinApplication ??= false;
+}
 
-    /**
-     * Indicates whether the class is declared using mixin application syntax.
-     */
-    void set isMixinApplication(bool value) {
-        this._isMixinApplication = value;
-    }
+/**
+ * Indicates whether the class is declared using mixin application syntax.
+ */
+void setisMixinApplication(bool value)
+{
+    this._isMixinApplication = value;
+}
 
-    //@override
-    List<EntityRefBuilder> get mixins => _mixins ??= < EntityRefBuilder >[];
+////@override
+public List<EntityRefBuilder> mixins
+{
+    get => _mixins ??= new Dictionary<EntityRefBuilder> { };
+}
 
-    /**
-     * Mixins appearing in a `with` clause, if any.
-     */
-    void set mixins(List < EntityRefBuilder > value) {
-        this._mixins = value;
-    }
+/**
+ * Mixins appearing in a `with` clause, if any.
+ */
+void setmixins(List<EntityRefBuilder> value)
+{
+    this._mixins = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the class.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the class.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the class name relative to the beginning of the file.
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the class name relative to the beginning of the file.
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    //@override
-    List<EntityRefBuilder> get superclassConstraints =>
-        _superclassConstraints ??= < EntityRefBuilder >[];
+////@override
+List<EntityRefBuilder> get superclassConstraints =>
+        _superclassConstraints ??= new Dictionary<EntityRefBuilder>{};
 
     /**
      * Superclass constraints for this mixin declaration. The list will be empty
      * if this class is not a mixin declaration, or if the declaration does not
      * have an `on` clause (in which case the type `Object` is implied).
      */
-    void set superclassConstraints(List < EntityRefBuilder > value) {
-        this._superclassConstraints = value;
-    }
+    void setsuperclassConstraints(List<EntityRefBuilder> value)
+{
+    this._superclassConstraints = value;
+}
 
-    //@override
-    List<String> get superInvokedNames => _superInvokedNames ??= < String >[];
+////@override
+public List<String> superInvokedNames
+{
+    get => _superInvokedNames ??= new Dictionary<String> { };
+}
 
-    /**
-     * Names of methods, getters, setters, and operators that this mixin
-     * declaration super-invokes.  For setters this includes the trailing "=".
-     * The list will be empty if this class is not a mixin declaration.
-     */
-    void set superInvokedNames(List < String > value) {
-        this._superInvokedNames = value;
-    }
+/**
+ * Names of methods, getters, setters, and operators that this mixin
+ * declaration super-invokes.  For setters this includes the trailing "=".
+ * The list will be empty if this class is not a mixin declaration.
+ */
+void setsuperInvokedNames(List<String> value)
+{
+    this._superInvokedNames = value;
+}
 
-    //@override
-    EntityRefBuilder get supertype => _supertype;
+////@override
+public EntityRefBuilder supertype
+{
+    get => _supertype;
+}
 
-    /**
-     * Supertype of the class, or `null` if either (a) the class doesn't
-     * explicitly declare a supertype (and hence has supertype `Object`), or (b)
-     * the class *is* `Object` (and hence has no supertype).
-     */
-    void set supertype(EntityRefBuilder value) {
-        this._supertype = value;
-    }
+/**
+ * Supertype of the class, or `null` if either (a) the class doesn't
+ * explicitly declare a supertype (and hence has supertype `Object`), or (b)
+ * the class *is* `Object` (and hence has no supertype).
+ */
+void setsupertype(EntityRefBuilder value)
+{
+    this._supertype = value;
+}
 
-    //@override
-    List<UnlinkedTypeParamBuilder> get typeParameters =>
-        _typeParameters ??= < UnlinkedTypeParamBuilder >[];
+////@override
+List<UnlinkedTypeParamBuilder> get typeParameters =>
+        _typeParameters ??= new Dictionary<UnlinkedTypeParamBuilder>{};
 
     /**
      * Type parameters of the class, if any.
      */
-    void set typeParameters(List < UnlinkedTypeParamBuilder > value) {
-        this._typeParameters = value;
-    }
+    void settypeParameters(List<UnlinkedTypeParamBuilder> value)
+{
+    this._typeParameters = value;
+}
 
-    UnlinkedClassBuilder(
+UnlinkedClassBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       CodeRangeBuilder codeRange,
+    List<UnlinkedExprBuilder> annotations,
+   CodeRangeBuilder codeRange,
       UnlinkedDocumentationCommentBuilder documentationComment,
       List< UnlinkedExecutableBuilder > executables,
       List<UnlinkedVariableBuilder> fields,
@@ -6239,7 +6655,7 @@ class UnlinkedClassBuilder extends Object
       List< EntityRefBuilder > superclassConstraints,
       List<String> superInvokedNames,
       EntityRefBuilder supertype,
-      List<UnlinkedTypeParamBuilder> typeParameters})
+      List<UnlinkedTypeParamBuilder> typeParameters)
       : _annotations = annotations,
         _codeRange = codeRange,
         _documentationComment = documentationComment,
@@ -6280,7 +6696,7 @@ class UnlinkedClassBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         if (this._executables == null)
         {
             signature.addInt(0);
@@ -6288,7 +6704,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._executables.length);
-      for (var x in this._executables)
+            foreach (var x in this._executables)
             {
                 x?.collectApiSignature(signature);
             }
@@ -6302,7 +6718,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._fields.length);
-      for (var x in this._fields)
+            foreach (var x in this._fields)
             {
                 x?.collectApiSignature(signature);
             }
@@ -6314,7 +6730,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -6326,7 +6742,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._interfaces.length);
-      for (var x in this._interfaces)
+            foreach (var x in this._interfaces)
             {
                 x?.collectApiSignature(signature);
             }
@@ -6339,7 +6755,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._typeParameters.length);
-      for (var x in this._typeParameters)
+            foreach (var x in this._typeParameters)
             {
                 x?.collectApiSignature(signature);
             }
@@ -6351,7 +6767,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._mixins.length);
-      for (var x in this._mixins)
+            foreach (var x in this._mixins)
             {
                 x?.collectApiSignature(signature);
             }
@@ -6365,7 +6781,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._superclassConstraints.length);
-      for (var x in this._superclassConstraints)
+            foreach (var x in this._superclassConstraints)
             {
                 x?.collectApiSignature(signature);
             }
@@ -6377,7 +6793,7 @@ class UnlinkedClassBuilder extends Object
         else
         {
             signature.addInt(this._superInvokedNames.length);
-      for (var x in this._superInvokedNames)
+            foreach (var x in this._superInvokedNames)
             {
                 signature.addString(x);
             }
@@ -6521,22 +6937,21 @@ class UnlinkedClassBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedClassReader : fb.TableReader<_UnlinkedClassImpl>
+{
+    public _UnlinkedClassReader();
 
-class _UnlinkedClassReader extends fb.TableReader<_UnlinkedClassImpl> {
-  const _UnlinkedClassReader();
-
-    //@override
+    ////@override
     _UnlinkedClassImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedClassImpl(bc, offset);
 }
-
-class _UnlinkedClassImpl extends Object
+public class _UnlinkedClassImpl : Object
     with _UnlinkedClassMixin
-    implements idl.UnlinkedClass
+    : idl.UnlinkedClass
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedClassImpl(this._bc, this._bcOffset);
 
@@ -6545,136 +6960,136 @@ class _UnlinkedClassImpl extends Object
     idl.UnlinkedDocumentationComment _documentationComment;
     List<idl.UnlinkedExecutable> _executables;
     List<idl.UnlinkedVariable> _fields;
-  bool _hasNoSupertype;
+    bool _hasNoSupertype;
     List<idl.EntityRef> _interfaces;
-  bool _isAbstract;
-  bool _isMixinApplication;
+    bool _isAbstract;
+    bool _isMixinApplication;
     List<idl.EntityRef> _mixins;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<idl.EntityRef> _superclassConstraints;
     List<String> _superInvokedNames;
     idl.EntityRef _supertype;
     List<idl.UnlinkedTypeParam> _typeParameters;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 5, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 5, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 13, null);
+////@override
+idl.CodeRange get codeRange {
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 13, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedDocumentationComment get documentationComment {
-        _documentationComment ??= const _UnlinkedDocumentationCommentReader()
+        _documentationComment ??= new _UnlinkedDocumentationCommentReader()
           .vTableGet(_bc, _bcOffset, 6, null);
         return _documentationComment;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedExecutable> get executables {
-        _executables ??= const fb.ListReader<idl.UnlinkedExecutable>(
-              const _UnlinkedExecutableReader())
-        .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedExecutable>[]);
+        _executables ??= new fb.ListReader<idl.UnlinkedExecutable>(
+public _UnlinkedExecutableReader())
+        .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedExecutable>{);
         return _executables;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedVariable> get fields {
-        _fields ??= const fb.ListReader<idl.UnlinkedVariable>(
-              const _UnlinkedVariableReader())
-        .vTableGet(_bc, _bcOffset, 4, const <idl.UnlinkedVariable>[]);
+        _fields ??= new fb.ListReader<idl.UnlinkedVariable>(
+public _UnlinkedVariableReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<idl.UnlinkedVariable>{);
         return _fields;
     }
 
-    //@override
+    ////@override
     bool get hasNoSupertype {
         _hasNoSupertype ??=
-          const fb.BoolReader().vTableGet(_bc, _bcOffset, 12, false);
+public fb.BoolReader().vTableGet(_bc, _bcOffset, 12, false);
         return _hasNoSupertype;
     }
 
-    //@override
+    ////@override
     List<idl.EntityRef> get interfaces {
-        _interfaces ??= const fb.ListReader<idl.EntityRef>(const _EntityRefReader())
-        .vTableGet(_bc, _bcOffset, 7, const <idl.EntityRef>[]);
+        _interfaces ??= new fb.ListReader<idl.EntityRef>(const _EntityRefReader())
+        .vTableGet(_bc, _bcOffset, 7, new List<idl.EntityRef>{);
         return _interfaces;
     }
 
-    //@override
+    ////@override
     bool get isAbstract {
-        _isAbstract ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 8, false);
+        _isAbstract ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 8, false);
         return _isAbstract;
     }
 
-    //@override
+    ////@override
     bool get isMixinApplication {
         _isMixinApplication ??=
-          const fb.BoolReader().vTableGet(_bc, _bcOffset, 11, false);
+public fb.BoolReader().vTableGet(_bc, _bcOffset, 11, false);
         return _isMixinApplication;
     }
 
-    //@override
+    ////@override
     List<idl.EntityRef> get mixins {
-        _mixins ??= const fb.ListReader<idl.EntityRef>(const _EntityRefReader())
-        .vTableGet(_bc, _bcOffset, 10, const <idl.EntityRef>[]);
+        _mixins ??= new fb.ListReader<idl.EntityRef>(const _EntityRefReader())
+        .vTableGet(_bc, _bcOffset, 10, new List<idl.EntityRef>{);
         return _mixins;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nameOffset;
     }
 
-    //@override
+    ////@override
     List<idl.EntityRef> get superclassConstraints {
         _superclassConstraints ??=
-          const fb.ListReader<idl.EntityRef>(const _EntityRefReader())
-            .vTableGet(_bc, _bcOffset, 14, const <idl.EntityRef>[]);
+public fb.ListReader<idl.EntityRef>(const _EntityRefReader())
+            .vTableGet(_bc, _bcOffset, 14, new List<idl.EntityRef>{);
         return _superclassConstraints;
     }
 
-    //@override
+    ////@override
     List<String> get superInvokedNames {
-        _superInvokedNames ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 15, const <String>[]);
+        _superInvokedNames ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 15, new List<String>{);
         return _superInvokedNames;
     }
 
-    //@override
+    ////@override
     idl.EntityRef get supertype {
-        _supertype ??= const _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
+        _supertype ??= new _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
         return _supertype;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedTypeParam> get typeParameters {
-        _typeParameters ??= const fb.ListReader<idl.UnlinkedTypeParam>(
-              const _UnlinkedTypeParamReader())
-        .vTableGet(_bc, _bcOffset, 9, const <idl.UnlinkedTypeParam>[]);
+        _typeParameters ??= new fb.ListReader<idl.UnlinkedTypeParam>(
+public _UnlinkedTypeParamReader())
+        .vTableGet(_bc, _bcOffset, 9, new List<idl.UnlinkedTypeParam>{);
         return _typeParameters;
     }
     }
-
-abstract class _UnlinkedClassMixin implements idl.UnlinkedClass
+public abstract class _UnlinkedClassMixin : idl.UnlinkedClass
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
@@ -6695,7 +7110,7 @@ abstract class _UnlinkedClassMixin implements idl.UnlinkedClass
             _result["isMixinApplication"] = isMixinApplication;
         if (mixins.isNotEmpty)
             _result["mixins"] = mixins.map((_value) => _value.toJson()).toList();
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         if (superclassConstraints.isNotEmpty)
             _result["superclassConstraints"] =
@@ -6709,8 +7124,8 @@ abstract class _UnlinkedClassMixin implements idl.UnlinkedClass
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "codeRange": codeRange,
         "documentationComment": documentationComment,
@@ -6729,200 +7144,216 @@ abstract class _UnlinkedClassMixin implements idl.UnlinkedClass
         "typeParameters": typeParameters,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedCombinatorBuilder extends Object
+public class UnlinkedCombinatorBuilder : Object
     with _UnlinkedCombinatorMixin
-    implements idl.UnlinkedCombinator
+    : idl.UnlinkedCombinator
 {
-  int _end;
+    int _end;
     List<String> _hides;
-  int _offset;
+    int _offset;
     List<String> _shows;
 
-    //@override
-  int get end => _end ??= 0;
+    ////@override
+    public int end
+    {
+        get => _end ??= 0;
+    }
 
     /**
      * If this is a `show` combinator, offset of the end of the list of shown
      * names.  Otherwise zero.
      */
-    void set end(int value) {
+    void setend(int value)
+    {
         assert(value == null || value >= 0);
         this._end = value;
     }
 
-    //@override
-    List<String> get hides => _hides ??= < String >[];
+    ////@override
+    public List<String> hides
+    {
+        get => _hides ??= new Dictionary<String> { };
+    }
 
     /**
      * List of names which are hidden.  Empty if this is a `show` combinator.
      */
-    void set hides(List < String > value) {
+    void sethides(List<String> value)
+    {
         this._hides = value;
     }
 
-    //@override
-    int get offset => _offset ??= 0;
+    ////@override
+    public int offset
+    {
+        get => _offset ??= 0;
+    }
 
     /**
      * If this is a `show` combinator, offset of the `show` keyword.  Otherwise
      * zero.
      */
-    void set offset(int value) {
+    void setoffset(int value)
+    {
         assert(value == null || value >= 0);
         this._offset = value;
     }
 
-    //@override
-    List<String> get shows => _shows ??= < String >[];
+    ////@override
+    public List<String> shows
+    {
+        get => _shows ??= new Dictionary<String> { };
+    }
 
     /**
      * List of names which are shown.  Empty if this is a `hide` combinator.
      */
-    void set shows(List < String > value) {
+    void setshows(List<String> value)
+    {
         this._shows = value;
     }
 
     UnlinkedCombinatorBuilder(
-      { int end, List< String > hides, int offset, List< String > shows})
+      {
+        int end, List< String > hides, int offset, List< String > shows)
       : _end = end,
         _hides = hides,
         _offset = offset,
         _shows = shows;
 
-    /**
-     * Flush [informative] data recursively.
-     */
-    void flushInformative()
-    {
-        _end = null;
-        _offset = null;
-    }
-
-    /**
-     * Accumulate non-[informative] data into [signature].
-     */
-    void collectApiSignature(api_sig.ApiSignature signature)
-    {
-        if (this._shows == null)
+        /**
+         * Flush [informative] data recursively.
+         */
+        void flushInformative()
         {
-            signature.addInt(0);
+            _end = null;
+            _offset = null;
         }
-        else
+
+        /**
+         * Accumulate non-[informative] data into [signature].
+         */
+        void collectApiSignature(api_sig.ApiSignature signature)
         {
-            signature.addInt(this._shows.length);
-      for (var x in this._shows)
+            if (this._shows == null)
             {
-                signature.addString(x);
+                signature.addInt(0);
+            }
+            else
+            {
+                signature.addInt(this._shows.length);
+                foreach (var x in this._shows)
+                {
+                    signature.addString(x);
+                }
+            }
+            if (this._hides == null)
+            {
+                signature.addInt(0);
+            }
+            else
+            {
+                signature.addInt(this._hides.length);
+                foreach (var x in this._hides)
+                {
+                    signature.addString(x);
+                }
             }
         }
-        if (this._hides == null)
+
+        fb.Offset finish(fb.Builder fbBuilder)
         {
-            signature.addInt(0);
-        }
-        else
-        {
-            signature.addInt(this._hides.length);
-      for (var x in this._hides)
+            fb.Offset offset_hides;
+            fb.Offset offset_shows;
+            if (!(_hides == null || _hides.isEmpty))
             {
-                signature.addString(x);
+                offset_hides = fbBuilder
+                    .writeList(_hides.map((b) => fbBuilder.writeString(b)).toList());
             }
+            if (!(_shows == null || _shows.isEmpty))
+            {
+                offset_shows = fbBuilder
+                    .writeList(_shows.map((b) => fbBuilder.writeString(b)).toList());
+            }
+            fbBuilder.startTable();
+            if (_end != null && _end != 0)
+            {
+                fbBuilder.addUint32(3, _end);
+            }
+            if (offset_hides != null)
+            {
+                fbBuilder.addOffset(1, offset_hides);
+            }
+            if (_offset != null && _offset != 0)
+            {
+                fbBuilder.addUint32(2, _offset);
+            }
+            if (offset_shows != null)
+            {
+                fbBuilder.addOffset(0, offset_shows);
+            }
+            return fbBuilder.endTable();
         }
     }
-
-    fb.Offset finish(fb.Builder fbBuilder)
+    public class _UnlinkedCombinatorReader
+        : fb.TableReader<_UnlinkedCombinatorImpl>
     {
-        fb.Offset offset_hides;
-        fb.Offset offset_shows;
-        if (!(_hides == null || _hides.isEmpty))
-        {
-            offset_hides = fbBuilder
-                .writeList(_hides.map((b) => fbBuilder.writeString(b)).toList());
-        }
-        if (!(_shows == null || _shows.isEmpty))
-        {
-            offset_shows = fbBuilder
-                .writeList(_shows.map((b) => fbBuilder.writeString(b)).toList());
-        }
-        fbBuilder.startTable();
-        if (_end != null && _end != 0)
-        {
-            fbBuilder.addUint32(3, _end);
-        }
-        if (offset_hides != null)
-        {
-            fbBuilder.addOffset(1, offset_hides);
-        }
-        if (_offset != null && _offset != 0)
-        {
-            fbBuilder.addUint32(2, _offset);
-        }
-        if (offset_shows != null)
-        {
-            fbBuilder.addOffset(0, offset_shows);
-        }
-        return fbBuilder.endTable();
+        public _UnlinkedCombinatorReader();
+
+        ////@override
+        _UnlinkedCombinatorImpl createObject(fb.BufferContext bc, int offset) =>
+          new _UnlinkedCombinatorImpl(bc, offset);
     }
-    }
+    public class _UnlinkedCombinatorImpl : Object
+    
+        with _UnlinkedCombinatorMixin
+    : idl.UnlinkedCombinator
+    {
+        public readonly fb.BufferContext _bc;
+        public readonly int _bcOffset;
 
-class _UnlinkedCombinatorReader
-    extends fb.TableReader<_UnlinkedCombinatorImpl> {
-  const _UnlinkedCombinatorReader();
+        _UnlinkedCombinatorImpl(this._bc, this._bcOffset);
 
-    //@override
-    _UnlinkedCombinatorImpl createObject(fb.BufferContext bc, int offset) =>
-      new _UnlinkedCombinatorImpl(bc, offset);
-}
+        int _end;
+        List<String> _hides;
+        int _offset;
+        List<String> _shows;
 
-class _UnlinkedCombinatorImpl extends Object
-    with _UnlinkedCombinatorMixin
-    implements idl.UnlinkedCombinator
-{
-    final fb.BufferContext _bc;
-    final int _bcOffset;
-
-    _UnlinkedCombinatorImpl(this._bc, this._bcOffset);
-
-  int _end;
-    List<String> _hides;
-  int _offset;
-    List<String> _shows;
-
-    //@override
-  int get end {
-        _end ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
+        ////@override
+        int get end {
+        _end ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
         return _end;
     }
 
-    //@override
+    ////@override
     List<String> get hides {
-        _hides ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 1, const <String>[]);
+        _hides ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 1, new List<String>{);
         return _hides;
     }
 
-    //@override
-    int get offset {
-        _offset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+////@override
+int get offset {
+        _offset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _offset;
     }
 
-    //@override
+    ////@override
     List<String> get shows {
-        _shows ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 0, const <String>[]);
+        _shows ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 0, new List<String>{);
         return _shows;
     }
     }
-
-abstract class _UnlinkedCombinatorMixin implements idl.UnlinkedCombinator
+public abstract class _UnlinkedCombinatorMixin : idl.UnlinkedCombinator
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (end != 0) _result["end"] = end;
         if (hides.isNotEmpty) _result["hides"] = hides;
         if (offset != 0) _result["offset"] = offset;
@@ -6930,59 +7361,70 @@ abstract class _UnlinkedCombinatorMixin implements idl.UnlinkedCombinator
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "end": end,
         "hides": hides,
         "offset": offset,
         "shows": shows,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedConfigurationBuilder extends Object
+public class UnlinkedConfigurationBuilder : Object
     with _UnlinkedConfigurationMixin
-    implements idl.UnlinkedConfiguration
+    : idl.UnlinkedConfiguration
 {
     String _name;
     String _uri;
     String _value;
 
-    //@override
-    String get name => _name ??= '';
+    ////@override
+    public String name
+    {
+        get => _name ??= "";
+    }
 
     /**
      * The name of the declared variable whose value is being used in the
      * condition.
      */
-    void set name(String value) {
+    void setname(String value)
+    {
         this._name = value;
     }
 
-    //@override
-    String get uri => _uri ??= '';
+    ////@override
+    public String uri
+    {
+        get => _uri ??= "";
+    }
 
     /**
      * The URI of the implementation library to be used if the condition is true.
      */
-    void set uri(String value) {
+    void seturi(String value)
+    {
         this._uri = value;
     }
 
-    //@override
-    String get value => _value ??= '';
+    ////@override
+    public String value
+    {
+        get => _value ??= "";
+    }
 
     /**
      * The value to which the value of the declared variable will be compared,
      * or `true` if the condition does not include an equality test.
      */
-    void set value(String value) {
+    void setvalue(String value)
+    {
         this._value = value;
     }
 
-    UnlinkedConfigurationBuilder({ String name, String uri, String value})
+    UnlinkedConfigurationBuilder(String name, String uri, String value)
       : _name = name,
         _uri = uri,
         _value = value;
@@ -6997,9 +7439,9 @@ class UnlinkedConfigurationBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
-        signature.addString(this._value ?? '');
-        signature.addString(this._uri ?? '');
+        signature.addString(this._name ?? "");
+        signature.addString(this._value ?? "");
+        signature.addString(this._uri ?? "");
     }
 
     fb.Offset finish(fb.Builder fbBuilder)
@@ -7034,23 +7476,22 @@ class UnlinkedConfigurationBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedConfigurationReader
+    : fb.TableReader<_UnlinkedConfigurationImpl>
+{
+    public _UnlinkedConfigurationReader();
 
-class _UnlinkedConfigurationReader
-    extends fb.TableReader<_UnlinkedConfigurationImpl> {
-  const _UnlinkedConfigurationReader();
-
-    //@override
+    ////@override
     _UnlinkedConfigurationImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedConfigurationImpl(bc, offset);
 }
-
-class _UnlinkedConfigurationImpl extends Object
+public class _UnlinkedConfigurationImpl : Object
     with _UnlinkedConfigurationMixin
-    implements idl.UnlinkedConfiguration
+    : idl.UnlinkedConfiguration
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedConfigurationImpl(this._bc, this._bcOffset);
 
@@ -7058,51 +7499,50 @@ class _UnlinkedConfigurationImpl extends Object
     String _uri;
     String _value;
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
-    String get uri {
-        _uri ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 2, '');
+////@override
+String get uri {
+        _uri ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 2, "");
         return _uri;
     }
 
-    //@override
+    ////@override
     String get value {
-        _value ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 1, '');
+        _value ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 1, "");
         return _value;
     }
     }
-
-abstract class _UnlinkedConfigurationMixin
-    implements idl.UnlinkedConfiguration
+public abstract class _UnlinkedConfigurationMixin
+    : idl.UnlinkedConfiguration
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
-        if (name != '') _result["name"] = name;
-        if (uri != '') _result["uri"] = uri;
-        if (value != '') _result["value"] = value;
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
+        if (name != "") _result["name"] = name;
+        if (uri != "") _result["uri"] = uri;
+        if (value != "") _result["value"] = value;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "name": name,
         "uri": uri,
         "value": value,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedConstructorInitializerBuilder extends Object
+public class UnlinkedConstructorInitializerBuilder : Object
     with _UnlinkedConstructorInitializerMixin
-    implements idl.UnlinkedConstructorInitializer
+    : idl.UnlinkedConstructorInitializer
 {
     List<String> _argumentNames;
     List<UnlinkedExprBuilder> _arguments;
@@ -7110,72 +7550,86 @@ class UnlinkedConstructorInitializerBuilder extends Object
     idl.UnlinkedConstructorInitializerKind _kind;
     String _name;
 
-    //@override
-    List<String> get argumentNames => _argumentNames ??= < String >[];
+    ////@override
+    public List<String> argumentNames
+    {
+        get => _argumentNames ??= new Dictionary<String> { };
+    }
 
     /**
      * If there are `m` [arguments] and `n` [argumentNames], then each argument
      * from [arguments] with index `i` such that `n + i - m >= 0`, should be used
      * with the name at `n + i - m`.
      */
-    void set argumentNames(List < String > value) {
+    void setargumentNames(List<String> value)
+    {
         this._argumentNames = value;
     }
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get arguments =>
-        _arguments ??= < UnlinkedExprBuilder >[];
+        _arguments ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * If [kind] is `thisInvocation` or `superInvocation`, the arguments of the
-     * invocation.  Otherwise empty.
-     */
-    void set arguments(List < UnlinkedExprBuilder > value) {
-        this._arguments = value;
-    }
+/**
+ * If [kind] is `thisInvocation` or `superInvocation`, the arguments of the
+ * invocation.  Otherwise empty.
+ */
+void setarguments(List<UnlinkedExprBuilder> value)
+{
+    this._arguments = value;
+}
 
-    //@override
-    UnlinkedExprBuilder get expression => _expression;
+////@override
+public UnlinkedExprBuilder expression
+{
+    get => _expression;
+}
 
-    /**
-     * If [kind] is `field`, the expression of the field initializer.
-     * Otherwise `null`.
-     */
-    void set expression(UnlinkedExprBuilder value) {
-        this._expression = value;
-    }
+/**
+ * If [kind] is `field`, the expression of the field initializer.
+ * Otherwise `null`.
+ */
+void setexpression(UnlinkedExprBuilder value)
+{
+    this._expression = value;
+}
 
-    //@override
-    idl.UnlinkedConstructorInitializerKind get kind =>
+////@override
+idl.UnlinkedConstructorInitializerKind get kind =>
         _kind ??= idl.UnlinkedConstructorInitializerKind.field;
 
     /**
      * The kind of the constructor initializer (field, redirect, super).
      */
-    void set kind(idl.UnlinkedConstructorInitializerKind value) {
-        this._kind = value;
-    }
+    void setkind(idl.UnlinkedConstructorInitializerKind value)
+{
+    this._kind = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * If [kind] is `field`, the name of the field declared in the class.  If
-     * [kind] is `thisInvocation`, the name of the constructor, declared in this
-     * class, to redirect to.  If [kind] is `superInvocation`, the name of the
-     * constructor, declared in the superclass, to invoke.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * If [kind] is `field`, the name of the field declared in the class.  If
+ * [kind] is `thisInvocation`, the name of the constructor, declared in this
+ * class, to redirect to.  If [kind] is `superInvocation`, the name of the
+ * constructor, declared in the superclass, to invoke.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    UnlinkedConstructorInitializerBuilder(
+UnlinkedConstructorInitializerBuilder(
         {
-        List<String> argumentNames,
-       List< UnlinkedExprBuilder > arguments,
+    List<String> argumentNames,
+   List< UnlinkedExprBuilder > arguments,
       UnlinkedExprBuilder expression,
       idl.UnlinkedConstructorInitializerKind kind,
-      String name})
+      String name)
       : _argumentNames = argumentNames,
         _arguments = arguments,
         _expression = expression,
@@ -7196,7 +7650,7 @@ class UnlinkedConstructorInitializerBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         signature.addBool(this._expression != null);
         this._expression?.collectApiSignature(signature);
         signature.addInt(this._kind == null ? 0 : this._kind.index);
@@ -7207,7 +7661,7 @@ class UnlinkedConstructorInitializerBuilder extends Object
         else
         {
             signature.addInt(this._arguments.length);
-      for (var x in this._arguments)
+            foreach (var x in this._arguments)
             {
                 x?.collectApiSignature(signature);
             }
@@ -7219,7 +7673,7 @@ class UnlinkedConstructorInitializerBuilder extends Object
         else
         {
             signature.addInt(this._argumentNames.length);
-      for (var x in this._argumentNames)
+            foreach (var x in this._argumentNames)
             {
                 signature.addString(x);
             }
@@ -7274,24 +7728,23 @@ class UnlinkedConstructorInitializerBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedConstructorInitializerReader
+    : fb.TableReader<_UnlinkedConstructorInitializerImpl>
+{
+    public _UnlinkedConstructorInitializerReader();
 
-class _UnlinkedConstructorInitializerReader
-    extends fb.TableReader<_UnlinkedConstructorInitializerImpl> {
-  const _UnlinkedConstructorInitializerReader();
-
-    //@override
+    ////@override
     _UnlinkedConstructorInitializerImpl createObject(
           fb.BufferContext bc, int offset) =>
       new _UnlinkedConstructorInitializerImpl(bc, offset);
 }
-
-class _UnlinkedConstructorInitializerImpl extends Object
+public class _UnlinkedConstructorInitializerImpl : Object
     with _UnlinkedConstructorInitializerMixin
-    implements idl.UnlinkedConstructorInitializer
+    : idl.UnlinkedConstructorInitializer
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedConstructorInitializerImpl(this._bc, this._bcOffset);
 
@@ -7301,61 +7754,61 @@ class _UnlinkedConstructorInitializerImpl extends Object
     idl.UnlinkedConstructorInitializerKind _kind;
     String _name;
 
-    //@override
+    ////@override
     List<String> get argumentNames {
-        _argumentNames ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 4, const <String>[]);
+        _argumentNames ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<String>{);
         return _argumentNames;
     }
 
-    //@override
-    List<idl.UnlinkedExpr> get arguments {
+////@override
+List<idl.UnlinkedExpr> get arguments {
         _arguments ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 3, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 3, new List<idl.UnlinkedExpr>{);
         return _arguments;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedExpr get expression {
         _expression ??=
-          const _UnlinkedExprReader().vTableGet(_bc, _bcOffset, 1, null);
+public _UnlinkedExprReader().vTableGet(_bc, _bcOffset, 1, null);
         return _expression;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedConstructorInitializerKind get kind {
-        _kind ??= const _UnlinkedConstructorInitializerKindReader().vTableGet(
+        _kind ??= new _UnlinkedConstructorInitializerKindReader().vTableGet(
             _bc, _bcOffset, 2, idl.UnlinkedConstructorInitializerKind.field);
         return _kind;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
     }
-
-abstract class _UnlinkedConstructorInitializerMixin
-    implements idl.UnlinkedConstructorInitializer
+public abstract class _UnlinkedConstructorInitializerMixin
+    : idl.UnlinkedConstructorInitializer
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (argumentNames.isNotEmpty) _result["argumentNames"] = argumentNames;
         if (arguments.isNotEmpty)
             _result["arguments"] =
                 arguments.map((_value) => _value.toJson()).toList();
         if (expression != null) _result["expression"] = expression.toJson();
         if (kind != idl.UnlinkedConstructorInitializerKind.field)
-            _result["kind"] = kind.toString().split('.')[1];
-        if (name != '') _result["name"] = name;
+            _result["kind"] = kind.toString().split(".")[1];
+        if (name != "") _result["name"] = name;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "argumentNames": argumentNames,
         "arguments": arguments,
         "expression": expression,
@@ -7363,26 +7816,28 @@ abstract class _UnlinkedConstructorInitializerMixin
         "name": name,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedDocumentationCommentBuilder extends Object
+public class UnlinkedDocumentationCommentBuilder : Object
     with _UnlinkedDocumentationCommentMixin
-    implements idl.UnlinkedDocumentationComment
+    : idl.UnlinkedDocumentationComment
 {
     String _text;
 
-    //@override
+    ////@override
     Null get length =>
-        throw new UnimplementedError('attempt to access deprecated field');
+        throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
+    ////@override
     Null get offset =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    String get text => _text ??= '';
+    ////@override
+    public String text
+    {
+        get => _text ??= "";
+    }
 
     /**
      * Text of the documentation comment, with '\r\n' replaced by '\n'.
@@ -7390,11 +7845,12 @@ class UnlinkedDocumentationCommentBuilder extends Object
      * References appearing within the doc comment in square brackets are not
      * specially encoded.
      */
-    void set text(String value) {
+    void settext(String value)
+    {
         this._text = value;
     }
 
-    UnlinkedDocumentationCommentBuilder({ String text}) : _text = text;
+    UnlinkedDocumentationCommentBuilder(String text) : _text = text;
 
     /**
      * Flush [informative] data recursively.
@@ -7406,7 +7862,7 @@ class UnlinkedDocumentationCommentBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._text ?? '');
+        signature.addString(this._text ?? "");
     }
 
     fb.Offset finish(fb.Builder fbBuilder)
@@ -7423,147 +7879,160 @@ class UnlinkedDocumentationCommentBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedDocumentationCommentReader
+    : fb.TableReader<_UnlinkedDocumentationCommentImpl>
+{
+    public _UnlinkedDocumentationCommentReader();
 
-class _UnlinkedDocumentationCommentReader
-    extends fb.TableReader<_UnlinkedDocumentationCommentImpl> {
-  const _UnlinkedDocumentationCommentReader();
-
-    //@override
+    ////@override
     _UnlinkedDocumentationCommentImpl createObject(
           fb.BufferContext bc, int offset) =>
       new _UnlinkedDocumentationCommentImpl(bc, offset);
 }
-
-class _UnlinkedDocumentationCommentImpl extends Object
+public class _UnlinkedDocumentationCommentImpl : Object
     with _UnlinkedDocumentationCommentMixin
-    implements idl.UnlinkedDocumentationComment
+    : idl.UnlinkedDocumentationComment
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedDocumentationCommentImpl(this._bc, this._bcOffset);
 
     String _text;
 
-    //@override
+    ////@override
     Null get length =>
-        throw new UnimplementedError('attempt to access deprecated field');
+        throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
+    ////@override
     Null get offset =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
+    ////@override
     String get text {
-        _text ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 1, '');
+        _text ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 1, "");
         return _text;
     }
     }
-
-abstract class _UnlinkedDocumentationCommentMixin
-    implements idl.UnlinkedDocumentationComment
+public abstract class _UnlinkedDocumentationCommentMixin
+    : idl.UnlinkedDocumentationComment
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
-        if (text != '') _result["text"] = text;
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
+        if (text != "") _result["text"] = text;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "text": text,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedEnumBuilder extends Object
+public class UnlinkedEnumBuilder : Object
     with _UnlinkedEnumMixin
-    implements idl.UnlinkedEnum
+    : idl.UnlinkedEnum
 {
     List<UnlinkedExprBuilder> _annotations;
     CodeRangeBuilder _codeRange;
     UnlinkedDocumentationCommentBuilder _documentationComment;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<UnlinkedEnumValueBuilder> _values;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this enum.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this enum.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the enum.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the enum.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    UnlinkedDocumentationCommentBuilder get documentationComment =>
+////@override
+UnlinkedDocumentationCommentBuilder get documentationComment =>
       _documentationComment;
 
     /**
      * Documentation comment for the enum, or `null` if there is no documentation
      * comment.
      */
-    void set documentationComment(UnlinkedDocumentationCommentBuilder value) {
-        this._documentationComment = value;
-    }
+    void setdocumentationComment(UnlinkedDocumentationCommentBuilder value)
+{
+    this._documentationComment = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the enum type.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the enum type.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the enum name relative to the beginning of the file.
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the enum name relative to the beginning of the file.
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    //@override
-    List<UnlinkedEnumValueBuilder> get values =>
-        _values ??= < UnlinkedEnumValueBuilder >[];
+////@override
+List<UnlinkedEnumValueBuilder> get values =>
+        _values ??= new Dictionary<UnlinkedEnumValueBuilder>{};
 
     /**
      * Values listed in the enum declaration, in declaration order.
      */
-    void set values(List < UnlinkedEnumValueBuilder > value) {
-        this._values = value;
-    }
+    void setvalues(List<UnlinkedEnumValueBuilder> value)
+{
+    this._values = value;
+}
 
-    UnlinkedEnumBuilder(
+UnlinkedEnumBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       CodeRangeBuilder codeRange,
+    List<UnlinkedExprBuilder> annotations,
+   CodeRangeBuilder codeRange,
       UnlinkedDocumentationCommentBuilder documentationComment,
       String name,
       int nameOffset,
-      List< UnlinkedEnumValueBuilder > values})
+      List< UnlinkedEnumValueBuilder > values)
       : _annotations = annotations,
         _codeRange = codeRange,
         _documentationComment = documentationComment,
@@ -7588,7 +8057,7 @@ class UnlinkedEnumBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         if (this._values == null)
         {
             signature.addInt(0);
@@ -7596,7 +8065,7 @@ class UnlinkedEnumBuilder extends Object
         else
         {
             signature.addInt(this._values.length);
-      for (var x in this._values)
+            foreach (var x in this._values)
             {
                 x?.collectApiSignature(signature);
             }
@@ -7608,7 +8077,7 @@ class UnlinkedEnumBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -7671,22 +8140,21 @@ class UnlinkedEnumBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedEnumReader : fb.TableReader<_UnlinkedEnumImpl>
+{
+    public _UnlinkedEnumReader();
 
-class _UnlinkedEnumReader extends fb.TableReader<_UnlinkedEnumImpl> {
-  const _UnlinkedEnumReader();
-
-    //@override
+    ////@override
     _UnlinkedEnumImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedEnumImpl(bc, offset);
 }
-
-class _UnlinkedEnumImpl extends Object
+public class _UnlinkedEnumImpl : Object
     with _UnlinkedEnumMixin
-    implements idl.UnlinkedEnum
+    : idl.UnlinkedEnum
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedEnumImpl(this._bc, this._bcOffset);
 
@@ -7694,71 +8162,71 @@ class _UnlinkedEnumImpl extends Object
     idl.CodeRange _codeRange;
     idl.UnlinkedDocumentationComment _documentationComment;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<idl.UnlinkedEnumValue> _values;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 4, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 4, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 5, null);
+////@override
+idl.CodeRange get codeRange {
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 5, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedDocumentationComment get documentationComment {
-        _documentationComment ??= const _UnlinkedDocumentationCommentReader()
+        _documentationComment ??= new _UnlinkedDocumentationCommentReader()
           .vTableGet(_bc, _bcOffset, 3, null);
         return _documentationComment;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nameOffset;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedEnumValue> get values {
-        _values ??= const fb.ListReader<idl.UnlinkedEnumValue>(
-              const _UnlinkedEnumValueReader())
-        .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedEnumValue>[]);
+        _values ??= new fb.ListReader<idl.UnlinkedEnumValue>(
+public _UnlinkedEnumValueReader())
+        .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedEnumValue>{);
         return _values;
     }
     }
-
-abstract class _UnlinkedEnumMixin implements idl.UnlinkedEnum
+public abstract class _UnlinkedEnumMixin : idl.UnlinkedEnum
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
         if (codeRange != null) _result["codeRange"] = codeRange.toJson();
         if (documentationComment != null)
             _result["documentationComment"] = documentationComment.toJson();
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         if (values.isNotEmpty)
             _result["values"] = values.map((_value) => _value.toJson()).toList();
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "codeRange": codeRange,
         "documentationComment": documentationComment,
@@ -7767,69 +8235,78 @@ abstract class _UnlinkedEnumMixin implements idl.UnlinkedEnum
         "values": values,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedEnumValueBuilder extends Object
+public class UnlinkedEnumValueBuilder : Object
     with _UnlinkedEnumValueMixin
-    implements idl.UnlinkedEnumValue
+    : idl.UnlinkedEnumValue
 {
     List<UnlinkedExprBuilder> _annotations;
     UnlinkedDocumentationCommentBuilder _documentationComment;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this value.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this value.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    UnlinkedDocumentationCommentBuilder get documentationComment =>
+////@override
+UnlinkedDocumentationCommentBuilder get documentationComment =>
       _documentationComment;
 
     /**
      * Documentation comment for the enum value, or `null` if there is no
      * documentation comment.
      */
-    void set documentationComment(UnlinkedDocumentationCommentBuilder value) {
-        this._documentationComment = value;
-    }
+    void setdocumentationComment(UnlinkedDocumentationCommentBuilder value)
+{
+    this._documentationComment = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the enumerated value.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the enumerated value.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the enum value name relative to the beginning of the file.
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the enum value name relative to the beginning of the file.
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    UnlinkedEnumValueBuilder(
+UnlinkedEnumValueBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       UnlinkedDocumentationCommentBuilder documentationComment,
+    List<UnlinkedExprBuilder> annotations,
+   UnlinkedDocumentationCommentBuilder documentationComment,
       String name,
-      int nameOffset})
+      int nameOffset)
       : _annotations = annotations,
         _documentationComment = documentationComment,
         _name = name,
@@ -7850,7 +8327,7 @@ class UnlinkedEnumValueBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         if (this._annotations == null)
         {
             signature.addInt(0);
@@ -7858,7 +8335,7 @@ class UnlinkedEnumValueBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -7902,460 +8379,549 @@ class UnlinkedEnumValueBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedEnumValueReader : fb.TableReader<_UnlinkedEnumValueImpl>
+{
+    public _UnlinkedEnumValueReader();
 
-class _UnlinkedEnumValueReader extends fb.TableReader<_UnlinkedEnumValueImpl> {
-  const _UnlinkedEnumValueReader();
-
-    //@override
+    ////@override
     _UnlinkedEnumValueImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedEnumValueImpl(bc, offset);
 }
-
-class _UnlinkedEnumValueImpl extends Object
+public class _UnlinkedEnumValueImpl : Object
     with _UnlinkedEnumValueMixin
-    implements idl.UnlinkedEnumValue
+    : idl.UnlinkedEnumValue
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedEnumValueImpl(this._bc, this._bcOffset);
 
     List<idl.UnlinkedExpr> _annotations;
     idl.UnlinkedDocumentationComment _documentationComment;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 3, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 3, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.UnlinkedDocumentationComment get documentationComment {
-        _documentationComment ??= const _UnlinkedDocumentationCommentReader()
+////@override
+idl.UnlinkedDocumentationComment get documentationComment {
+        _documentationComment ??= new _UnlinkedDocumentationCommentReader()
           .vTableGet(_bc, _bcOffset, 2, null);
         return _documentationComment;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nameOffset;
     }
     }
-
-abstract class _UnlinkedEnumValueMixin implements idl.UnlinkedEnumValue
+public abstract class _UnlinkedEnumValueMixin : idl.UnlinkedEnumValue
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
         if (documentationComment != null)
             _result["documentationComment"] = documentationComment.toJson();
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "documentationComment": documentationComment,
         "name": name,
         "nameOffset": nameOffset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedExecutableBuilder extends Object
+public class UnlinkedExecutableBuilder : Object
     with _UnlinkedExecutableMixin
-    implements idl.UnlinkedExecutable
+    : idl.UnlinkedExecutable
 {
     List<UnlinkedExprBuilder> _annotations;
     UnlinkedExprBuilder _bodyExpr;
     CodeRangeBuilder _codeRange;
     List<UnlinkedConstructorInitializerBuilder> _constantInitializers;
-  int _constCycleSlot;
+    int _constCycleSlot;
     UnlinkedDocumentationCommentBuilder _documentationComment;
-  int _inferredReturnTypeSlot;
-  bool _isAbstract;
-  bool _isAsynchronous;
-  bool _isConst;
-  bool _isExternal;
-  bool _isFactory;
-  bool _isGenerator;
-  bool _isRedirectedConstructor;
-  bool _isStatic;
+    int _inferredReturnTypeSlot;
+    bool _isAbstract;
+    bool _isAsynchronous;
+    bool _isConst;
+    bool _isExternal;
+    bool _isFactory;
+    bool _isGenerator;
+    bool _isRedirectedConstructor;
+    bool _isStatic;
     idl.UnlinkedExecutableKind _kind;
     List<UnlinkedExecutableBuilder> _localFunctions;
     String _name;
-  int _nameEnd;
-  int _nameOffset;
+    int _nameEnd;
+    int _nameOffset;
     List<UnlinkedParamBuilder> _parameters;
-  int _periodOffset;
+    int _periodOffset;
     EntityRefBuilder _redirectedConstructor;
     String _redirectedConstructorName;
     EntityRefBuilder _returnType;
     List<UnlinkedTypeParamBuilder> _typeParameters;
-  int _visibleLength;
-  int _visibleOffset;
+    int _visibleLength;
+    int _visibleOffset;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this executable.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this executable.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    UnlinkedExprBuilder get bodyExpr => _bodyExpr;
+////@override
+public UnlinkedExprBuilder bodyExpr
+{
+    get => _bodyExpr;
+}
 
-    /**
-     * If this executable's function body is declared using `=>`, the expression
-     * to the right of the `=>`.  May be omitted if neither type inference nor
-     * constant evaluation depends on the function body.
-     */
-    void set bodyExpr(UnlinkedExprBuilder value) {
-        this._bodyExpr = value;
-    }
+/**
+ * If this executable's function body is declared using `=>`, the expression
+ * to the right of the `=>`.  May be omitted if neither type inference nor
+ * constant evaluation depends on the function body.
+ */
+void setbodyExpr(UnlinkedExprBuilder value)
+{
+    this._bodyExpr = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the executable.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the executable.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    List<UnlinkedConstructorInitializerBuilder> get constantInitializers =>
-        _constantInitializers ??= < UnlinkedConstructorInitializerBuilder >[];
+////@override
+List<UnlinkedConstructorInitializerBuilder> get constantInitializers =>
+        _constantInitializers ??= new Dictionary<UnlinkedConstructorInitializerBuilder>{};
 
     /**
      * If a constant [UnlinkedExecutableKind.constructor], the constructor
      * initializers.  Otherwise empty.
      */
-    void set constantInitializers(
-        List < UnlinkedConstructorInitializerBuilder > value) {
-        this._constantInitializers = value;
-    }
+    void setconstantInitializers(
+        List<UnlinkedConstructorInitializerBuilder> value)
+{
+    this._constantInitializers = value;
+}
 
-    //@override
-    int get constCycleSlot => _constCycleSlot ??= 0;
+////@override
+public int constCycleSlot
+{
+    get => _constCycleSlot ??= 0;
+}
 
-    /**
-     * If [kind] is [UnlinkedExecutableKind.constructor] and [isConst] is `true`,
-     * a nonzero slot id which is unique within this compilation unit.  If this id
-     * is found in [LinkedUnit.constCycles], then this constructor is part of a
-     * cycle.
-     *
-     * Otherwise, zero.
-     */
-    void set constCycleSlot(int value) {
-        assert(value == null || value >= 0);
-        this._constCycleSlot = value;
-    }
+/**
+ * If [kind] is [UnlinkedExecutableKind.constructor] and [isConst] is `true`,
+ * a nonzero slot id which is unique within this compilation unit.  If this id
+ * is found in [LinkedUnit.constCycles], then this constructor is part of a
+ * cycle.
+ *
+ * Otherwise, zero.
+ */
+void setconstCycleSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._constCycleSlot = value;
+}
 
-    //@override
-    UnlinkedDocumentationCommentBuilder get documentationComment =>
+////@override
+UnlinkedDocumentationCommentBuilder get documentationComment =>
       _documentationComment;
 
     /**
      * Documentation comment for the executable, or `null` if there is no
      * documentation comment.
      */
-    void set documentationComment(UnlinkedDocumentationCommentBuilder value) {
-        this._documentationComment = value;
-    }
+    void setdocumentationComment(UnlinkedDocumentationCommentBuilder value)
+{
+    this._documentationComment = value;
+}
 
-    //@override
-    int get inferredReturnTypeSlot => _inferredReturnTypeSlot ??= 0;
+////@override
+public int inferredReturnTypeSlot
+{
+    get => _inferredReturnTypeSlot ??= 0;
+}
 
-    /**
-     * If this executable's return type is inferable, nonzero slot id
-     * identifying which entry in [LinkedUnit.types] contains the inferred
-     * return type.  If there is no matching entry in [LinkedUnit.types], then
-     * no return type was inferred for this variable, so its static type is
-     * `dynamic`.
-     */
-    void set inferredReturnTypeSlot(int value) {
-        assert(value == null || value >= 0);
-        this._inferredReturnTypeSlot = value;
-    }
+/**
+ * If this executable's return type is inferable, nonzero slot id
+ * identifying which entry in [LinkedUnit.types] contains the inferred
+ * return type.  If there is no matching entry in [LinkedUnit.types], then
+ * no return type was inferred for this variable, so its static type is
+ * `dynamic`.
+ */
+void setinferredReturnTypeSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._inferredReturnTypeSlot = value;
+}
 
-    //@override
-    bool get isAbstract => _isAbstract ??= false;
+////@override
+public bool isAbstract
+{
+    get => _isAbstract ??= false;
+}
 
-    /**
-     * Indicates whether the executable is declared using the `abstract` keyword.
-     */
-    void set isAbstract(bool value) {
-        this._isAbstract = value;
-    }
+/**
+ * Indicates whether the executable is declared using the `abstract` keyword.
+ */
+void setisAbstract(bool value)
+{
+    this._isAbstract = value;
+}
 
-    //@override
-    bool get isAsynchronous => _isAsynchronous ??= false;
+////@override
+public bool isAsynchronous
+{
+    get => _isAsynchronous ??= false;
+}
 
-    /**
-     * Indicates whether the executable has body marked as being asynchronous.
-     */
-    void set isAsynchronous(bool value) {
-        this._isAsynchronous = value;
-    }
+/**
+ * Indicates whether the executable has body marked as being asynchronous.
+ */
+void setisAsynchronous(bool value)
+{
+    this._isAsynchronous = value;
+}
 
-    //@override
-    bool get isConst => _isConst ??= false;
+////@override
+public bool isConst
+{
+    get => _isConst ??= false;
+}
 
-    /**
-     * Indicates whether the executable is declared using the `const` keyword.
-     */
-    void set isConst(bool value) {
-        this._isConst = value;
-    }
+/**
+ * Indicates whether the executable is declared using the `const` keyword.
+ */
+void setisConst(bool value)
+{
+    this._isConst = value;
+}
 
-    //@override
-    bool get isExternal => _isExternal ??= false;
+////@override
+public bool isExternal
+{
+    get => _isExternal ??= false;
+}
 
-    /**
-     * Indicates whether the executable is declared using the `external` keyword.
-     */
-    void set isExternal(bool value) {
-        this._isExternal = value;
-    }
+/**
+ * Indicates whether the executable is declared using the `external` keyword.
+ */
+void setisExternal(bool value)
+{
+    this._isExternal = value;
+}
 
-    //@override
-    bool get isFactory => _isFactory ??= false;
+////@override
+public bool isFactory
+{
+    get => _isFactory ??= false;
+}
 
-    /**
-     * Indicates whether the executable is declared using the `factory` keyword.
-     */
-    void set isFactory(bool value) {
-        this._isFactory = value;
-    }
+/**
+ * Indicates whether the executable is declared using the `factory` keyword.
+ */
+void setisFactory(bool value)
+{
+    this._isFactory = value;
+}
 
-    //@override
-    bool get isGenerator => _isGenerator ??= false;
+////@override
+public bool isGenerator
+{
+    get => _isGenerator ??= false;
+}
 
-    /**
-     * Indicates whether the executable has body marked as being a generator.
-     */
-    void set isGenerator(bool value) {
-        this._isGenerator = value;
-    }
+/**
+ * Indicates whether the executable has body marked as being a generator.
+ */
+void setisGenerator(bool value)
+{
+    this._isGenerator = value;
+}
 
-    //@override
-    bool get isRedirectedConstructor => _isRedirectedConstructor ??= false;
+////@override
+public bool isRedirectedConstructor
+{
+    get => _isRedirectedConstructor ??= false;
+}
 
-    /**
-     * Indicates whether the executable is a redirected constructor.
-     */
-    void set isRedirectedConstructor(bool value) {
-        this._isRedirectedConstructor = value;
-    }
+/**
+ * Indicates whether the executable is a redirected constructor.
+ */
+void setisRedirectedConstructor(bool value)
+{
+    this._isRedirectedConstructor = value;
+}
 
-    //@override
-    bool get isStatic => _isStatic ??= false;
+////@override
+public bool isStatic
+{
+    get => _isStatic ??= false;
+}
 
-    /**
-     * Indicates whether the executable is declared using the `static` keyword.
-     *
-     * Note that for top level executables, this flag is false, since they are
-     * not declared using the `static` keyword (even though they are considered
-     * static for semantic purposes).
-     */
-    void set isStatic(bool value) {
-        this._isStatic = value;
-    }
+/**
+ * Indicates whether the executable is declared using the `static` keyword.
+ *
+ * Note that for top level executables, this flag is false, since they are
+ * not declared using the `static` keyword (even though they are considered
+ * static for semantic purposes).
+ */
+void setisStatic(bool value)
+{
+    this._isStatic = value;
+}
 
-    //@override
-    idl.UnlinkedExecutableKind get kind =>
+////@override
+idl.UnlinkedExecutableKind get kind =>
         _kind ??= idl.UnlinkedExecutableKind.functionOrMethod;
 
     /**
      * The kind of the executable (function/method, getter, setter, or
      * constructor).
      */
-    void set kind(idl.UnlinkedExecutableKind value) {
-        this._kind = value;
-    }
+    void setkind(idl.UnlinkedExecutableKind value)
+{
+    this._kind = value;
+}
 
-    //@override
-    List<UnlinkedExecutableBuilder> get localFunctions =>
-        _localFunctions ??= < UnlinkedExecutableBuilder >[];
+////@override
+List<UnlinkedExecutableBuilder> get localFunctions =>
+        _localFunctions ??= new Dictionary<UnlinkedExecutableBuilder>{};
 
     /**
      * The list of local functions.
      */
-    void set localFunctions(List < UnlinkedExecutableBuilder > value) {
-        this._localFunctions = value;
-    }
+    void setlocalFunctions(List<UnlinkedExecutableBuilder> value)
+{
+    this._localFunctions = value;
+}
 
-    //@override
-    Null get localLabels =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get localLabels =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    Null get localVariables =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get localVariables =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the executable.  For setters, this includes the trailing "=".  For
-     * named constructors, this excludes the class name and excludes the ".".
-     * For unnamed constructors, this is the empty string.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the executable.  For setters, this includes the trailing "=".  For
+ * named constructors, this excludes the class name and excludes the ".".
+ * For unnamed constructors, this is the empty string.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameEnd => _nameEnd ??= 0;
+////@override
+public int nameEnd
+{
+    get => _nameEnd ??= 0;
+}
 
-    /**
-     * If [kind] is [UnlinkedExecutableKind.constructor] and [name] is not empty,
-     * the offset of the end of the constructor name.  Otherwise zero.
-     */
-    void set nameEnd(int value) {
-        assert(value == null || value >= 0);
-        this._nameEnd = value;
-    }
+/**
+ * If [kind] is [UnlinkedExecutableKind.constructor] and [name] is not empty,
+ * the offset of the end of the constructor name.  Otherwise zero.
+ */
+void setnameEnd(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameEnd = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the executable name relative to the beginning of the file.  For
-     * named constructors, this excludes the class name and excludes the ".".
-     * For unnamed constructors, this is the offset of the class name (i.e. the
-     * offset of the second "C" in "class C { C(); }").
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the executable name relative to the beginning of the file.  For
+ * named constructors, this excludes the class name and excludes the ".".
+ * For unnamed constructors, this is the offset of the class name (i.e. the
+ * offset of the second "C" in "class C { C(); }").
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    //@override
-    List<UnlinkedParamBuilder> get parameters =>
-        _parameters ??= < UnlinkedParamBuilder >[];
+////@override
+List<UnlinkedParamBuilder> get parameters =>
+        _parameters ??= new Dictionary<UnlinkedParamBuilder>{};
 
     /**
      * Parameters of the executable, if any.  Note that getters have no
      * parameters (hence this will be the empty list), and setters have a single
      * parameter.
      */
-    void set parameters(List < UnlinkedParamBuilder > value) {
-        this._parameters = value;
-    }
+    void setparameters(List<UnlinkedParamBuilder> value)
+{
+    this._parameters = value;
+}
 
-    //@override
-    int get periodOffset => _periodOffset ??= 0;
+////@override
+public int periodOffset
+{
+    get => _periodOffset ??= 0;
+}
 
-    /**
-     * If [kind] is [UnlinkedExecutableKind.constructor] and [name] is not empty,
-     * the offset of the period before the constructor name.  Otherwise zero.
-     */
-    void set periodOffset(int value) {
-        assert(value == null || value >= 0);
-        this._periodOffset = value;
-    }
+/**
+ * If [kind] is [UnlinkedExecutableKind.constructor] and [name] is not empty,
+ * the offset of the period before the constructor name.  Otherwise zero.
+ */
+void setperiodOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._periodOffset = value;
+}
 
-    //@override
-    EntityRefBuilder get redirectedConstructor => _redirectedConstructor;
+////@override
+public EntityRefBuilder redirectedConstructor
+{
+    get => _redirectedConstructor;
+}
 
-    /**
-     * If [isRedirectedConstructor] and [isFactory] are both `true`, the
-     * constructor to which this constructor redirects; otherwise empty.
-     */
-    void set redirectedConstructor(EntityRefBuilder value) {
-        this._redirectedConstructor = value;
-    }
+/**
+ * If [isRedirectedConstructor] and [isFactory] are both `true`, the
+ * constructor to which this constructor redirects; otherwise empty.
+ */
+void setredirectedConstructor(EntityRefBuilder value)
+{
+    this._redirectedConstructor = value;
+}
 
-    //@override
-    String get redirectedConstructorName => _redirectedConstructorName ??= '';
+////@override
+public String redirectedConstructorName
+{
+    get => _redirectedConstructorName ??= "";
+}
 
-    /**
-     * If [isRedirectedConstructor] is `true` and [isFactory] is `false`, the
-     * name of the constructor that this constructor redirects to; otherwise
-     * empty.
-     */
-    void set redirectedConstructorName(String value) {
-        this._redirectedConstructorName = value;
-    }
+/**
+ * If [isRedirectedConstructor] is `true` and [isFactory] is `false`, the
+ * name of the constructor that this constructor redirects to; otherwise
+ * empty.
+ */
+void setredirectedConstructorName(String value)
+{
+    this._redirectedConstructorName = value;
+}
 
-    //@override
-    EntityRefBuilder get returnType => _returnType;
+////@override
+public EntityRefBuilder returnType
+{
+    get => _returnType;
+}
 
-    /**
-     * Declared return type of the executable.  Absent if the executable is a
-     * constructor or the return type is implicit.  Absent for executables
-     * associated with variable initializers and closures, since these
-     * executables may have return types that are not accessible via direct
-     * imports.
-     */
-    void set returnType(EntityRefBuilder value) {
-        this._returnType = value;
-    }
+/**
+ * Declared return type of the executable.  Absent if the executable is a
+ * constructor or the return type is implicit.  Absent for executables
+ * associated with variable initializers and closures, since these
+ * executables may have return types that are not accessible via direct
+ * imports.
+ */
+void setreturnType(EntityRefBuilder value)
+{
+    this._returnType = value;
+}
 
-    //@override
-    List<UnlinkedTypeParamBuilder> get typeParameters =>
-        _typeParameters ??= < UnlinkedTypeParamBuilder >[];
+////@override
+List<UnlinkedTypeParamBuilder> get typeParameters =>
+        _typeParameters ??= new Dictionary<UnlinkedTypeParamBuilder>{};
 
     /**
      * Type parameters of the executable, if any.  Empty if support for generic
      * method syntax is disabled.
      */
-    void set typeParameters(List < UnlinkedTypeParamBuilder > value) {
-        this._typeParameters = value;
-    }
+    void settypeParameters(List<UnlinkedTypeParamBuilder> value)
+{
+    this._typeParameters = value;
+}
 
-    //@override
-    int get visibleLength => _visibleLength ??= 0;
+////@override
+public int visibleLength
+{
+    get => _visibleLength ??= 0;
+}
 
-    /**
-     * If a local function, the length of the visible range; zero otherwise.
-     */
-    void set visibleLength(int value) {
-        assert(value == null || value >= 0);
-        this._visibleLength = value;
-    }
+/**
+ * If a local function, the length of the visible range; zero otherwise.
+ */
+void setvisibleLength(int value)
+{
+    assert(value == null || value >= 0);
+    this._visibleLength = value;
+}
 
-    //@override
-    int get visibleOffset => _visibleOffset ??= 0;
+////@override
+public int visibleOffset
+{
+    get => _visibleOffset ??= 0;
+}
 
-    /**
-     * If a local function, the beginning of the visible range; zero otherwise.
-     */
-    void set visibleOffset(int value) {
-        assert(value == null || value >= 0);
-        this._visibleOffset = value;
-    }
+/**
+ * If a local function, the beginning of the visible range; zero otherwise.
+ */
+void setvisibleOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._visibleOffset = value;
+}
 
-    UnlinkedExecutableBuilder(
+UnlinkedExecutableBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       UnlinkedExprBuilder bodyExpr,
+    List<UnlinkedExprBuilder> annotations,
+   UnlinkedExprBuilder bodyExpr,
       CodeRangeBuilder codeRange,
       List< UnlinkedConstructorInitializerBuilder > constantInitializers,
       int constCycleSlot,
@@ -8381,7 +8947,7 @@ class UnlinkedExecutableBuilder extends Object
       EntityRefBuilder returnType,
       List<UnlinkedTypeParamBuilder> typeParameters,
       int visibleLength,
-      int visibleOffset})
+      int visibleOffset)
       : _annotations = annotations,
         _bodyExpr = bodyExpr,
         _codeRange = codeRange,
@@ -8440,7 +9006,7 @@ class UnlinkedExecutableBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         if (this._parameters == null)
         {
             signature.addInt(0);
@@ -8448,7 +9014,7 @@ class UnlinkedExecutableBuilder extends Object
         else
         {
             signature.addInt(this._parameters.length);
-      for (var x in this._parameters)
+            foreach (var x in this._parameters)
             {
                 x?.collectApiSignature(signature);
             }
@@ -8464,7 +9030,7 @@ class UnlinkedExecutableBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -8482,7 +9048,7 @@ class UnlinkedExecutableBuilder extends Object
         else
         {
             signature.addInt(this._constantInitializers.length);
-      for (var x in this._constantInitializers)
+            foreach (var x in this._constantInitializers)
             {
                 x?.collectApiSignature(signature);
             }
@@ -8496,12 +9062,12 @@ class UnlinkedExecutableBuilder extends Object
         else
         {
             signature.addInt(this._typeParameters.length);
-      for (var x in this._typeParameters)
+            foreach (var x in this._typeParameters)
             {
                 x?.collectApiSignature(signature);
             }
         }
-        signature.addString(this._redirectedConstructorName ?? '');
+        signature.addString(this._redirectedConstructorName ?? "");
         if (this._localFunctions == null)
         {
             signature.addInt(0);
@@ -8509,7 +9075,7 @@ class UnlinkedExecutableBuilder extends Object
         else
         {
             signature.addInt(this._localFunctions.length);
-      for (var x in this._localFunctions)
+            foreach (var x in this._localFunctions)
             {
                 x?.collectApiSignature(signature);
             }
@@ -8702,23 +9268,22 @@ class UnlinkedExecutableBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedExecutableReader
+    : fb.TableReader<_UnlinkedExecutableImpl>
+{
+    public _UnlinkedExecutableReader();
 
-class _UnlinkedExecutableReader
-    extends fb.TableReader<_UnlinkedExecutableImpl> {
-  const _UnlinkedExecutableReader();
-
-    //@override
+    ////@override
     _UnlinkedExecutableImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedExecutableImpl(bc, offset);
 }
-
-class _UnlinkedExecutableImpl extends Object
+public class _UnlinkedExecutableImpl : Object
     with _UnlinkedExecutableMixin
-    implements idl.UnlinkedExecutable
+    : idl.UnlinkedExecutable
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedExecutableImpl(this._bc, this._bcOffset);
 
@@ -8726,234 +9291,234 @@ class _UnlinkedExecutableImpl extends Object
     idl.UnlinkedExpr _bodyExpr;
     idl.CodeRange _codeRange;
     List<idl.UnlinkedConstructorInitializer> _constantInitializers;
-  int _constCycleSlot;
+    int _constCycleSlot;
     idl.UnlinkedDocumentationComment _documentationComment;
-  int _inferredReturnTypeSlot;
-  bool _isAbstract;
-  bool _isAsynchronous;
-  bool _isConst;
-  bool _isExternal;
-  bool _isFactory;
-  bool _isGenerator;
-  bool _isRedirectedConstructor;
-  bool _isStatic;
+    int _inferredReturnTypeSlot;
+    bool _isAbstract;
+    bool _isAsynchronous;
+    bool _isConst;
+    bool _isExternal;
+    bool _isFactory;
+    bool _isGenerator;
+    bool _isRedirectedConstructor;
+    bool _isStatic;
     idl.UnlinkedExecutableKind _kind;
     List<idl.UnlinkedExecutable> _localFunctions;
     String _name;
-  int _nameEnd;
-  int _nameOffset;
+    int _nameEnd;
+    int _nameOffset;
     List<idl.UnlinkedParam> _parameters;
-  int _periodOffset;
+    int _periodOffset;
     idl.EntityRef _redirectedConstructor;
     String _redirectedConstructorName;
     idl.EntityRef _returnType;
     List<idl.UnlinkedTypeParam> _typeParameters;
-  int _visibleLength;
-  int _visibleOffset;
+    int _visibleLength;
+    int _visibleOffset;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 6, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 6, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.UnlinkedExpr get bodyExpr {
+////@override
+idl.UnlinkedExpr get bodyExpr {
         _bodyExpr ??=
-          const _UnlinkedExprReader().vTableGet(_bc, _bcOffset, 29, null);
+public _UnlinkedExprReader().vTableGet(_bc, _bcOffset, 29, null);
         return _bodyExpr;
     }
 
-    //@override
+    ////@override
     idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 26, null);
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 26, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedConstructorInitializer> get constantInitializers {
         _constantInitializers ??=
-          const fb.ListReader<idl.UnlinkedConstructorInitializer>(
-                  const _UnlinkedConstructorInitializerReader())
+public fb.ListReader<idl.UnlinkedConstructorInitializer>(
+public _UnlinkedConstructorInitializerReader())
             .vTableGet(_bc, _bcOffset, 14,
-                  const <idl.UnlinkedConstructorInitializer>[]);
+                  new List<idl.UnlinkedConstructorInitializer>{);
         return _constantInitializers;
     }
 
-    //@override
+    ////@override
     int get constCycleSlot {
         _constCycleSlot ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 25, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 25, 0);
         return _constCycleSlot;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedDocumentationComment get documentationComment {
-        _documentationComment ??= const _UnlinkedDocumentationCommentReader()
+        _documentationComment ??= new _UnlinkedDocumentationCommentReader()
           .vTableGet(_bc, _bcOffset, 7, null);
         return _documentationComment;
     }
 
-    //@override
+    ////@override
     int get inferredReturnTypeSlot {
         _inferredReturnTypeSlot ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 5, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 5, 0);
         return _inferredReturnTypeSlot;
     }
 
-    //@override
+    ////@override
     bool get isAbstract {
-        _isAbstract ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 10, false);
+        _isAbstract ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 10, false);
         return _isAbstract;
     }
 
-    //@override
+    ////@override
     bool get isAsynchronous {
         _isAsynchronous ??=
-          const fb.BoolReader().vTableGet(_bc, _bcOffset, 27, false);
+public fb.BoolReader().vTableGet(_bc, _bcOffset, 27, false);
         return _isAsynchronous;
     }
 
-    //@override
+    ////@override
     bool get isConst {
-        _isConst ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 12, false);
+        _isConst ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 12, false);
         return _isConst;
     }
 
-    //@override
+    ////@override
     bool get isExternal {
-        _isExternal ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 11, false);
+        _isExternal ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 11, false);
         return _isExternal;
     }
 
-    //@override
+    ////@override
     bool get isFactory {
-        _isFactory ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 8, false);
+        _isFactory ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 8, false);
         return _isFactory;
     }
 
-    //@override
+    ////@override
     bool get isGenerator {
-        _isGenerator ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 28, false);
+        _isGenerator ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 28, false);
         return _isGenerator;
     }
 
-    //@override
+    ////@override
     bool get isRedirectedConstructor {
         _isRedirectedConstructor ??=
-          const fb.BoolReader().vTableGet(_bc, _bcOffset, 13, false);
+public fb.BoolReader().vTableGet(_bc, _bcOffset, 13, false);
         return _isRedirectedConstructor;
     }
 
-    //@override
+    ////@override
     bool get isStatic {
-        _isStatic ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 9, false);
+        _isStatic ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 9, false);
         return _isStatic;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedExecutableKind get kind {
-        _kind ??= const _UnlinkedExecutableKindReader().vTableGet(
+        _kind ??= new _UnlinkedExecutableKindReader().vTableGet(
             _bc, _bcOffset, 4, idl.UnlinkedExecutableKind.functionOrMethod);
         return _kind;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedExecutable> get localFunctions {
-        _localFunctions ??= const fb.ListReader<idl.UnlinkedExecutable>(
-              const _UnlinkedExecutableReader())
-        .vTableGet(_bc, _bcOffset, 18, const <idl.UnlinkedExecutable>[]);
+        _localFunctions ??= new fb.ListReader<idl.UnlinkedExecutable>(
+public _UnlinkedExecutableReader())
+        .vTableGet(_bc, _bcOffset, 18, new List<idl.UnlinkedExecutable>{);
         return _localFunctions;
     }
 
-    //@override
+    ////@override
     Null get localLabels =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    Null get localVariables =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get localVariables =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 1, '');
+////@override
+String get name {
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 1, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameEnd {
-        _nameEnd ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 23, 0);
+        _nameEnd ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 23, 0);
         return _nameEnd;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _nameOffset;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedParam> get parameters {
         _parameters ??=
-          const fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
-            .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedParam>[]);
+public fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
+            .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedParam>{);
         return _parameters;
     }
 
-    //@override
+    ////@override
     int get periodOffset {
-        _periodOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 24, 0);
+        _periodOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 24, 0);
         return _periodOffset;
     }
 
-    //@override
+    ////@override
     idl.EntityRef get redirectedConstructor {
         _redirectedConstructor ??=
-          const _EntityRefReader().vTableGet(_bc, _bcOffset, 15, null);
+public _EntityRefReader().vTableGet(_bc, _bcOffset, 15, null);
         return _redirectedConstructor;
     }
 
-    //@override
+    ////@override
     String get redirectedConstructorName {
         _redirectedConstructorName ??=
-          const fb.StringReader().vTableGet(_bc, _bcOffset, 17, '');
+public fb.StringReader().vTableGet(_bc, _bcOffset, 17, "");
         return _redirectedConstructorName;
     }
 
-    //@override
+    ////@override
     idl.EntityRef get returnType {
-        _returnType ??= const _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
+        _returnType ??= new _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
         return _returnType;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedTypeParam> get typeParameters {
-        _typeParameters ??= const fb.ListReader<idl.UnlinkedTypeParam>(
-              const _UnlinkedTypeParamReader())
-        .vTableGet(_bc, _bcOffset, 16, const <idl.UnlinkedTypeParam>[]);
+        _typeParameters ??= new fb.ListReader<idl.UnlinkedTypeParam>(
+public _UnlinkedTypeParamReader())
+        .vTableGet(_bc, _bcOffset, 16, new List<idl.UnlinkedTypeParam>{);
         return _typeParameters;
     }
 
-    //@override
+    ////@override
     int get visibleLength {
-        _visibleLength ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 20, 0);
+        _visibleLength ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 20, 0);
         return _visibleLength;
     }
 
-    //@override
+    ////@override
     int get visibleOffset {
-        _visibleOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 21, 0);
+        _visibleOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 21, 0);
         return _visibleOffset;
     }
     }
-
-abstract class _UnlinkedExecutableMixin implements idl.UnlinkedExecutable
+public abstract class _UnlinkedExecutableMixin : idl.UnlinkedExecutable
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
@@ -8977,11 +9542,11 @@ abstract class _UnlinkedExecutableMixin implements idl.UnlinkedExecutable
             _result["isRedirectedConstructor"] = isRedirectedConstructor;
         if (isStatic != false) _result["isStatic"] = isStatic;
         if (kind != idl.UnlinkedExecutableKind.functionOrMethod)
-            _result["kind"] = kind.toString().split('.')[1];
+            _result["kind"] = kind.toString().split(".")[1];
         if (localFunctions.isNotEmpty)
             _result["localFunctions"] =
                 localFunctions.map((_value) => _value.toJson()).toList();
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (nameEnd != 0) _result["nameEnd"] = nameEnd;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         if (parameters.isNotEmpty)
@@ -8990,7 +9555,7 @@ abstract class _UnlinkedExecutableMixin implements idl.UnlinkedExecutable
         if (periodOffset != 0) _result["periodOffset"] = periodOffset;
         if (redirectedConstructor != null)
             _result["redirectedConstructor"] = redirectedConstructor.toJson();
-        if (redirectedConstructorName != '')
+        if (redirectedConstructorName != "")
             _result["redirectedConstructorName"] = redirectedConstructorName;
         if (returnType != null) _result["returnType"] = returnType.toJson();
         if (typeParameters.isNotEmpty)
@@ -9001,8 +9566,8 @@ abstract class _UnlinkedExecutableMixin implements idl.UnlinkedExecutable
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "bodyExpr": bodyExpr,
         "codeRange": codeRange,
@@ -9033,71 +9598,83 @@ abstract class _UnlinkedExecutableMixin implements idl.UnlinkedExecutable
         "visibleOffset": visibleOffset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedExportNonPublicBuilder extends Object
+public class UnlinkedExportNonPublicBuilder : Object
     with _UnlinkedExportNonPublicMixin
-    implements idl.UnlinkedExportNonPublic
+    : idl.UnlinkedExportNonPublic
 {
     List<UnlinkedExprBuilder> _annotations;
-  int _offset;
-  int _uriEnd;
-  int _uriOffset;
+    int _offset;
+    int _uriEnd;
+    int _uriOffset;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this export directive.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this export directive.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    int get offset => _offset ??= 0;
+////@override
+public int offset
+{
+    get => _offset ??= 0;
+}
 
-    /**
-     * Offset of the "export" keyword.
-     */
-    void set offset(int value) {
-        assert(value == null || value >= 0);
-        this._offset = value;
-    }
+/**
+ * Offset of the "export" keyword.
+ */
+void setoffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._offset = value;
+}
 
-    //@override
-    int get uriEnd => _uriEnd ??= 0;
+////@override
+public int uriEnd
+{
+    get => _uriEnd ??= 0;
+}
 
-    /**
-     * End of the URI string (including quotes) relative to the beginning of the
-     * file.
-     */
-    void set uriEnd(int value) {
-        assert(value == null || value >= 0);
-        this._uriEnd = value;
-    }
+/**
+ * End of the URI string (including quotes) relative to the beginning of the
+ * file.
+ */
+void seturiEnd(int value)
+{
+    assert(value == null || value >= 0);
+    this._uriEnd = value;
+}
 
-    //@override
-    int get uriOffset => _uriOffset ??= 0;
+////@override
+public int uriOffset
+{
+    get => _uriOffset ??= 0;
+}
 
-    /**
-     * Offset of the URI string (including quotes) relative to the beginning of
-     * the file.
-     */
-    void set uriOffset(int value) {
-        assert(value == null || value >= 0);
-        this._uriOffset = value;
-    }
+/**
+ * Offset of the URI string (including quotes) relative to the beginning of
+ * the file.
+ */
+void seturiOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._uriOffset = value;
+}
 
-    UnlinkedExportNonPublicBuilder(
+UnlinkedExportNonPublicBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
+    List<UnlinkedExprBuilder> annotations,
       int offset,
       int uriEnd,
-      int uriOffset})
+      int uriOffset)
       : _annotations = annotations,
         _offset = offset,
         _uriEnd = uriEnd,
@@ -9126,7 +9703,7 @@ class UnlinkedExportNonPublicBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -9160,64 +9737,63 @@ class UnlinkedExportNonPublicBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedExportNonPublicReader
+    : fb.TableReader<_UnlinkedExportNonPublicImpl>
+{
+    public _UnlinkedExportNonPublicReader();
 
-class _UnlinkedExportNonPublicReader
-    extends fb.TableReader<_UnlinkedExportNonPublicImpl> {
-  const _UnlinkedExportNonPublicReader();
-
-    //@override
+    ////@override
     _UnlinkedExportNonPublicImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedExportNonPublicImpl(bc, offset);
 }
-
-class _UnlinkedExportNonPublicImpl extends Object
+public class _UnlinkedExportNonPublicImpl : Object
     with _UnlinkedExportNonPublicMixin
-    implements idl.UnlinkedExportNonPublic
+    : idl.UnlinkedExportNonPublic
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedExportNonPublicImpl(this._bc, this._bcOffset);
 
     List<idl.UnlinkedExpr> _annotations;
-  int _offset;
-  int _uriEnd;
-  int _uriOffset;
+    int _offset;
+    int _uriEnd;
+    int _uriOffset;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 3, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 3, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    int get offset {
-        _offset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+////@override
+int get offset {
+        _offset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _offset;
     }
 
-    //@override
+    ////@override
     int get uriEnd {
-        _uriEnd ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _uriEnd ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _uriEnd;
     }
 
-    //@override
+    ////@override
     int get uriOffset {
-        _uriOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+        _uriOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _uriOffset;
     }
     }
-
-abstract class _UnlinkedExportNonPublicMixin
-    implements idl.UnlinkedExportNonPublic
+public abstract class _UnlinkedExportNonPublicMixin
+    : idl.UnlinkedExportNonPublic
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
@@ -9227,64 +9803,69 @@ abstract class _UnlinkedExportNonPublicMixin
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "offset": offset,
         "uriEnd": uriEnd,
         "uriOffset": uriOffset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedExportPublicBuilder extends Object
+public class UnlinkedExportPublicBuilder : Object
     with _UnlinkedExportPublicMixin
-    implements idl.UnlinkedExportPublic
+    : idl.UnlinkedExportPublic
 {
     List<UnlinkedCombinatorBuilder> _combinators;
     List<UnlinkedConfigurationBuilder> _configurations;
     String _uri;
 
-    //@override
+    ////@override
     List<UnlinkedCombinatorBuilder> get combinators =>
-        _combinators ??= < UnlinkedCombinatorBuilder >[];
+        _combinators ??= new Dictionary<UnlinkedCombinatorBuilder>{};
 
-    /**
-     * Combinators contained in this export declaration.
-     */
-    void set combinators(List < UnlinkedCombinatorBuilder > value) {
-        this._combinators = value;
-    }
+/**
+ * Combinators contained in this export declaration.
+ */
+void setcombinators(List<UnlinkedCombinatorBuilder> value)
+{
+    this._combinators = value;
+}
 
-    //@override
-    List<UnlinkedConfigurationBuilder> get configurations =>
-        _configurations ??= < UnlinkedConfigurationBuilder >[];
+////@override
+List<UnlinkedConfigurationBuilder> get configurations =>
+        _configurations ??= new List<UnlinkedConfigurationBuilder>{};
 
     /**
      * Configurations used to control which library will actually be loaded at
      * run-time.
      */
-    void set configurations(List < UnlinkedConfigurationBuilder > value) {
-        this._configurations = value;
-    }
+    void setconfigurations(List<UnlinkedConfigurationBuilder> value)
+{
+    this._configurations = value;
+}
 
-    //@override
-    String get uri => _uri ??= '';
+////@override
+public String uri
+{
+    get => _uri ??= "";
+}
 
-    /**
-     * URI used in the source code to reference the exported library.
-     */
-    void set uri(String value) {
-        this._uri = value;
-    }
+/**
+ * URI used in the source code to reference the exported library.
+ */
+void seturi(String value)
+{
+    this._uri = value;
+}
 
-    UnlinkedExportPublicBuilder(
+UnlinkedExportPublicBuilder(
         {
-        List<UnlinkedCombinatorBuilder> combinators,
-       List< UnlinkedConfigurationBuilder > configurations,
-      String uri})
+    List<UnlinkedCombinatorBuilder> combinators,
+   List< UnlinkedConfigurationBuilder > configurations,
+      String uri)
       : _combinators = combinators,
         _configurations = configurations,
         _uri = uri;
@@ -9303,7 +9884,7 @@ class UnlinkedExportPublicBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._uri ?? '');
+        signature.addString(this._uri ?? "");
         if (this._combinators == null)
         {
             signature.addInt(0);
@@ -9311,7 +9892,7 @@ class UnlinkedExportPublicBuilder extends Object
         else
         {
             signature.addInt(this._combinators.length);
-      for (var x in this._combinators)
+            foreach (var x in this._combinators)
             {
                 x?.collectApiSignature(signature);
             }
@@ -9323,7 +9904,7 @@ class UnlinkedExportPublicBuilder extends Object
         else
         {
             signature.addInt(this._configurations.length);
-      for (var x in this._configurations)
+            foreach (var x in this._configurations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -9364,23 +9945,22 @@ class UnlinkedExportPublicBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedExportPublicReader
+    : fb.TableReader<_UnlinkedExportPublicImpl>
+{
+    public _UnlinkedExportPublicReader();
 
-class _UnlinkedExportPublicReader
-    extends fb.TableReader<_UnlinkedExportPublicImpl> {
-  const _UnlinkedExportPublicReader();
-
-    //@override
+    ////@override
     _UnlinkedExportPublicImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedExportPublicImpl(bc, offset);
 }
-
-class _UnlinkedExportPublicImpl extends Object
+public class _UnlinkedExportPublicImpl : Object
     with _UnlinkedExportPublicMixin
-    implements idl.UnlinkedExportPublic
+    : idl.UnlinkedExportPublic
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedExportPublicImpl(this._bc, this._bcOffset);
 
@@ -9388,157 +9968,178 @@ class _UnlinkedExportPublicImpl extends Object
     List<idl.UnlinkedConfiguration> _configurations;
     String _uri;
 
-    //@override
+    ////@override
     List<idl.UnlinkedCombinator> get combinators {
-        _combinators ??= const fb.ListReader<idl.UnlinkedCombinator>(
-              const _UnlinkedCombinatorReader())
-        .vTableGet(_bc, _bcOffset, 1, const <idl.UnlinkedCombinator>[]);
+        _combinators ??= new fb.ListReader<idl.UnlinkedCombinator>(
+public _UnlinkedCombinatorReader())
+        .vTableGet(_bc, _bcOffset, 1, new List<idl.UnlinkedCombinator>{);
         return _combinators;
     }
 
-    //@override
-    List<idl.UnlinkedConfiguration> get configurations {
-        _configurations ??= const fb.ListReader<idl.UnlinkedConfiguration>(
-              const _UnlinkedConfigurationReader())
-        .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedConfiguration>[]);
+////@override
+List<idl.UnlinkedConfiguration> get configurations {
+        _configurations ??= new fb.ListReader<idl.UnlinkedConfiguration>(
+public _UnlinkedConfigurationReader())
+        .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedConfiguration>{);
         return _configurations;
     }
 
-    //@override
+    ////@override
     String get uri {
-        _uri ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _uri ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _uri;
     }
     }
-
-abstract class _UnlinkedExportPublicMixin implements idl.UnlinkedExportPublic
+public abstract class _UnlinkedExportPublicMixin : idl.UnlinkedExportPublic
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (combinators.isNotEmpty)
             _result["combinators"] =
                 combinators.map((_value) => _value.toJson()).toList();
         if (configurations.isNotEmpty)
             _result["configurations"] =
                 configurations.map((_value) => _value.toJson()).toList();
-        if (uri != '') _result["uri"] = uri;
+        if (uri != "") _result["uri"] = uri;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "combinators": combinators,
         "configurations": configurations,
         "uri": uri,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedExprBuilder extends Object
+public class UnlinkedExprBuilder : Object
     with _UnlinkedExprMixin
-    implements idl.UnlinkedExpr
+    : idl.UnlinkedExpr
 {
     List<idl.UnlinkedExprAssignOperator> _assignmentOperators;
     List<double> _doubles;
     List<int> _ints;
-  bool _isValidConst;
+    bool _isValidConst;
     List<idl.UnlinkedExprOperation> _operations;
     List<EntityRefBuilder> _references;
     List<String> _strings;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExprAssignOperator> get assignmentOperators =>
-        _assignmentOperators ??= < idl.UnlinkedExprAssignOperator >[];
+        _assignmentOperators ??= new Dictionary<idl.UnlinkedExprAssignOperator>{};
 
-    /**
-     * Sequence of operators used by assignment operations.
-     */
-    void set assignmentOperators(List < idl.UnlinkedExprAssignOperator > value) {
-        this._assignmentOperators = value;
-    }
+/**
+ * Sequence of operators used by assignment operations.
+ */
+void setassignmentOperators(List<idl.UnlinkedExprAssignOperator> value)
+{
+    this._assignmentOperators = value;
+}
 
-    //@override
-    List<double> get doubles => _doubles ??= < double >[];
+////@override
+public List<double> doubles
+{
+    get => _doubles ??= new List<double> { };
+}
 
-    /**
-     * Sequence of 64-bit doubles consumed by the operation `pushDouble`.
-     */
-    void set doubles(List<double> value) {
-        this._doubles = value;
-    }
+/**
+ * Sequence of 64-bit doubles consumed by the operation `pushDouble`.
+ */
+void setdoubles(List<double> value)
+{
+    this._doubles = value;
+}
 
-    //@override
-    List<int> get ints => _ints ??= < int >[];
+////@override
+public List<int> ints
+{
+    get => _ints ??= new List<int> { };
+}
 
-    /**
-     * Sequence of unsigned 32-bit integers consumed by the operations
-     * `pushArgument`, `pushInt`, `shiftOr`, `concatenate`, `invokeConstructor`,
-     * `makeList`, and `makeMap`.
-     */
-    void set ints(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._ints = value;
-    }
+/**
+ * Sequence of unsigned 32-bit integers consumed by the operations
+ * `pushArgument`, `pushInt`, `shiftOr`, `concatenate`, `invokeConstructor`,
+ * `makeList`, and `makeMap`.
+ */
+void setints(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._ints = value;
+}
 
-    //@override
-    bool get isValidConst => _isValidConst ??= false;
+////@override
+public bool isValidConst
+{
+    get => _isValidConst ??= false;
+}
 
-    /**
-     * Indicates whether the expression is a valid potentially constant
-     * expression.
-     */
-    void set isValidConst(bool value) {
-        this._isValidConst = value;
-    }
+/**
+ * Indicates whether the expression is a valid potentially constant
+ * expression.
+ */
+void setisValidConst(bool value)
+{
+    this._isValidConst = value;
+}
 
-    //@override
-    List<idl.UnlinkedExprOperation> get operations =>
-        _operations ??= < idl.UnlinkedExprOperation >[];
+////@override
+List<idl.UnlinkedExprOperation> get operations =>
+        _operations ??= new Dictionary<idl.UnlinkedExprOperation>{};
 
     /**
      * Sequence of operations to execute (starting with an empty stack) to form
      * the constant value.
      */
-    void set operations(List < idl.UnlinkedExprOperation > value) {
-        this._operations = value;
-    }
+    void setoperations(List<idl.UnlinkedExprOperation> value)
+{
+    this._operations = value;
+}
 
-    //@override
-    List<EntityRefBuilder> get references => _references ??= < EntityRefBuilder >[];
+////@override
+public List<EntityRefBuilder> references
+{
+    get => _references ??= new List<EntityRefBuilder> { };
+}
 
-    /**
-     * Sequence of language constructs consumed by the operations
-     * `pushReference`, `invokeConstructor`, `makeList`, and `makeMap`.  Note
-     * that in the case of `pushReference` (and sometimes `invokeConstructor` the
-     * actual entity being referred to may be something other than a type.
-     */
-    void set references(List < EntityRefBuilder > value) {
-        this._references = value;
-    }
+/**
+ * Sequence of language constructs consumed by the operations
+ * `pushReference`, `invokeConstructor`, `makeList`, and `makeMap`.  Note
+ * that in the case of `pushReference` (and sometimes `invokeConstructor` the
+ * actual entity being referred to may be something other than a type.
+ */
+void setreferences(List<EntityRefBuilder> value)
+{
+    this._references = value;
+}
 
-    //@override
-    List<String> get strings => _strings ??= < String >[];
+////@override
+public List<String> strings
+{
+    get => _strings ??= new Dictionary<String> { };
+}
 
-    /**
-     * Sequence of strings consumed by the operations `pushString` and
-     * `invokeConstructor`.
-     */
-    void set strings(List < String > value) {
-        this._strings = value;
-    }
+/**
+ * Sequence of strings consumed by the operations `pushString` and
+ * `invokeConstructor`.
+ */
+void setstrings(List<String> value)
+{
+    this._strings = value;
+}
 
-    UnlinkedExprBuilder(
+UnlinkedExprBuilder(
         {
-        List<idl.UnlinkedExprAssignOperator> assignmentOperators,
-       List< double > doubles,
+    List<idl.UnlinkedExprAssignOperator> assignmentOperators,
+   List< double > doubles,
       List<int> ints,
       bool isValidConst,
       List< idl.UnlinkedExprOperation > operations,
       List<EntityRefBuilder> references,
-      List< String > strings})
+      List< String > strings)
       : _assignmentOperators = assignmentOperators,
         _doubles = doubles,
         _ints = ints,
@@ -9567,7 +10168,7 @@ class UnlinkedExprBuilder extends Object
         else
         {
             signature.addInt(this._operations.length);
-      for (var x in this._operations)
+            foreach (var x in this._operations)
             {
                 signature.addInt(x.index);
             }
@@ -9579,7 +10180,7 @@ class UnlinkedExprBuilder extends Object
         else
         {
             signature.addInt(this._ints.length);
-      for (var x in this._ints)
+            foreach (var x in this._ints)
             {
                 signature.addInt(x);
             }
@@ -9591,7 +10192,7 @@ class UnlinkedExprBuilder extends Object
         else
         {
             signature.addInt(this._references.length);
-      for (var x in this._references)
+            foreach (var x in this._references)
             {
                 x?.collectApiSignature(signature);
             }
@@ -9603,7 +10204,7 @@ class UnlinkedExprBuilder extends Object
         else
         {
             signature.addInt(this._strings.length);
-      for (var x in this._strings)
+            foreach (var x in this._strings)
             {
                 signature.addString(x);
             }
@@ -9615,7 +10216,7 @@ class UnlinkedExprBuilder extends Object
         else
         {
             signature.addInt(this._doubles.length);
-      for (var x in this._doubles)
+            foreach (var x in this._doubles)
             {
                 signature.addDouble(x);
             }
@@ -9628,7 +10229,7 @@ class UnlinkedExprBuilder extends Object
         else
         {
             signature.addInt(this._assignmentOperators.length);
-      for (var x in this._assignmentOperators)
+            foreach (var x in this._assignmentOperators)
             {
                 signature.addInt(x.index);
             }
@@ -9702,94 +10303,93 @@ class UnlinkedExprBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedExprReader : fb.TableReader<_UnlinkedExprImpl>
+{
+    public _UnlinkedExprReader();
 
-class _UnlinkedExprReader extends fb.TableReader<_UnlinkedExprImpl> {
-  const _UnlinkedExprReader();
-
-    //@override
+    ////@override
     _UnlinkedExprImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedExprImpl(bc, offset);
 }
-
-class _UnlinkedExprImpl extends Object
+public class _UnlinkedExprImpl : Object
     with _UnlinkedExprMixin
-    implements idl.UnlinkedExpr
+    : idl.UnlinkedExpr
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedExprImpl(this._bc, this._bcOffset);
 
     List<idl.UnlinkedExprAssignOperator> _assignmentOperators;
     List<double> _doubles;
     List<int> _ints;
-  bool _isValidConst;
+    bool _isValidConst;
     List<idl.UnlinkedExprOperation> _operations;
     List<idl.EntityRef> _references;
     List<String> _strings;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExprAssignOperator> get assignmentOperators {
         _assignmentOperators ??=
-          const fb.ListReader<idl.UnlinkedExprAssignOperator>(
-                  const _UnlinkedExprAssignOperatorReader())
+public fb.ListReader<idl.UnlinkedExprAssignOperator>(
+public _UnlinkedExprAssignOperatorReader())
             .vTableGet(
-                _bc, _bcOffset, 6, const <idl.UnlinkedExprAssignOperator>[]);
+                _bc, _bcOffset, 6, new List<idl.UnlinkedExprAssignOperator>{);
         return _assignmentOperators;
     }
 
-    //@override
-    List<double> get doubles {
-        _doubles ??= const fb.Float64ListReader()
-          .vTableGet(_bc, _bcOffset, 4, const <double>[]);
+////@override
+List<double> get doubles {
+        _doubles ??= new fb.Float64ListReader()
+          .vTableGet(_bc, _bcOffset, 4, new List<double>{);
         return _doubles;
     }
 
-    //@override
+    ////@override
     List<int> get ints {
         _ints ??=
-          const fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, const <int>[]);
+public fb.Uint32ListReader().vTableGet(_bc, _bcOffset, 1, new List<int>{);
         return _ints;
     }
 
-    //@override
+    ////@override
     bool get isValidConst {
-        _isValidConst ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 5, false);
+        _isValidConst ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 5, false);
         return _isValidConst;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedExprOperation> get operations {
-        _operations ??= const fb.ListReader<idl.UnlinkedExprOperation>(
-              const _UnlinkedExprOperationReader())
-        .vTableGet(_bc, _bcOffset, 0, const <idl.UnlinkedExprOperation>[]);
+        _operations ??= new fb.ListReader<idl.UnlinkedExprOperation>(
+public _UnlinkedExprOperationReader())
+        .vTableGet(_bc, _bcOffset, 0, new List<idl.UnlinkedExprOperation>{);
         return _operations;
     }
 
-    //@override
+    ////@override
     List<idl.EntityRef> get references {
-        _references ??= const fb.ListReader<idl.EntityRef>(const _EntityRefReader())
-        .vTableGet(_bc, _bcOffset, 2, const <idl.EntityRef>[]);
+        _references ??= new fb.ListReader<idl.EntityRef>(const _EntityRefReader())
+        .vTableGet(_bc, _bcOffset, 2, new List<idl.EntityRef>{);
         return _references;
     }
 
-    //@override
+    ////@override
     List<String> get strings {
-        _strings ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 3, const <String>[]);
+        _strings ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 3, new List<String>{);
         return _strings;
     }
     }
-
-abstract class _UnlinkedExprMixin implements idl.UnlinkedExpr
+public abstract class _UnlinkedExprMixin : idl.UnlinkedExpr
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (assignmentOperators.isNotEmpty)
             _result["assignmentOperators"] = assignmentOperators
-                .map((_value) => _value.toString().split('.')[1])
+                .map((_value) => _value.toString().split(".")[1])
                 .toList();
         if (doubles.isNotEmpty)
             _result["doubles"] = doubles
@@ -9799,7 +10399,7 @@ abstract class _UnlinkedExprMixin implements idl.UnlinkedExpr
         if (isValidConst != false) _result["isValidConst"] = isValidConst;
         if (operations.isNotEmpty)
             _result["operations"] =
-                operations.map((_value) => _value.toString().split('.')[1]).toList();
+                operations.map((_value) => _value.toString().split(".")[1]).toList();
         if (references.isNotEmpty)
             _result["references"] =
                 references.map((_value) => _value.toJson()).toList();
@@ -9807,8 +10407,8 @@ abstract class _UnlinkedExprMixin implements idl.UnlinkedExpr
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "assignmentOperators": assignmentOperators,
         "doubles": doubles,
         "ints": ints,
@@ -9818,156 +10418,190 @@ abstract class _UnlinkedExprMixin implements idl.UnlinkedExpr
         "strings": strings,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedImportBuilder extends Object
+public class UnlinkedImportBuilder : Object
     with _UnlinkedImportMixin
-    implements idl.UnlinkedImport
+    : idl.UnlinkedImport
 {
     List<UnlinkedExprBuilder> _annotations;
     List<UnlinkedCombinatorBuilder> _combinators;
     List<UnlinkedConfigurationBuilder> _configurations;
-  bool _isDeferred;
-  bool _isImplicit;
-  int _offset;
-  int _prefixOffset;
-  int _prefixReference;
+    bool _isDeferred;
+    bool _isImplicit;
+    int _offset;
+    int _prefixOffset;
+    int _prefixReference;
     String _uri;
-  int _uriEnd;
-  int _uriOffset;
+    int _uriEnd;
+    int _uriOffset;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this import declaration.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this import declaration.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    List<UnlinkedCombinatorBuilder> get combinators =>
-        _combinators ??= < UnlinkedCombinatorBuilder >[];
+////@override
+List<UnlinkedCombinatorBuilder> get combinators =>
+        _combinators ??= new List<UnlinkedCombinatorBuilder>{};
 
     /**
      * Combinators contained in this import declaration.
      */
-    void set combinators(List < UnlinkedCombinatorBuilder > value) {
-        this._combinators = value;
-    }
+    void setcombinators(List<UnlinkedCombinatorBuilder> value)
+{
+    this._combinators = value;
+}
 
-    //@override
-    List<UnlinkedConfigurationBuilder> get configurations =>
-        _configurations ??= < UnlinkedConfigurationBuilder >[];
+////@override
+List<UnlinkedConfigurationBuilder> get configurations =>
+        _configurations ??= new List<UnlinkedConfigurationBuilder>{};
 
     /**
      * Configurations used to control which library will actually be loaded at
      * run-time.
      */
-    void set configurations(List < UnlinkedConfigurationBuilder > value) {
-        this._configurations = value;
-    }
+    void setconfigurations(List<UnlinkedConfigurationBuilder> value)
+{
+    this._configurations = value;
+}
 
-    //@override
-    bool get isDeferred => _isDeferred ??= false;
+////@override
+public bool isDeferred
+{
+    get => _isDeferred ??= false;
+}
 
-    /**
-     * Indicates whether the import declaration uses the `deferred` keyword.
-     */
-    void set isDeferred(bool value) {
-        this._isDeferred = value;
-    }
+/**
+ * Indicates whether the import declaration uses the `deferred` keyword.
+ */
+void setisDeferred(bool value)
+{
+    this._isDeferred = value;
+}
 
-    //@override
-    bool get isImplicit => _isImplicit ??= false;
+////@override
+public bool isImplicit
+{
+    get => _isImplicit ??= false;
+}
 
-    /**
-     * Indicates whether the import declaration is implicit.
-     */
-    void set isImplicit(bool value) {
-        this._isImplicit = value;
-    }
+/**
+ * Indicates whether the import declaration is implicit.
+ */
+void setisImplicit(bool value)
+{
+    this._isImplicit = value;
+}
 
-    //@override
-    int get offset => _offset ??= 0;
+////@override
+public int offset
+{
+    get => _offset ??= 0;
+}
 
-    /**
-     * If [isImplicit] is false, offset of the "import" keyword.  If [isImplicit]
-     * is true, zero.
-     */
-    void set offset(int value) {
-        assert(value == null || value >= 0);
-        this._offset = value;
-    }
+/**
+ * If [isImplicit] is false, offset of the "import" keyword.  If [isImplicit]
+ * is true, zero.
+ */
+void setoffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._offset = value;
+}
 
-    //@override
-    int get prefixOffset => _prefixOffset ??= 0;
+////@override
+public int prefixOffset
+{
+    get => _prefixOffset ??= 0;
+}
 
-    /**
-     * Offset of the prefix name relative to the beginning of the file, or zero
-     * if there is no prefix.
-     */
-    void set prefixOffset(int value) {
-        assert(value == null || value >= 0);
-        this._prefixOffset = value;
-    }
+/**
+ * Offset of the prefix name relative to the beginning of the file, or zero
+ * if there is no prefix.
+ */
+void setprefixOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._prefixOffset = value;
+}
 
-    //@override
-    int get prefixReference => _prefixReference ??= 0;
+////@override
+public int prefixReference
+{
+    get => _prefixReference ??= 0;
+}
 
-    /**
-     * Index into [UnlinkedUnit.references] of the prefix declared by this
-     * import declaration, or zero if this import declaration declares no prefix.
-     *
-     * Note that multiple imports can declare the same prefix.
-     */
-    void set prefixReference(int value) {
-        assert(value == null || value >= 0);
-        this._prefixReference = value;
-    }
+/**
+ * Index into [UnlinkedUnit.references] of the prefix declared by this
+ * import declaration, or zero if this import declaration declares no prefix.
+ *
+ * Note that multiple imports can declare the same prefix.
+ */
+void setprefixReference(int value)
+{
+    assert(value == null || value >= 0);
+    this._prefixReference = value;
+}
 
-    //@override
-    String get uri => _uri ??= '';
+////@override
+public String uri
+{
+    get => _uri ??= "";
+}
 
-    /**
-     * URI used in the source code to reference the imported library.
-     */
-    void set uri(String value) {
-        this._uri = value;
-    }
+/**
+ * URI used in the source code to reference the imported library.
+ */
+void seturi(String value)
+{
+    this._uri = value;
+}
 
-    //@override
-    int get uriEnd => _uriEnd ??= 0;
+////@override
+public int uriEnd
+{
+    get => _uriEnd ??= 0;
+}
 
-    /**
-     * End of the URI string (including quotes) relative to the beginning of the
-     * file.  If [isImplicit] is true, zero.
-     */
-    void set uriEnd(int value) {
-        assert(value == null || value >= 0);
-        this._uriEnd = value;
-    }
+/**
+ * End of the URI string (including quotes) relative to the beginning of the
+ * file.  If [isImplicit] is true, zero.
+ */
+void seturiEnd(int value)
+{
+    assert(value == null || value >= 0);
+    this._uriEnd = value;
+}
 
-    //@override
-    int get uriOffset => _uriOffset ??= 0;
+////@override
+public int uriOffset
+{
+    get => _uriOffset ??= 0;
+}
 
-    /**
-     * Offset of the URI string (including quotes) relative to the beginning of
-     * the file.  If [isImplicit] is true, zero.
-     */
-    void set uriOffset(int value) {
-        assert(value == null || value >= 0);
-        this._uriOffset = value;
-    }
+/**
+ * Offset of the URI string (including quotes) relative to the beginning of
+ * the file.  If [isImplicit] is true, zero.
+ */
+void seturiOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._uriOffset = value;
+}
 
-    UnlinkedImportBuilder(
+UnlinkedImportBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       List< UnlinkedCombinatorBuilder > combinators,
+    List<UnlinkedExprBuilder> annotations,
+   List< UnlinkedCombinatorBuilder > combinators,
       List<UnlinkedConfigurationBuilder> configurations,
       bool isDeferred,
       bool isImplicit,
@@ -9976,7 +10610,7 @@ class UnlinkedImportBuilder extends Object
       int prefixReference,
       String uri,
       int uriEnd,
-      int uriOffset})
+      int uriOffset)
       : _annotations = annotations,
         _combinators = combinators,
         _configurations = configurations,
@@ -10008,7 +10642,7 @@ class UnlinkedImportBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._uri ?? '');
+        signature.addString(this._uri ?? "");
         if (this._combinators == null)
         {
             signature.addInt(0);
@@ -10016,7 +10650,7 @@ class UnlinkedImportBuilder extends Object
         else
         {
             signature.addInt(this._combinators.length);
-      for (var x in this._combinators)
+            foreach (var x in this._combinators)
             {
                 x?.collectApiSignature(signature);
             }
@@ -10030,7 +10664,7 @@ class UnlinkedImportBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -10043,7 +10677,7 @@ class UnlinkedImportBuilder extends Object
         else
         {
             signature.addInt(this._configurations.length);
-      for (var x in this._configurations)
+            foreach (var x in this._configurations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -10122,116 +10756,115 @@ class UnlinkedImportBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedImportReader : fb.TableReader<_UnlinkedImportImpl>
+{
+    public _UnlinkedImportReader();
 
-class _UnlinkedImportReader extends fb.TableReader<_UnlinkedImportImpl> {
-  const _UnlinkedImportReader();
-
-    //@override
+    ////@override
     _UnlinkedImportImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedImportImpl(bc, offset);
 }
-
-class _UnlinkedImportImpl extends Object
+public class _UnlinkedImportImpl : Object
     with _UnlinkedImportMixin
-    implements idl.UnlinkedImport
+    : idl.UnlinkedImport
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedImportImpl(this._bc, this._bcOffset);
 
     List<idl.UnlinkedExpr> _annotations;
     List<idl.UnlinkedCombinator> _combinators;
     List<idl.UnlinkedConfiguration> _configurations;
-  bool _isDeferred;
-  bool _isImplicit;
-  int _offset;
-  int _prefixOffset;
-  int _prefixReference;
+    bool _isDeferred;
+    bool _isImplicit;
+    int _offset;
+    int _prefixOffset;
+    int _prefixReference;
     String _uri;
-  int _uriEnd;
-  int _uriOffset;
+    int _uriEnd;
+    int _uriOffset;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 8, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 8, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    List<idl.UnlinkedCombinator> get combinators {
-        _combinators ??= const fb.ListReader<idl.UnlinkedCombinator>(
-              const _UnlinkedCombinatorReader())
-        .vTableGet(_bc, _bcOffset, 4, const <idl.UnlinkedCombinator>[]);
+////@override
+List<idl.UnlinkedCombinator> get combinators {
+        _combinators ??= new fb.ListReader<idl.UnlinkedCombinator>(
+public _UnlinkedCombinatorReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<idl.UnlinkedCombinator>{);
         return _combinators;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedConfiguration> get configurations {
-        _configurations ??= const fb.ListReader<idl.UnlinkedConfiguration>(
-              const _UnlinkedConfigurationReader())
-        .vTableGet(_bc, _bcOffset, 10, const <idl.UnlinkedConfiguration>[]);
+        _configurations ??= new fb.ListReader<idl.UnlinkedConfiguration>(
+public _UnlinkedConfigurationReader())
+        .vTableGet(_bc, _bcOffset, 10, new List<idl.UnlinkedConfiguration>{);
         return _configurations;
     }
 
-    //@override
+    ////@override
     bool get isDeferred {
-        _isDeferred ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 9, false);
+        _isDeferred ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 9, false);
         return _isDeferred;
     }
 
-    //@override
+    ////@override
     bool get isImplicit {
-        _isImplicit ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 5, false);
+        _isImplicit ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 5, false);
         return _isImplicit;
     }
 
-    //@override
+    ////@override
     int get offset {
-        _offset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+        _offset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _offset;
     }
 
-    //@override
+    ////@override
     int get prefixOffset {
-        _prefixOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 6, 0);
+        _prefixOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 6, 0);
         return _prefixOffset;
     }
 
-    //@override
+    ////@override
     int get prefixReference {
         _prefixReference ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 7, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 7, 0);
         return _prefixReference;
     }
 
-    //@override
+    ////@override
     String get uri {
-        _uri ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 1, '');
+        _uri ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 1, "");
         return _uri;
     }
 
-    //@override
+    ////@override
     int get uriEnd {
-        _uriEnd ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+        _uriEnd ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _uriEnd;
     }
 
-    //@override
+    ////@override
     int get uriOffset {
-        _uriOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
+        _uriOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
         return _uriOffset;
     }
     }
-
-abstract class _UnlinkedImportMixin implements idl.UnlinkedImport
+public abstract class _UnlinkedImportMixin : idl.UnlinkedImport
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
@@ -10246,14 +10879,14 @@ abstract class _UnlinkedImportMixin implements idl.UnlinkedImport
         if (offset != 0) _result["offset"] = offset;
         if (prefixOffset != 0) _result["prefixOffset"] = prefixOffset;
         if (prefixReference != 0) _result["prefixReference"] = prefixReference;
-        if (uri != '') _result["uri"] = uri;
+        if (uri != "") _result["uri"] = uri;
         if (uriEnd != 0) _result["uriEnd"] = uriEnd;
         if (uriOffset != 0) _result["uriOffset"] = uriOffset;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "combinators": combinators,
         "configurations": configurations,
@@ -10267,238 +10900,299 @@ abstract class _UnlinkedImportMixin implements idl.UnlinkedImport
         "uriOffset": uriOffset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedParamBuilder extends Object
+public class UnlinkedParamBuilder : Object
     with _UnlinkedParamMixin
-    implements idl.UnlinkedParam
+    : idl.UnlinkedParam
 {
     List<UnlinkedExprBuilder> _annotations;
     CodeRangeBuilder _codeRange;
     String _defaultValueCode;
-  int _inferredTypeSlot;
-  int _inheritsCovariantSlot;
+    int _inferredTypeSlot;
+    int _inheritsCovariantSlot;
     UnlinkedExecutableBuilder _initializer;
-  bool _isExplicitlyCovariant;
-  bool _isFinal;
-  bool _isFunctionTyped;
-  bool _isInitializingFormal;
+    bool _isExplicitlyCovariant;
+    bool _isFinal;
+    bool _isFunctionTyped;
+    bool _isInitializingFormal;
     idl.UnlinkedParamKind _kind;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<UnlinkedParamBuilder> _parameters;
     EntityRefBuilder _type;
-  int _visibleLength;
-  int _visibleOffset;
+    int _visibleLength;
+    int _visibleOffset;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this parameter.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this parameter.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the parameter.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the parameter.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    String get defaultValueCode => _defaultValueCode ??= '';
+////@override
+public String defaultValueCode
+{
+    get => _defaultValueCode ??= "";
+}
 
-    /**
-     * If the parameter has a default value, the source text of the constant
-     * expression in the default value.  Otherwise the empty string.
-     */
-    void set defaultValueCode(String value) {
-        this._defaultValueCode = value;
-    }
+/**
+ * If the parameter has a default value, the source text of the constant
+ * expression in the default value.  Otherwise the empty string.
+ */
+void setdefaultValueCode(String value)
+{
+    this._defaultValueCode = value;
+}
 
-    //@override
-    int get inferredTypeSlot => _inferredTypeSlot ??= 0;
+////@override
+public int inferredTypeSlot
+{
+    get => _inferredTypeSlot ??= 0;
+}
 
-    /**
-     * If this parameter's type is inferable, nonzero slot id identifying which
-     * entry in [LinkedLibrary.types] contains the inferred type.  If there is no
-     * matching entry in [LinkedLibrary.types], then no type was inferred for
-     * this variable, so its static type is `dynamic`.
-     *
-     * Note that although strong mode considers initializing formals to be
-     * inferable, they are not marked as such in the summary; if their type is
-     * not specified, they always inherit the static type of the corresponding
-     * field.
-     */
-    void set inferredTypeSlot(int value) {
-        assert(value == null || value >= 0);
-        this._inferredTypeSlot = value;
-    }
+/**
+ * If this parameter's type is inferable, nonzero slot id identifying which
+ * entry in [LinkedLibrary.types] contains the inferred type.  If there is no
+ * matching entry in [LinkedLibrary.types], then no type was inferred for
+ * this variable, so its static type is `dynamic`.
+ *
+ * Note that although strong mode considers initializing formals to be
+ * inferable, they are not marked as such in the summary; if their type is
+ * not specified, they always inherit the static type of the corresponding
+ * field.
+ */
+void setinferredTypeSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._inferredTypeSlot = value;
+}
 
-    //@override
-    int get inheritsCovariantSlot => _inheritsCovariantSlot ??= 0;
+////@override
+public int inheritsCovariantSlot
+{
+    get => _inheritsCovariantSlot ??= 0;
+}
 
-    /**
-     * If this is a parameter of an instance method, a nonzero slot id which is
-     * unique within this compilation unit.  If this id is found in
-     * [LinkedUnit.parametersInheritingCovariant], then this parameter inherits
-     * `//@covariant` behavior from a base class.
-     *
-     * Otherwise, zero.
-     */
-    void set inheritsCovariantSlot(int value) {
-        assert(value == null || value >= 0);
-        this._inheritsCovariantSlot = value;
-    }
+/**
+ * If this is a parameter of an instance method, a nonzero slot id which is
+ * unique within this compilation unit.  If this id is found in
+ * [LinkedUnit.parametersInheritingCovariant], then this parameter inherits
+ * `//@covariant` behavior from a base class.
+ *
+ * Otherwise, zero.
+ */
+void setinheritsCovariantSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._inheritsCovariantSlot = value;
+}
 
-    //@override
-    UnlinkedExecutableBuilder get initializer => _initializer;
+////@override
+public UnlinkedExecutableBuilder initializer
+{
+    get => _initializer;
+}
 
-    /**
-     * The synthetic initializer function of the parameter.  Absent if the
-     * variable does not have an initializer.
-     */
-    void set initializer(UnlinkedExecutableBuilder value) {
-        this._initializer = value;
-    }
+/**
+ * The synthetic initializer function of the parameter.  Absent if the
+ * variable does not have an initializer.
+ */
+void setinitializer(UnlinkedExecutableBuilder value)
+{
+    this._initializer = value;
+}
 
-    //@override
-    bool get isExplicitlyCovariant => _isExplicitlyCovariant ??= false;
+////@override
+public bool isExplicitlyCovariant
+{
+    get => _isExplicitlyCovariant ??= false;
+}
 
-    /**
-     * Indicates whether this parameter is explicitly marked as being covariant.
-     */
-    void set isExplicitlyCovariant(bool value) {
-        this._isExplicitlyCovariant = value;
-    }
+/**
+ * Indicates whether this parameter is explicitly marked as being covariant.
+ */
+void setisExplicitlyCovariant(bool value)
+{
+    this._isExplicitlyCovariant = value;
+}
 
-    //@override
-    bool get isFinal => _isFinal ??= false;
+////@override
+public bool isFinal
+{
+    get => _isFinal ??= false;
+}
 
-    /**
-     * Indicates whether the parameter is declared using the `final` keyword.
-     */
-    void set isFinal(bool value) {
-        this._isFinal = value;
-    }
+/**
+ * Indicates whether the parameter is declared using the `final` keyword.
+ */
+void setisFinal(bool value)
+{
+    this._isFinal = value;
+}
 
-    //@override
-    bool get isFunctionTyped => _isFunctionTyped ??= false;
+////@override
+public bool isFunctionTyped
+{
+    get => _isFunctionTyped ??= false;
+}
 
-    /**
-     * Indicates whether this is a function-typed parameter. A parameter is
-     * function-typed if the declaration of the parameter has explicit formal
-     * parameters
-     * ```
-     * int functionTyped(int p)
-     * ```
-     * but is not function-typed if it does not, even if the type of the parameter
-     * is a function type.
-     */
-    void set isFunctionTyped(bool value) {
-        this._isFunctionTyped = value;
-    }
+/**
+ * Indicates whether this is a function-typed parameter. A parameter is
+ * function-typed if the declaration of the parameter has explicit formal
+ * parameters
+ * ```
+ * int functionTyped(int p)
+ * ```
+ * but is not function-typed if it does not, even if the type of the parameter
+ * is a function type.
+ */
+void setisFunctionTyped(bool value)
+{
+    this._isFunctionTyped = value;
+}
 
-    //@override
-    bool get isInitializingFormal => _isInitializingFormal ??= false;
+////@override
+public bool isInitializingFormal
+{
+    get => _isInitializingFormal ??= false;
+}
 
-    /**
-     * Indicates whether this is an initializing formal parameter (i.e. it is
-     * declared using `this.` syntax).
-     */
-    void set isInitializingFormal(bool value) {
-        this._isInitializingFormal = value;
-    }
+/**
+ * Indicates whether this is an initializing formal parameter (i.e. it is
+ * declared using `this.` syntax).
+ */
+void setisInitializingFormal(bool value)
+{
+    this._isInitializingFormal = value;
+}
 
-    //@override
-    idl.UnlinkedParamKind get kind => _kind ??= idl.UnlinkedParamKind.required;
+////@override
+public idl.UnlinkedParamKind kind
+{
+    get => _kind ??= idl.UnlinkedParamKind.required;
+}
 
-    /**
-     * Kind of the parameter.
-     */
-    void set kind(idl.UnlinkedParamKind value) {
-        this._kind = value;
-    }
+/**
+ * Kind of the parameter.
+ */
+void setkind(idl.UnlinkedParamKind value)
+{
+    this._kind = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the parameter.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the parameter.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the parameter name relative to the beginning of the file.
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the parameter name relative to the beginning of the file.
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    //@override
-    List<UnlinkedParamBuilder> get parameters =>
-        _parameters ??= < UnlinkedParamBuilder >[];
+////@override
+List<UnlinkedParamBuilder> get parameters =>
+        _parameters ??= new Dictionary<UnlinkedParamBuilder>{};
 
     /**
      * If [isFunctionTyped] is `true`, the parameters of the function type.
      */
-    void set parameters(List < UnlinkedParamBuilder > value) {
-        this._parameters = value;
-    }
+    void setparameters(List<UnlinkedParamBuilder> value)
+{
+    this._parameters = value;
+}
 
-    //@override
-    EntityRefBuilder get type => _type;
+////@override
+public EntityRefBuilder type
+{
+    get => _type;
+}
 
-    /**
-     * If [isFunctionTyped] is `true`, the declared return type.  If
-     * [isFunctionTyped] is `false`, the declared type.  Absent if the type is
-     * implicit.
-     */
-    void set type(EntityRefBuilder value) {
-        this._type = value;
-    }
+/**
+ * If [isFunctionTyped] is `true`, the declared return type.  If
+ * [isFunctionTyped] is `false`, the declared type.  Absent if the type is
+ * implicit.
+ */
+void settype(EntityRefBuilder value)
+{
+    this._type = value;
+}
 
-    //@override
-    int get visibleLength => _visibleLength ??= 0;
+////@override
+public int visibleLength
+{
+    get => _visibleLength ??= 0;
+}
 
-    /**
-     * The length of the visible range.
-     */
-    void set visibleLength(int value) {
-        assert(value == null || value >= 0);
-        this._visibleLength = value;
-    }
+/**
+ * The length of the visible range.
+ */
+void setvisibleLength(int value)
+{
+    assert(value == null || value >= 0);
+    this._visibleLength = value;
+}
 
-    //@override
-    int get visibleOffset => _visibleOffset ??= 0;
+////@override
+public int visibleOffset
+{
+    get => _visibleOffset ??= 0;
+}
 
-    /**
-     * The beginning of the visible range.
-     */
-    void set visibleOffset(int value) {
-        assert(value == null || value >= 0);
-        this._visibleOffset = value;
-    }
+/**
+ * The beginning of the visible range.
+ */
+void setvisibleOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._visibleOffset = value;
+}
 
-    UnlinkedParamBuilder(
+UnlinkedParamBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       CodeRangeBuilder codeRange,
+    List<UnlinkedExprBuilder> annotations,
+   CodeRangeBuilder codeRange,
       String defaultValueCode,
       int inferredTypeSlot,
       int inheritsCovariantSlot,
@@ -10513,7 +11207,7 @@ class UnlinkedParamBuilder extends Object
       List< UnlinkedParamBuilder > parameters,
       EntityRefBuilder type,
       int visibleLength,
-      int visibleOffset})
+      int visibleOffset)
       : _annotations = annotations,
         _codeRange = codeRange,
         _defaultValueCode = defaultValueCode,
@@ -10553,7 +11247,7 @@ class UnlinkedParamBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         signature.addInt(this._inferredTypeSlot ?? 0);
         signature.addBool(this._type != null);
         this._type?.collectApiSignature(signature);
@@ -10567,7 +11261,7 @@ class UnlinkedParamBuilder extends Object
         else
         {
             signature.addInt(this._parameters.length);
-      for (var x in this._parameters)
+            foreach (var x in this._parameters)
             {
                 x?.collectApiSignature(signature);
             }
@@ -10579,7 +11273,7 @@ class UnlinkedParamBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -10701,168 +11395,167 @@ class UnlinkedParamBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedParamReader : fb.TableReader<_UnlinkedParamImpl>
+{
+    public _UnlinkedParamReader();
 
-class _UnlinkedParamReader extends fb.TableReader<_UnlinkedParamImpl> {
-  const _UnlinkedParamReader();
-
-    //@override
+    ////@override
     _UnlinkedParamImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedParamImpl(bc, offset);
 }
-
-class _UnlinkedParamImpl extends Object
+public class _UnlinkedParamImpl : Object
     with _UnlinkedParamMixin
-    implements idl.UnlinkedParam
+    : idl.UnlinkedParam
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedParamImpl(this._bc, this._bcOffset);
 
     List<idl.UnlinkedExpr> _annotations;
     idl.CodeRange _codeRange;
     String _defaultValueCode;
-  int _inferredTypeSlot;
-  int _inheritsCovariantSlot;
+    int _inferredTypeSlot;
+    int _inheritsCovariantSlot;
     idl.UnlinkedExecutable _initializer;
-  bool _isExplicitlyCovariant;
-  bool _isFinal;
-  bool _isFunctionTyped;
-  bool _isInitializingFormal;
+    bool _isExplicitlyCovariant;
+    bool _isFinal;
+    bool _isFunctionTyped;
+    bool _isInitializingFormal;
     idl.UnlinkedParamKind _kind;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<idl.UnlinkedParam> _parameters;
     idl.EntityRef _type;
-  int _visibleLength;
-  int _visibleOffset;
+    int _visibleLength;
+    int _visibleOffset;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 9, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 9, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 7, null);
+////@override
+idl.CodeRange get codeRange {
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 7, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     String get defaultValueCode {
         _defaultValueCode ??=
-          const fb.StringReader().vTableGet(_bc, _bcOffset, 13, '');
+public fb.StringReader().vTableGet(_bc, _bcOffset, 13, "");
         return _defaultValueCode;
     }
 
-    //@override
+    ////@override
     int get inferredTypeSlot {
         _inferredTypeSlot ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _inferredTypeSlot;
     }
 
-    //@override
+    ////@override
     int get inheritsCovariantSlot {
         _inheritsCovariantSlot ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 14, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 14, 0);
         return _inheritsCovariantSlot;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedExecutable get initializer {
         _initializer ??=
-          const _UnlinkedExecutableReader().vTableGet(_bc, _bcOffset, 12, null);
+public _UnlinkedExecutableReader().vTableGet(_bc, _bcOffset, 12, null);
         return _initializer;
     }
 
-    //@override
+    ////@override
     bool get isExplicitlyCovariant {
         _isExplicitlyCovariant ??=
-          const fb.BoolReader().vTableGet(_bc, _bcOffset, 15, false);
+public fb.BoolReader().vTableGet(_bc, _bcOffset, 15, false);
         return _isExplicitlyCovariant;
     }
 
-    //@override
+    ////@override
     bool get isFinal {
-        _isFinal ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 16, false);
+        _isFinal ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 16, false);
         return _isFinal;
     }
 
-    //@override
+    ////@override
     bool get isFunctionTyped {
         _isFunctionTyped ??=
-          const fb.BoolReader().vTableGet(_bc, _bcOffset, 5, false);
+public fb.BoolReader().vTableGet(_bc, _bcOffset, 5, false);
         return _isFunctionTyped;
     }
 
-    //@override
+    ////@override
     bool get isInitializingFormal {
         _isInitializingFormal ??=
-          const fb.BoolReader().vTableGet(_bc, _bcOffset, 6, false);
+public fb.BoolReader().vTableGet(_bc, _bcOffset, 6, false);
         return _isInitializingFormal;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedParamKind get kind {
-        _kind ??= const _UnlinkedParamKindReader()
+        _kind ??= new _UnlinkedParamKindReader()
           .vTableGet(_bc, _bcOffset, 4, idl.UnlinkedParamKind.required);
         return _kind;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nameOffset;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedParam> get parameters {
         _parameters ??=
-          const fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
-            .vTableGet(_bc, _bcOffset, 8, const <idl.UnlinkedParam>[]);
+public fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
+            .vTableGet(_bc, _bcOffset, 8, new List<idl.UnlinkedParam>{);
         return _parameters;
     }
 
-    //@override
+    ////@override
     idl.EntityRef get type {
-        _type ??= const _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
+        _type ??= new _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
         return _type;
     }
 
-    //@override
+    ////@override
     int get visibleLength {
-        _visibleLength ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 10, 0);
+        _visibleLength ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 10, 0);
         return _visibleLength;
     }
 
-    //@override
+    ////@override
     int get visibleOffset {
-        _visibleOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 11, 0);
+        _visibleOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 11, 0);
         return _visibleOffset;
     }
     }
-
-abstract class _UnlinkedParamMixin implements idl.UnlinkedParam
+public abstract class _UnlinkedParamMixin : idl.UnlinkedParam
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
         if (codeRange != null) _result["codeRange"] = codeRange.toJson();
-        if (defaultValueCode != '') _result["defaultValueCode"] = defaultValueCode;
+        if (defaultValueCode != "") _result["defaultValueCode"] = defaultValueCode;
         if (inferredTypeSlot != 0) _result["inferredTypeSlot"] = inferredTypeSlot;
         if (inheritsCovariantSlot != 0)
             _result["inheritsCovariantSlot"] = inheritsCovariantSlot;
@@ -10874,8 +11567,8 @@ abstract class _UnlinkedParamMixin implements idl.UnlinkedParam
         if (isInitializingFormal != false)
             _result["isInitializingFormal"] = isInitializingFormal;
         if (kind != idl.UnlinkedParamKind.required)
-            _result["kind"] = kind.toString().split('.')[1];
-        if (name != '') _result["name"] = name;
+            _result["kind"] = kind.toString().split(".")[1];
+        if (name != "") _result["name"] = name;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         if (parameters.isNotEmpty)
             _result["parameters"] =
@@ -10886,8 +11579,8 @@ abstract class _UnlinkedParamMixin implements idl.UnlinkedParam
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "codeRange": codeRange,
         "defaultValueCode": defaultValueCode,
@@ -10907,55 +11600,64 @@ abstract class _UnlinkedParamMixin implements idl.UnlinkedParam
         "visibleOffset": visibleOffset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedPartBuilder extends Object
+public class UnlinkedPartBuilder : Object
     with _UnlinkedPartMixin
-    implements idl.UnlinkedPart
+    : idl.UnlinkedPart
 {
     List<UnlinkedExprBuilder> _annotations;
-  int _uriEnd;
-  int _uriOffset;
+    int _uriEnd;
+    int _uriOffset;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this part declaration.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this part declaration.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    int get uriEnd => _uriEnd ??= 0;
+////@override
+public int uriEnd
+{
+    get => _uriEnd ??= 0;
+}
 
-    /**
-     * End of the URI string (including quotes) relative to the beginning of the
-     * file.
-     */
-    void set uriEnd(int value) {
-        assert(value == null || value >= 0);
-        this._uriEnd = value;
-    }
+/**
+ * End of the URI string (including quotes) relative to the beginning of the
+ * file.
+ */
+void seturiEnd(int value)
+{
+    assert(value == null || value >= 0);
+    this._uriEnd = value;
+}
 
-    //@override
-    int get uriOffset => _uriOffset ??= 0;
+////@override
+public int uriOffset
+{
+    get => _uriOffset ??= 0;
+}
 
-    /**
-     * Offset of the URI string (including quotes) relative to the beginning of
-     * the file.
-     */
-    void set uriOffset(int value) {
-        assert(value == null || value >= 0);
-        this._uriOffset = value;
-    }
+/**
+ * Offset of the URI string (including quotes) relative to the beginning of
+ * the file.
+ */
+void seturiOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._uriOffset = value;
+}
 
-    UnlinkedPartBuilder(
-        { List<UnlinkedExprBuilder> annotations, int uriEnd, int uriOffset})
+UnlinkedPartBuilder(
+        {
+    List<UnlinkedExprBuilder> annotations, int uriEnd, int uriOffset)
       : _annotations = annotations,
         _uriEnd = uriEnd,
         _uriOffset = uriOffset;
@@ -10982,7 +11684,7 @@ class UnlinkedPartBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -11012,55 +11714,54 @@ class UnlinkedPartBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedPartReader : fb.TableReader<_UnlinkedPartImpl>
+{
+    public _UnlinkedPartReader();
 
-class _UnlinkedPartReader extends fb.TableReader<_UnlinkedPartImpl> {
-  const _UnlinkedPartReader();
-
-    //@override
+    ////@override
     _UnlinkedPartImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedPartImpl(bc, offset);
 }
-
-class _UnlinkedPartImpl extends Object
+public class _UnlinkedPartImpl : Object
     with _UnlinkedPartMixin
-    implements idl.UnlinkedPart
+    : idl.UnlinkedPart
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedPartImpl(this._bc, this._bcOffset);
 
     List<idl.UnlinkedExpr> _annotations;
-  int _uriEnd;
-  int _uriOffset;
+    int _uriEnd;
+    int _uriOffset;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    int get uriEnd {
-        _uriEnd ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
+////@override
+int get uriEnd {
+        _uriEnd ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 0, 0);
         return _uriEnd;
     }
 
-    //@override
+    ////@override
     int get uriOffset {
-        _uriOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _uriOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _uriOffset;
     }
     }
-
-abstract class _UnlinkedPartMixin implements idl.UnlinkedPart
+public abstract class _UnlinkedPartMixin : idl.UnlinkedPart
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
@@ -11069,80 +11770,92 @@ abstract class _UnlinkedPartMixin implements idl.UnlinkedPart
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "uriEnd": uriEnd,
         "uriOffset": uriOffset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedPublicNameBuilder extends Object
+public class UnlinkedPublicNameBuilder : Object
     with _UnlinkedPublicNameMixin
-    implements idl.UnlinkedPublicName
+    : idl.UnlinkedPublicName
 {
     idl.ReferenceKind _kind;
     List<UnlinkedPublicNameBuilder> _members;
     String _name;
-  int _numTypeParameters;
+    int _numTypeParameters;
 
-    //@override
-    idl.ReferenceKind get kind => _kind ??= idl.ReferenceKind.classOrEnum;
+    ////@override
+    public idl.ReferenceKind kind
+    {
+        get => _kind ??= idl.ReferenceKind.classOrEnum;
+    }
 
     /**
      * The kind of object referred to by the name.
      */
-    void set kind(idl.ReferenceKind value) {
+    void setkind(idl.ReferenceKind value)
+    {
         this._kind = value;
     }
 
-    //@override
+    ////@override
     List<UnlinkedPublicNameBuilder> get members =>
-        _members ??= < UnlinkedPublicNameBuilder >[];
+        _members ??= new Dictionary<UnlinkedPublicNameBuilder>{};
 
-    /**
-     * If this [UnlinkedPublicName] is a class, the list of members which can be
-     * referenced statically - static fields, static methods, and constructors.
-     * Otherwise empty.
-     *
-     * Unnamed constructors are not included since they do not constitute a
-     * separate name added to any namespace.
-     */
-    void set members(List < UnlinkedPublicNameBuilder > value) {
-        this._members = value;
-    }
+/**
+ * If this [UnlinkedPublicName] is a class, the list of members which can be
+ * referenced statically - static fields, static methods, and constructors.
+ * Otherwise empty.
+ *
+ * Unnamed constructors are not included since they do not constitute a
+ * separate name added to any namespace.
+ */
+void setmembers(List<UnlinkedPublicNameBuilder> value)
+{
+    this._members = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * The name itself.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * The name itself.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get numTypeParameters => _numTypeParameters ??= 0;
+////@override
+public int numTypeParameters
+{
+    get => _numTypeParameters ??= 0;
+}
 
-    /**
-     * If the entity being referred to is generic, the number of type parameters
-     * it accepts.  Otherwise zero.
-     */
-    void set numTypeParameters(int value) {
-        assert(value == null || value >= 0);
-        this._numTypeParameters = value;
-    }
+/**
+ * If the entity being referred to is generic, the number of type parameters
+ * it accepts.  Otherwise zero.
+ */
+void setnumTypeParameters(int value)
+{
+    assert(value == null || value >= 0);
+    this._numTypeParameters = value;
+}
 
-    UnlinkedPublicNameBuilder(
+UnlinkedPublicNameBuilder(
         {
-        idl.ReferenceKind kind,
-       List< UnlinkedPublicNameBuilder > members,
+    idl.ReferenceKind kind,
+   List< UnlinkedPublicNameBuilder > members,
       String name,
-      int numTypeParameters})
+      int numTypeParameters)
       : _kind = kind,
         _members = members,
         _name = name,
@@ -11161,7 +11874,7 @@ class UnlinkedPublicNameBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         signature.addInt(this._kind == null ? 0 : this._kind.index);
         if (this._members == null)
         {
@@ -11170,7 +11883,7 @@ class UnlinkedPublicNameBuilder extends Object
         else
         {
             signature.addInt(this._members.length);
-      for (var x in this._members)
+            foreach (var x in this._members)
             {
                 x?.collectApiSignature(signature);
             }
@@ -11210,109 +11923,108 @@ class UnlinkedPublicNameBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedPublicNameReader
+    : fb.TableReader<_UnlinkedPublicNameImpl>
+{
+    public _UnlinkedPublicNameReader();
 
-class _UnlinkedPublicNameReader
-    extends fb.TableReader<_UnlinkedPublicNameImpl> {
-  const _UnlinkedPublicNameReader();
-
-    //@override
+    ////@override
     _UnlinkedPublicNameImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedPublicNameImpl(bc, offset);
 }
-
-class _UnlinkedPublicNameImpl extends Object
+public class _UnlinkedPublicNameImpl : Object
     with _UnlinkedPublicNameMixin
-    implements idl.UnlinkedPublicName
+    : idl.UnlinkedPublicName
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedPublicNameImpl(this._bc, this._bcOffset);
 
     idl.ReferenceKind _kind;
     List<idl.UnlinkedPublicName> _members;
     String _name;
-  int _numTypeParameters;
+    int _numTypeParameters;
 
-    //@override
+    ////@override
     idl.ReferenceKind get kind {
-        _kind ??= const _ReferenceKindReader()
+        _kind ??= new _ReferenceKindReader()
           .vTableGet(_bc, _bcOffset, 1, idl.ReferenceKind.classOrEnum);
         return _kind;
     }
 
-    //@override
-    List<idl.UnlinkedPublicName> get members {
-        _members ??= const fb.ListReader<idl.UnlinkedPublicName>(
-              const _UnlinkedPublicNameReader())
-        .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedPublicName>[]);
+////@override
+List<idl.UnlinkedPublicName> get members {
+        _members ??= new fb.ListReader<idl.UnlinkedPublicName>(
+public _UnlinkedPublicNameReader())
+        .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedPublicName>{);
         return _members;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get numTypeParameters {
         _numTypeParameters ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 3, 0);
         return _numTypeParameters;
     }
     }
-
-abstract class _UnlinkedPublicNameMixin implements idl.UnlinkedPublicName
+public abstract class _UnlinkedPublicNameMixin : idl.UnlinkedPublicName
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (kind != idl.ReferenceKind.classOrEnum)
-            _result["kind"] = kind.toString().split('.')[1];
+            _result["kind"] = kind.toString().split(".")[1];
         if (members.isNotEmpty)
             _result["members"] = members.map((_value) => _value.toJson()).toList();
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (numTypeParameters != 0)
             _result["numTypeParameters"] = numTypeParameters;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "kind": kind,
         "members": members,
         "name": name,
         "numTypeParameters": numTypeParameters,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedPublicNamespaceBuilder extends Object
+public class UnlinkedPublicNamespaceBuilder : Object
     with _UnlinkedPublicNamespaceMixin
-    implements idl.UnlinkedPublicNamespace
+    : idl.UnlinkedPublicNamespace
 {
     List<UnlinkedExportPublicBuilder> _exports;
     List<UnlinkedPublicNameBuilder> _names;
     List<String> _parts;
 
-    //@override
+    ////@override
     List<UnlinkedExportPublicBuilder> get exports =>
-        _exports ??= < UnlinkedExportPublicBuilder >[];
+        _exports ??= new Dictionary<UnlinkedExportPublicBuilder>{};
 
-    /**
-     * Export declarations in the compilation unit.
-     */
-    void set exports(List < UnlinkedExportPublicBuilder > value) {
-        this._exports = value;
-    }
+/**
+ * Export declarations in the compilation unit.
+ */
+void setexports(List<UnlinkedExportPublicBuilder> value)
+{
+    this._exports = value;
+}
 
-    //@override
-    List<UnlinkedPublicNameBuilder> get names =>
-        _names ??= < UnlinkedPublicNameBuilder >[];
+////@override
+List<UnlinkedPublicNameBuilder> get names =>
+        _names ??= new List<UnlinkedPublicNameBuilder>{};
 
     /**
      * Public names defined in the compilation unit.
@@ -11320,25 +12032,30 @@ class UnlinkedPublicNamespaceBuilder extends Object
      * TODO(paulberry): consider sorting these names to reduce unnecessary
      * relinking.
      */
-    void set names(List < UnlinkedPublicNameBuilder > value) {
-        this._names = value;
-    }
+    void setnames(List<UnlinkedPublicNameBuilder> value)
+{
+    this._names = value;
+}
 
-    //@override
-    List<String> get parts => _parts ??= < String >[];
+////@override
+public List<String> parts
+{
+    get => _parts ??= new List<String> { };
+}
 
-    /**
-     * URIs referenced by part declarations in the compilation unit.
-     */
-    void set parts(List < String > value) {
-        this._parts = value;
-    }
+/**
+ * URIs referenced by part declarations in the compilation unit.
+ */
+void setparts(List<String> value)
+{
+    this._parts = value;
+}
 
-    UnlinkedPublicNamespaceBuilder(
+UnlinkedPublicNamespaceBuilder(
         {
-        List<UnlinkedExportPublicBuilder> exports,
-       List< UnlinkedPublicNameBuilder > names,
-      List<String> parts})
+    List<UnlinkedExportPublicBuilder> exports,
+   List< UnlinkedPublicNameBuilder > names,
+      List<String> parts)
       : _exports = exports,
         _names = names,
         _parts = parts;
@@ -11364,7 +12081,7 @@ class UnlinkedPublicNamespaceBuilder extends Object
         else
         {
             signature.addInt(this._names.length);
-      for (var x in this._names)
+            foreach (var x in this._names)
             {
                 x?.collectApiSignature(signature);
             }
@@ -11376,7 +12093,7 @@ class UnlinkedPublicNamespaceBuilder extends Object
         else
         {
             signature.addInt(this._parts.length);
-      for (var x in this._parts)
+            foreach (var x in this._parts)
             {
                 signature.addString(x);
             }
@@ -11388,7 +12105,7 @@ class UnlinkedPublicNamespaceBuilder extends Object
         else
         {
             signature.addInt(this._exports.length);
-      for (var x in this._exports)
+            foreach (var x in this._exports)
             {
                 x?.collectApiSignature(signature);
             }
@@ -11436,28 +12153,28 @@ class UnlinkedPublicNamespaceBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.UnlinkedPublicNamespace readUnlinkedPublicNamespace(List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _UnlinkedPublicNamespaceReader().read(rootRef, 0);
-    }
+idl.UnlinkedPublicNamespace readUnlinkedPublicNamespace(List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _UnlinkedPublicNamespaceReader().read(rootRef, 0);
+}
+public class _UnlinkedPublicNamespaceReader
+    : fb.TableReader<_UnlinkedPublicNamespaceImpl>
+{
+    public _UnlinkedPublicNamespaceReader();
 
-class _UnlinkedPublicNamespaceReader
-    extends fb.TableReader<_UnlinkedPublicNamespaceImpl> {
-  const _UnlinkedPublicNamespaceReader();
-
-    //@override
+    ////@override
     _UnlinkedPublicNamespaceImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedPublicNamespaceImpl(bc, offset);
 }
-
-class _UnlinkedPublicNamespaceImpl extends Object
+public class _UnlinkedPublicNamespaceImpl : Object
     with _UnlinkedPublicNamespaceMixin
-    implements idl.UnlinkedPublicNamespace
+    : idl.UnlinkedPublicNamespace
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedPublicNamespaceImpl(this._bc, this._bcOffset);
 
@@ -11465,36 +12182,36 @@ class _UnlinkedPublicNamespaceImpl extends Object
     List<idl.UnlinkedPublicName> _names;
     List<String> _parts;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExportPublic> get exports {
-        _exports ??= const fb.ListReader<idl.UnlinkedExportPublic>(
-              const _UnlinkedExportPublicReader())
-        .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedExportPublic>[]);
+        _exports ??= new fb.ListReader<idl.UnlinkedExportPublic>(
+public _UnlinkedExportPublicReader())
+        .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedExportPublic>{);
         return _exports;
     }
 
-    //@override
-    List<idl.UnlinkedPublicName> get names {
-        _names ??= const fb.ListReader<idl.UnlinkedPublicName>(
-              const _UnlinkedPublicNameReader())
-        .vTableGet(_bc, _bcOffset, 0, const <idl.UnlinkedPublicName>[]);
+////@override
+List<idl.UnlinkedPublicName> get names {
+        _names ??= new fb.ListReader<idl.UnlinkedPublicName>(
+public _UnlinkedPublicNameReader())
+        .vTableGet(_bc, _bcOffset, 0, new List<idl.UnlinkedPublicName>{);
         return _names;
     }
 
-    //@override
+    ////@override
     List<String> get parts {
-        _parts ??= const fb.ListReader<String>(const fb.StringReader())
-        .vTableGet(_bc, _bcOffset, 1, const <String>[]);
+        _parts ??= new fb.ListReader<String>(const fb.StringReader())
+        .vTableGet(_bc, _bcOffset, 1, new List<String>{);
         return _parts;
     }
     }
-
-abstract class _UnlinkedPublicNamespaceMixin
-    implements idl.UnlinkedPublicNamespace
+public abstract class _UnlinkedPublicNamespaceMixin
+    : idl.UnlinkedPublicNamespace
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (exports.isNotEmpty)
             _result["exports"] = exports.map((_value) => _value.toJson()).toList();
         if (names.isNotEmpty)
@@ -11503,38 +12220,44 @@ abstract class _UnlinkedPublicNamespaceMixin
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "exports": exports,
         "names": names,
         "parts": parts,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedReferenceBuilder extends Object
+public class UnlinkedReferenceBuilder : Object
     with _UnlinkedReferenceMixin
-    implements idl.UnlinkedReference
+    : idl.UnlinkedReference
 {
     String _name;
-  int _prefixReference;
+    int _prefixReference;
 
-    //@override
-    String get name => _name ??= '';
+    ////@override
+    public String name
+    {
+        get => _name ??= "";
+    }
 
     /**
      * Name of the entity being referred to.  For the pseudo-type `dynamic`, the
      * string is "dynamic".  For the pseudo-type `void`, the string is "void".
      * For the pseudo-type `bottom`, the string is "*bottom*".
      */
-    void set name(String value) {
+    void setname(String value)
+    {
         this._name = value;
     }
 
-    //@override
-    int get prefixReference => _prefixReference ??= 0;
+    ////@override
+    public int prefixReference
+    {
+        get => _prefixReference ??= 0;
+    }
 
     /**
      * Prefix used to refer to the entity, or zero if no prefix is used.  This is
@@ -11544,12 +12267,13 @@ class UnlinkedReferenceBuilder extends Object
      * UnlinkedUnit.references[i].prefixReference != 0, then
      * UnlinkedUnit.references[i].prefixReference < i.
      */
-    void set prefixReference(int value) {
+    void setprefixReference(int value)
+    {
         assert(value == null || value >= 0);
         this._prefixReference = value;
     }
 
-    UnlinkedReferenceBuilder({ String name, int prefixReference})
+    UnlinkedReferenceBuilder(String name, int prefixReference)
       : _name = name,
         _prefixReference = prefixReference;
 
@@ -11563,7 +12287,7 @@ class UnlinkedReferenceBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         signature.addInt(this._prefixReference ?? 0);
     }
 
@@ -11585,185 +12309,207 @@ class UnlinkedReferenceBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedReferenceReader : fb.TableReader<_UnlinkedReferenceImpl>
+{
+    public _UnlinkedReferenceReader();
 
-class _UnlinkedReferenceReader extends fb.TableReader<_UnlinkedReferenceImpl> {
-  const _UnlinkedReferenceReader();
-
-    //@override
+    ////@override
     _UnlinkedReferenceImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedReferenceImpl(bc, offset);
 }
-
-class _UnlinkedReferenceImpl extends Object
+public class _UnlinkedReferenceImpl : Object
     with _UnlinkedReferenceMixin
-    implements idl.UnlinkedReference
+    : idl.UnlinkedReference
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedReferenceImpl(this._bc, this._bcOffset);
 
     String _name;
-  int _prefixReference;
+    int _prefixReference;
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
-    int get prefixReference {
+////@override
+int get prefixReference {
         _prefixReference ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _prefixReference;
     }
     }
-
-abstract class _UnlinkedReferenceMixin implements idl.UnlinkedReference
+public abstract class _UnlinkedReferenceMixin : idl.UnlinkedReference
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
-        if (name != '') _result["name"] = name;
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
+        if (name != "") _result["name"] = name;
         if (prefixReference != 0) _result["prefixReference"] = prefixReference;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "name": name,
         "prefixReference": prefixReference,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedTypedefBuilder extends Object
+public class UnlinkedTypedefBuilder : Object
     with _UnlinkedTypedefMixin
-    implements idl.UnlinkedTypedef
+    : idl.UnlinkedTypedef
 {
     List<UnlinkedExprBuilder> _annotations;
     CodeRangeBuilder _codeRange;
     UnlinkedDocumentationCommentBuilder _documentationComment;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<UnlinkedParamBuilder> _parameters;
     EntityRefBuilder _returnType;
     idl.TypedefStyle _style;
     List<UnlinkedTypeParamBuilder> _typeParameters;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this typedef.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this typedef.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the typedef.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the typedef.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    UnlinkedDocumentationCommentBuilder get documentationComment =>
+////@override
+UnlinkedDocumentationCommentBuilder get documentationComment =>
       _documentationComment;
 
     /**
      * Documentation comment for the typedef, or `null` if there is no
      * documentation comment.
      */
-    void set documentationComment(UnlinkedDocumentationCommentBuilder value) {
-        this._documentationComment = value;
-    }
+    void setdocumentationComment(UnlinkedDocumentationCommentBuilder value)
+{
+    this._documentationComment = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the typedef.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the typedef.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the typedef name relative to the beginning of the file.
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the typedef name relative to the beginning of the file.
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    //@override
-    List<UnlinkedParamBuilder> get parameters =>
-        _parameters ??= < UnlinkedParamBuilder >[];
+////@override
+List<UnlinkedParamBuilder> get parameters =>
+        _parameters ??= new Dictionary<UnlinkedParamBuilder>{};
 
     /**
      * Parameters of the executable, if any.
      */
-    void set parameters(List < UnlinkedParamBuilder > value) {
-        this._parameters = value;
-    }
+    void setparameters(List<UnlinkedParamBuilder> value)
+{
+    this._parameters = value;
+}
 
-    //@override
-    EntityRefBuilder get returnType => _returnType;
+////@override
+public EntityRefBuilder returnType
+{
+    get => _returnType;
+}
 
-    /**
-     * If [style] is [TypedefStyle.functionType], the return type of the typedef.
-     * If [style] is [TypedefStyle.genericFunctionType], the function type being
-     * defined.
-     */
-    void set returnType(EntityRefBuilder value) {
-        this._returnType = value;
-    }
+/**
+ * If [style] is [TypedefStyle.functionType], the return type of the typedef.
+ * If [style] is [TypedefStyle.genericFunctionType], the function type being
+ * defined.
+ */
+void setreturnType(EntityRefBuilder value)
+{
+    this._returnType = value;
+}
 
-    //@override
-    idl.TypedefStyle get style => _style ??= idl.TypedefStyle.functionType;
+////@override
+public idl.TypedefStyle style
+{
+    get => _style ??= idl.TypedefStyle.functionType;
+}
 
-    /**
-     * The style of the typedef.
-     */
-    void set style(idl.TypedefStyle value) {
-        this._style = value;
-    }
+/**
+ * The style of the typedef.
+ */
+void setstyle(idl.TypedefStyle value)
+{
+    this._style = value;
+}
 
-    //@override
-    List<UnlinkedTypeParamBuilder> get typeParameters =>
-        _typeParameters ??= < UnlinkedTypeParamBuilder >[];
+////@override
+List<UnlinkedTypeParamBuilder> get typeParameters =>
+        _typeParameters ??= new Dictionary<UnlinkedTypeParamBuilder>{};
 
     /**
      * Type parameters of the typedef, if any.
      */
-    void set typeParameters(List < UnlinkedTypeParamBuilder > value) {
-        this._typeParameters = value;
-    }
+    void settypeParameters(List<UnlinkedTypeParamBuilder> value)
+{
+    this._typeParameters = value;
+}
 
-    UnlinkedTypedefBuilder(
+UnlinkedTypedefBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       CodeRangeBuilder codeRange,
+    List<UnlinkedExprBuilder> annotations,
+   CodeRangeBuilder codeRange,
       UnlinkedDocumentationCommentBuilder documentationComment,
       String name,
       int nameOffset,
       List< UnlinkedParamBuilder > parameters,
       EntityRefBuilder returnType,
       idl.TypedefStyle style,
-      List< UnlinkedTypeParamBuilder > typeParameters})
+      List< UnlinkedTypeParamBuilder > typeParameters)
       : _annotations = annotations,
         _codeRange = codeRange,
         _documentationComment = documentationComment,
@@ -11793,7 +12539,7 @@ class UnlinkedTypedefBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         signature.addBool(this._returnType != null);
         this._returnType?.collectApiSignature(signature);
         if (this._parameters == null)
@@ -11803,7 +12549,7 @@ class UnlinkedTypedefBuilder extends Object
         else
         {
             signature.addInt(this._parameters.length);
-      for (var x in this._parameters)
+            foreach (var x in this._parameters)
             {
                 x?.collectApiSignature(signature);
             }
@@ -11815,7 +12561,7 @@ class UnlinkedTypedefBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -11827,7 +12573,7 @@ class UnlinkedTypedefBuilder extends Object
         else
         {
             signature.addInt(this._typeParameters.length);
-      for (var x in this._typeParameters)
+            foreach (var x in this._typeParameters)
             {
                 x?.collectApiSignature(signature);
             }
@@ -11914,22 +12660,21 @@ class UnlinkedTypedefBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedTypedefReader : fb.TableReader<_UnlinkedTypedefImpl>
+{
+    public _UnlinkedTypedefReader();
 
-class _UnlinkedTypedefReader extends fb.TableReader<_UnlinkedTypedefImpl> {
-  const _UnlinkedTypedefReader();
-
-    //@override
+    ////@override
     _UnlinkedTypedefImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedTypedefImpl(bc, offset);
 }
-
-class _UnlinkedTypedefImpl extends Object
+public class _UnlinkedTypedefImpl : Object
     with _UnlinkedTypedefMixin
-    implements idl.UnlinkedTypedef
+    : idl.UnlinkedTypedef
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedTypedefImpl(this._bc, this._bcOffset);
 
@@ -11937,102 +12682,102 @@ class _UnlinkedTypedefImpl extends Object
     idl.CodeRange _codeRange;
     idl.UnlinkedDocumentationComment _documentationComment;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
     List<idl.UnlinkedParam> _parameters;
     idl.EntityRef _returnType;
     idl.TypedefStyle _style;
     List<idl.UnlinkedTypeParam> _typeParameters;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 4, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 4, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 7, null);
+////@override
+idl.CodeRange get codeRange {
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 7, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedDocumentationComment get documentationComment {
-        _documentationComment ??= const _UnlinkedDocumentationCommentReader()
+        _documentationComment ??= new _UnlinkedDocumentationCommentReader()
           .vTableGet(_bc, _bcOffset, 6, null);
         return _documentationComment;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nameOffset;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedParam> get parameters {
         _parameters ??=
-          const fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
-            .vTableGet(_bc, _bcOffset, 3, const <idl.UnlinkedParam>[]);
+public fb.ListReader<idl.UnlinkedParam>(const _UnlinkedParamReader())
+            .vTableGet(_bc, _bcOffset, 3, new List<idl.UnlinkedParam>{);
         return _parameters;
     }
 
-    //@override
+    ////@override
     idl.EntityRef get returnType {
-        _returnType ??= const _EntityRefReader().vTableGet(_bc, _bcOffset, 2, null);
+        _returnType ??= new _EntityRefReader().vTableGet(_bc, _bcOffset, 2, null);
         return _returnType;
     }
 
-    //@override
+    ////@override
     idl.TypedefStyle get style {
-        _style ??= const _TypedefStyleReader()
+        _style ??= new _TypedefStyleReader()
           .vTableGet(_bc, _bcOffset, 8, idl.TypedefStyle.functionType);
         return _style;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedTypeParam> get typeParameters {
-        _typeParameters ??= const fb.ListReader<idl.UnlinkedTypeParam>(
-              const _UnlinkedTypeParamReader())
-        .vTableGet(_bc, _bcOffset, 5, const <idl.UnlinkedTypeParam>[]);
+        _typeParameters ??= new fb.ListReader<idl.UnlinkedTypeParam>(
+public _UnlinkedTypeParamReader())
+        .vTableGet(_bc, _bcOffset, 5, new List<idl.UnlinkedTypeParam>{);
         return _typeParameters;
     }
     }
-
-abstract class _UnlinkedTypedefMixin implements idl.UnlinkedTypedef
+public abstract class _UnlinkedTypedefMixin : idl.UnlinkedTypedef
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
         if (codeRange != null) _result["codeRange"] = codeRange.toJson();
         if (documentationComment != null)
             _result["documentationComment"] = documentationComment.toJson();
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         if (parameters.isNotEmpty)
             _result["parameters"] =
                 parameters.map((_value) => _value.toJson()).toList();
         if (returnType != null) _result["returnType"] = returnType.toJson();
         if (style != idl.TypedefStyle.functionType)
-            _result["style"] = style.toString().split('.')[1];
+            _result["style"] = style.toString().split(".")[1];
         if (typeParameters.isNotEmpty)
             _result["typeParameters"] =
                 typeParameters.map((_value) => _value.toJson()).toList();
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "codeRange": codeRange,
         "documentationComment": documentationComment,
@@ -12044,80 +12789,96 @@ abstract class _UnlinkedTypedefMixin implements idl.UnlinkedTypedef
         "typeParameters": typeParameters,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedTypeParamBuilder extends Object
+public class UnlinkedTypeParamBuilder : Object
     with _UnlinkedTypeParamMixin
-    implements idl.UnlinkedTypeParam
+    : idl.UnlinkedTypeParam
 {
     List<UnlinkedExprBuilder> _annotations;
     EntityRefBuilder _bound;
     CodeRangeBuilder _codeRange;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this type parameter.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this type parameter.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    EntityRefBuilder get bound => _bound;
+////@override
+public EntityRefBuilder bound
+{
+    get => _bound;
+}
 
-    /**
-     * Bound of the type parameter, if a bound is explicitly declared.  Otherwise
-     * null.
-     */
-    void set bound(EntityRefBuilder value) {
-        this._bound = value;
-    }
+/**
+ * Bound of the type parameter, if a bound is explicitly declared.  Otherwise
+ * null.
+ */
+void setbound(EntityRefBuilder value)
+{
+    this._bound = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the type parameter.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the type parameter.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the type parameter.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the type parameter.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the type parameter name relative to the beginning of the file.
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the type parameter name relative to the beginning of the file.
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    UnlinkedTypeParamBuilder(
+UnlinkedTypeParamBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       EntityRefBuilder bound,
+    List<UnlinkedExprBuilder> annotations,
+   EntityRefBuilder bound,
       CodeRangeBuilder codeRange,
       String name,
-      int nameOffset})
+      int nameOffset)
       : _annotations = annotations,
         _bound = bound,
         _codeRange = codeRange,
@@ -12140,7 +12901,7 @@ class UnlinkedTypeParamBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         signature.addBool(this._bound != null);
         this._bound?.collectApiSignature(signature);
         if (this._annotations == null)
@@ -12150,7 +12911,7 @@ class UnlinkedTypeParamBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12203,22 +12964,21 @@ class UnlinkedTypeParamBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedTypeParamReader : fb.TableReader<_UnlinkedTypeParamImpl>
+{
+    public _UnlinkedTypeParamReader();
 
-class _UnlinkedTypeParamReader extends fb.TableReader<_UnlinkedTypeParamImpl> {
-  const _UnlinkedTypeParamReader();
-
-    //@override
+    ////@override
     _UnlinkedTypeParamImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedTypeParamImpl(bc, offset);
 }
-
-class _UnlinkedTypeParamImpl extends Object
+public class _UnlinkedTypeParamImpl : Object
     with _UnlinkedTypeParamMixin
-    implements idl.UnlinkedTypeParam
+    : idl.UnlinkedTypeParam
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedTypeParamImpl(this._bc, this._bcOffset);
 
@@ -12226,58 +12986,58 @@ class _UnlinkedTypeParamImpl extends Object
     idl.EntityRef _bound;
     idl.CodeRange _codeRange;
     String _name;
-  int _nameOffset;
+    int _nameOffset;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 3, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 3, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.EntityRef get bound {
-        _bound ??= const _EntityRefReader().vTableGet(_bc, _bcOffset, 2, null);
+////@override
+idl.EntityRef get bound {
+        _bound ??= new _EntityRefReader().vTableGet(_bc, _bcOffset, 2, null);
         return _bound;
     }
 
-    //@override
+    ////@override
     idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 4, null);
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 4, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nameOffset;
     }
     }
-
-abstract class _UnlinkedTypeParamMixin implements idl.UnlinkedTypeParam
+public abstract class _UnlinkedTypeParamMixin : idl.UnlinkedTypeParam
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
         if (bound != null) _result["bound"] = bound.toJson();
         if (codeRange != null) _result["codeRange"] = codeRange.toJson();
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "bound": bound,
         "codeRange": codeRange,
@@ -12285,13 +13045,12 @@ abstract class _UnlinkedTypeParamMixin implements idl.UnlinkedTypeParam
         "nameOffset": nameOffset,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedUnitBuilder extends Object
+public class UnlinkedUnitBuilder : Object
     with _UnlinkedUnitMixin
-    implements idl.UnlinkedUnit
+    : idl.UnlinkedUnit
 {
     List<int> _apiSignature;
     List<UnlinkedClassBuilder> _classes;
@@ -12300,12 +13059,12 @@ class UnlinkedUnitBuilder extends Object
     List<UnlinkedExecutableBuilder> _executables;
     List<UnlinkedExportNonPublicBuilder> _exports;
     List<UnlinkedImportBuilder> _imports;
-  bool _isPartOf;
+    bool _isPartOf;
     List<UnlinkedExprBuilder> _libraryAnnotations;
     UnlinkedDocumentationCommentBuilder _libraryDocumentationComment;
     String _libraryName;
-  int _libraryNameLength;
-  int _libraryNameOffset;
+    int _libraryNameLength;
+    int _libraryNameOffset;
     List<int> _lineStarts;
     List<UnlinkedClassBuilder> _mixins;
     List<UnlinkedPartBuilder> _parts;
@@ -12314,201 +13073,251 @@ class UnlinkedUnitBuilder extends Object
     List<UnlinkedTypedefBuilder> _typedefs;
     List<UnlinkedVariableBuilder> _variables;
 
-    //@override
-    List<int> get apiSignature => _apiSignature ??= < int >[];
+    ////@override
+    public List<int> apiSignature
+    {
+        get => _apiSignature ??= new Dictionary<int> { };
+    }
 
     /**
      * MD5 hash of the non-informative fields of the [UnlinkedUnit] (not
      * including this one) as 16 unsigned 8-bit integer values.  This can be used
      * to identify when the API of a unit may have changed.
      */
-    void set apiSignature(List<int> value) {
+    void setapiSignature(List<int> value)
+    {
         assert(value == null || value.every((e) => e >= 0));
         this._apiSignature = value;
     }
 
-    //@override
+    ////@override
     List<UnlinkedClassBuilder> get classes =>
-        _classes ??= < UnlinkedClassBuilder >[];
+        _classes ??= new List<UnlinkedClassBuilder>{};
 
-    /**
-     * Classes declared in the compilation unit.
-     */
-    void set classes(List < UnlinkedClassBuilder > value) {
-        this._classes = value;
-    }
+/**
+ * Classes declared in the compilation unit.
+ */
+void setclasses(List<UnlinkedClassBuilder> value)
+{
+    this._classes = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the unit.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the unit.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    List<UnlinkedEnumBuilder> get enums => _enums ??= < UnlinkedEnumBuilder >[];
+////@override
+public List<UnlinkedEnumBuilder> enums
+{
+    get => _enums ??= new List<UnlinkedEnumBuilder> { };
+}
 
-    /**
-     * Enums declared in the compilation unit.
-     */
-    void set enums(List < UnlinkedEnumBuilder > value) {
-        this._enums = value;
-    }
+/**
+ * Enums declared in the compilation unit.
+ */
+void setenums(List<UnlinkedEnumBuilder> value)
+{
+    this._enums = value;
+}
 
-    //@override
-    List<UnlinkedExecutableBuilder> get executables =>
-        _executables ??= < UnlinkedExecutableBuilder >[];
+////@override
+List<UnlinkedExecutableBuilder> get executables =>
+        _executables ??= new List<UnlinkedExecutableBuilder>{};
 
     /**
      * Top level executable objects (functions, getters, and setters) declared in
      * the compilation unit.
      */
-    void set executables(List < UnlinkedExecutableBuilder > value) {
-        this._executables = value;
-    }
+    void setexecutables(List<UnlinkedExecutableBuilder> value)
+{
+    this._executables = value;
+}
 
-    //@override
-    List<UnlinkedExportNonPublicBuilder> get exports =>
-        _exports ??= < UnlinkedExportNonPublicBuilder >[];
+////@override
+List<UnlinkedExportNonPublicBuilder> get exports =>
+        _exports ??= new Dictionary<UnlinkedExportNonPublicBuilder>{};
 
     /**
      * Export declarations in the compilation unit.
      */
-    void set exports(List < UnlinkedExportNonPublicBuilder > value) {
-        this._exports = value;
-    }
+    void setexports(List<UnlinkedExportNonPublicBuilder> value)
+{
+    this._exports = value;
+}
 
-    //@override
-    Null get fallbackModePath =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get fallbackModePath =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    List<UnlinkedImportBuilder> get imports =>
-        _imports ??= < UnlinkedImportBuilder >[];
+////@override
+List<UnlinkedImportBuilder> get imports =>
+        _imports ??= new List<UnlinkedImportBuilder>{};
 
     /**
      * Import declarations in the compilation unit.
      */
-    void set imports(List < UnlinkedImportBuilder > value) {
-        this._imports = value;
-    }
+    void setimports(List<UnlinkedImportBuilder> value)
+{
+    this._imports = value;
+}
 
-    //@override
-    bool get isPartOf => _isPartOf ??= false;
+////@override
+public bool isPartOf
+{
+    get => _isPartOf ??= false;
+}
 
-    /**
-     * Indicates whether the unit contains a "part of" declaration.
-     */
-    void set isPartOf(bool value) {
-        this._isPartOf = value;
-    }
+/**
+ * Indicates whether the unit contains a "part of" declaration.
+ */
+void setisPartOf(bool value)
+{
+    this._isPartOf = value;
+}
 
-    //@override
-    List<UnlinkedExprBuilder> get libraryAnnotations =>
-        _libraryAnnotations ??= < UnlinkedExprBuilder >[];
+////@override
+List<UnlinkedExprBuilder> get libraryAnnotations =>
+        _libraryAnnotations ??= new List<UnlinkedExprBuilder>{};
 
     /**
      * Annotations for the library declaration, or the empty list if there is no
      * library declaration.
      */
-    void set libraryAnnotations(List < UnlinkedExprBuilder > value) {
-        this._libraryAnnotations = value;
-    }
+    void setlibraryAnnotations(List<UnlinkedExprBuilder> value)
+{
+    this._libraryAnnotations = value;
+}
 
-    //@override
-    UnlinkedDocumentationCommentBuilder get libraryDocumentationComment =>
+////@override
+UnlinkedDocumentationCommentBuilder get libraryDocumentationComment =>
       _libraryDocumentationComment;
 
     /**
      * Documentation comment for the library, or `null` if there is no
      * documentation comment.
      */
-    void set libraryDocumentationComment(
-        UnlinkedDocumentationCommentBuilder value) {
-        this._libraryDocumentationComment = value;
-    }
+    void setlibraryDocumentationComment(
+        UnlinkedDocumentationCommentBuilder value)
+{
+    this._libraryDocumentationComment = value;
+}
 
-    //@override
-    String get libraryName => _libraryName ??= '';
+////@override
+public String libraryName
+{
+    get => _libraryName ??= "";
+}
 
-    /**
-     * Name of the library (from a "library" declaration, if present).
-     */
-    void set libraryName(String value) {
-        this._libraryName = value;
-    }
+/**
+ * Name of the library (from a "library" declaration, if present).
+ */
+void setlibraryName(String value)
+{
+    this._libraryName = value;
+}
 
-    //@override
-    int get libraryNameLength => _libraryNameLength ??= 0;
+////@override
+public int libraryNameLength
+{
+    get => _libraryNameLength ??= 0;
+}
 
-    /**
-     * Length of the library name as it appears in the source code (or 0 if the
-     * library has no name).
-     */
-    void set libraryNameLength(int value) {
-        assert(value == null || value >= 0);
-        this._libraryNameLength = value;
-    }
+/**
+ * Length of the library name as it appears in the source code (or 0 if the
+ * library has no name).
+ */
+void setlibraryNameLength(int value)
+{
+    assert(value == null || value >= 0);
+    this._libraryNameLength = value;
+}
 
-    //@override
-    int get libraryNameOffset => _libraryNameOffset ??= 0;
+////@override
+public int libraryNameOffset
+{
+    get => _libraryNameOffset ??= 0;
+}
 
-    /**
-     * Offset of the library name relative to the beginning of the file (or 0 if
-     * the library has no name).
-     */
-    void set libraryNameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._libraryNameOffset = value;
-    }
+/**
+ * Offset of the library name relative to the beginning of the file (or 0 if
+ * the library has no name).
+ */
+void setlibraryNameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._libraryNameOffset = value;
+}
 
-    //@override
-    List<int> get lineStarts => _lineStarts ??= < int >[];
+////@override
+public List<int> lineStarts
+{
+    get => _lineStarts ??= new Dictionary<int> { };
+}
 
-    /**
-     * Offsets of the first character of each line in the source code.
-     */
-    void set lineStarts(List<int> value) {
-        assert(value == null || value.every((e) => e >= 0));
-        this._lineStarts = value;
-    }
+/**
+ * Offsets of the first character of each line in the source code.
+ */
+void setlineStarts(List<int> value)
+{
+    assert(value == null || value.every((e) => e >= 0));
+    this._lineStarts = value;
+}
 
-    //@override
-    List<UnlinkedClassBuilder> get mixins => _mixins ??= < UnlinkedClassBuilder >[];
+////@override
+public List<UnlinkedClassBuilder> mixins
+{
+    get => _mixins ??= new List<UnlinkedClassBuilder> { };
+}
 
-    /**
-     * Mixins declared in the compilation unit.
-     */
-    void set mixins(List < UnlinkedClassBuilder > value) {
-        this._mixins = value;
-    }
+/**
+ * Mixins declared in the compilation unit.
+ */
+void setmixins(List<UnlinkedClassBuilder> value)
+{
+    this._mixins = value;
+}
 
-    //@override
-    List<UnlinkedPartBuilder> get parts => _parts ??= < UnlinkedPartBuilder >[];
+////@override
+public List<UnlinkedPartBuilder> parts
+{
+    get => _parts ??= new List<UnlinkedPartBuilder> { };
+}
 
-    /**
-     * Part declarations in the compilation unit.
-     */
-    void set parts(List < UnlinkedPartBuilder > value) {
-        this._parts = value;
-    }
+/**
+ * Part declarations in the compilation unit.
+ */
+void setparts(List<UnlinkedPartBuilder> value)
+{
+    this._parts = value;
+}
 
-    //@override
-    UnlinkedPublicNamespaceBuilder get publicNamespace => _publicNamespace;
+////@override
+public UnlinkedPublicNamespaceBuilder publicNamespace
+{
+    get => _publicNamespace;
+}
 
-    /**
-     * Unlinked public namespace of this compilation unit.
-     */
-    void set publicNamespace(UnlinkedPublicNamespaceBuilder value) {
-        this._publicNamespace = value;
-    }
+/**
+ * Unlinked public namespace of this compilation unit.
+ */
+void setpublicNamespace(UnlinkedPublicNamespaceBuilder value)
+{
+    this._publicNamespace = value;
+}
 
-    //@override
-    List<UnlinkedReferenceBuilder> get references =>
-        _references ??= < UnlinkedReferenceBuilder >[];
+////@override
+List<UnlinkedReferenceBuilder> get references =>
+        _references ??= new List<UnlinkedReferenceBuilder>{};
 
     /**
      * Top level and prefixed names referred to by this compilation unit.  The
@@ -12517,36 +13326,39 @@ class UnlinkedUnitBuilder extends Object
      * example [UnlinkedReference.prefixReference or
      * UnlinkedImport.prefixReference]).
      */
-    void set references(List < UnlinkedReferenceBuilder > value) {
-        this._references = value;
-    }
+    void setreferences(List<UnlinkedReferenceBuilder> value)
+{
+    this._references = value;
+}
 
-    //@override
-    List<UnlinkedTypedefBuilder> get typedefs =>
-        _typedefs ??= < UnlinkedTypedefBuilder >[];
+////@override
+List<UnlinkedTypedefBuilder> get typedefs =>
+        _typedefs ??= new List<UnlinkedTypedefBuilder>{};
 
     /**
      * Typedefs declared in the compilation unit.
      */
-    void set typedefs(List < UnlinkedTypedefBuilder > value) {
-        this._typedefs = value;
-    }
+    void settypedefs(List<UnlinkedTypedefBuilder> value)
+{
+    this._typedefs = value;
+}
 
-    //@override
-    List<UnlinkedVariableBuilder> get variables =>
-        _variables ??= < UnlinkedVariableBuilder >[];
+////@override
+List<UnlinkedVariableBuilder> get variables =>
+        _variables ??= new List<UnlinkedVariableBuilder>{};
 
     /**
      * Top level variables declared in the compilation unit.
      */
-    void set variables(List < UnlinkedVariableBuilder > value) {
-        this._variables = value;
-    }
+    void setvariables(List<UnlinkedVariableBuilder> value)
+{
+    this._variables = value;
+}
 
-    UnlinkedUnitBuilder(
+UnlinkedUnitBuilder(
         {
-        List<int> apiSignature,
-       List< UnlinkedClassBuilder > classes,
+    List<int> apiSignature,
+   List< UnlinkedClassBuilder > classes,
       CodeRangeBuilder codeRange,
       List< UnlinkedEnumBuilder > enums,
       List<UnlinkedExecutableBuilder> executables,
@@ -12564,7 +13376,7 @@ class UnlinkedUnitBuilder extends Object
       UnlinkedPublicNamespaceBuilder publicNamespace,
       List< UnlinkedReferenceBuilder > references,
       List<UnlinkedTypedefBuilder> typedefs,
-      List< UnlinkedVariableBuilder > variables})
+      List< UnlinkedVariableBuilder > variables)
       : _apiSignature = apiSignature,
         _classes = classes,
         _codeRange = codeRange,
@@ -12624,7 +13436,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._references.length);
-      for (var x in this._references)
+            foreach (var x in this._references)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12636,7 +13448,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._classes.length);
-      for (var x in this._classes)
+            foreach (var x in this._classes)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12648,7 +13460,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._variables.length);
-      for (var x in this._variables)
+            foreach (var x in this._variables)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12660,7 +13472,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._executables.length);
-      for (var x in this._executables)
+            foreach (var x in this._executables)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12672,12 +13484,12 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._imports.length);
-      for (var x in this._imports)
+            foreach (var x in this._imports)
             {
                 x?.collectApiSignature(signature);
             }
         }
-        signature.addString(this._libraryName ?? '');
+        signature.addString(this._libraryName ?? "");
         if (this._typedefs == null)
         {
             signature.addInt(0);
@@ -12685,7 +13497,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._typedefs.length);
-      for (var x in this._typedefs)
+            foreach (var x in this._typedefs)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12697,7 +13509,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._parts.length);
-      for (var x in this._parts)
+            foreach (var x in this._parts)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12709,7 +13521,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._enums.length);
-      for (var x in this._enums)
+            foreach (var x in this._enums)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12721,7 +13533,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._exports.length);
-      for (var x in this._exports)
+            foreach (var x in this._exports)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12733,7 +13545,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._libraryAnnotations.length);
-      for (var x in this._libraryAnnotations)
+            foreach (var x in this._libraryAnnotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12746,7 +13558,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._apiSignature.length);
-      for (var x in this._apiSignature)
+            foreach (var x in this._apiSignature)
             {
                 signature.addInt(x);
             }
@@ -12758,7 +13570,7 @@ class UnlinkedUnitBuilder extends Object
         else
         {
             signature.addInt(this._mixins.length);
-      for (var x in this._mixins)
+            foreach (var x in this._mixins)
             {
                 x?.collectApiSignature(signature);
             }
@@ -12953,27 +13765,27 @@ class UnlinkedUnitBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
 
-    idl.UnlinkedUnit readUnlinkedUnit(List<int> buffer) {
-        fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
-        return const _UnlinkedUnitReader().read(rootRef, 0);
-    }
+idl.UnlinkedUnit readUnlinkedUnit(List<int> buffer)
+{
+    fb.BufferContext rootRef = new fb.BufferContext.fromBytes(buffer);
+    return new _UnlinkedUnitReader().read(rootRef, 0);
+}
+public class _UnlinkedUnitReader : fb.TableReader<_UnlinkedUnitImpl>
+{
+    public _UnlinkedUnitReader();
 
-class _UnlinkedUnitReader extends fb.TableReader<_UnlinkedUnitImpl> {
-  const _UnlinkedUnitReader();
-
-    //@override
+    ////@override
     _UnlinkedUnitImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedUnitImpl(bc, offset);
 }
-
-class _UnlinkedUnitImpl extends Object
+public class _UnlinkedUnitImpl : Object
     with _UnlinkedUnitMixin
-    implements idl.UnlinkedUnit
+    : idl.UnlinkedUnit
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedUnitImpl(this._bc, this._bcOffset);
 
@@ -12984,12 +13796,12 @@ class _UnlinkedUnitImpl extends Object
     List<idl.UnlinkedExecutable> _executables;
     List<idl.UnlinkedExportNonPublic> _exports;
     List<idl.UnlinkedImport> _imports;
-  bool _isPartOf;
+    bool _isPartOf;
     List<idl.UnlinkedExpr> _libraryAnnotations;
     idl.UnlinkedDocumentationComment _libraryDocumentationComment;
     String _libraryName;
-  int _libraryNameLength;
-  int _libraryNameOffset;
+    int _libraryNameLength;
+    int _libraryNameOffset;
     List<int> _lineStarts;
     List<idl.UnlinkedClass> _mixins;
     List<idl.UnlinkedPart> _parts;
@@ -12998,164 +13810,164 @@ class _UnlinkedUnitImpl extends Object
     List<idl.UnlinkedTypedef> _typedefs;
     List<idl.UnlinkedVariable> _variables;
 
-    //@override
+    ////@override
     List<int> get apiSignature {
-        _apiSignature ??= const fb.Uint32ListReader()
-          .vTableGet(_bc, _bcOffset, 19, const <int>[]);
+        _apiSignature ??= new fb.Uint32ListReader()
+          .vTableGet(_bc, _bcOffset, 19, new List<int>{);
         return _apiSignature;
     }
 
-    //@override
-    List<idl.UnlinkedClass> get classes {
+////@override
+List<idl.UnlinkedClass> get classes {
         _classes ??=
-          const fb.ListReader<idl.UnlinkedClass>(const _UnlinkedClassReader())
-            .vTableGet(_bc, _bcOffset, 2, const <idl.UnlinkedClass>[]);
+public fb.ListReader<idl.UnlinkedClass>(const _UnlinkedClassReader())
+            .vTableGet(_bc, _bcOffset, 2, new List<idl.UnlinkedClass>{);
         return _classes;
     }
 
-    //@override
+    ////@override
     idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 15, null);
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 15, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedEnum> get enums {
         _enums ??=
-          const fb.ListReader<idl.UnlinkedEnum>(const _UnlinkedEnumReader())
-            .vTableGet(_bc, _bcOffset, 12, const <idl.UnlinkedEnum>[]);
+public fb.ListReader<idl.UnlinkedEnum>(const _UnlinkedEnumReader())
+            .vTableGet(_bc, _bcOffset, 12, new List<idl.UnlinkedEnum>{);
         return _enums;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedExecutable> get executables {
-        _executables ??= const fb.ListReader<idl.UnlinkedExecutable>(
-              const _UnlinkedExecutableReader())
-        .vTableGet(_bc, _bcOffset, 4, const <idl.UnlinkedExecutable>[]);
+        _executables ??= new fb.ListReader<idl.UnlinkedExecutable>(
+public _UnlinkedExecutableReader())
+        .vTableGet(_bc, _bcOffset, 4, new List<idl.UnlinkedExecutable>{);
         return _executables;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedExportNonPublic> get exports {
-        _exports ??= const fb.ListReader<idl.UnlinkedExportNonPublic>(
-              const _UnlinkedExportNonPublicReader())
-        .vTableGet(_bc, _bcOffset, 13, const <idl.UnlinkedExportNonPublic>[]);
+        _exports ??= new fb.ListReader<idl.UnlinkedExportNonPublic>(
+public _UnlinkedExportNonPublicReader())
+        .vTableGet(_bc, _bcOffset, 13, new List<idl.UnlinkedExportNonPublic>{);
         return _exports;
     }
 
-    //@override
+    ////@override
     Null get fallbackModePath =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    List<idl.UnlinkedImport> get imports {
+////@override
+List<idl.UnlinkedImport> get imports {
         _imports ??=
-          const fb.ListReader<idl.UnlinkedImport>(const _UnlinkedImportReader())
-            .vTableGet(_bc, _bcOffset, 5, const <idl.UnlinkedImport>[]);
+public fb.ListReader<idl.UnlinkedImport>(const _UnlinkedImportReader())
+            .vTableGet(_bc, _bcOffset, 5, new List<idl.UnlinkedImport>{);
         return _imports;
     }
 
-    //@override
+    ////@override
     bool get isPartOf {
-        _isPartOf ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 18, false);
+        _isPartOf ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 18, false);
         return _isPartOf;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get libraryAnnotations {
         _libraryAnnotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 14, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 14, new List<idl.UnlinkedExpr>{);
         return _libraryAnnotations;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedDocumentationComment get libraryDocumentationComment {
-        _libraryDocumentationComment ??= const _UnlinkedDocumentationCommentReader()
+        _libraryDocumentationComment ??= new _UnlinkedDocumentationCommentReader()
           .vTableGet(_bc, _bcOffset, 9, null);
         return _libraryDocumentationComment;
     }
 
-    //@override
+    ////@override
     String get libraryName {
-        _libraryName ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 6, '');
+        _libraryName ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 6, "");
         return _libraryName;
     }
 
-    //@override
+    ////@override
     int get libraryNameLength {
         _libraryNameLength ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 7, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 7, 0);
         return _libraryNameLength;
     }
 
-    //@override
+    ////@override
     int get libraryNameOffset {
         _libraryNameOffset ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 8, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 8, 0);
         return _libraryNameOffset;
     }
 
-    //@override
+    ////@override
     List<int> get lineStarts {
-        _lineStarts ??= const fb.Uint32ListReader()
-          .vTableGet(_bc, _bcOffset, 17, const <int>[]);
+        _lineStarts ??= new fb.Uint32ListReader()
+          .vTableGet(_bc, _bcOffset, 17, new List<int>{);
         return _lineStarts;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedClass> get mixins {
         _mixins ??=
-          const fb.ListReader<idl.UnlinkedClass>(const _UnlinkedClassReader())
-            .vTableGet(_bc, _bcOffset, 20, const <idl.UnlinkedClass>[]);
+public fb.ListReader<idl.UnlinkedClass>(const _UnlinkedClassReader())
+            .vTableGet(_bc, _bcOffset, 20, new List<idl.UnlinkedClass>{);
         return _mixins;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedPart> get parts {
         _parts ??=
-          const fb.ListReader<idl.UnlinkedPart>(const _UnlinkedPartReader())
-            .vTableGet(_bc, _bcOffset, 11, const <idl.UnlinkedPart>[]);
+public fb.ListReader<idl.UnlinkedPart>(const _UnlinkedPartReader())
+            .vTableGet(_bc, _bcOffset, 11, new List<idl.UnlinkedPart>{);
         return _parts;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedPublicNamespace get publicNamespace {
-        _publicNamespace ??= const _UnlinkedPublicNamespaceReader()
+        _publicNamespace ??= new _UnlinkedPublicNamespaceReader()
           .vTableGet(_bc, _bcOffset, 0, null);
         return _publicNamespace;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedReference> get references {
-        _references ??= const fb.ListReader<idl.UnlinkedReference>(
-              const _UnlinkedReferenceReader())
-        .vTableGet(_bc, _bcOffset, 1, const <idl.UnlinkedReference>[]);
+        _references ??= new fb.ListReader<idl.UnlinkedReference>(
+public _UnlinkedReferenceReader())
+        .vTableGet(_bc, _bcOffset, 1, new List<idl.UnlinkedReference>{);
         return _references;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedTypedef> get typedefs {
         _typedefs ??=
-          const fb.ListReader<idl.UnlinkedTypedef>(const _UnlinkedTypedefReader())
-            .vTableGet(_bc, _bcOffset, 10, const <idl.UnlinkedTypedef>[]);
+public fb.ListReader<idl.UnlinkedTypedef>(const _UnlinkedTypedefReader())
+            .vTableGet(_bc, _bcOffset, 10, new List<idl.UnlinkedTypedef>{);
         return _typedefs;
     }
 
-    //@override
+    ////@override
     List<idl.UnlinkedVariable> get variables {
-        _variables ??= const fb.ListReader<idl.UnlinkedVariable>(
-              const _UnlinkedVariableReader())
-        .vTableGet(_bc, _bcOffset, 3, const <idl.UnlinkedVariable>[]);
+        _variables ??= new fb.ListReader<idl.UnlinkedVariable>(
+public _UnlinkedVariableReader())
+        .vTableGet(_bc, _bcOffset, 3, new List<idl.UnlinkedVariable>{);
         return _variables;
     }
     }
-
-abstract class _UnlinkedUnitMixin implements idl.UnlinkedUnit
+public abstract class _UnlinkedUnitMixin : idl.UnlinkedUnit
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (apiSignature.isNotEmpty) _result["apiSignature"] = apiSignature;
         if (classes.isNotEmpty)
             _result["classes"] = classes.map((_value) => _value.toJson()).toList();
@@ -13176,7 +13988,7 @@ abstract class _UnlinkedUnitMixin implements idl.UnlinkedUnit
         if (libraryDocumentationComment != null)
             _result["libraryDocumentationComment"] =
                 libraryDocumentationComment.toJson();
-        if (libraryName != '') _result["libraryName"] = libraryName;
+        if (libraryName != "") _result["libraryName"] = libraryName;
         if (libraryNameLength != 0)
             _result["libraryNameLength"] = libraryNameLength;
         if (libraryNameOffset != 0)
@@ -13199,8 +14011,8 @@ abstract class _UnlinkedUnitMixin implements idl.UnlinkedUnit
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "apiSignature": apiSignature,
         "classes": classes,
         "codeRange": codeRange,
@@ -13223,207 +14035,256 @@ abstract class _UnlinkedUnitMixin implements idl.UnlinkedUnit
         "variables": variables,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
-
-class UnlinkedVariableBuilder extends Object
+public class UnlinkedVariableBuilder : Object
     with _UnlinkedVariableMixin
-    implements idl.UnlinkedVariable
+    : idl.UnlinkedVariable
 {
     List<UnlinkedExprBuilder> _annotations;
     CodeRangeBuilder _codeRange;
     UnlinkedDocumentationCommentBuilder _documentationComment;
-  int _inferredTypeSlot;
-  int _inheritsCovariantSlot;
+    int _inferredTypeSlot;
+    int _inheritsCovariantSlot;
     UnlinkedExecutableBuilder _initializer;
-  bool _isConst;
-  bool _isCovariant;
-  bool _isFinal;
-  bool _isStatic;
+    bool _isConst;
+    bool _isCovariant;
+    bool _isFinal;
+    bool _isStatic;
     String _name;
-  int _nameOffset;
-  int _propagatedTypeSlot;
+    int _nameOffset;
+    int _propagatedTypeSlot;
     EntityRefBuilder _type;
 
-    //@override
+    ////@override
     List<UnlinkedExprBuilder> get annotations =>
-        _annotations ??= < UnlinkedExprBuilder >[];
+        _annotations ??= new Dictionary<UnlinkedExprBuilder>{};
 
-    /**
-     * Annotations for this variable.
-     */
-    void set annotations(List < UnlinkedExprBuilder > value) {
-        this._annotations = value;
-    }
+/**
+ * Annotations for this variable.
+ */
+void setannotations(List<UnlinkedExprBuilder> value)
+{
+    this._annotations = value;
+}
 
-    //@override
-    CodeRangeBuilder get codeRange => _codeRange;
+////@override
+public CodeRangeBuilder codeRange
+{
+    get => _codeRange;
+}
 
-    /**
-     * Code range of the variable.
-     */
-    void set codeRange(CodeRangeBuilder value) {
-        this._codeRange = value;
-    }
+/**
+ * Code range of the variable.
+ */
+void setcodeRange(CodeRangeBuilder value)
+{
+    this._codeRange = value;
+}
 
-    //@override
-    UnlinkedDocumentationCommentBuilder get documentationComment =>
+////@override
+UnlinkedDocumentationCommentBuilder get documentationComment =>
       _documentationComment;
 
     /**
      * Documentation comment for the variable, or `null` if there is no
      * documentation comment.
      */
-    void set documentationComment(UnlinkedDocumentationCommentBuilder value) {
-        this._documentationComment = value;
-    }
+    void setdocumentationComment(UnlinkedDocumentationCommentBuilder value)
+{
+    this._documentationComment = value;
+}
 
-    //@override
-    int get inferredTypeSlot => _inferredTypeSlot ??= 0;
+////@override
+public int inferredTypeSlot
+{
+    get => _inferredTypeSlot ??= 0;
+}
 
-    /**
-     * If this variable is inferable, nonzero slot id identifying which entry in
-     * [LinkedLibrary.types] contains the inferred type for this variable.  If
-     * there is no matching entry in [LinkedLibrary.types], then no type was
-     * inferred for this variable, so its static type is `dynamic`.
-     */
-    void set inferredTypeSlot(int value) {
-        assert(value == null || value >= 0);
-        this._inferredTypeSlot = value;
-    }
+/**
+ * If this variable is inferable, nonzero slot id identifying which entry in
+ * [LinkedLibrary.types] contains the inferred type for this variable.  If
+ * there is no matching entry in [LinkedLibrary.types], then no type was
+ * inferred for this variable, so its static type is `dynamic`.
+ */
+void setinferredTypeSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._inferredTypeSlot = value;
+}
 
-    //@override
-    int get inheritsCovariantSlot => _inheritsCovariantSlot ??= 0;
+////@override
+public int inheritsCovariantSlot
+{
+    get => _inheritsCovariantSlot ??= 0;
+}
 
-    /**
-     * If this is an instance non-final field, a nonzero slot id which is unique
-     * within this compilation unit.  If this id is found in
-     * [LinkedUnit.parametersInheritingCovariant], then the parameter of the
-     * synthetic setter inherits `//@covariant` behavior from a base class.
-     *
-     * Otherwise, zero.
-     */
-    void set inheritsCovariantSlot(int value) {
-        assert(value == null || value >= 0);
-        this._inheritsCovariantSlot = value;
-    }
+/**
+ * If this is an instance non-public readonly field, a nonzero slot id which is unique
+ * within this compilation unit.  If this id is found in
+ * [LinkedUnit.parametersInheritingCovariant], then the parameter of the
+ * synthetic setter inherits `//@covariant` behavior from a base class.
+ *
+ * Otherwise, zero.
+ */
+void setinheritsCovariantSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._inheritsCovariantSlot = value;
+}
 
-    //@override
-    UnlinkedExecutableBuilder get initializer => _initializer;
+////@override
+public UnlinkedExecutableBuilder initializer
+{
+    get => _initializer;
+}
 
-    /**
-     * The synthetic initializer function of the variable.  Absent if the variable
-     * does not have an initializer.
-     */
-    void set initializer(UnlinkedExecutableBuilder value) {
-        this._initializer = value;
-    }
+/**
+ * The synthetic initializer function of the variable.  Absent if the variable
+ * does not have an initializer.
+ */
+void setinitializer(UnlinkedExecutableBuilder value)
+{
+    this._initializer = value;
+}
 
-    //@override
-    bool get isConst => _isConst ??= false;
+////@override
+public bool isConst
+{
+    get => _isConst ??= false;
+}
 
-    /**
-     * Indicates whether the variable is declared using the `const` keyword.
-     */
-    void set isConst(bool value) {
-        this._isConst = value;
-    }
+/**
+ * Indicates whether the variable is declared using the `const` keyword.
+ */
+void setisConst(bool value)
+{
+    this._isConst = value;
+}
 
-    //@override
-    bool get isCovariant => _isCovariant ??= false;
+////@override
+public bool isCovariant
+{
+    get => _isCovariant ??= false;
+}
 
-    /**
-     * Indicates whether this variable is declared using the `covariant` keyword.
-     * This should be false for everything except instance fields.
-     */
-    void set isCovariant(bool value) {
-        this._isCovariant = value;
-    }
+/**
+ * Indicates whether this variable is declared using the `covariant` keyword.
+ * This should be false for everything except instance fields.
+ */
+void setisCovariant(bool value)
+{
+    this._isCovariant = value;
+}
 
-    //@override
-    bool get isFinal => _isFinal ??= false;
+////@override
+public bool isFinal
+{
+    get => _isFinal ??= false;
+}
 
-    /**
-     * Indicates whether the variable is declared using the `final` keyword.
-     */
-    void set isFinal(bool value) {
-        this._isFinal = value;
-    }
+/**
+ * Indicates whether the variable is declared using the `final` keyword.
+ */
+void setisFinal(bool value)
+{
+    this._isFinal = value;
+}
 
-    //@override
-    bool get isStatic => _isStatic ??= false;
+////@override
+public bool isStatic
+{
+    get => _isStatic ??= false;
+}
 
-    /**
-     * Indicates whether the variable is declared using the `static` keyword.
-     *
-     * Note that for top level variables, this flag is false, since they are not
-     * declared using the `static` keyword (even though they are considered
-     * static for semantic purposes).
-     */
-    void set isStatic(bool value) {
-        this._isStatic = value;
-    }
+/**
+ * Indicates whether the variable is declared using the `static` keyword.
+ *
+ * Note that for top level variables, this flag is false, since they are not
+ * declared using the `static` keyword (even though they are considered
+ * static for semantic purposes).
+ */
+void setisStatic(bool value)
+{
+    this._isStatic = value;
+}
 
-    //@override
-    String get name => _name ??= '';
+////@override
+public String name
+{
+    get => _name ??= "";
+}
 
-    /**
-     * Name of the variable.
-     */
-    void set name(String value) {
-        this._name = value;
-    }
+/**
+ * Name of the variable.
+ */
+void setname(String value)
+{
+    this._name = value;
+}
 
-    //@override
-    int get nameOffset => _nameOffset ??= 0;
+////@override
+public int nameOffset
+{
+    get => _nameOffset ??= 0;
+}
 
-    /**
-     * Offset of the variable name relative to the beginning of the file.
-     */
-    void set nameOffset(int value) {
-        assert(value == null || value >= 0);
-        this._nameOffset = value;
-    }
+/**
+ * Offset of the variable name relative to the beginning of the file.
+ */
+void setnameOffset(int value)
+{
+    assert(value == null || value >= 0);
+    this._nameOffset = value;
+}
 
-    //@override
-    int get propagatedTypeSlot => _propagatedTypeSlot ??= 0;
+////@override
+public int propagatedTypeSlot
+{
+    get => _propagatedTypeSlot ??= 0;
+}
 
-    /**
-     * If this variable is propagable, nonzero slot id identifying which entry in
-     * [LinkedLibrary.types] contains the propagated type for this variable.  If
-     * there is no matching entry in [LinkedLibrary.types], then this variable's
-     * propagated type is the same as its declared type.
-     *
-     * Non-propagable variables have a [propagatedTypeSlot] of zero.
-     */
-    void set propagatedTypeSlot(int value) {
-        assert(value == null || value >= 0);
-        this._propagatedTypeSlot = value;
-    }
+/**
+ * If this variable is propagable, nonzero slot id identifying which entry in
+ * [LinkedLibrary.types] contains the propagated type for this variable.  If
+ * there is no matching entry in [LinkedLibrary.types], then this variable's
+ * propagated type is the same as its declared type.
+ *
+ * Non-propagable variables have a [propagatedTypeSlot] of zero.
+ */
+void setpropagatedTypeSlot(int value)
+{
+    assert(value == null || value >= 0);
+    this._propagatedTypeSlot = value;
+}
 
-    //@override
-    EntityRefBuilder get type => _type;
+////@override
+public EntityRefBuilder type
+{
+    get => _type;
+}
 
-    /**
-     * Declared type of the variable.  Absent if the type is implicit.
-     */
-    void set type(EntityRefBuilder value) {
-        this._type = value;
-    }
+/**
+ * Declared type of the variable.  Absent if the type is implicit.
+ */
+void settype(EntityRefBuilder value)
+{
+    this._type = value;
+}
 
-    //@override
-    Null get visibleLength =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get visibleLength =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    Null get visibleOffset =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get visibleOffset =>
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    UnlinkedVariableBuilder(
+UnlinkedVariableBuilder(
         {
-        List<UnlinkedExprBuilder> annotations,
-       CodeRangeBuilder codeRange,
+    List<UnlinkedExprBuilder> annotations,
+   CodeRangeBuilder codeRange,
       UnlinkedDocumentationCommentBuilder documentationComment,
       int inferredTypeSlot,
       int inheritsCovariantSlot,
@@ -13435,7 +14296,7 @@ class UnlinkedVariableBuilder extends Object
       String name,
       int nameOffset,
       int propagatedTypeSlot,
-      EntityRefBuilder type})
+      EntityRefBuilder type)
       : _annotations = annotations,
         _codeRange = codeRange,
         _documentationComment = documentationComment,
@@ -13469,7 +14330,7 @@ class UnlinkedVariableBuilder extends Object
      */
     void collectApiSignature(api_sig.ApiSignature signature)
     {
-        signature.addString(this._name ?? '');
+        signature.addString(this._name ?? "");
         signature.addInt(this._propagatedTypeSlot ?? 0);
         signature.addBool(this._type != null);
         this._type?.collectApiSignature(signature);
@@ -13483,7 +14344,7 @@ class UnlinkedVariableBuilder extends Object
         else
         {
             signature.addInt(this._annotations.length);
-      for (var x in this._annotations)
+            foreach (var x in this._annotations)
             {
                 x?.collectApiSignature(signature);
             }
@@ -13587,145 +14448,144 @@ class UnlinkedVariableBuilder extends Object
         }
         return fbBuilder.endTable();
     }
-    }
+}
+public class _UnlinkedVariableReader : fb.TableReader<_UnlinkedVariableImpl>
+{
+    public _UnlinkedVariableReader();
 
-class _UnlinkedVariableReader extends fb.TableReader<_UnlinkedVariableImpl> {
-  const _UnlinkedVariableReader();
-
-    //@override
+    ////@override
     _UnlinkedVariableImpl createObject(fb.BufferContext bc, int offset) =>
       new _UnlinkedVariableImpl(bc, offset);
 }
-
-class _UnlinkedVariableImpl extends Object
+public class _UnlinkedVariableImpl : Object
     with _UnlinkedVariableMixin
-    implements idl.UnlinkedVariable
+    : idl.UnlinkedVariable
 {
-    final fb.BufferContext _bc;
-    final int _bcOffset;
+    public readonly fb.BufferContext _bc;
+    public readonly int _bcOffset;
 
     _UnlinkedVariableImpl(this._bc, this._bcOffset);
 
     List<idl.UnlinkedExpr> _annotations;
     idl.CodeRange _codeRange;
     idl.UnlinkedDocumentationComment _documentationComment;
-  int _inferredTypeSlot;
-  int _inheritsCovariantSlot;
+    int _inferredTypeSlot;
+    int _inheritsCovariantSlot;
     idl.UnlinkedExecutable _initializer;
-  bool _isConst;
-  bool _isCovariant;
-  bool _isFinal;
-  bool _isStatic;
+    bool _isConst;
+    bool _isCovariant;
+    bool _isFinal;
+    bool _isStatic;
     String _name;
-  int _nameOffset;
-  int _propagatedTypeSlot;
+    int _nameOffset;
+    int _propagatedTypeSlot;
     idl.EntityRef _type;
 
-    //@override
+    ////@override
     List<idl.UnlinkedExpr> get annotations {
         _annotations ??=
-          const fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
-            .vTableGet(_bc, _bcOffset, 8, const <idl.UnlinkedExpr>[]);
+public fb.ListReader<idl.UnlinkedExpr>(const _UnlinkedExprReader())
+            .vTableGet(_bc, _bcOffset, 8, new List<idl.UnlinkedExpr>{);
         return _annotations;
     }
 
-    //@override
-    idl.CodeRange get codeRange {
-        _codeRange ??= const _CodeRangeReader().vTableGet(_bc, _bcOffset, 5, null);
+////@override
+idl.CodeRange get codeRange {
+        _codeRange ??= new _CodeRangeReader().vTableGet(_bc, _bcOffset, 5, null);
         return _codeRange;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedDocumentationComment get documentationComment {
-        _documentationComment ??= const _UnlinkedDocumentationCommentReader()
+        _documentationComment ??= new _UnlinkedDocumentationCommentReader()
           .vTableGet(_bc, _bcOffset, 10, null);
         return _documentationComment;
     }
 
-    //@override
+    ////@override
     int get inferredTypeSlot {
         _inferredTypeSlot ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 9, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 9, 0);
         return _inferredTypeSlot;
     }
 
-    //@override
+    ////@override
     int get inheritsCovariantSlot {
         _inheritsCovariantSlot ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 15, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 15, 0);
         return _inheritsCovariantSlot;
     }
 
-    //@override
+    ////@override
     idl.UnlinkedExecutable get initializer {
         _initializer ??=
-          const _UnlinkedExecutableReader().vTableGet(_bc, _bcOffset, 13, null);
+public _UnlinkedExecutableReader().vTableGet(_bc, _bcOffset, 13, null);
         return _initializer;
     }
 
-    //@override
+    ////@override
     bool get isConst {
-        _isConst ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 6, false);
+        _isConst ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 6, false);
         return _isConst;
     }
 
-    //@override
+    ////@override
     bool get isCovariant {
-        _isCovariant ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 14, false);
+        _isCovariant ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 14, false);
         return _isCovariant;
     }
 
-    //@override
+    ////@override
     bool get isFinal {
-        _isFinal ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 7, false);
+        _isFinal ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 7, false);
         return _isFinal;
     }
 
-    //@override
+    ////@override
     bool get isStatic {
-        _isStatic ??= const fb.BoolReader().vTableGet(_bc, _bcOffset, 4, false);
+        _isStatic ??= new fb.BoolReader().vTableGet(_bc, _bcOffset, 4, false);
         return _isStatic;
     }
 
-    //@override
+    ////@override
     String get name {
-        _name ??= const fb.StringReader().vTableGet(_bc, _bcOffset, 0, '');
+        _name ??= new fb.StringReader().vTableGet(_bc, _bcOffset, 0, "");
         return _name;
     }
 
-    //@override
+    ////@override
     int get nameOffset {
-        _nameOffset ??= const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
+        _nameOffset ??= new fb.Uint32Reader().vTableGet(_bc, _bcOffset, 1, 0);
         return _nameOffset;
     }
 
-    //@override
+    ////@override
     int get propagatedTypeSlot {
         _propagatedTypeSlot ??=
-          const fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
+public fb.Uint32Reader().vTableGet(_bc, _bcOffset, 2, 0);
         return _propagatedTypeSlot;
     }
 
-    //@override
+    ////@override
     idl.EntityRef get type {
-        _type ??= const _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
+        _type ??= new _EntityRefReader().vTableGet(_bc, _bcOffset, 3, null);
         return _type;
     }
 
-    //@override
+    ////@override
     Null get visibleLength =>
-      throw new UnimplementedError('attempt to access deprecated field');
+      throw new NotImplementedException("attempt to access deprecated field");
 
-    //@override
-    Null get visibleOffset =>
-      throw new UnimplementedError('attempt to access deprecated field');
+////@override
+Null get visibleOffset =>
+      throw new NotImplementedException("attempt to access deprecated field");
     }
-
-abstract class _UnlinkedVariableMixin implements idl.UnlinkedVariable
+public abstract class _UnlinkedVariableMixin : idl.UnlinkedVariable
 {
-    //@override
-    Map<String, Object> toJson() {
-        Map<String, Object> _result = < String, Object>{ };
+    ////@override
+    Dictionary<String, Object> toJson()
+    {
+        Dictionary<String, Object> _result = new Dictionary<String, Object> { };
         if (annotations.isNotEmpty)
             _result["annotations"] =
                 annotations.map((_value) => _value.toJson()).toList();
@@ -13740,7 +14600,7 @@ abstract class _UnlinkedVariableMixin implements idl.UnlinkedVariable
         if (isCovariant != false) _result["isCovariant"] = isCovariant;
         if (isFinal != false) _result["isFinal"] = isFinal;
         if (isStatic != false) _result["isStatic"] = isStatic;
-        if (name != '') _result["name"] = name;
+        if (name != "") _result["name"] = name;
         if (nameOffset != 0) _result["nameOffset"] = nameOffset;
         if (propagatedTypeSlot != 0)
             _result["propagatedTypeSlot"] = propagatedTypeSlot;
@@ -13748,8 +14608,8 @@ abstract class _UnlinkedVariableMixin implements idl.UnlinkedVariable
         return _result;
     }
 
-    //@override
-    Map<String, Object> toMap() => {
+    ////@override
+    Dictionary<String, Object> toMap() => {
         "annotations": annotations,
         "codeRange": codeRange,
         "documentationComment": documentationComment,
@@ -13766,7 +14626,7 @@ abstract class _UnlinkedVariableMixin implements idl.UnlinkedVariable
         "type": type,
       };
 
-    //@override
-    String toString() => convert.json.encode(toJson());
+////@override
+String toString() => convert.json.encode(toJson());
 }
 }

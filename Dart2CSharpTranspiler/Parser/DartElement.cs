@@ -3085,7 +3085,7 @@ namespace Dart2CSharpTranspiler.Parser
 
         public static int _NEXT_ID = 0;
 
-        public readonly int id = _NEXT_ID++;
+        public override int id => _NEXT_ID++;
 
         /**
          * The enclosing element of this element, or `null` if this element is at the
@@ -3213,7 +3213,7 @@ namespace Dart2CSharpTranspiler.Parser
             get => _enclosingElement;
             set
             {
-                _enclosingElement = element as ElementImpl;
+                _enclosingElement = value as ElementImpl;
             }
         }
 

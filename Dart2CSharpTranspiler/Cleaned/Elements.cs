@@ -65,7 +65,7 @@ namespace Dart2CSharpTranspiler.Parser
          * element. This will be `null` if this element is a library because libraries
          * are the top-level elements in the model.
          */
-        public abstract Element enclosingElement { get; }
+        public abstract Element enclosingElement { get; set; }
 
         /**
          * Return `true` if this element has an annotation of the form
