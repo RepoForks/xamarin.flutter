@@ -180,7 +180,7 @@ namespace Dart2CSharpTranspiler.Parser
         public void reportErrorForSpan(ErrorCode errorCode, SourceSpan span,
             List<Object> arguments = null)
         {
-            reportErrorForOffset(errorCode, span.start.offset, span.length, arguments);
+            //reportErrorForOffset(errorCode, span.start.offset, span.length, arguments);
         }
 
         /**
@@ -229,7 +229,7 @@ namespace Dart2CSharpTranspiler.Parser
                     {
                         StringBuffer buffer = new StringBuffer();
                         buffer.write(name);
-                        (type as TypeImpl).appendTo(buffer, new Set.identity());
+                        (type as TypeImpl).appendTo(buffer, new HashSet<TypeImpl>());
                         return buffer.toString();
                     }
                 }

@@ -158,11 +158,10 @@ namespace Dart2CSharpTranspiler
             return default(Token);
         }
 
-        public virtual E getAncestor<E>(Predicate<AstNode> predicate) where E : AstNode
+        public E getAncestor<E>(Predicate<AstNode> predicate) where E : AstNode
         {
-            return default(E); // This was abstract
+            return default(E);
         }
-
         public E getProperty<E>(string name)
         {
             return default(E);

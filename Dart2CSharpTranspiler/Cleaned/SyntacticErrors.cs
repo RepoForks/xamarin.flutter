@@ -27,7 +27,7 @@ namespace Dart2CSharpTranspiler.Parser
      * caused the error to be generated and for the error message to explain what
      * is wrong and, when appropriate, how the problem can be corrected.
      */
-    public class ParserErrorCode : ErrorCode
+    public partial class ParserErrorCode : ErrorCode
     {
         public static ParserErrorCode ABSTRACT_CLASS_MEMBER = new ParserErrorCode(
            "ABSTRACT_CLASS_MEMBER",
@@ -103,7 +103,7 @@ namespace Dart2CSharpTranspiler.Parser
            correction: "Try removing either the 'const' or 'final' keyword.");
 
         public static ParserErrorCode CONST_AND_VAR = new ParserErrorCode(
-         'CONST_AND_VAR',
+         "CONST_AND_VAR",
            "Members can't be declared to be both 'const' and 'var'.",
            correction: "Try removing either the 'const' or 'var' keyword.");
 
@@ -115,7 +115,7 @@ namespace Dart2CSharpTranspiler.Parser
                "the class' constructor(s).");
 
         public static ParserErrorCode CONST_CONSTRUCTOR_WITH_BODY =
-         new ParserErrorCode('CONST_CONSTRUCTOR_WITH_BODY',
+         new ParserErrorCode("CONST_CONSTRUCTOR_WITH_BODY",
              "Const constructors can't have a body.",
              correction: "Try removing either the 'const' keyword or the body.");
 
@@ -170,7 +170,7 @@ namespace Dart2CSharpTranspiler.Parser
            correction: "Try removing the 'covariant' keyword.");
 
         public static ParserErrorCode COVARIANT_TOP_LEVEL_DECLARATION =
-         new ParserErrorCode('COVARIANT_TOP_LEVEL_DECLARATION',
+         new ParserErrorCode("COVARIANT_TOP_LEVEL_DECLARATION",
              "Top-level declarations can't be declared to be covariant.",
              correction: "Try removing the keyword 'covariant'.");
 
@@ -181,7 +181,7 @@ namespace Dart2CSharpTranspiler.Parser
 
         public static ParserErrorCode DEFERRED_AFTER_PREFIX = new ParserErrorCode(
          "DEFERRED_AFTER_PREFIX",
-           "The deferred keyword should come"+
+           "The deferred keyword should come" +
            " immediately before the prefix ('as' clause).",
            correction: "Try moving the deferred keyword before the prefix.");
 
@@ -284,7 +284,7 @@ namespace Dart2CSharpTranspiler.Parser
         public static ParserErrorCode EXTERNAL_CONSTRUCTOR_WITH_BODY =
          new ParserErrorCode("EXTERNAL_CONSTRUCTOR_WITH_BODY",
              "External constructors can't have a body.",
-             correction: "Try removing the body of the constructor, or "+
+             correction: "Try removing the body of the constructor, or " +
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_ENUM = _EXTERNAL_ENUM;
@@ -294,7 +294,7 @@ namespace Dart2CSharpTranspiler.Parser
         public static ParserErrorCode EXTERNAL_GETTER_WITH_BODY =
          new ParserErrorCode(
              "EXTERNAL_GETTER_WITH_BODY", "External getters can't have a body.",
-             correction: "Try removing the body of the getter, or "+
+             correction: "Try removing the body of the getter, or " +
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_METHOD_WITH_BODY =
@@ -303,13 +303,13 @@ namespace Dart2CSharpTranspiler.Parser
         public static ParserErrorCode EXTERNAL_OPERATOR_WITH_BODY =
          new ParserErrorCode("EXTERNAL_OPERATOR_WITH_BODY",
              "External operators can't have a body.",
-             correction: "Try removing the body of the operator, or "+
+             correction: "Try removing the body of the operator, or " +
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_SETTER_WITH_BODY =
          new ParserErrorCode(
              "EXTERNAL_SETTER_WITH_BODY", "External setters can't have a body.",
-             correction: "Try removing the body of the setter, or "+
+             correction: "Try removing the body of the setter, or " +
                  "removing the keyword 'external'.");
 
         public static ParserErrorCode EXTERNAL_TYPEDEF = new ParserErrorCode(
@@ -329,7 +329,7 @@ namespace Dart2CSharpTranspiler.Parser
          "FACTORY_WITH_INITIALIZERS",
            "A 'factory' constructor can't have initializers.",
            correction:
-               "Try removing the 'factory' keyword to make this a generative constructor, or "+
+               "Try removing the 'factory' keyword to make this a generative constructor, or " +
                "removing the initializers.");
 
         public static ParserErrorCode FACTORY_WITHOUT_BODY = new ParserErrorCode(
@@ -422,7 +422,7 @@ namespace Dart2CSharpTranspiler.Parser
 
         public static ParserErrorCode INVALID_COMMENT_REFERENCE = new ParserErrorCode(
          "INVALID_COMMENT_REFERENCE",
-           "Comment references should contain a possibly prefixed identifier and "+
+           "Comment references should contain a possibly prefixed identifier and " +
            "can start with 'new', but shouldn't contain anything else.");
 
         public static ParserErrorCode INVALID_CONSTRUCTOR_NAME = new ParserErrorCode(
@@ -511,7 +511,7 @@ namespace Dart2CSharpTranspiler.Parser
         public static ParserErrorCode MISSING_EXPRESSION_IN_INITIALIZER =
          new ParserErrorCode("MISSING_EXPRESSION_IN_INITIALIZER",
              "Expected an expression after the assignment operator.",
-             correction: "Try adding the value to be assigned, or "+
+             correction: "Try adding the value to be assigned, or " +
                  "remove the assignment operator.");
 
         public static ParserErrorCode MISSING_EXPRESSION_IN_THROW =
@@ -559,7 +559,7 @@ namespace Dart2CSharpTranspiler.Parser
          new ParserErrorCode("MISSING_NAME_IN_LIBRARY_DIRECTIVE",
              "Library directives must include a library name.",
              correction:
-                 "Try adding a library name after the keyword 'library', or "+
+                 "Try adding a library name after the keyword 'library', or " +
                  "remove the library directive if the library doesn't have any parts.");
 
         public static ParserErrorCode MISSING_NAME_IN_PART_OF_DIRECTIVE =
@@ -635,7 +635,7 @@ namespace Dart2CSharpTranspiler.Parser
         public static ParserErrorCode MULTIPLE_VARIABLES_IN_FOR_EACH =
          new ParserErrorCode(
              "MULTIPLE_VARIABLES_IN_FOR_EACH",
-             "A single loop variable must be declared in a for-each loop before "+
+             "A single loop variable must be declared in a for-each loop before " +
              "the 'in', but {0} were found.",
              correction:
                  "Try moving all but one of the declarations inside the loop body.");
@@ -644,7 +644,7 @@ namespace Dart2CSharpTranspiler.Parser
 
         public static ParserErrorCode NAMED_FUNCTION_EXPRESSION = new ParserErrorCode(
          "NAMED_FUNCTION_EXPRESSION", "Function expressions can't be named.",
-           correction: "Try removing the name, or "+
+           correction: "Try removing the name, or " +
                "moving the function expression to a function declaration statement.");
 
         public static ParserErrorCode NAMED_FUNCTION_TYPE = new ParserErrorCode(
@@ -850,5 +850,377 @@ namespace Dart2CSharpTranspiler.Parser
         public virtual ErrorSeverity errorSeverity => ErrorSeverity.ERROR;
 
         public virtual ErrorType type => ErrorType.SYNTACTIC_ERROR;
+    }
+}
+
+
+//https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/src/dart/error/syntactic_errors.g.dart
+namespace Dart2CSharpTranspiler.Parser
+{
+    //
+    // THIS FILE IS GENERATED. DO NOT EDIT.
+    //
+    // Instead modify 'pkg/front_end/messages.yaml' and run
+    // 'dart pkg/analyzer/tool/messages/generate.dart' to update.
+
+    //part of 'syntactic_errors.dart';
+    public partial class ParserErrorCode : ErrorCode
+    {
+        public static List<ErrorCode> fastaAnalyzerErrorCodes = new List<ErrorCode> {
+  null,
+  _EQUALITY_CANNOT_BE_EQUALITY_OPERAND,
+  _CONTINUE_OUTSIDE_OF_LOOP,
+  _EXTERNAL_CLASS,
+  _STATIC_CONSTRUCTOR,
+  _EXTERNAL_ENUM,
+  _PREFIX_AFTER_COMBINATOR,
+  _TYPEDEF_IN_CLASS,
+  _COVARIANT_AFTER_VAR,
+  _INVALID_AWAIT_IN_FOR,
+  _IMPORT_DIRECTIVE_AFTER_PART_DIRECTIVE,
+  _WITH_BEFORE_EXTENDS,
+  _VAR_RETURN_TYPE,
+  _TYPE_ARGUMENTS_ON_TYPE_VARIABLE,
+  _TOP_LEVEL_OPERATOR,
+  _SWITCH_HAS_MULTIPLE_DEFAULT_CASES,
+  _SWITCH_HAS_CASE_AFTER_DEFAULT_CASE,
+  _STATIC_OPERATOR,
+  _STATIC_AFTER_VAR,
+  _STATIC_AFTER_FINAL,
+  _STATIC_AFTER_CONST,
+  _REDIRECTION_IN_NON_FACTORY_CONSTRUCTOR,
+  _REDIRECTING_CONSTRUCTOR_WITH_BODY,
+  _NATIVE_CLAUSE_SHOULD_BE_ANNOTATION,
+  _MULTIPLE_WITH_CLAUSES,
+  _MULTIPLE_PART_OF_DIRECTIVES,
+  _MULTIPLE_ON_CLAUSES,
+  _MULTIPLE_LIBRARY_DIRECTIVES,
+  _MULTIPLE_EXTENDS_CLAUSES,
+  _MISSING_STATEMENT,
+  _MISSING_PREFIX_IN_DEFERRED_IMPORT,
+  _MISSING_KEYWORD_OPERATOR,
+  _MISSING_EXPRESSION_IN_THROW,
+  _MISSING_CONST_FINAL_VAR_OR_TYPE,
+  _MISSING_ASSIGNMENT_IN_INITIALIZER,
+  _MISSING_ASSIGNABLE_SELECTOR,
+  _MISSING_INITIALIZER,
+  _LIBRARY_DIRECTIVE_NOT_FIRST,
+  _INVALID_UNICODE_ESCAPE,
+  _INVALID_OPERATOR,
+  _INVALID_HEX_ESCAPE,
+  _EXPECTED_INSTEAD,
+  _IMPLEMENTS_BEFORE_WITH,
+  _IMPLEMENTS_BEFORE_ON,
+  _IMPLEMENTS_BEFORE_EXTENDS,
+  _ILLEGAL_ASSIGNMENT_TO_NON_ASSIGNABLE,
+  _EXTERNAL_AFTER_CONST,
+  _EXTERNAL_AFTER_FACTORY,
+  _EXTERNAL_AFTER_STATIC,
+  _EXTERNAL_METHOD_WITH_BODY,
+  _EXTERNAL_FIELD,
+  _ABSTRACT_CLASS_MEMBER,
+  _BREAK_OUTSIDE_OF_LOOP,
+  _CLASS_IN_CLASS,
+  _COLON_IN_PLACE_OF_IN,
+  _CONSTRUCTOR_WITH_RETURN_TYPE,
+  _CONST_AFTER_FACTORY,
+  _CONST_AND_COVARIANT,
+  _CONST_AND_FINAL,
+  _CONST_AND_VAR,
+  _CONST_CLASS,
+  _VAR_AS_TYPE_NAME,
+};
+
+        static ParserErrorCode _ABSTRACT_CLASS_MEMBER = new ParserErrorCode(
+    "ABSTRACT_CLASS_MEMBER",
+            "Members of classes can't be declared to be 'abstract'.",
+            correction:
+                "Try removing the 'abstract' keyword. You can add the 'abstract' keyword before the class declaration.");
+
+        static ParserErrorCode _BREAK_OUTSIDE_OF_LOOP = new ParserErrorCode(
+    "BREAK_OUTSIDE_OF_LOOP",
+            "A break statement can't be used outside of a loop or switch statement.",
+            correction: "Try removing the break statement.");
+
+        static ParserErrorCode _CLASS_IN_CLASS = new ParserErrorCode(
+    "CLASS_IN_CLASS", "Classes can't be declared inside other classes.",
+            correction: "Try moving the class to the top-level.");
+
+        static ParserErrorCode _COLON_IN_PLACE_OF_IN = new ParserErrorCode(
+    "COLON_IN_PLACE_OF_IN", "For-in loops use 'in' rather than a colon.",
+            correction: "Try replacing the colon with the keyword 'in'.");
+
+        static ParserErrorCode _CONSTRUCTOR_WITH_RETURN_TYPE = new ParserErrorCode(
+    "CONSTRUCTOR_WITH_RETURN_TYPE", "Constructors can't have a return type.",
+            correction: "Try removing the return type.");
+
+        static ParserErrorCode _CONST_AFTER_FACTORY = new ParserErrorCode(
+    "CONST_AFTER_FACTORY",
+            "The modifier 'const' should be before the modifier 'factory'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _CONST_AND_COVARIANT = new ParserErrorCode(
+    "CONST_AND_COVARIANT",
+            "Members can't be declared to be both 'const' and 'covariant'.",
+            correction: "Try removing either the 'const' or 'covariant' keyword.");
+
+        static ParserErrorCode _CONST_AND_FINAL = new ParserErrorCode(
+    "CONST_AND_FINAL",
+            "Members can't be declared to be both 'const' and 'final'.",
+            correction: "Try removing either the 'const' or 'final' keyword.");
+
+        static ParserErrorCode _CONST_AND_VAR = new ParserErrorCode(
+    "CONST_AND_VAR", "Members can't be declared to be both 'const' and 'var'.",
+            correction: "Try removing either the 'const' or 'var' keyword.");
+
+        static ParserErrorCode _CONST_CLASS = new ParserErrorCode(
+    "CONST_CLASS", "Classes can't be declared to be 'const'.",
+            correction:
+                "Try removing the 'const' keyword. If you're trying to indicate that instances of the class can be constants, place the 'const' keyword on  the class' constructor(s).");
+
+        static ParserErrorCode _CONTINUE_OUTSIDE_OF_LOOP = new ParserErrorCode(
+    "CONTINUE_OUTSIDE_OF_LOOP",
+            "A continue statement can't be used outside of a loop or switch statement.",
+            correction: "Try removing the continue statement.");
+
+        static ParserErrorCode _COVARIANT_AFTER_VAR = new ParserErrorCode(
+    "COVARIANT_AFTER_VAR",
+            "The modifier 'covariant' should be before the modifier 'var'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _EQUALITY_CANNOT_BE_EQUALITY_OPERAND = new ParserErrorCode(
+    "EQUALITY_CANNOT_BE_EQUALITY_OPERAND",
+            "An equality expression can't be an operand of another equality expression.",
+            correction: "Try re-writing the expression.");
+
+        static ParserErrorCode _EXPECTED_INSTEAD = new ParserErrorCode(
+    "EXPECTED_INSTEAD", "Expected '#string' instead of this.");
+
+        static ParserErrorCode _EXTERNAL_AFTER_CONST = new ParserErrorCode(
+    "EXTERNAL_AFTER_CONST",
+            "The modifier 'external' should be before the modifier 'const'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _EXTERNAL_AFTER_FACTORY = new ParserErrorCode(
+    "EXTERNAL_AFTER_FACTORY",
+            "The modifier 'external' should be before the modifier 'factory'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _EXTERNAL_AFTER_STATIC = new ParserErrorCode(
+    "EXTERNAL_AFTER_STATIC",
+            "The modifier 'external' should be before the modifier 'static'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _EXTERNAL_CLASS = new ParserErrorCode(
+    "EXTERNAL_CLASS", "Classes can't be declared to be 'external'.",
+            correction: "Try removing the keyword 'external'.");
+
+        static ParserErrorCode _EXTERNAL_ENUM = new ParserErrorCode(
+    "EXTERNAL_ENUM", "Enums can't be declared to be 'external'.",
+            correction: "Try removing the keyword 'external'.");
+
+        static ParserErrorCode _EXTERNAL_FIELD = new ParserErrorCode(
+    "EXTERNAL_FIELD", "Fields can't be declared to be 'external'.",
+            correction: "Try removing the keyword 'external'.");
+
+        static ParserErrorCode _EXTERNAL_METHOD_WITH_BODY = new ParserErrorCode(
+    "EXTERNAL_METHOD_WITH_BODY",
+            "An external or native method can't have a body.");
+
+        static ParserErrorCode _ILLEGAL_ASSIGNMENT_TO_NON_ASSIGNABLE =
+    new ParserErrorCode("ILLEGAL_ASSIGNMENT_TO_NON_ASSIGNABLE",
+        "Illegal assignment to non-assignable expression.");
+
+        static ParserErrorCode _IMPLEMENTS_BEFORE_EXTENDS = new ParserErrorCode(
+    "IMPLEMENTS_BEFORE_EXTENDS",
+            "The extends clause must be before the implements clause.",
+            correction: "Try moving the extends clause before the implements clause.");
+
+        static ParserErrorCode _IMPLEMENTS_BEFORE_ON = new ParserErrorCode(
+    "IMPLEMENTS_BEFORE_ON",
+            "The on clause must be before the implements clause.",
+            correction: "Try moving the on clause before the implements clause.");
+
+        static ParserErrorCode _IMPLEMENTS_BEFORE_WITH = new ParserErrorCode(
+    "IMPLEMENTS_BEFORE_WITH",
+            "The with clause must be before the implements clause.",
+            correction: "Try moving the with clause before the implements clause.");
+
+        static ParserErrorCode _IMPORT_DIRECTIVE_AFTER_PART_DIRECTIVE =
+    new ParserErrorCode("IMPORT_DIRECTIVE_AFTER_PART_DIRECTIVE",
+        "Import directives must preceed part directives.",
+        correction:
+            "Try moving the import directives before the part directives.");
+
+        static ParserErrorCode _INVALID_AWAIT_IN_FOR = new ParserErrorCode(
+    "INVALID_AWAIT_IN_FOR",
+            "The keyword 'await' isn't allowed for a normal 'for' statement.",
+            correction: "Try removing the keyword, or use a for-each statement.");
+
+        static ParserErrorCode _INVALID_HEX_ESCAPE = new ParserErrorCode(
+    "INVALID_HEX_ESCAPE",
+            "An escape sequence starting with '\\x' must be followed by 2 hexadecimal digits.");
+
+        static ParserErrorCode _INVALID_OPERATOR = new ParserErrorCode(
+    "INVALID_OPERATOR",
+            "The string '#lexeme' isn't a user-definable operator.");
+
+        static ParserErrorCode _INVALID_UNICODE_ESCAPE = new ParserErrorCode(
+    "INVALID_UNICODE_ESCAPE",
+            "An escape sequence starting with '\\u' must be followed by 4 hexadecimal digits or from 1 to 6 digits between '{' and '}'.");
+
+        static ParserErrorCode _LIBRARY_DIRECTIVE_NOT_FIRST = new ParserErrorCode(
+    "LIBRARY_DIRECTIVE_NOT_FIRST",
+            "The library directive must appear before all other directives.",
+            correction:
+                "Try moving the library directive before any other directives.");
+
+        static ParserErrorCode _MISSING_ASSIGNABLE_SELECTOR = new ParserErrorCode(
+    "MISSING_ASSIGNABLE_SELECTOR",
+            "Missing selector such as '.<identifier>' or '[0]'.",
+            correction: "Try adding a selector.");
+
+        static ParserErrorCode _MISSING_ASSIGNMENT_IN_INITIALIZER =
+    new ParserErrorCode("MISSING_ASSIGNMENT_IN_INITIALIZER",
+        "Expected an assignment after the field name.",
+        correction: "To initialize a field, use the syntax 'name = value'.");
+
+        static ParserErrorCode _MISSING_CONST_FINAL_VAR_OR_TYPE = new ParserErrorCode(
+    "MISSING_CONST_FINAL_VAR_OR_TYPE",
+            "Variables must be declared using the keywords 'const', 'final', 'var' or a type name.",
+            correction:
+                "Try adding the name of the type of the variable or the keyword 'var'.");
+
+        static ParserErrorCode _MISSING_EXPRESSION_IN_THROW = new ParserErrorCode(
+    "MISSING_EXPRESSION_IN_THROW", "Missing expression after 'throw'.",
+            correction:
+                "Add an expression after 'throw' or use 'rethrow' to throw a caught exception");
+
+        static ParserErrorCode _MISSING_INITIALIZER =
+    new ParserErrorCode("MISSING_INITIALIZER", "Expected an initializer.");
+
+        static ParserErrorCode _MISSING_KEYWORD_OPERATOR = new ParserErrorCode(
+    "MISSING_KEYWORD_OPERATOR",
+            "Operator declarations must be preceeded by the keyword 'operator'.",
+            correction: "Try adding the keyword 'operator'.");
+
+        static ParserErrorCode _MISSING_PREFIX_IN_DEFERRED_IMPORT =
+    new ParserErrorCode("MISSING_PREFIX_IN_DEFERRED_IMPORT",
+        "Deferred imports should have a prefix.",
+        correction: "Try adding a prefix to the import.");
+
+        static ParserErrorCode _MISSING_STATEMENT =
+    new ParserErrorCode("MISSING_STATEMENT", "Expected a statement.");
+
+        static ParserErrorCode _MULTIPLE_EXTENDS_CLAUSES = new ParserErrorCode(
+    "MULTIPLE_EXTENDS_CLAUSES",
+            "Each class definition can have at most one extends clause.",
+            correction:
+                "Try choosing one superclass and define your class to implement (or mix in) the others.");
+
+        static ParserErrorCode _MULTIPLE_LIBRARY_DIRECTIVES = new ParserErrorCode(
+    "MULTIPLE_LIBRARY_DIRECTIVES",
+            "Only one library directive may be declared in a file.",
+            correction: "Try removing all but one of the library directives.");
+
+        static ParserErrorCode _MULTIPLE_ON_CLAUSES = new ParserErrorCode(
+    "MULTIPLE_ON_CLAUSES",
+            "Each mixin definition can have at most one on clause.",
+            correction: "Try combining all of the on clauses into a single clause.");
+
+        static ParserErrorCode _MULTIPLE_PART_OF_DIRECTIVES = new ParserErrorCode(
+    "MULTIPLE_PART_OF_DIRECTIVES",
+            "Only one part-of directive may be declared in a file.",
+            correction: "Try removing all but one of the part-of directives.");
+
+        static ParserErrorCode _MULTIPLE_WITH_CLAUSES = new ParserErrorCode(
+    "MULTIPLE_WITH_CLAUSES",
+            "Each class definition can have at most one with clause.",
+            correction: "Try combining all of the with clauses into a single clause.");
+
+        static ParserErrorCode _NATIVE_CLAUSE_SHOULD_BE_ANNOTATION = new ParserErrorCode(
+    "NATIVE_CLAUSE_SHOULD_BE_ANNOTATION",
+            "Native clause in this form is deprecated.",
+            correction:
+                "Try removing this native clause and adding @native() or @native('native-name') before the declaration.");
+
+        static ParserErrorCode _PREFIX_AFTER_COMBINATOR = new ParserErrorCode(
+    "PREFIX_AFTER_COMBINATOR",
+            "The prefix ('as' clause) should come before any show/hide combinators.",
+            correction: "Try moving the prefix before the combinators.");
+
+        static ParserErrorCode _REDIRECTING_CONSTRUCTOR_WITH_BODY = new ParserErrorCode(
+    "REDIRECTING_CONSTRUCTOR_WITH_BODY",
+            "Redirecting constructors can't have a body.",
+            correction:
+                "Try removing the body, or not making this a redirecting constructor.");
+
+        static ParserErrorCode _REDIRECTION_IN_NON_FACTORY_CONSTRUCTOR =
+    new ParserErrorCode("REDIRECTION_IN_NON_FACTORY_CONSTRUCTOR",
+        "Only factory constructor can specify '=' redirection.",
+        correction:
+            "Try making this a factory constructor, or remove the redirection.");
+
+        static ParserErrorCode _STATIC_AFTER_CONST = new ParserErrorCode(
+    "STATIC_AFTER_CONST",
+            "The modifier 'static' should be before the modifier 'const'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _STATIC_AFTER_FINAL = new ParserErrorCode(
+    "STATIC_AFTER_FINAL",
+            "The modifier 'static' should be before the modifier 'final'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _STATIC_AFTER_VAR = new ParserErrorCode(
+    "STATIC_AFTER_VAR",
+            "The modifier 'static' should be before the modifier 'var'.",
+            correction: "Try re-ordering the modifiers.");
+
+        static ParserErrorCode _STATIC_CONSTRUCTOR = new ParserErrorCode(
+    "STATIC_CONSTRUCTOR", "Constructors can't be static.",
+            correction: "Try removing the keyword 'static'.");
+
+        static ParserErrorCode _STATIC_OPERATOR = new ParserErrorCode(
+    "STATIC_OPERATOR", "Operators can't be static.",
+            correction: "Try removing the keyword 'static'.");
+
+        static ParserErrorCode _SWITCH_HAS_CASE_AFTER_DEFAULT_CASE =
+    new ParserErrorCode("SWITCH_HAS_CASE_AFTER_DEFAULT_CASE",
+        "The default case should be the last case in a switch statement.",
+        correction:
+            "Try moving the default case after the other case clauses.");
+
+        static ParserErrorCode _SWITCH_HAS_MULTIPLE_DEFAULT_CASES =
+    new ParserErrorCode("SWITCH_HAS_MULTIPLE_DEFAULT_CASES",
+        "The 'default' case can only be declared once.",
+        correction: "Try removing all but one default case.");
+
+        static ParserErrorCode _TOP_LEVEL_OPERATOR = new ParserErrorCode(
+    "TOP_LEVEL_OPERATOR", "Operators must be declared within a class.",
+            correction:
+                "Try removing the operator, moving it to a class, or converting it to be a function.");
+
+        static ParserErrorCode _TYPEDEF_IN_CLASS = new ParserErrorCode(
+    "TYPEDEF_IN_CLASS", "Typedefs can't be declared inside classes.",
+            correction: "Try moving the typedef to the top-level.");
+
+        static ParserErrorCode _TYPE_ARGUMENTS_ON_TYPE_VARIABLE = new ParserErrorCode(
+    "TYPE_ARGUMENTS_ON_TYPE_VARIABLE",
+            "Can't use type arguments with type variable '#name'.",
+            correction: "Try removing the type arguments.");
+
+        static ParserErrorCode _VAR_AS_TYPE_NAME = new ParserErrorCode(
+    "VAR_AS_TYPE_NAME", "The keyword 'var' can't be used as a type name.");
+
+        static ParserErrorCode _VAR_RETURN_TYPE = new ParserErrorCode(
+    "VAR_RETURN_TYPE", "The return type can't be 'var'.",
+            correction:
+                "Try removing the keyword 'var', or replacing it with the name of the return type.");
+
+        static ParserErrorCode _WITH_BEFORE_EXTENDS = new ParserErrorCode(
+    "WITH_BEFORE_EXTENDS",
+            "The extends clause must be before the with clause.",
+            correction: "Try moving the extends clause before the with clause.");
+
     }
 }

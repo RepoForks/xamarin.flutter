@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static Dart2CSharpTranspiler.Parser.DartLibrary;
 
 namespace Dart2CSharpTranspiler.Parser
 {
@@ -51,7 +52,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class ClassElement : TypeDefiningElement, TypeParameterizedElement
+    public abstract class ClassElement : TypeParameterizedElement, ITypeDefiningElement
     {
         /**
          * An empty list of class elements.
@@ -213,7 +214,7 @@ namespace Dart2CSharpTranspiler.Parser
         public abstract InterfaceType supertype { get; }
 
 
-        public abstract InterfaceType type { get; }
+        //public abstract override DartType type { get; } //InterfaceType
 
         /**
          * Return the unnamed constructor declared in this class, or `null` if either
@@ -225,7 +226,7 @@ namespace Dart2CSharpTranspiler.Parser
          */
         ConstructorElement unnamedConstructor { get; }
 
-        public abstract NamedCompilationUnitMember computeNode();
+        public abstract override AstNode computeNode(); //NamedCompilationUnitMember
 
         /**
          * Return the field (synthetic or explicit) defined in this class that has the
@@ -417,17 +418,17 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class ClassMemberElement : Element
+    public interface IClassMemberElement // : Element
     {
 
-        public abstract ClassElement enclosingElement { get; }
+        //public abstract override Element enclosingElement { get; } //ClassElement
 
         /**
          * Return `true` if this element is a static element. A static element is an
          * element that is not associated with a particular instance, but rather with
          * an entire library or class.
          */
-        public abstract bool isStatic { get; }
+        bool isStatic { get; }
     }
 
     /**
@@ -435,7 +436,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class CompilationUnitElement : UriReferencedElement
+    public abstract class CompilationUnitElement : Element, IUriReferencedElement
     {
         /**
          * An empty list of compilation unit elements.
@@ -498,6 +499,12 @@ namespace Dart2CSharpTranspiler.Parser
          */
         public abstract List<ClassElement> types { get; }
 
+        public string uri { get; set; }
+
+        public int uriEnd { get; set; }
+
+        public int uriOffset { get; set; }
+
         /**
          * Return the enum defined in this compilation unit that has the given [name],
          * or `null` if this compilation unit does not define an enum with the given
@@ -520,7 +527,7 @@ namespace Dart2CSharpTranspiler.Parser
      * Clients may not extend, implement or mix-in this class.
      */
     public abstract class ConstructorElement
-        : ClassMemberElement, ExecutableElement, ConstantEvaluationTarget
+        : ExecutableElement, IConstantEvaluationTarget, IClassMemberElement
     {
         /**
          * An empty list of constructor elements.
@@ -543,7 +550,7 @@ namespace Dart2CSharpTranspiler.Parser
         /**
          * Return `true` if this constructor represents a factory constructor.
          */
-        public abstract bool isFactory { get; }
+        public abstract override bool isFactory { get; }
 
         /**
          * Return the offset of the character immediately following the last character
@@ -565,9 +572,11 @@ namespace Dart2CSharpTranspiler.Parser
         public abstract ConstructorElement redirectedConstructor { get; }
 
 
-        public abstract ConstructorDeclaration computeNode();
+        public abstract override AstNode computeNode(); //ConstructorDeclaration
     }
 
+    public interface IConstantEvaluationTarget
+    { }
 
 
     /**
@@ -575,7 +584,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class ElementAnnotation : ConstantEvaluationTarget
+    public abstract class ElementAnnotation : IConstantEvaluationTarget
     {
         /**
          * An empty list of annotations.
@@ -989,7 +998,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class ExportElement : UriReferencedElement
+    public abstract class ExportElement : Element, IUriReferencedElement
     {
         /**
          * An empty list of export elements.
@@ -1001,13 +1010,19 @@ namespace Dart2CSharpTranspiler.Parser
          * Return a list containing the combinators that were specified as part of the
          * export directive in the order in which they were specified.
          */
-        List<NamespaceCombinator> combinators { get; }
+        public List<NamespaceCombinator> combinators { get; }
 
         /**
          * Return the library that is exported from this library by this export
          * directive.
          */
-        LibraryElement exportedLibrary { get; }
+        public LibraryElement exportedLibrary { get; }
+
+        public string uri { get; set; }
+
+        public int uriEnd { get; set; }
+
+        public int uriOffset { get; set; }
     }
 
     /**
@@ -1016,7 +1031,7 @@ namespace Dart2CSharpTranspiler.Parser
      * Clients may not extend, implement or mix-in this class.
      */
     public abstract class FieldElement
-        : ClassMemberElement, PropertyInducingElement
+        : PropertyInducingElement, IClassMemberElement
     {
         /**
          * An empty list of field elements.
@@ -1036,7 +1051,7 @@ namespace Dart2CSharpTranspiler.Parser
         public abstract bool isVirtual { get; }
 
 
-        public abstract AstNode computeNode();
+        public abstract override AstNode computeNode();
     }
 
     /**
@@ -1060,7 +1075,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class FunctionElement : ExecutableElement, LocalElement
+    public abstract class FunctionElement : ExecutableElement, ILocalElement
     {
         /**
          * An empty list of function elements.
@@ -1096,8 +1111,9 @@ namespace Dart2CSharpTranspiler.Parser
          */
         public abstract bool isEntryPoint { get; }
 
+        public SourceRange visibleRange { get; }
 
-        public abstract FunctionDeclaration computeNode();
+        public abstract override AstNode computeNode(); //FunctionDeclaration
     }
 
     /**
@@ -1106,7 +1122,7 @@ namespace Dart2CSharpTranspiler.Parser
      * Clients may not extend, implement or mix-in this class.
      */
     public abstract class FunctionTypeAliasElement
-        : FunctionTypedElement, TypeDefiningElement
+        : FunctionTypedElement, ITypeDefiningElement
     {
         /**
          * An empty array of type alias elements.
@@ -1115,9 +1131,9 @@ namespace Dart2CSharpTranspiler.Parser
         static List<FunctionTypeAliasElement> EMPTY_LIST =
             new List<FunctionTypeAliasElement>(0);
 
-        public abstract CompilationUnitElement enclosingElement { get; }
+        public abstract override Element enclosingElement { get; } //CompilationUnitElement
 
-        public abstract TypeAlias computeNode();
+        public abstract override AstNode computeNode(); //TypeAlias
 
         /// Produces the function type resulting from instantiating this typedef with
         /// the given type arguments.
@@ -1153,7 +1169,7 @@ namespace Dart2CSharpTranspiler.Parser
          */
         public abstract DartType returnType { get; }
 
-        public abstract FunctionType type { get; }
+        public abstract override DartType type { get; } //FunctionType
     }
 
     /**
@@ -1190,7 +1206,7 @@ namespace Dart2CSharpTranspiler.Parser
          * Return a list containing the names that are not to be made visible in the
          * importing library even if they are defined in the imported library.
          */
-        List<String> hiddenNames { get; }
+        public List<String> hiddenNames { get; }
     }
 
     /**
@@ -1198,7 +1214,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class ImportElement : Element, UriReferencedElement
+    public abstract class ImportElement : Element, IUriReferencedElement
     {
         /**
          * An empty list of import elements.
@@ -1210,36 +1226,42 @@ namespace Dart2CSharpTranspiler.Parser
          * Return a list containing the combinators that were specified as part of the
          * import directive in the order in which they were specified.
          */
-        List<NamespaceCombinator> combinators { get; }
+        public List<NamespaceCombinator> combinators { get; }
 
         /**
          * Return the library that is imported into this library by this import
          * directive.
          */
-        LibraryElement importedLibrary { get; }
+        public LibraryElement importedLibrary { get; }
 
         /**
          * Return `true` if this import is for a deferred library.
          */
-        bool isDeferred { get; }
+        public bool isDeferred { get; }
 
         /**
          * The [Namespace] that this directive contributes to the containing library.
          */
-        Namespace @namespace { get; }
+        public Namespace @namespace { get; }
 
         /**
          * Return the prefix that was specified as part of the import directive, or
          * `null` if there was no prefix specified.
          */
-        PrefixElement prefix { get; }
+        public PrefixElement prefix { get; }
 
         /**
          * Return the offset of the prefix of this import in the file that contains
          * this import directive, or `-1` if this import is synthetic, does not have a
          * prefix, or otherwise does not have an offset.
          */
-        int prefixOffset { get; }
+        public int prefixOffset { get; }
+
+        public string uri { get; set; }
+
+        public int uriEnd { get; set; }
+
+        public int uriOffset { get; set; }
     }
 
     /**
@@ -1256,7 +1278,7 @@ namespace Dart2CSharpTranspiler.Parser
         public static List<LabelElement> EMPTY_LIST = new List<LabelElement> { };
 
 
-        public abstract ExecutableElement enclosingElement { get; }
+        public abstract override Element enclosingElement { get; } //ExecutableElement
     }
 
     /**
@@ -1412,7 +1434,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class LocalElement : Element
+    public interface ILocalElement //: Element
     {
         /**
          * Return a source range that covers the approximate portion of the source in
@@ -1436,7 +1458,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class LocalVariableElement : LocalElement, VariableElement
+    public abstract class LocalVariableElement : VariableElement, ILocalElement
     {
         /**
          * An empty list of field elements.
@@ -1444,6 +1466,8 @@ namespace Dart2CSharpTranspiler.Parser
         [Obsolete]
         public static List<LocalVariableElement> EMPTY_LIST =
           new List<LocalVariableElement> { };
+
+        public SourceRange visibleRange { get; }
     }
 
     /**
@@ -1451,7 +1475,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class MethodElement : ClassMemberElement, ExecutableElement
+    public abstract class MethodElement : ExecutableElement, IClassMemberElement
     {
         /**
          * An empty list of method elements.
@@ -1459,8 +1483,8 @@ namespace Dart2CSharpTranspiler.Parser
         [Obsolete]
         public static List<MethodElement> EMPTY_LIST = new List<MethodElement> { };
 
-        @override
-        MethodDeclaration computeNode();
+
+        public abstract override AstNode computeNode(); //MethodDeclaration
 
         /**
          * Gets the reified type of a tear-off of this method.
@@ -1470,7 +1494,7 @@ namespace Dart2CSharpTranspiler.Parser
          * returns `this`.
          */
         [Obsolete]
-        FunctionType getReifiedType(DartType objectType);
+        public abstract FunctionType getReifiedType(DartType objectType);
     }
 
     /**
@@ -1532,7 +1556,7 @@ namespace Dart2CSharpTranspiler.Parser
      * Clients may not extend, implement or mix-in this class.
      */
     public abstract class ParameterElement
-        : LocalElement, VariableElement, ConstantEvaluationTarget
+        :  VariableElement, IConstantEvaluationTarget, ILocalElement
     {
         /**
          * An empty list of parameter elements.
@@ -1611,6 +1635,8 @@ namespace Dart2CSharpTranspiler.Parser
          */
         public abstract List<TypeParameterElement> typeParameters { get; }
 
+        public SourceRange visibleRange => throw new NotImplementedException();
+
         /**
          * Append the type, name and possibly the default value of this parameter to
          * the given [buffer].
@@ -1618,7 +1644,7 @@ namespace Dart2CSharpTranspiler.Parser
         public abstract void appendToWithoutDelimiters(StringBuffer buffer);
 
 
-        public abstract FormalParameter computeNode();
+        public abstract override AstNode computeNode(); //FormalParameter
     }
 
     /**
@@ -1634,7 +1660,7 @@ namespace Dart2CSharpTranspiler.Parser
         [Obsolete]
         public static List<PrefixElement> EMPTY_LIST = new List<PrefixElement> { };
 
-        public abstract LibraryElement enclosingElement { get; }
+        public abstract override Element enclosingElement { get; } //LibraryElement
 
         /**
          * Return the empty list.
@@ -1798,7 +1824,7 @@ namespace Dart2CSharpTranspiler.Parser
           new List<TopLevelVariableElement> { };
 
 
-        public abstract VariableDeclaration computeNode();
+        public abstract override AstNode computeNode(); // VariableDeclaration
     }
 
     /**
@@ -1806,12 +1832,12 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class TypeDefiningElement : Element
+    public interface ITypeDefiningElement // : Element
     {
         /**
          * Return the type defined by this element.
          */
-        public abstract DartType type { get; }
+        DartType type { get; }
     }
 
     /**
@@ -1819,7 +1845,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class TypeParameterElement : TypeDefiningElement
+    public abstract class TypeParameterElement : Element, ITypeDefiningElement
     {
         /**
          * An empty list of type parameter elements.
@@ -1835,7 +1861,8 @@ namespace Dart2CSharpTranspiler.Parser
         public abstract DartType bound { get; }
 
 
-        public abstract TypeParameterType type { get; }
+        public abstract DartType type { get; } // TypeParameterType 
+
     }
 
     /**
@@ -1849,7 +1876,7 @@ namespace Dart2CSharpTranspiler.Parser
         /**
          * The type of this element, which will be a parameterized type.
          */
-        public abstract ParameterizedType type { get; }
+        public abstract DartType type { get; } // ParameterizedType
 
         /**
          * Return a list containing all of the type parameters declared by this
@@ -1874,25 +1901,25 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class UriReferencedElement : Element
+    public interface IUriReferencedElement //: Element
     {
         /**
          * Return the URI that is used to include this element into the enclosing
          * library, or `null` if this is the defining compilation unit of a library.
          */
-        public abstract String uri { get; }
+        String uri { get; }
 
         /**
          * Return the offset of the character immediately following the last character
          * of this node's URI, or `-1` for synthetic import.
          */
-        public abstract int uriEnd { get; }
+        int uriEnd { get; }
 
         /**
          * Return the offset of the URI in the file, or `-1` if this element is
          * synthetic.
          */
-        public abstract int uriOffset { get; }
+        int uriOffset { get; }
     }
 
     /**
@@ -1901,7 +1928,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    public abstract class VariableElement : Element, ConstantEvaluationTarget
+    public abstract class VariableElement : Element, IConstantEvaluationTarget
     {
         /**
          * An empty list of variable elements.

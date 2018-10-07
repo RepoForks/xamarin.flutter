@@ -115,7 +115,7 @@ namespace Dart2CSharpTranspiler.Parser
          * Return the name of this type, or `null` if the type does not have a name,
          * such as when the type represents the type of an unnamed function.
          */
-        public abstract String name { get; }
+        public abstract String name { get; set;  }
 
         /**
          * Implements the function "flatten" defined in the spec, where T is this
@@ -209,7 +209,7 @@ namespace Dart2CSharpTranspiler.Parser
      *
      * Clients may not extend, implement or mix-in this class.
      */
-    abstract class FunctionType : ParameterizedType
+    public abstract class FunctionType : ParameterizedType
     {
         /**
          * Deprecated: use [typeFormals].

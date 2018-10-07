@@ -20,8 +20,49 @@ namespace Dart2CSharpTranspiler.Parser
         public Comparator(int value) => _value = value;
     }
 
-    public static class DartLibrary
+    public static partial class DartLibrary
     {
+
+        public static void assert(bool condition)
+        {
+
+        }
+
+        public static bool isEmpty(this string value)
+        {
+            return string.IsNullOrEmpty(value);
+        }
+
+        public static bool isEmpty<T>(this List<T> value)
+        {
+            return value?.Count == 0;
+        }
+
+        public static void forEach<K, V>(this Dictionary<K, V> dictionary, Action<K, V> action)
+        {
+            foreach (var item in dictionary)
+                action(item.Key, item.Value);
+        }
+
+        public static void addAll<T>(this List<T> list, List<T> add)
+        {
+            foreach (var item in add)
+                list.Add(item);
+        }
+
+        public static void addAll<K, V>(this Dictionary<K, V> dictionary, Dictionary<K, V> add)
+        {
+            foreach (var item in add)
+                dictionary.Add(item.Key, item.Value);
+        }
+
+        public static V putIfAbsent<K, V>(this Dictionary<K, V> dictionary, K key, Func<V> value)
+        {
+            if (!dictionary.ContainsKey(key))
+                dictionary.Add(key, value());
+
+            return dictionary[key];
+        }
 
         public static int codeUnitAt(this string value, int index)
         {

@@ -130,7 +130,7 @@ namespace Dart2CSharpTranspiler.Parser
                 scanLazyAssignmentOperators: scanLazyAssignmentOperators);
 
             // fasta pretends there is an additional line at EOF
-            result.lineStarts.RemoveLast();
+            result.lineStarts.Remove(result.lineStarts.Count - 1);
 
             // for compatibility, there is already a first entry in lineStarts
             result.lineStarts.RemoveAt(0);

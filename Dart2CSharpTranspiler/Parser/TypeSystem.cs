@@ -2604,7 +2604,7 @@ namespace Dart2CSharpTranspiler.Parser
     }
 
     /// The synthetic element for [UnknownInferredType].
-    public class UnknownInferredTypeElement : ElementImpl, TypeDefiningElement
+    public class UnknownInferredTypeElement : ElementImpl, ITypeDefiningElement
     {
         static final UnknownInferredTypeElement instance =
       new UnknownInferredTypeElement._();

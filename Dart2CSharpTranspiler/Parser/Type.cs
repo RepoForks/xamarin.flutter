@@ -59,14 +59,14 @@ namespace Dart2CSharpTranspiler.Parser
     /**
      * Type of callbacks used by [DeferredFunctionTypeImpl].
      */
-    delegate FunctionTypedElement FunctionTypedElementComputer();
+    public delegate FunctionTypedElement FunctionTypedElementComputer();
 
     /**
      * Computer of type arguments which is used to delay computing of type
      * arguments until they are requested, instead of at the [ParameterizedType]
      * creation time.
      */
-    delegate List<DartType> TypeArgumentsComputer();
+    public delegate List<DartType> TypeArgumentsComputer();
 
     /**
      * A [Type] that represents the type 'bottom'.
@@ -2819,7 +2819,7 @@ namespace Dart2CSharpTranspiler.Parser
         /**
          * The name of this type, or `null` if the type does not have a name.
          */
-        public abstract override String name { get; }
+        public abstract override String name { get; set; }
 
         /**
          * The cached value for [hasTypeParameterReferenceInBound].
@@ -2836,9 +2836,9 @@ namespace Dart2CSharpTranspiler.Parser
             this.name = name;
         }
 
-        public String displayName => name;
+        public override String displayName => name;
 
-        public Element element => _element;
+        public override Element element => _element;
 
         /**
          * Return `true` if the type is parameterized and has a type parameter with
@@ -2856,7 +2856,7 @@ namespace Dart2CSharpTranspiler.Parser
                         return true;
                     }
                     else if (type is TypeImpl &&
-                      type._hasTypeParameterReferenceInBound == true)
+                      ((TypeImpl)type)._hasTypeParameterReferenceInBound == true)
                     {
                         return true;
                     }
@@ -2866,7 +2866,7 @@ namespace Dart2CSharpTranspiler.Parser
                     }
                     else if (type is FunctionType)
                     {
-                        return (type as TypeImpl).hasTypeParameterReferenceInBound;
+                        return (type as TypeImpl).hasTypeParameterReferenceInBound();
                     }
                     else if (type is ParameterizedType)
                     {
@@ -2879,17 +2879,17 @@ namespace Dart2CSharpTranspiler.Parser
                 }
 
                 Element element = this.element;
-                if (element is FunctionTypedElement)
+                if (element is FunctionTypedElement fElement)
                 {
-                    _hasTypeParameterReferenceInBound = element.parameters.any(
+                    _hasTypeParameterReferenceInBound = fElement.parameters.Any(
                             (parameter) => hasTypeParameterReference(parameter.type)) ||
-                        (element.returnType != null &&
-                            hasTypeParameterReference(element.returnType));
+                        (fElement.returnType != null &&
+                            hasTypeParameterReference(fElement.returnType));
                 }
-                else if (element is TypeParameterizedElement)
+                else if (element is TypeParameterizedElement tElement)
                 {
-                    _hasTypeParameterReferenceInBound = element.typeParameters
-                        .any((parameter) => hasTypeParameterReference(parameter.bound));
+                    _hasTypeParameterReferenceInBound = tElement.typeParameters
+                        .Any((parameter) => hasTypeParameterReference(parameter.bound));
                 }
                 else
                 {
@@ -2921,7 +2921,7 @@ namespace Dart2CSharpTranspiler.Parser
          * Append a textual representation of this type to the given [buffer]. The set
          * of [visitedTypes] is used to prevent infinite recursion.
          */
-        void appendTo(StringBuffer buffer, HashSet<TypeImpl> visitedTypes)
+        public void appendTo(StringBuffer buffer, HashSet<TypeImpl> visitedTypes)
         {
             if (visitedTypes.Add(this))
             {
@@ -2937,11 +2937,11 @@ namespace Dart2CSharpTranspiler.Parser
             }
             else
             {
-                buffer.write('<recursive>');
+                buffer.write("<recursive>");
             }
         }
 
-        public DartType flattenFutures(TypeSystem typeSystem) => this;
+        public override DartType flattenFutures(TypeSystem typeSystem) => this;
 
         /**
          * Return `true` if this type is assignable to the given [type] (written in
@@ -2954,14 +2954,14 @@ namespace Dart2CSharpTranspiler.Parser
          * forbids a typedef from referring to itself directly or indirectly, we can
          * use these as sets of function type aliases that don't need to be expanded.
          */
-        public bool isAssignableTo(DartType type)
+        public override bool isAssignableTo(DartType type)
         {
             // An interface type T may be assigned to a type S, written T <=> S, iff
             // either T <: S or S <: T.
             return isSubtypeOf(type) || type.isSubtypeOf(this);
         }
 
-        public bool isEquivalentTo(DartType other) => this == other;
+        public override bool isEquivalentTo(DartType other) => this == other;
 
         /**
          * Return `true` if this type is more specific than the given [type] (written
@@ -2977,7 +2977,7 @@ namespace Dart2CSharpTranspiler.Parser
          * hierarchy, we can use this as a set of classes that don't need to be
          * examined when walking the public class hierarchy.
          */
-        public bool isMoreSpecificThan(DartType type,
+        public abstract bool isMoreSpecificThan(DartType type,
               bool withDynamic = false, HashSet<Element> visitedElements = null);
 
         /**
@@ -2991,13 +2991,13 @@ namespace Dart2CSharpTranspiler.Parser
          * forbids a typedef from referring to itself directly or indirectly, we can
          * use these as sets of function type aliases that don't need to be expanded.
          */
-        public bool isSubtypeOf(DartType type)
+        public override bool isSubtypeOf(DartType type)
         {
             // For non-function types, T <: S iff [_|_/dynamic]T << S.
             return isMoreSpecificThan(type, true);
         }
 
-        public bool isSupertypeOf(DartType type) => type.isSubtypeOf(this);
+        public override bool isSupertypeOf(DartType type) => type.isSubtypeOf(this);
 
         /**
          * Create a new [TypeImpl] that is identical to [this] except that when
@@ -3017,10 +3017,10 @@ namespace Dart2CSharpTranspiler.Parser
         ///
         /// The boolean `isCovariant` indicates whether this type is in covariant or
         /// contravariant position.
-        DartType replaceTopAndBottom(TypeProvider typeProvider,
+        public abstract DartType replaceTopAndBottom(TypeProvider typeProvider,
                  bool isCovariant = true);
 
-        public DartType resolveToBound(DartType objectType) => this;
+        public override DartType resolveToBound(DartType objectType) => this;
 
         /**
          * Return the type resulting from substituting the given [argumentTypes] for
@@ -3037,7 +3037,7 @@ namespace Dart2CSharpTranspiler.Parser
         public String toString()
         {
             StringBuffer buffer = new StringBuffer();
-            appendTo(buffer, new Set.identity());
+            appendTo(buffer, new HashSet<TypeImpl>()); //.identity()
             return buffer.toString();
         }
 
@@ -3047,11 +3047,11 @@ namespace Dart2CSharpTranspiler.Parser
          */
         static bool equalArrays(List<DartType> first, List<DartType> second)
         {
-            if (first.length != second.length)
+            if (first.Count != second.Count)
             {
                 return false;
             }
-            for (int i = 0; i < first.length; i++)
+            for (int i = 0; i < first.Count; i++)
             {
                 if (first[i] == null)
                 {
@@ -3079,22 +3079,22 @@ namespace Dart2CSharpTranspiler.Parser
          */
         static bool equivalentArrays(List<DartType> first, List<DartType> second)
         {
-            if (first.length != second.length)
+            if (first.Count != second.Count)
             {
                 return false;
             }
-            for (int i = 0; i < first.length; i++)
+            for (int i = 0; i < first.Count; i++)
             {
                 if (first[i] == null)
                 {
                     AnalysisEngine.instance.logger
-                        .logInformation('Found null type argument in TypeImpl.equalArrays');
+                        .logInformation("Found null type argument in TypeImpl.equalArrays");
                     return second[i] == null;
                 }
                 else if (second[i] == null)
                 {
                     AnalysisEngine.instance.logger
-                        .logInformation('Found null type argument in TypeImpl.equalArrays');
+                        .logInformation("Found null type argument in TypeImpl.equalArrays");
                     return false;
                 }
                 if (!first[i].isEquivalentTo(second[i]))
@@ -3117,7 +3117,7 @@ namespace Dart2CSharpTranspiler.Parser
             List<DartType> argumentTypes, List<DartType> parameterTypes,
             List<FunctionTypeAliasElement> prune)
         {
-            int length = types.length;
+            int length = types.Count;
             if (length == 0)
             {
                 return types;

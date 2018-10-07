@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using static Dart2CSharpTranspiler.Parser.DartLibrary;
+using static Dart2CSharpTranspiler.Parser.Local;
 
 //https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/src/dart/element/element.dart
 
@@ -36,19 +39,22 @@ namespace Dart2CSharpTranspiler.Parser
     //import 'package:analyzer/src/summary/idl.dart';
     //import 'package:analyzer/src/task/dart.dart';
 
-    /**
-     * Assert that the given [object] is null, which in the places where this
-     * function is called means that the element is not resynthesized.
-     */
-    //void _assertNotResynthesized(Object object)
-    //{
-    //    // TODO(scheglov) I comment this check for now.
-    //    // When we make a decision about switch to the new analysis driver,
-    //    // we will need to rework the analysis code to don't call the setters
-    //    // or restore / inline it.
-    //    //  assert(object == null);
-    //}
 
+    public static class Local
+    {
+        /**
+         * Assert that the given [object] is null, which in the places where this
+         * function is called means that the element is not resynthesized.
+         */
+        public static void _assertNotResynthesized(Object @object)
+        {
+            // TODO(scheglov) I comment this check for now.
+            // When we make a decision about switch to the new analysis driver,
+            // we will need to rework the analysis code to don't call the setters
+            // or restore / inline it.
+            //  assert(object == null);
+        }
+    }
     /**
      * A concrete implementation of a [ClassElement].
      */
@@ -79,18 +85,18 @@ namespace Dart2CSharpTranspiler.Parser
     //      /**
     //       * Initialize a newly created class element to have the given [name].
     //       */
-    //      AbstractClassElementImpl.forNode(Identifier name) : super.forNode(name);
+    //      AbstractClassElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //      /**
     //       * Initialize using the given serialized information.
     //       */
     //      AbstractClassElementImpl.forSerialized(
     //    CompilationUnitElementImpl enclosingUnit)
-    //    : super.forSerialized(enclosingUnit);
+    //    : base.forSerialized(enclosingUnit);
 
     //      
     //List<PropertyAccessorElement> get accessors {
-    //          return _accessors ?? const <PropertyAccessorElement>[];
+    //          return _accessors ?? new List<PropertyAccessorElement>{};
     //      }
 
     //      /**
@@ -108,7 +114,7 @@ namespace Dart2CSharpTranspiler.Parser
     //      String get displayName => name;
 
     //      
-    //List<FieldElement> get fields => _fields ?? const <FieldElement>[];
+    //List<FieldElement> get fields => _fields ?? new List<FieldElement>{};
 
     //      /**
     //       * Set the fields contained in this class to the given [fields].
@@ -131,7 +137,7 @@ namespace Dart2CSharpTranspiler.Parser
     //      ElementKind get kind => ElementKind.CLASS;
 
     //      
-    //List<InterfaceType> get superclassConstraints => const <InterfaceType>[];
+    //List<InterfaceType> get superclassConstraints => new List<InterfaceType>{};
 
     //      
     //      T accept<T>(ElementVisitor < T > visitor) => visitor.visitClassElement(this);
@@ -295,7 +301,7 @@ namespace Dart2CSharpTranspiler.Parser
     //      
     //void visitChildren(ElementVisitor visitor)
     //      {
-    //          super.visitChildren(visitor);
+    //          base.visitChildren(visitor);
     //          safelyVisitChildren(accessors, visitor);
     //          safelyVisitChildren(fields, visitor);
     //      }
@@ -317,7 +323,7 @@ namespace Dart2CSharpTranspiler.Parser
     //          String getterName) sync * {
     //          ClassElement classElement = this;
     //          HashSet<ClassElement> visitedClasses = new HashSet<ClassElement>();
-    //          while (classElement != null && visitedClasses.add(classElement))
+    //          while (classElement != null && visitedClasses.Add(classElement))
     //          {
     //              PropertyAccessorElement getter = classElement.getGetter(getterName);
     //              if (getter != null)
@@ -353,7 +359,7 @@ namespace Dart2CSharpTranspiler.Parser
     //          String setterName) sync * {
     //          ClassElement classElement = this;
     //          HashSet<ClassElement> visitedClasses = new HashSet<ClassElement>();
-    //          while (classElement != null && visitedClasses.add(classElement))
+    //          while (classElement != null && visitedClasses.Add(classElement))
     //          {
     //              PropertyAccessorElement setter = classElement.getSetter(setterName);
     //              if (setter != null)
@@ -402,7 +408,7 @@ namespace Dart2CSharpTranspiler.Parser
     //      static Iterable<MethodElement> getImplementationsOfMethod(
     //          ClassElement classElement, String methodName) sync * {
     //          HashSet<ClassElement> visitedClasses = new HashSet<ClassElement>();
-    //          while (classElement != null && visitedClasses.add(classElement))
+    //          while (classElement != null && visitedClasses.Add(classElement))
     //          {
     //              MethodElement method = classElement.getMethod(methodName);
     //              if (method != null)
@@ -569,14 +575,14 @@ namespace Dart2CSharpTranspiler.Parser
     //         */
     //        ClassElementImpl.forNode(Identifier name)
     //      : _unlinkedClass = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //        /**
     //         * Initialize using the given serialized information.
     //         */
     //        ClassElementImpl.forSerialized(
     //      this._unlinkedClass, CompilationUnitElementImpl enclosingUnit)
-    //      : super.forSerialized(enclosingUnit);
+    //      : base.forSerialized(enclosingUnit);
 
     //  /**
     //   * Set whether this class is abstract.
@@ -595,14 +601,14 @@ namespace Dart2CSharpTranspiler.Parser
     //            _resynthesizeFieldsAndPropertyAccessors();
     //        }
     //    }
-    //    return _accessors ?? const <PropertyAccessorElement>[];
+    //    return _accessors ?? new List<PropertyAccessorElement>{};
     //}
 
     //
     //  void set accessors(List<PropertyAccessorElement> accessors)
     //{
     //    _assertNotResynthesized(_unlinkedClass);
-    //    super.accessors = accessors;
+    //    base.accessors = accessors;
     //}
 
     //
@@ -617,7 +623,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedClass != null) {
     //      return _unlinkedClass.codeRange?.length;
     //    }
-    //    return super.codeLength;
+    //    return base.codeLength;
     //  }
 
     //  
@@ -625,7 +631,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedClass != null) {
     //      return _unlinkedClass.codeRange?.offset;
     //    }
-    //    return super.codeOffset;
+    //    return base.codeOffset;
     //  }
 
     //  
@@ -639,7 +645,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        _constructors = _unlinkedClass.executables
     //            .where((e) => e.kind == UnlinkedExecutableKind.constructor)
     //            .map((e) => new ConstructorElementImpl.forSerialized(e, this))
-    //            .toList(growable: false);
+    //            .ToList(growable: false);
     //        // Ensure at least implicit default constructor.
     //        if (_constructors.isEmpty)
     //        {
@@ -650,7 +656,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        }
     //    }
     //    assert(_constructors != null);
-    //    return _constructors ?? const <ConstructorElement>[];
+    //    return _constructors ?? new List<ConstructorElement>{};
     //}
 
     ///**
@@ -675,7 +681,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedClass != null) {
     //        return _unlinkedClass.documentationComment?.text;
     //    }
-    //    return super.documentationComment;
+    //    return base.documentationComment;
     //}
 
     //
@@ -690,14 +696,14 @@ namespace Dart2CSharpTranspiler.Parser
     //            _resynthesizeFieldsAndPropertyAccessors();
     //        }
     //    }
-    //    return _fields ?? const <FieldElement>[];
+    //    return _fields ?? new List<FieldElement>{};
     //}
 
     //
     //  void set fields(List<FieldElement> fields)
     //{
     //    _assertNotResynthesized(_unlinkedClass);
-    //    super.fields = fields;
+    //    base.fields = fields;
     //}
 
     //bool get hasBeenInferred {
@@ -714,10 +720,10 @@ namespace Dart2CSharpTranspiler.Parser
     //  bool get hasNonFinalField {
     //    List<ClassElement> classesToVisit = new List<ClassElement>();
     //HashSet<ClassElement> visitedClasses = new HashSet<ClassElement>();
-    //classesToVisit.add(this);
+    //classesToVisit.Add(this);
     //    while (!classesToVisit.isEmpty) {
     //    ClassElement currentElement = classesToVisit.removeAt(0);
-    //    if (visitedClasses.add(currentElement))
+    //    if (visitedClasses.Add(currentElement))
     //    {
     //        // check fields
     //        for (FieldElement field in currentElement.fields)
@@ -734,7 +740,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        for (InterfaceType mixinType in currentElement.mixins)
     //        {
     //            ClassElement mixinElement = mixinType.element;
-    //            classesToVisit.add(mixinElement);
+    //            classesToVisit.Add(mixinElement);
     //        }
     //        // check super
     //        InterfaceType supertype = currentElement.supertype;
@@ -743,7 +749,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            ClassElement superElement = supertype.element;
     //            if (superElement != null)
     //            {
-    //                classesToVisit.add(superElement);
+    //                classesToVisit.Add(superElement);
     //            }
     //        }
     //    }
@@ -801,10 +807,10 @@ namespace Dart2CSharpTranspiler.Parser
     //                .map((EntityRef t) => context.resolveTypeRef(this, t))
     //                .where(_isInterfaceTypeInterface)
     //                .cast<InterfaceType>()
-    //                .toList(growable: false);
+    //                .ToList(growable: false);
     //        }
     //    }
-    //    return _interfaces ?? const <InterfaceType>[];
+    //    return _interfaces ?? new List<InterfaceType>{};
     //}
 
     //void set interfaces(List<InterfaceType> interfaces)
@@ -868,7 +874,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        return _metadata ??=
     //            _buildAnnotations(enclosingUnit, _unlinkedClass.annotations);
     //    }
-    //    return super.metadata;
+    //    return base.metadata;
     //}
 
     //
@@ -878,9 +884,9 @@ namespace Dart2CSharpTranspiler.Parser
     //        _methods ??= _unlinkedClass.executables
     //            .where((e) => e.kind == UnlinkedExecutableKind.functionOrMethod)
     //            .map((e) => new MethodElementImpl.forSerialized(e, this))
-    //            .toList(growable: false);
+    //            .ToList(growable: false);
     //    }
-    //    return _methods ?? const <MethodElement>[];
+    //    return _methods ?? new List<MethodElement>{};
     //}
 
     ///**
@@ -916,10 +922,10 @@ namespace Dart2CSharpTranspiler.Parser
     //                .map((EntityRef t) => context.resolveTypeRef(this, t))
     //                .where(_isInterfaceTypeInterface)
     //                .cast<InterfaceType>()
-    //                .toList(growable: false);
+    //                .ToList(growable: false);
     //        }
     //    }
-    //    return _mixins ?? const <InterfaceType>[];
+    //    return _mixins ?? new List<InterfaceType>{};
     //}
 
     //void set mixins(List<InterfaceType> mixins)
@@ -940,12 +946,12 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedClass != null) {
     //        return _unlinkedClass.name;
     //    }
-    //    return super.name;
+    //    return base.name;
     //}
 
     //
     //  int get nameOffset {
-    //    int offset = super.nameOffset;
+    //    int offset = base.nameOffset;
     //    if (offset == 0 && _unlinkedClass != null) {
     //      return _unlinkedClass.nameOffset;
     //    }
@@ -957,7 +963,7 @@ namespace Dart2CSharpTranspiler.Parser
     //   * declaration super-invokes.  For setters this includes the trailing "=".
     //   * The list will be empty if this class is not a mixin declaration.
     //   */
-    //  List<String> get superInvokedNames => const <String>[];
+    //  List<String> get superInvokedNames => new List<String>{};
 
     //  
     //  InterfaceType get supertype
@@ -1105,7 +1111,7 @@ namespace Dart2CSharpTranspiler.Parser
     //
     //ElementImpl getChild(String identifier)
     //{
-    //    ElementImpl child = super.getChild(identifier);
+    //    ElementImpl child = base.getChild(identifier);
     //    if (child != null)
     //    {
     //        return child;
@@ -1149,7 +1155,7 @@ namespace Dart2CSharpTranspiler.Parser
     //
     //  void visitChildren(ElementVisitor visitor)
     //{
-    //    super.visitChildren(visitor);
+    //    base.visitChildren(visitor);
     //    safelyVisitChildren(constructors, visitor);
     //    safelyVisitChildren(methods, visitor);
     //    safelyVisitChildren(typeParameters, visitor);
@@ -1173,7 +1179,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        // Object and mixins, and they aren't a mixin application. But for
     //        // safety's sake just assume an empty list.
     //        assert(false);
-    //        constructorsToForward = < ConstructorElement >[];
+    //        constructorsToForward = < ConstructorElement >{};
     //    }
     //    else if (!supertype.element.isMixinApplication)
     //    {
@@ -1193,9 +1199,9 @@ namespace Dart2CSharpTranspiler.Parser
     //            {
     //                // Loop in the class hierarchy.  Don't try to forward any
     //                // constructors.
-    //                return < ConstructorElement >[];
+    //                return < ConstructorElement >{};
     //            }
-    //            visitedClasses.add(this);
+    //            visitedClasses.Add(this);
     //        }
     //        try
     //        {
@@ -1270,7 +1276,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        }
     //        implicitConstructor.enclosingElement = this;
     //        return implicitConstructor;
-    //    }).toList(growable: false);
+    //    }).ToList(growable: false);
     //}
 
     ///**
@@ -1304,9 +1310,9 @@ namespace Dart2CSharpTranspiler.Parser
     //{
     //    assert(_fields == null);
     //    assert(_accessors == null);
-    //    var explicitFields = < FieldElement >[];
-    //    var implicitAccessors = < PropertyAccessorElement >[];
-    //    var explicitAccessors = < PropertyAccessorElement >[];
+    //    var explicitFields = < FieldElement >{};
+    //    var implicitAccessors = < PropertyAccessorElement >{};
+    //    var explicitAccessors = < PropertyAccessorElement >{};
     //    var implicitFields = < String, FieldElementImpl>{ };
 
     //    // Build explicit fields and implicit property accessors.
@@ -1314,13 +1320,13 @@ namespace Dart2CSharpTranspiler.Parser
     //    {
     //        FieldElementImpl field =
     //            new FieldElementImpl.forSerializedFactory(v, this);
-    //        explicitFields.add(field);
-    //        implicitAccessors.add(
+    //        explicitFields.Add(field);
+    //        implicitAccessors.Add(
     //            new PropertyAccessorElementImpl_ImplicitGetter(field)
     //              ..enclosingElement = this);
     //        if (!field.isConst && !field.isFinal)
     //        {
-    //            implicitAccessors.add(
+    //            implicitAccessors.Add(
     //                new PropertyAccessorElementImpl_ImplicitSetter(field)
     //                  ..enclosingElement = this);
     //        }
@@ -1333,7 +1339,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            PropertyAccessorElementImpl accessor =
     //                new PropertyAccessorElementImpl.forSerialized(e, this);
-    //            explicitAccessors.add(accessor);
+    //            explicitAccessors.Add(accessor);
     //            // Create or update the implicit field.
     //            String fieldName = accessor.displayName;
     //            FieldElementImpl field = implicitFields[fieldName];
@@ -1362,10 +1368,10 @@ namespace Dart2CSharpTranspiler.Parser
     //        }
     //    }
     //    // Combine explicit and implicit fields and property accessors.
-    //    _fields = < FieldElement >[]
+    //    _fields = < FieldElement >{}
     //      ..addAll(explicitFields)
     //      ..addAll(implicitFields.values);
-    //    _accessors = < PropertyAccessorElement >[]
+    //    _accessors = < PropertyAccessorElement >{}
     //      ..addAll(explicitAccessors)
     //      ..addAll(implicitAccessors);
     //}
@@ -1377,7 +1383,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    {
     //        return false;
     //    }
-    //    visited.add(element);
+    //    visited.Add(element);
     //    if (element.isProxy)
     //    {
     //        return true;
@@ -1411,34 +1417,34 @@ namespace Dart2CSharpTranspiler.Parser
     //{
     //    List<InterfaceType> typesToVisit = new List<InterfaceType>();
     //    List<ClassElement> visitedClasses = new List<ClassElement>();
-    //    typesToVisit.add(startingType);
+    //    typesToVisit.Add(startingType);
     //    while (!typesToVisit.isEmpty)
     //    {
     //        InterfaceType currentType = typesToVisit.removeAt(0);
     //        ClassElement currentElement = currentType.element;
     //        if (!visitedClasses.contains(currentElement))
     //        {
-    //            visitedClasses.add(currentElement);
+    //            visitedClasses.Add(currentElement);
     //            if (!identical(currentType, excludeType))
     //            {
-    //                supertypes.add(currentType);
+    //                supertypes.Add(currentType);
     //            }
     //            InterfaceType supertype = currentType.superclass;
     //            if (supertype != null)
     //            {
-    //                typesToVisit.add(supertype);
+    //                typesToVisit.Add(supertype);
     //            }
     //        for (InterfaceType type in currentType.superclassConstraints)
     //            {
-    //                typesToVisit.add(type);
+    //                typesToVisit.Add(type);
     //            }
     //        for (InterfaceType type in currentType.interfaces)
     //            {
-    //                typesToVisit.add(type);
+    //                typesToVisit.Add(type);
     //            }
     //        for (InterfaceType type in currentType.mixins)
     //            {
-    //                typesToVisit.add(type);
+    //                typesToVisit.Add(type);
     //            }
     //        }
     //    }
@@ -1576,7 +1582,7 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    CompilationUnitElementImpl.forSerialized(LibraryElementImpl enclosingLibrary,
     //      this.resynthesizerContext, this._unlinkedUnit, this._unlinkedPart)
-    //      : super.forSerialized(null) {
+    //      : base.forSerialized(null) {
     //        _enclosingElement = enclosingLibrary;
     //        _nameOffset = -1;
     //    }
@@ -1594,12 +1600,12 @@ namespace Dart2CSharpTranspiler.Parser
     //            }
     //            if (_explicitTopLevelAccessors != null)
     //            {
-    //                _accessors = < PropertyAccessorElementImpl >[]
+    //                _accessors = < PropertyAccessorElementImpl >{}
     //                  ..addAll(_explicitTopLevelAccessors.accessors)
     //                  ..addAll(_explicitTopLevelVariables.implicitAccessors);
     //            }
     //        }
-    //        return _accessors ?? const <PropertyAccessorElement>[];
+    //        return _accessors ?? new List<PropertyAccessorElement>{};
     //    }
 
     //    /**
@@ -1620,7 +1626,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedUnit.codeRange?.length;
     //        }
-    //        return super.codeLength;
+    //        return base.codeLength;
     //    }
 
     //    
@@ -1629,12 +1635,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedUnit.codeRange?.offset;
     //        }
-    //        return super.codeOffset;
+    //        return base.codeOffset;
     //    }
 
     //    
     //    LibraryElement get enclosingElement =>
-    //      super.enclosingElement as LibraryElement;
+    //      base.enclosingElement as LibraryElement;
 
     //    
     //    CompilationUnitElementImpl get enclosingUnit {
@@ -1647,9 +1653,9 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            _enums ??= _unlinkedUnit.enums
     //                .map((e) => new EnumElementImpl.forSerialized(e, this))
-    //                .toList(growable: false);
+    //                .ToList(growable: false);
     //        }
-    //        return _enums ?? const <ClassElement>[];
+    //        return _enums ?? new List<ClassElement>{};
     //    }
 
     //    /**
@@ -1671,9 +1677,9 @@ namespace Dart2CSharpTranspiler.Parser
     //            _functions ??= _unlinkedUnit.executables
     //                .where((e) => e.kind == UnlinkedExecutableKind.functionOrMethod)
     //                .map((e) => new FunctionElementImpl.forSerialized(e, this))
-    //                .toList(growable: false);
+    //                .ToList(growable: false);
     //        }
-    //        return _functions ?? const <FunctionElement>[];
+    //        return _functions ?? new List<FunctionElement>{};
     //    }
 
     //    /**
@@ -1694,9 +1700,9 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            _typeAliases ??= _unlinkedUnit.typedefs.map((t) {
     //                return new GenericTypeAliasElementImpl.forSerialized(t, this);
-    //            }).toList(growable: false);
+    //            }).ToList(growable: false);
     //    }
-    //    return _typeAliases ?? const <FunctionTypeAliasElement>[];
+    //    return _typeAliases ?? new List<FunctionTypeAliasElement>{};
     //}
 
     //
@@ -1730,7 +1736,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                _unlinkedPart.annotations);
     //        }
     //    }
-    //    return super.metadata;
+    //    return base.metadata;
     //}
 
     //
@@ -1739,9 +1745,9 @@ namespace Dart2CSharpTranspiler.Parser
     //    {
     //        _mixins ??= _unlinkedUnit.mixins
     //            .map((c) => new MixinElementImpl.forSerialized(c, this))
-    //            .toList(growable: false);
+    //            .ToList(growable: false);
     //    }
-    //    return _mixins ?? const <ClassElement>[];
+    //    return _mixins ?? new List<ClassElement>{};
     //}
 
     ///**
@@ -1770,7 +1776,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        }
     //        if (_explicitTopLevelVariables != null)
     //        {
-    //            var variables = < TopLevelVariableElement >[]
+    //            var variables = < TopLevelVariableElement >{}
     //              ..addAll(_explicitTopLevelVariables.variables)
     //              ..addAll(_explicitTopLevelAccessors.implicitVariables);
 
@@ -1788,7 +1794,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            _variables = variables;
     //        }
     //    }
-    //    return _variables ?? const <TopLevelVariableElement>[];
+    //    return _variables ?? new List<TopLevelVariableElement>{};
     //}
 
     ///**
@@ -1828,9 +1834,9 @@ namespace Dart2CSharpTranspiler.Parser
     //    {
     //        _types ??= _unlinkedUnit.classes
     //            .map((c) => new ClassElementImpl.forSerialized(c, this))
-    //            .toList(growable: false);
+    //            .ToList(growable: false);
     //    }
-    //    return _types ?? const <ClassElement>[];
+    //    return _types ?? new List<ClassElement>{};
     //}
 
     ///**
@@ -1884,9 +1890,9 @@ namespace Dart2CSharpTranspiler.Parser
     //List<ElementAnnotation> getAnnotations(int offset) {
     //    if (annotationMap == null)
     //    {
-    //        return const <ElementAnnotation>[];
+    //        return new List<ElementAnnotation>{};
     //    }
-    //    return annotationMap[offset] ?? const <ElementAnnotation>[];
+    //    return annotationMap[offset] ?? new List<ElementAnnotation>{};
     //}
 
     //
@@ -1997,7 +2003,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     //
     //  void visitChildren(ElementVisitor visitor) {
-    //    super.visitChildren(visitor);
+    //    base.visitChildren(visitor);
     //    safelyVisitChildren(accessors, visitor);
     //    safelyVisitChildren(enums, visitor);
     //    safelyVisitChildren(functions, visitor);
@@ -2042,14 +2048,14 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created field element to have the given [name].
     //     */
-    //    ConstFieldElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    ConstFieldElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    ConstFieldElementImpl.forSerialized(
     //      UnlinkedVariable unlinkedVariable, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedVariable, enclosingElement);
+    //      : base.forSerialized(unlinkedVariable, enclosingElement);
     //}
 
     /**
@@ -2070,7 +2076,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedEnumValue.documentationComment?.text;
     //        }
-    //        return super.documentationComment;
+    //        return base.documentationComment;
     //    }
 
     //    
@@ -2095,7 +2101,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            return _metadata ??=
     //                _buildAnnotations(enclosingUnit, _unlinkedEnumValue.annotations);
     //        }
-    //        return super.metadata;
+    //        return base.metadata;
     //    }
 
     //    
@@ -2104,12 +2110,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedEnumValue.name;
     //        }
-    //        return super.name;
+    //        return base.name;
     //    }
 
     //    
     //  int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == -1 && _unlinkedEnumValue != null)
     //        {
     //            return _unlinkedEnumValue.nameOffset;
@@ -2135,12 +2141,12 @@ namespace Dart2CSharpTranspiler.Parser
     //  EvaluationResultImpl get evaluationResult {
     //        if (_evaluationResult == null)
     //        {
-    //            List<DartObjectImpl> constantValues = < DartObjectImpl >[];
+    //            List<DartObjectImpl> constantValues = < DartObjectImpl >{};
     //      for (FieldElement field in _enum.fields)
     //            {
     //                if (field is ConstFieldElementImpl_EnumValue)
     //                {
-    //                    constantValues.add(field.evaluationResult.value);
+    //                    constantValues.Add(field.evaluationResult.value);
     //                }
     //            }
     //            _evaluationResult = new EvaluationResultImpl(
@@ -2221,7 +2227,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created local variable element to have the given [name].
     //     */
-    //    ConstLocalVariableElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    ConstLocalVariableElementImpl.forNode(Identifier name) : base.forNode(name);
     //}
 
     /**
@@ -2268,14 +2274,14 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created constructor element to have the given [name].
     //     */
-    //    ConstructorElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    ConstructorElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    ConstructorElementImpl.forSerialized(
     //      UnlinkedExecutable serializedExecutable, ClassElementImpl enclosingClass)
-    //      : super.forSerialized(serializedExecutable, enclosingClass);
+    //      : base.forSerialized(serializedExecutable, enclosingClass);
 
     //    /**
     //     * Return the constant initializers for this element, which will be empty if
@@ -2288,7 +2294,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            {
     //                _constantInitializers = serializedExecutable.constantInitializers
     //                    .map((i) => _buildConstructorInitializer(i))
-    //                    .toList(growable: false);
+    //                    .ToList(growable: false);
     //            }
     //        }
     //        return _constantInitializers;
@@ -2302,11 +2308,11 @@ namespace Dart2CSharpTranspiler.Parser
 
 
     //    ClassElementImpl get enclosingElement =>
-    //      super.enclosingElement as ClassElementImpl;
+    //      base.enclosingElement as ClassElementImpl;
 
 
     //    TypeParameterizedElementMixin get enclosingTypeParameterContext =>
-    //      super.enclosingElement as ClassElementImpl;
+    //      base.enclosingElement as ClassElementImpl;
 
     //    /**
     //     * Set whether this constructor represents a factory method.
@@ -2505,7 +2511,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            buffer.write(".");
     //            buffer.write(name);
     //        }
-    //        super.appendTo(buffer);
+    //        base.appendTo(buffer);
     //    }
 
 
@@ -2520,7 +2526,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    {
     //        UnlinkedConstructorInitializerKind kind = serialized.kind;
     //        String name = serialized.name;
-    //        List<Expression> arguments = < Expression >[];
+    //        List<Expression> arguments = < Expression >{};
     //        {
     //            int numArguments = serialized.arguments.length;
     //            int numNames = serialized.argumentNames.length;
@@ -2534,7 +2540,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                    expression = AstTestFactory.namedExpression2(
     //                        serialized.argumentNames[nameIndex], expression);
     //                }
-    //                arguments.add(expression);
+    //                arguments.Add(expression);
     //            }
     //        }
     //        switch (kind)
@@ -2596,14 +2602,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     * [name].
     //     */
     //    ConstTopLevelVariableElementImpl.forNode(Identifier name)
-    //      : super.forNode(name);
+    //      : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    ConstTopLevelVariableElementImpl.forSerialized(
     //      UnlinkedVariable unlinkedVariable, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedVariable, enclosingElement);
+    //      : base.forSerialized(unlinkedVariable, enclosingElement);
     //}
 
     /**
@@ -2694,14 +2700,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     * Initialize a newly created parameter element to have the given [name].
     //     */
     //    DefaultFieldFormalParameterElementImpl.forNode(Identifier name)
-    //      : super.forNode(name);
+    //      : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    DefaultFieldFormalParameterElementImpl.forSerialized(
     //      UnlinkedParam unlinkedParam, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedParam, enclosingElement);
+    //      : base.forSerialized(unlinkedParam, enclosingElement);
     //}
 
     /**
@@ -2720,14 +2726,14 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created parameter element to have the given [name].
     //     */
-    //    DefaultParameterElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    DefaultParameterElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    DefaultParameterElementImpl.forSerialized(
     //      UnlinkedParam unlinkedParam, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedParam, enclosingElement);
+    //      : base.forSerialized(unlinkedParam, enclosingElement);
 
 
     //  DefaultFormalParameter computeNode() =>
@@ -2846,7 +2852,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     ///**
     // * The name of the top-level variable used to mark a method as requiring
-    // * overriders to call super.
+    // * overriders to call base.
     // */
     //static String _MUST_CALL_SUPER_VARIABLE_NAME = "mustCallSuper";
 
@@ -3070,653 +3076,717 @@ namespace Dart2CSharpTranspiler.Parser
     /**
      * A base class for concrete implementations of an [Element].
      */
-    //abstract class ElementImpl implements Element
-    //{
-    //  /**
-    //   * An Unicode right arrow.
-    //   */
-    //  static final String RIGHT_ARROW = " \u2192 ";
-
-    //  static int _NEXT_ID = 0;
-
-    //final int id = _NEXT_ID++;
-
-    ///**
-    // * The enclosing element of this element, or `null` if this element is at the
-    // * root of the element structure.
-    // */
-    //ElementImpl _enclosingElement;
-
-    ///**
-    // * The name of this element.
-    // */
-    //String _name;
-
-    ///**
-    // * The offset of the name of this element in the file that contains the
-    // * declaration of this element.
-    // */
-    //int _nameOffset = 0;
-
-    ///**
-    // * A bit-encoded form of the modifiers associated with this element.
-    // */
-    //int _modifiers = 0;
-
-    ///**
-    // * A list containing all of the metadata associated with this element.
-    // */
-    //List<ElementAnnotation> _metadata;
-
-    ///**
-    // * A cached copy of the calculated hashCode for this element.
-    // */
-    //int _cachedHashCode;
-
-    ///**
-    // * A cached copy of the calculated location for this element.
-    // */
-    //ElementLocation _cachedLocation;
-
-    ///**
-    // * The documentation comment for this element.
-    // */
-    //String _docComment;
-
-    ///**
-    // * The offset of the beginning of the element's code in the file that contains
-    // * the element, or `null` if the element is synthetic.
-    // */
-    //int _codeOffset;
-
-    ///**
-    // * The length of the element's code, or `null` if the element is synthetic.
-    // */
-    //int _codeLength;
-
-    ///**
-    // * Initialize a newly created element to have the given [name] at the given
-    // * [_nameOffset].
-    // */
-    //ElementImpl(String name, this._nameOffset)
-    //{
-    //    this._name = StringUtilities.intern(name);
-    //}
+    public abstract class ElementImpl : Element
+    {
+        /**
+         * An Unicode right arrow.
+         */
+        public static readonly String RIGHT_ARROW = " \u2192 ";
+
+        public static int _NEXT_ID = 0;
+
+        public readonly int id = _NEXT_ID++;
+
+        /**
+         * The enclosing element of this element, or `null` if this element is at the
+         * root of the element structure.
+         */
+        public ElementImpl _enclosingElement;
+
+        /**
+         * The name of this element.
+         */
+        public String _name;
+
+        /**
+         * The offset of the name of this element in the file that contains the
+         * declaration of this element.
+         */
+        public int _nameOffset = 0;
+
+        /**
+         * A bit-encoded form of the modifiers associated with this element.
+         */
+        public int _modifiers = 0;
+
+        /**
+         * A list containing all of the metadata associated with this element.
+         */
+        public List<ElementAnnotation> _metadata;
+
+        /**
+         * A cached copy of the calculated hashCode for this element.
+         */
+        public int _cachedHashCode;
+
+        /**
+         * A cached copy of the calculated location for this element.
+         */
+        public ElementLocation _cachedLocation;
+
+        /**
+         * The documentation comment for this element.
+         */
+        public String _docComment;
+
+        /**
+         * The offset of the beginning of the element's code in the file that contains
+         * the element, or `null` if the element is synthetic.
+         */
+        public int _codeOffset;
+
+        /**
+         * The length of the element's code, or `null` if the element is synthetic.
+         */
+        public int _codeLength;
+
+        /**
+         * Initialize a newly created element to have the given [name] at the given
+         * [_nameOffset].
+         */
+        public ElementImpl(String name, int _nameOffset)
+        {
+            this._name = StringUtilities.intern(name);
+            this._nameOffset = _nameOffset;
+        }
+
+        /**
+         * Initialize a newly created element to have the given [name].
+         */
+        public ElementImpl(Identifier name)
+        {
+            this._name = name == null ? "" : name.name;
+            this._nameOffset = name == null ? -1 : name.offset;
+        }
+
+        /**
+         * Initialize from serialized information.
+         */
+        public ElementImpl(ElementImpl _enclosingElement)
+        {
+            this._enclosingElement = _enclosingElement;
+        }
+
+        /**
+         * The length of the element's code, or `null` if the element is synthetic.
+         */
+        public int codeLength => _codeLength;
+
+        /**
+         * The offset of the beginning of the element's code in the file that contains
+         * the element, or `null` if the element is synthetic.
+         */
+        public int codeOffset => _codeOffset;
 
-    ///**
-    // * Initialize a newly created element to have the given [name].
-    // */
-    //ElementImpl.forNode(Identifier name)
-    //      : this(name == null ? "" : name.name, name == null ? -1 : name.offset);
 
-    ///**
-    // * Initialize from serialized information.
-    // */
-    //ElementImpl.forSerialized(this._enclosingElement);
+        public override AnalysisContext context
+        {
+            get
+            {
+                if (_enclosingElement == null)
+                {
+                    return null;
+                }
+                return _enclosingElement.context;
+            }
+        }
 
-    //  /**
-    //   * The length of the element's code, or `null` if the element is synthetic.
-    //   */
-    //  int get codeLength => _codeLength;
 
-    ///**
-    // * The offset of the beginning of the element's code in the file that contains
-    // * the element, or `null` if the element is synthetic.
-    // */
-    //int get codeOffset => _codeOffset;
+        public override String displayName => _name;
 
 
-    //AnalysisContext get context {
-    //    if (_enclosingElement == null)
-    //    {
-    //        return null;
-    //    }
-    //    return _enclosingElement.context;
-    //}
+        public String documentationComment
+        {
+            get => _docComment;
+            set
+            {
+                assert(!isResynthesized);
+                _docComment = doc?.replaceAll("\r\n", '\n');
+            }
+        }
 
 
-    //String get displayName => _name;
 
 
-    //String get documentationComment => _docComment;
+        public override Element enclosingElement
+        {
+            get => _enclosingElement;
+            set
+            {
+                _enclosingElement = element as ElementImpl;
+            }
+        }
 
-    ///**
-    // * The documentation comment source for this element.
-    // */
-    //void set documentationComment(String doc) {
-    //    assert(!isResynthesized);
-    //    _docComment = doc?.replaceAll('\r\n', '\n');
-    //}
 
+        /**
+         * Return the enclosing unit element (which might be the same as `this`), or
+         * `null` if this element is not contained in any compilation unit.
+         */
+        public CompilationUnitElementImpl enclosingUnit =>
+        _enclosingElement?.enclosingUnit;
 
-    //Element get enclosingElement => _enclosingElement;
 
-    ///**
-    // * Set the enclosing element of this element to the given [element].
-    // */
-    //void set enclosingElement(Element element) {
-    //    _enclosingElement = element as ElementImpl;
-    //}
 
-    ///**
-    // * Return the enclosing unit element (which might be the same as `this`), or
-    // * `null` if this element is not contained in any compilation unit.
-    // */
-    //CompilationUnitElementImpl get enclosingUnit {
-    //    return _enclosingElement?.enclosingUnit;
-    //}
+        public bool hasAlwaysThrows =>
+            metadata.any((ElementAnnotation annotation) => annotation.isAlwaysThrows);
 
 
-    //  bool get hasAlwaysThrows =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isAlwaysThrows);
+        public bool hasDeprecated =>
+        metadata.any((ElementAnnotation annotation) => annotation.isDeprecated);
 
 
-    //  bool get hasDeprecated =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isDeprecated);
+        public bool hasFactory =>
+        metadata.any((ElementAnnotation annotation) => annotation.isFactory);
 
 
-    //  bool get hasFactory =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isFactory);
+        public int hashCode
+        {
+            get
+            {
+                // TODO: We might want to re-visit this optimization in the future.
+                // We cache the hash code value as this is a very frequently called method.
+                if (_cachedHashCode == null)
+                {
+                    _cachedHashCode = location.hashCode;
+                }
+                return _cachedHashCode;
+            }
+        }
 
 
-    //  int get hashCode {
-    //    // TODO: We might want to re-visit this optimization in the future.
-    //    // We cache the hash code value as this is a very frequently called method.
-    //    if (_cachedHashCode == null)
-    //    {
-    //        _cachedHashCode = location.hashCode;
-    //    }
-    //    return _cachedHashCode;
-    //}
+        public bool hasIsTest =>
+        metadata.any((ElementAnnotation annotation) => annotation.isIsTest);
 
 
-    //  bool get hasIsTest =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isIsTest);
+        public bool hasIsTestGroup =>
+        metadata.any((ElementAnnotation annotation) => annotation.isIsTestGroup);
 
 
-    //  bool get hasIsTestGroup =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isIsTestGroup);
+        public bool hasJS =>
+        metadata.any((ElementAnnotation annotation) => annotation.isJS);
 
 
-    //  bool get hasJS =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isJS);
+        public bool hasOverride =>
+        metadata.any((ElementAnnotation annotation) => annotation.isOverride);
 
 
-    //  bool get hasOverride =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isOverride);
+        public bool hasProtected =>
+        metadata.any((ElementAnnotation annotation) => annotation.isProtected);
 
 
-    //  bool get hasProtected =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isProtected);
+        public bool hasRequired =>
+        metadata.any((ElementAnnotation annotation) => annotation.isRequired);
 
 
-    //  bool get hasRequired =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isRequired);
+        public bool hasSealed =>
+        metadata.any((ElementAnnotation annotation) => annotation.isSealed);
 
 
-    //  bool get hasSealed =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isSealed);
+        public bool hasVisibleForTemplate => metadata
+        .any((ElementAnnotation annotation) => annotation.isVisibleForTemplate);
 
 
-    //  bool get hasVisibleForTemplate => metadata
-    //      .any((ElementAnnotation annotation) => annotation.isVisibleForTemplate);
+        public bool hasVisibleForTesting => metadata
+        .any((ElementAnnotation annotation) => annotation.isVisibleForTesting);
 
+        /**
+         * Return an identifier that uniquely identifies this element among the
+         * children of this element's parent.
+         */
+        public String identifier => name;
 
-    //  bool get hasVisibleForTesting => metadata
-    //      .any((ElementAnnotation annotation) => annotation.isVisibleForTesting);
 
-    ///**
-    // * Return an identifier that uniquely identifies this element among the
-    // * children of this element's parent.
-    // */
-    //String get identifier => name;
+        public bool isAlwaysThrows =>
+        metadata.any((ElementAnnotation annotation) => annotation.isAlwaysThrows);
 
 
-    //  bool get isAlwaysThrows =>
-    //      metadata.any((ElementAnnotation annotation) => annotation.isAlwaysThrows);
+        public bool isDeprecated
+        {
+            get
+            {
+        for (ElementAnnotation annotation in metadata)
+                {
+                    if (annotation.isDeprecated)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
+
+        public bool isFactory
+        {
+            get
+            {
+                foreach (ElementAnnotation annotation in metadata)
+                {
+                    if (annotation.isFactory)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
 
 
-    //  bool get isDeprecated {
-    //    for (ElementAnnotation annotation in metadata)
-    //    {
-    //        if (annotation.isDeprecated)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
+        public bool isJS
+        {
+            get
+            {
+                foreach (ElementAnnotation annotation in metadata)
+                {
+                    if (annotation.isJS)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
 
 
-    //  bool get isFactory {
-    //    for (ElementAnnotation annotation in metadata)
-    //    {
-    //        if (annotation.isFactory)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
+        public bool isOverride
+        {
+            get
+            {
+                foreach (ElementAnnotation annotation in metadata)
+                {
+                    if (annotation.isOverride)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
 
 
-    //  bool get isJS {
-    //    for (ElementAnnotation annotation in metadata)
-    //    {
-    //        if (annotation.isJS)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
+        public bool isPrivate
+        {
+            get
+            {
+                String name = displayName;
+                if (name == null)
+                {
+                    return true;
+                }
+                return Identifier.isPrivateName(name);
+            }
+        }
 
+
+        public bool isProtected
+        {
+            {
+                foreach (ElementAnnotation annotation in metadata)
+                {
+                    if (annotation.isProtected)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
 
-    //  bool get isOverride {
-    //    for (ElementAnnotation annotation in metadata)
-    //    {
-    //        if (annotation.isOverride)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
 
+        public bool isPublic => !isPrivate;
 
-    //  bool get isPrivate {
-    //    String name = displayName;
-    //    if (name == null)
-    //    {
-    //        return true;
-    //    }
-    //    return Identifier.isPrivateName(name);
-    //}
 
+        public bool isRequired
+        {
+            get
+            {
+                foreach (ElementAnnotation annotation in metadata)
+                {
+                    if (annotation.isRequired)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
 
-    //  bool get isProtected {
-    //    for (ElementAnnotation annotation in metadata)
-    //    {
-    //        if (annotation.isProtected)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
+        /**
+         * Return `true` if this element is resynthesized from a summary.
+         */
+        public bool isResynthesized => enclosingUnit?.resynthesizerContext != null;
+
+
+        public bool isSynthetic
+        {
+            get => hasModifier(Modifier.SYNTHETIC);
+            set
+            {
+                setModifier(Modifier.SYNTHETIC, value);
+            }
+        }
 
 
-    //  bool get isPublic => !isPrivate;
+        public bool isVisibleForTemplate => metadata
+            .any((ElementAnnotation annotation) => annotation.isVisibleForTemplate);
+
+
+        public bool isVisibleForTesting => metadata
+        .any((ElementAnnotation annotation) => annotation.isVisibleForTesting);
 
 
-    //  bool get isRequired {
-    //    for (ElementAnnotation annotation in metadata)
-    //    {
-    //        if (annotation.isRequired)
-    //        {
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
-
-    ///**
-    // * Return `true` if this element is resynthesized from a summary.
-    // */
-    //bool get isResynthesized => enclosingUnit?.resynthesizerContext != null;
-
-
-    //  bool get isSynthetic => hasModifier(Modifier.SYNTHETIC);
-
-    ///**
-    // * Set whether this element is synthetic.
-    // */
-    //void set isSynthetic(bool isSynthetic) {
-    //    setModifier(Modifier.SYNTHETIC, isSynthetic);
-    //}
-
-    //bool get isVisibleForTemplate => metadata
-    //    .any((ElementAnnotation annotation) => annotation.isVisibleForTemplate);
-
-
-    //  bool get isVisibleForTesting => metadata
-    //      .any((ElementAnnotation annotation) => annotation.isVisibleForTesting);
-
-
-    //LibraryElement get library =>
-    //      getAncestor((element) => element is LibraryElement);
-
-
-    //Source get librarySource => library?.source;
-
-
-    //ElementLocation get location {
-    //    if (_cachedLocation == null)
-    //    {
-    //        if (library == null)
-    //        {
-    //            return new ElementLocationImpl.con1(this);
-    //        }
-    //        _cachedLocation = new ElementLocationImpl.con1(this);
-    //    }
-    //    return _cachedLocation;
-    //}
-
-    //List<ElementAnnotation> get metadata {
-    //    return _metadata ?? const <ElementAnnotation>[];
-    //}
-
-    //void set metadata(List < ElementAnnotation > metadata) {
-    //    assert(!isResynthesized);
-    //    _metadata = metadata;
-    //}
-
-
-    //String get name => _name;
-
-    ///**
-    // * Changes the name of this element.
-    // */
-    //void set name(String name) {
-    //    this._name = name;
-    //}
-
-
-    //  int get nameLength => displayName != null ? displayName.length : 0;
-
-
-    //  int get nameOffset => _nameOffset;
-
-    ///**
-    // * Sets the offset of the name of this element in the file that contains the
-    // * declaration of this element.
-    // */
-    //void set nameOffset(int offset) {
-    //    _nameOffset = offset;
-    //}
-
-
-    //Source get source {
-    //    if (_enclosingElement == null)
-    //    {
-    //        return null;
-    //    }
-    //    return _enclosingElement.source;
-    //}
-
-    ///**
-    // * Return the context to resolve type parameters in, or `null` if neither this
-    // * element nor any of its ancestors is of a kind that can declare type
-    // * parameters.
-    // */
-    //TypeParameterizedElementMixin get typeParameterContext {
-    //    return _enclosingElement?.typeParameterContext;
-    //}
-
-
-    //CompilationUnit get unit => context.resolveCompilationUnit(source, library);
-
-
-    //  bool operator == (Object object) {
-    //    if (identical(this, object))
-    //    {
-    //        return true;
-    //    }
-    //    return object is Element &&
-    //        object.kind == kind &&
-    //        object.location == location;
-    //}
-
-    ///**
-    // * Append to the given [buffer] a comma-separated list of the names of the
-    // * types of this element and every enclosing element.
-    // */
-    //void appendPathTo(StringBuffer buffer)
-    //{
-    //    Element element = this;
-    //    while (element != null)
-    //    {
-    //        if (element != this)
-    //        {
-    //            buffer.write(', ');
-    //        }
-    //        buffer.write(element.runtimeType);
-    //        String name = element.name;
-    //        if (name != null)
-    //        {
-    //            buffer.write(' (');
-    //            buffer.write(name);
-    //            buffer.write(')');
-    //        }
-    //        element = element.enclosingElement;
-    //    }
-    //}
-
-    ///**
-    // * Append a textual representation of this element to the given [buffer].
-    // */
-    //void appendTo(StringBuffer buffer)
-    //{
-    //    if (_name == null)
-    //    {
-    //        buffer.write("<unnamed ");
-    //        buffer.write(runtimeType.toString());
-    //        buffer.write(">");
-    //    }
-    //    else
-    //    {
-    //        buffer.write(_name);
-    //    }
-    //}
-
-
-    //String computeDocumentationComment() => documentationComment;
-
-
-    //AstNode computeNode() => getNodeMatching((node) => node is AstNode);
-
-    ///**
-    // * Set this element as the enclosing element for given [element].
-    // */
-    //void encloseElement(ElementImpl element)
-    //{
-    //    element.enclosingElement = this;
-    //}
-
-    ///**
-    // * Set this element as the enclosing element for given [elements].
-    // */
-    //void encloseElements(List<Element> elements)
-    //{
-    //    for (Element element in elements)
-    //    {
-    //        (element as ElementImpl)._enclosingElement = this;
-    //    }
-    //}
-
-
-    //E getAncestor < E : Element> (Predicate < Element > predicate) {
-    //    return getAncestorStatic<E>(_enclosingElement, predicate);
-    //}
-
-    ///**
-    // * Return the child of this element that is uniquely identified by the given
-    // * [identifier], or `null` if there is no such child.
-    // */
-    //ElementImpl getChild(String identifier) => null;
-
-
-    //String getExtendedDisplayName(String shortName) {
-    //    if (shortName == null)
-    //    {
-    //        shortName = displayName;
-    //    }
-    //    Source source = this.source;
-    //    if (source != null)
-    //    {
-    //        return "$shortName (${source.fullName})";
-    //    }
-    //    return shortName;
-    //}
-
-    ///**
-    // * Return the resolved [AstNode] of the given type enclosing [getNameOffset].
-    // */
-    //AstNode getNodeMatching(Predicate<AstNode> predicate)
-    //{
-    //    CompilationUnit unit = this.unit;
-    //    if (unit == null)
-    //    {
-    //        return null;
-    //    }
-    //    int offset = nameOffset;
-    //    AstNode node = new NodeLocator(offset).searchWithin(unit);
-    //    if (node == null)
-    //    {
-    //        return null;
-    //    }
-    //    return node.getAncestor(predicate);
-    //}
-
-    ///**
-    // * Return `true` if this element has the given [modifier] associated with it.
-    // */
-    //bool hasModifier(Modifier modifier) =>
-    //    BooleanArray.get(_modifiers, modifier.ordinal);
-
-
-    //  bool isAccessibleIn(LibraryElement library)
-    //{
-    //    if (Identifier.isPrivateName(name))
-    //    {
-    //        return library == this.library;
-    //    }
-    //    return true;
-    //}
-
-    ///**
-    // * Use the given [visitor] to visit all of the [children] in the given array.
-    // */
-    //void safelyVisitChildren(List<Element> children, ElementVisitor visitor)
-    //{
-    //    if (children != null)
-    //    {
-    //      for (Element child in children)
-    //        {
-    //            child.accept(visitor);
-    //        }
-    //    }
-    //}
-
-    ///**
-    // * Set the code range for this element.
-    // */
-    //void setCodeRange(int offset, int length)
-    //{
-    //    assert(!isResynthesized);
-    //    _codeOffset = offset;
-    //    _codeLength = length;
-    //}
-
-    ///**
-    // * Set whether the given [modifier] is associated with this element to
-    // * correspond to the given [value].
-    // */
-    //void setModifier(Modifier modifier, bool value)
-    //{
-    //    _modifiers = BooleanArray.set(_modifiers, modifier.ordinal, value);
-    //}
-
-
-    //String toString() {
-    //    StringBuffer buffer = new StringBuffer();
-    //    appendTo(buffer);
-    //    return buffer.toString();
-    //}
-
-
-    //  void visitChildren(ElementVisitor visitor)
-    //{
-    //    // There are no children to visit
-    //}
-
-    ///**
-    // * Return annotations for the given [unlinkedConsts] in the [unit].
-    // */
-    //List<ElementAnnotation> _buildAnnotations(
-    //    CompilationUnitElementImpl unit, List<UnlinkedExpr> unlinkedConsts)
-    //{
-    //    int length = unlinkedConsts.length;
-    //    if (length != 0)
-    //    {
-    //        List<ElementAnnotation> annotations = new List<ElementAnnotation>(length);
-    //        ResynthesizerContext context = unit.resynthesizerContext;
-    //        for (int i = 0; i < length; i++)
-    //        {
-    //            annotations[i] = context.buildAnnotation(this, unlinkedConsts[i]);
-    //        }
-    //        return annotations;
-    //    }
-    //    else
-    //    {
-    //        return const <ElementAnnotation>[];
-    //    }
-    //}
-
-    ///**
-    // * If the element associated with the given [type] is a generic function type
-    // * element, then make it a child of this element. Return the [type] as a
-    // * convenience.
-    // */
-    //DartType _checkElementOfType(DartType type)
-    //{
-    //    Element element = type?.element;
-    //    if (element is GenericFunctionTypeElementImpl &&
-    //        element.enclosingElement == null)
-    //    {
-    //        element.enclosingElement = this;
-    //    }
-    //    return type;
-    //}
-
-    ///**
-    // * If the given [type] is a generic function type, then the element associated
-    // * with the type is implicitly a child of this element and should be visted by
-    // * the given [visitor].
-    // */
-    //void _safelyVisitPossibleChild(DartType type, ElementVisitor visitor)
-    //{
-    //    Element element = type?.element;
-    //    if (element is GenericFunctionTypeElementImpl &&
-    //        element.enclosingElement is !GenericTypeAliasElement)
-    //    {
-    //        element.accept(visitor);
-    //    }
-    //}
-
-    //static int findElementIndexUsingIdentical(List items, Object item)
-    //{
-    //    int length = items.length;
-    //    for (int i = 0; i < length; i++)
-    //    {
-    //        if (identical(items[i], item))
-    //        {
-    //            return i;
-    //        }
-    //    }
-    //    throw new StateError('Unable to find $item in $items');
-    //}
-
-    //static E getAncestorStatic<E : Element> (
-    //    Element startingPoint, Predicate<Element> predicate) {
-    //    Element ancestor = startingPoint;
-    //    while (ancestor != null && !predicate(ancestor))
-    //    {
-    //        ancestor = ancestor.enclosingElement;
-    //    }
-    //    return ancestor as E;
-    //}
-    //}
+        public LibraryElement library =>
+               getAncestor((element) => element is LibraryElement);
+
+
+        public Source librarySource => library?.source;
+
+
+        public ElementLocation location
+        {
+            get
+            {
+                if (_cachedLocation == null)
+                {
+                    if (library == null)
+                    {
+                        return new ElementLocationImpl.con1(this);
+                    }
+                    _cachedLocation = new ElementLocationImpl.con1(this);
+                }
+                return _cachedLocation;
+            }
+        }
+
+        public List<ElementAnnotation> metadata
+        {
+            get
+            {
+                return _metadata ?? new List<ElementAnnotation> { };
+            }
+            set
+            {
+                assert(!isResynthesized);
+                _metadata = value;
+            }
+        }
+
+
+
+        public String name
+        {
+            get => _name;
+            set => this._name = value;
+        }
+
+
+
+        public int nameLength => displayName != null ? displayName.length : 0;
+
+
+        public int nameOffset
+        {
+            get => _nameOffset;
+            set => _nameOffset = value;
+        }
+
+
+
+        public Source source
+        {
+            get
+            {
+                if (_enclosingElement == null)
+                {
+                    return null;
+                }
+                return _enclosingElement.source;
+            }
+        }
+
+        /**
+         * Return the context to resolve type parameters in, or `null` if neither this
+         * element nor any of its ancestors is of a kind that can declare type
+         * parameters.
+         */
+        public TypeParameterizedElementMixin typeParameterContext
+        {
+            get
+            {
+                return _enclosingElement?.typeParameterContext;
+            }
+        }
+
+
+        public CompilationUnit unit => context.resolveCompilationUnit(source, library);
+
+
+        public static bool operator ==(ElementImpl first, ElementImpl second)
+        {
+            if (identical(first, second))
+            {
+                return true;
+            }
+            return first.kind == second.kind &&
+                first.location == second.location;
+        }
+
+        public static bool operator !=(ElementImpl first, ElementImpl second) => !(first == second);
+
+        /**
+         * Append to the given [buffer] a comma-separated list of the names of the
+         * types of this element and every enclosing element.
+         */
+        public void appendPathTo(StringBuffer buffer)
+        {
+            Element element = this;
+            while (element != null)
+            {
+                if (element != this)
+                {
+                    buffer.write(', ');
+                }
+                buffer.write(element.runtimeType);
+                String name = element.name;
+                if (name != null)
+                {
+                    buffer.write(' (');
+                    buffer.write(name);
+                    buffer.write(')');
+                }
+                element = element.enclosingElement;
+            }
+        }
+
+        /**
+         * Append a textual representation of this element to the given [buffer].
+         */
+        public void appendTo(StringBuffer buffer)
+        {
+            if (_name == null)
+            {
+                buffer.write("<unnamed ");
+                buffer.write(runtimeType.toString());
+                buffer.write(">");
+            }
+            else
+            {
+                buffer.write(_name);
+            }
+        }
+
+
+        public String computeDocumentationComment() => documentationComment;
+
+
+        public AstNode computeNode() => getNodeMatching((node) => node is AstNode);
+
+        /**
+         * Set this element as the enclosing element for given [element].
+         */
+        public void encloseElement(ElementImpl element)
+        {
+            element.enclosingElement = this;
+        }
+
+        /**
+         * Set this element as the enclosing element for given [elements].
+         */
+        public void encloseElements(List<Element> elements)
+        {
+            foreach (Element element in elements)
+            {
+                (element as ElementImpl)._enclosingElement = this;
+            }
+        }
+
+
+        public override E getAncestor<E>(Predicate<Element> predicate)
+        {
+            return getAncestorStatic<E>(_enclosingElement, predicate);
+        }
+
+        /**
+         * Return the child of this element that is uniquely identified by the given
+         * [identifier], or `null` if there is no such child.
+         */
+        public ElementImpl getChild(String identifier) => null;
+
+
+        public String getExtendedDisplayName(String shortName)
+        {
+            if (shortName == null)
+            {
+                shortName = displayName;
+            }
+            Source source = this.source;
+            if (source != null)
+            {
+                return "$shortName (${source.fullName})";
+            }
+            return shortName;
+        }
+
+        /**
+         * Return the resolved [AstNode] of the given type enclosing [getNameOffset].
+         */
+        public AstNode getNodeMatching(Predicate<AstNode> predicate)
+        {
+            CompilationUnit unit = this.unit;
+            if (unit == null)
+            {
+                return null;
+            }
+            int offset = nameOffset;
+            AstNode node = new NodeLocator(offset).searchWithin(unit);
+            if (node == null)
+            {
+                return null;
+            }
+            return node.getAncestor(predicate);
+        }
+
+        /**
+         * Return `true` if this element has the given [modifier] associated with it.
+         */
+        public bool hasModifier(Modifier modifier) =>
+            BooleanArray.get(_modifiers, modifier.ordinal);
+
+
+        public bool isAccessibleIn(LibraryElement library)
+        {
+            if (Identifier.isPrivateName(name))
+            {
+                return library == this.library;
+            }
+            return true;
+        }
+
+        /**
+         * Use the given [visitor] to visit all of the [children] in the given array.
+         */
+        public void safelyVisitChildren<R>(List<Element> children, ElementVisitor<R> visitor)
+        {
+            if (children != null)
+            {
+                foreach (Element child in children)
+                {
+                    child.accept(visitor);
+                }
+            }
+        }
+
+        /**
+         * Set the code range for this element.
+         */
+        public void setCodeRange(int offset, int length)
+        {
+            assert(!isResynthesized);
+            _codeOffset = offset;
+            _codeLength = length;
+        }
+
+        /**
+         * Set whether the given [modifier] is associated with this element to
+         * correspond to the given [value].
+         */
+        public void setModifier(Modifier modifier, bool value)
+        {
+            _modifiers = BooleanArray.set(_modifiers, modifier.ordinal, value);
+        }
+
+
+        public String toString()
+        {
+            StringBuffer buffer = new StringBuffer();
+            appendTo(buffer);
+            return buffer.toString();
+        }
+
+
+        public void visitChildren<R>(ElementVisitor<R> visitor)
+        {
+            // There are no children to visit
+        }
+
+        /**
+         * Return annotations for the given [unlinkedConsts] in the [unit].
+         */
+        public List<ElementAnnotation> _buildAnnotations(
+            CompilationUnitElementImpl unit, List<UnlinkedExpr> unlinkedConsts)
+        {
+            int length = unlinkedConsts.Count;
+            if (length != 0)
+            {
+                List<ElementAnnotation> annotations = new List<ElementAnnotation>(length);
+                ResynthesizerContext context = unit.resynthesizerContext;
+                for (int i = 0; i < length; i++)
+                {
+                    annotations[i] = context.buildAnnotation(this, unlinkedConsts[i]);
+                }
+                return annotations;
+            }
+            else
+            {
+                return new List<ElementAnnotation> { };
+            }
+        }
+
+        /**
+         * If the element associated with the given [type] is a generic function type
+         * element, then make it a child of this element. Return the [type] as a
+         * convenience.
+         */
+        public DartType _checkElementOfType(DartType type)
+        {
+            Element element = type?.element;
+            if (element is GenericFunctionTypeElementImpl &&
+                element.enclosingElement == null)
+            {
+                element.enclosingElement = this;
+            }
+            return type;
+        }
+
+        /**
+         * If the given [type] is a generic function type, then the element associated
+         * with the type is implicitly a child of this element and should be visted by
+         * the given [visitor].
+         */
+        public void _safelyVisitPossibleChild(DartType type, ElementVisitor visitor)
+        {
+            Element element = type?.element;
+            if (element is GenericFunctionTypeElementImpl &&
+                element.enclosingElement is !GenericTypeAliasElement)
+            {
+                element.accept(visitor);
+            }
+        }
+
+        public static int findElementIndexUsingIdentical(List<object> items, Object item)
+        {
+            int length = items.length;
+            for (int i = 0; i < length; i++)
+            {
+                if (identical(items[i], item))
+                {
+                    return i;
+                }
+            }
+            throw new StateError("Unable to find $item in $items");
+        }
+
+        public static E getAncestorStatic<E>(
+            Element startingPoint, Predicate<Element> predicate)
+        {
+            Element ancestor = startingPoint;
+            while (ancestor != null && !predicate(ancestor))
+            {
+                ancestor = ancestor.enclosingElement;
+            }
+            return ancestor as E;
+        }
+    }
 
     /**
      * A concrete implementation of an [ElementLocation].
@@ -3855,7 +3925,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            }
     //            else
     //            {
-    //                components.add(buffer.toString());
+    //                components.Add(buffer.toString());
     //                buffer = new StringBuffer();
     //                index++;
     //            }
@@ -3866,7 +3936,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            index++;
     //        }
     //    }
-    //    components.add(buffer.toString());
+    //    components.Add(buffer.toString());
     //    return components;
     //}
 
@@ -3916,14 +3986,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    EnumElementImpl.forNode(Identifier name)
     //      : _unlinkedEnum = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    EnumElementImpl.forSerialized(
     //      this._unlinkedEnum, CompilationUnitElementImpl enclosingUnit)
-    //      : super.forSerialized(enclosingUnit);
+    //      : base.forSerialized(enclosingUnit);
 
     //  /**
     //   * Set whether this class is abstract.
@@ -3941,14 +4011,14 @@ namespace Dart2CSharpTranspiler.Parser
     //            _resynthesizeMembers();
     //        }
     //    }
-    //    return _accessors ?? const <PropertyAccessorElement>[];
+    //    return _accessors ?? new List<PropertyAccessorElement>{};
     //}
 
 
     //  void set accessors(List<PropertyAccessorElement> accessors)
     //{
     //    _assertNotResynthesized(_unlinkedEnum);
-    //    super.accessors = accessors;
+    //    base.accessors = accessors;
     //}
 
 
@@ -3959,7 +4029,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedEnum != null) {
     //      return _unlinkedEnum.codeRange?.length;
     //    }
-    //    return super.codeLength;
+    //    return base.codeLength;
     //  }
 
 
@@ -3967,7 +4037,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedEnum != null) {
     //      return _unlinkedEnum.codeRange?.offset;
     //    }
-    //    return super.codeOffset;
+    //    return base.codeOffset;
     //  }
 
 
@@ -3976,7 +4046,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    // but that constructor is not callable (since it is a compile-time error
     //    // to subclass, mix-in, implement, or explicitly instantiate an enum).
     //    // So we represent this as having no constructors.
-    //    return const <ConstructorElement>[];
+    //    return new List<ConstructorElement>{};
     //}
 
 
@@ -3985,7 +4055,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedEnum != null) {
     //        return _unlinkedEnum.documentationComment?.text;
     //    }
-    //    return super.documentationComment;
+    //    return base.documentationComment;
     //}
 
 
@@ -3997,14 +4067,14 @@ namespace Dart2CSharpTranspiler.Parser
     //            _resynthesizeMembers();
     //        }
     //    }
-    //    return _fields ?? const <FieldElement>[];
+    //    return _fields ?? new List<FieldElement>{};
     //}
 
 
     //  void set fields(List<FieldElement> fields)
     //{
     //    _assertNotResynthesized(_unlinkedEnum);
-    //    super.fields = fields;
+    //    base.fields = fields;
     //}
 
 
@@ -4017,7 +4087,7 @@ namespace Dart2CSharpTranspiler.Parser
     //  bool get hasStaticMember => true;
 
 
-    //  List<InterfaceType> get interfaces => const <InterfaceType>[];
+    //  List<InterfaceType> get interfaces => new List<InterfaceType>{};
 
 
     //  bool get isAbstract => false;
@@ -4044,7 +4114,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        return _metadata ??=
     //            _buildAnnotations(enclosingUnit, _unlinkedEnum.annotations);
     //    }
-    //    return super.metadata;
+    //    return base.metadata;
     //}
 
 
@@ -4056,11 +4126,11 @@ namespace Dart2CSharpTranspiler.Parser
     //            _resynthesizeMembers();
     //        }
     //    }
-    //    return _methods ?? const <MethodElement>[];
+    //    return _methods ?? new List<MethodElement>{};
     //}
 
 
-    //List<InterfaceType> get mixins => const <InterfaceType>[];
+    //List<InterfaceType> get mixins => new List<InterfaceType>{};
 
 
     //String get name
@@ -4068,12 +4138,12 @@ namespace Dart2CSharpTranspiler.Parser
     //    if (_unlinkedEnum != null) {
     //        return _unlinkedEnum.name;
     //    }
-    //    return super.name;
+    //    return base.name;
     //}
 
 
     //  int get nameOffset {
-    //    int offset = super.nameOffset;
+    //    int offset = base.nameOffset;
     //    if (offset == 0 && _unlinkedEnum != null && _unlinkedEnum.nameOffset != 0) {
     //      return _unlinkedEnum.nameOffset;
     //    }
@@ -4088,7 +4158,7 @@ namespace Dart2CSharpTranspiler.Parser
     //{
     //    if (_type == null) {
     //        InterfaceTypeImpl type = new InterfaceTypeImpl(this);
-    //        type.typeArguments = const <DartType>[];
+    //        type.typeArguments = new List<DartType>{};
     //        _type = type;
     //    }
     //    return _type;
@@ -4096,7 +4166,7 @@ namespace Dart2CSharpTranspiler.Parser
 
 
     //List<TypeParameterElement> get typeParameters =>
-    //      const <TypeParameterElement>[];
+    //      new List<TypeParameterElement>{};
 
 
     //ConstructorElement get unnamedConstructor => null;
@@ -4136,15 +4206,15 @@ namespace Dart2CSharpTranspiler.Parser
 
     //void _resynthesizeMembers()
     //{
-    //    List<FieldElementImpl> fields = < FieldElementImpl >[];
+    //    List<FieldElementImpl> fields = < FieldElementImpl >{};
     //    // Build the 'index' field.
-    //    fields.add(new FieldElementImpl('index', -1)
+    //    fields.Add(new FieldElementImpl('index', -1)
     //      ..enclosingElement = this
     //      ..isSynthetic = true
     //      ..isFinal = true
     //      ..type = context.typeProvider.intType);
     //    // Build the 'values' field.
-    //    fields.add(new ConstFieldElementImpl_EnumValues(this));
+    //    fields.Add(new ConstFieldElementImpl_EnumValues(this));
     //    // Build fields for all enum constants.
     //    if (_unlinkedEnum != null)
     //    {
@@ -4153,7 +4223,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            UnlinkedEnumValue unlinkedValue = _unlinkedEnum.values[i];
     //            ConstFieldElementImpl_EnumValue field =
     //                new ConstFieldElementImpl_EnumValue(this, unlinkedValue, i);
-    //            fields.add(field);
+    //            fields.Add(field);
     //        }
     //    }
     //    // done
@@ -4162,7 +4232,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        .map((FieldElementImpl field) =>
     //            new PropertyAccessorElementImpl_ImplicitGetter(field)
     //              ..enclosingElement = this)
-    //        .toList(growable: false);
+    //        .ToList(growable: false);
     //    createToStringMethodElement();
     //}
     //}
@@ -4212,14 +4282,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    ExecutableElementImpl.forNode(Identifier name)
     //      : serializedExecutable = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    ExecutableElementImpl.forSerialized(
     //      this.serializedExecutable, ElementImpl enclosingElement)
-    //      : super.forSerialized(enclosingElement);
+    //      : base.forSerialized(enclosingElement);
 
     //  /**
     //   * Set whether this executable element's body is asynchronous.
@@ -4235,7 +4305,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return serializedExecutable.codeRange?.length;
     //        }
-    //        return super.codeLength;
+    //        return base.codeLength;
     //    }
 
 
@@ -4244,7 +4314,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return serializedExecutable.codeRange?.offset;
     //        }
-    //        return super.codeOffset;
+    //        return base.codeOffset;
     //    }
 
     //    void set declaredReturnType(DartType returnType) {
@@ -4258,7 +4328,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return serializedExecutable.name;
     //        }
-    //        return super.displayName;
+    //        return base.displayName;
     //    }
 
 
@@ -4267,7 +4337,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return serializedExecutable.documentationComment?.text;
     //        }
-    //        return super.documentationComment;
+    //        return base.documentationComment;
     //    }
 
     //    /**
@@ -4353,7 +4423,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            return _metadata ??=
     //                _buildAnnotations(enclosingUnit, serializedExecutable.annotations);
     //        }
-    //        return super.metadata;
+    //        return base.metadata;
     //    }
 
 
@@ -4362,12 +4432,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return serializedExecutable.name;
     //        }
-    //        return super.name;
+    //        return base.name;
     //    }
 
 
     //  int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == 0 && serializedExecutable != null)
     //        {
     //            return serializedExecutable.nameOffset;
@@ -4385,7 +4455,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                    serializedExecutable.parameters, this);
     //            }
     //        }
-    //        return _parameters ?? const <ParameterElement>[];
+    //        return _parameters ?? new List<ParameterElement>{};
     //    }
 
     //    /**
@@ -4539,7 +4609,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     //  void visitChildren(ElementVisitor visitor)
     //    {
-    //        super.visitChildren(visitor);
+    //        base.visitChildren(visitor);
     //        _safelyVisitPossibleChild(returnType, visitor);
     //        safelyVisitChildren(typeParameters, visitor);
     //        safelyVisitChildren(parameters, visitor);
@@ -4549,177 +4619,213 @@ namespace Dart2CSharpTranspiler.Parser
     /**
      * A concrete implementation of an [ExportElement].
      */
-    //class ExportElementImpl : UriReferencedElementImpl
-    //    implements ExportElement
-    //{
-    //    /**
-    //     * The unlinked representation of the export in the summary.
-    //     */
-    //    final UnlinkedExportPublic _unlinkedExportPublic;
+    public class ExportElementImpl : UriReferencedElementImpl //, ExportElement
+    {
+        /**
+         * The unlinked representation of the export in the summary.
+         */
+        public readonly UnlinkedExportPublic _unlinkedExportPublic;
 
-    //    /**
-    //     * The unlinked representation of the export in the summary.
-    //     */
-    //    final UnlinkedExportNonPublic _unlinkedExportNonPublic;
+        /**
+         * The unlinked representation of the export in the summary.
+         */
+        public readonly UnlinkedExportNonPublic _unlinkedExportNonPublic;
 
-    //    /**
-    //     * The library that is exported from this library by this export directive.
-    //     */
-    //    LibraryElement _exportedLibrary;
+        /**
+         * The library that is exported from this library by this export directive.
+         */
+        public LibraryElement _exportedLibrary;
 
-    //    /**
-    //     * The combinators that were specified as part of the export directive in the
-    //     * order in which they were specified.
-    //     */
-    //    List<NamespaceCombinator> _combinators;
+        /**
+         * The combinators that were specified as part of the export directive in the
+         * order in which they were specified.
+         */
+        public List<NamespaceCombinator> _combinators;
 
-    //    /**
-    //     * The URI that was selected based on the [context] declared variables.
-    //     */
-    //    String _selectedUri;
+        /**
+         * The URI that was selected based on the [context] declared variables.
+         */
+        public String _selectedUri;
 
-    //    /**
-    //     * Initialize a newly created export element at the given [offset].
-    //     */
-    //    ExportElementImpl(int offset)
-    //      : _unlinkedExportPublic = null,
-    //        _unlinkedExportNonPublic = null,
-    //        super(null, offset);
+        /**
+         * Initialize a newly created export element at the given [offset].
+         */
+        public ExportElementImpl(int offset) : base(offset)
+        {
+            _unlinkedExportPublic = null;
+            _unlinkedExportNonPublic = null;
+        }
 
-    //    /**
-    //     * Initialize using the given serialized information.
-    //     */
-    //    ExportElementImpl.forSerialized(this._unlinkedExportPublic,
-    //      this._unlinkedExportNonPublic, LibraryElementImpl enclosingLibrary)
-    //      : super.forSerialized(enclosingLibrary);
-
-
-    //  List<NamespaceCombinator> get combinators {
-    //        if (_combinators == null)
-    //        {
-    //            if (_unlinkedExportPublic != null)
-    //            {
-    //                _combinators = ImportElementImpl._buildCombinators(
-    //                    _unlinkedExportPublic.combinators);
-    //            }
-    //        }
-    //        return _combinators ?? const <NamespaceCombinator>[];
-    //    }
-
-    //    void set combinators(List < NamespaceCombinator > combinators) {
-    //        _assertNotResynthesized(_unlinkedExportPublic);
-    //        _combinators = combinators;
-    //    }
+        /**
+         * Initialize using the given serialized information.
+         */
+        public ExportElementImpl(UnlinkedExportPublic _unlinkedExportPublic,
+          UnlinkedExportNonPublic _unlinkedExportNonPublic, LibraryElementImpl enclosingLibrary)
+          : base(enclosingLibrary)
+        {
+            this._unlinkedExportPublic = _unlinkedExportPublic;
+            this._unlinkedExportNonPublic = _unlinkedExportNonPublic;
+        }
 
 
-    //    LibraryElement get exportedLibrary {
-    //        if (_exportedLibrary == null)
-    //        {
-    //            if (_unlinkedExportNonPublic != null)
-    //            {
-    //                LibraryElementImpl library = enclosingElement as LibraryElementImpl;
-    //                _exportedLibrary =
-    //                    library.resynthesizerContext.buildExportedLibrary(uri);
-    //            }
-    //        }
-    //        return _exportedLibrary;
-    //    }
-
-    //    void set exportedLibrary(LibraryElement exportedLibrary) {
-    //        _assertNotResynthesized(_unlinkedExportNonPublic);
-    //        _exportedLibrary = exportedLibrary;
-    //    }
-
-
-    //    String get identifier => exportedLibrary.name;
-
-
-    //    ElementKind get kind => ElementKind.EXPORT;
+        public List<NamespaceCombinator> combinators
+        {
+            get
+            {
+                if (_combinators == null)
+                {
+                    if (_unlinkedExportPublic != null)
+                    {
+                        _combinators = ImportElementImpl._buildCombinators(
+                            _unlinkedExportPublic.combinators);
+                    }
+                }
+                return _combinators ?? new List<NamespaceCombinator> { };
+            }
+            set
+            {
+                _assertNotResynthesized(_unlinkedExportPublic);
+                _combinators = value;
+            }
+        }
 
 
-    //    List<ElementAnnotation> get metadata {
-    //        if (_metadata == null)
-    //        {
-    //            if (_unlinkedExportNonPublic != null)
-    //            {
-    //                return _metadata = _buildAnnotations(library.definingCompilationUnit,
-    //                    _unlinkedExportNonPublic.annotations);
-    //            }
-    //        }
-    //        return super.metadata;
-    //    }
 
-    //    void set metadata(List < ElementAnnotation > metadata) {
-    //        _assertNotResynthesized(_unlinkedExportNonPublic);
-    //        super.metadata = metadata;
-    //    }
-
-
-    //  int get nameOffset {
-    //        int offset = super.nameOffset;
-    //        if (offset == 0 && _unlinkedExportNonPublic != null)
-    //        {
-    //            return _unlinkedExportNonPublic.offset;
-    //        }
-    //        return offset;
-    //    }
+        public LibraryElement exportedLibrary
+        {
+            get
+            {
+                if (_exportedLibrary == null)
+                {
+                    if (_unlinkedExportNonPublic != null)
+                    {
+                        LibraryElementImpl library = enclosingElement as LibraryElementImpl;
+                        _exportedLibrary = library.resynthesizerContext.buildExportedLibrary(uri);
+                    }
+                }
+                return _exportedLibrary;
+            }
+            set
+            {
+                _assertNotResynthesized(_unlinkedExportNonPublic);
+                _exportedLibrary = value;
+            }
+        }
 
 
-    //    String get uri {
-    //        if (_unlinkedExportPublic != null)
-    //        {
-    //            return _selectedUri ??= _selectUri(
-    //                _unlinkedExportPublic.uri, _unlinkedExportPublic.configurations);
-    //        }
-    //        return super.uri;
-    //    }
+
+        public String identifier
+        {
+            get => exportedLibrary.name;
+        }
 
 
-    //  void set uri(String uri) {
-    //        _assertNotResynthesized(_unlinkedExportPublic);
-    //        super.uri = uri;
-    //    }
+        public ElementKind kind => ElementKind.EXPORT;
 
 
-    //  int get uriEnd {
-    //        if (_unlinkedExportNonPublic != null)
-    //        {
-    //            return _unlinkedExportNonPublic.uriEnd;
-    //        }
-    //        return super.uriEnd;
-    //    }
+        public List<ElementAnnotation> metadata
+        {
+            get
+            {
+                if (_metadata == null)
+                {
+                    if (_unlinkedExportNonPublic != null)
+                    {
+                        return _metadata = _buildAnnotations(library.definingCompilationUnit,
+                            _unlinkedExportNonPublic.annotations);
+                    }
+                }
+                return base.metadata;
+            }
+            set
+            {
+                _assertNotResynthesized(_unlinkedExportNonPublic);
+                base.metadata = metadata;
+            }
+        }
 
 
-    //  void set uriEnd(int uriEnd) {
-    //        _assertNotResynthesized(_unlinkedExportNonPublic);
-    //        super.uriEnd = uriEnd;
-    //    }
+
+        public int nameOffset
+        {
+            get
+            {
+                int offset = base.nameOffset;
+                if (offset == 0 && _unlinkedExportNonPublic != null)
+                {
+                    return _unlinkedExportNonPublic.offset;
+                }
+                return offset;
+            }
+        }
+
+        public String uri
+        {
+            get
+            {
+                if (_unlinkedExportPublic != null)
+                {
+                    return _selectedUri ??= _selectUri(
+                        _unlinkedExportPublic.uri, _unlinkedExportPublic.configurations);
+                }
+                return base.uri;
+            }
+            set
+            {
+                _assertNotResynthesized(_unlinkedExportPublic);
+                base.uri = uri;
+            }
+        }
 
 
-    //  int get uriOffset {
-    //        if (_unlinkedExportNonPublic != null)
-    //        {
-    //            return _unlinkedExportNonPublic.uriOffset;
-    //        }
-    //        return super.uriOffset;
-    //    }
+
+        public int uriEnd
+        {
+            get
+            {
+                if (_unlinkedExportNonPublic != null)
+                {
+                    return _unlinkedExportNonPublic.uriEnd;
+                }
+                return base.uriEnd;
+            }
+            set
+            {
+                _assertNotResynthesized(_unlinkedExportNonPublic);
+                base.uriEnd = uriEnd;
+            }
+        }
 
 
-    //  void set uriOffset(int uriOffset) {
-    //        _assertNotResynthesized(_unlinkedExportNonPublic);
-    //        super.uriOffset = uriOffset;
-    //    }
+        public int uriOffset
+        {
+            get
+            {
+                if (_unlinkedExportNonPublic != null)
+                {
+                    return _unlinkedExportNonPublic.uriOffset;
+                }
+                return base.uriOffset;
+            }
 
 
-    //    T accept<T>(ElementVisitor < T > visitor) => visitor.visitExportElement(this);
+            set
+            {
+                _assertNotResynthesized(_unlinkedExportNonPublic);
+                base.uriOffset = value;
+            }
+        }
 
 
-    //  void appendTo(StringBuffer buffer)
-    //    {
-    //        buffer.write("export ");
-    //        LibraryElementImpl.getImpl(exportedLibrary).appendTo(buffer);
-    //    }
-    //    }
+        public T accept<T>(ElementVisitor<T> visitor) => visitor.visitExportElement(this);
+
+
+        public void appendTo(StringBuffer buffer)
+        {
+            buffer.write("export ");
+            LibraryElementImpl.getImpl(exportedLibrary).appendTo(buffer);
+        }
+    }
 
     /**
      * A concrete implementation of a [FieldElement].
@@ -4736,14 +4842,14 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created field element to have the given [name].
     //     */
-    //    FieldElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    FieldElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    FieldElementImpl.forSerialized(
     //      UnlinkedVariable unlinkedVariable, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedVariable, enclosingElement);
+    //      : base.forSerialized(unlinkedVariable, enclosingElement);
 
     //    /**
     //     * Initialize using the given serialized information.
@@ -4767,7 +4873,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    }
 
 
-    //  ClassElement get enclosingElement => super.enclosingElement as ClassElement;
+    //  ClassElement get enclosingElement => base.enclosingElement as ClassElement;
 
     //    /**
     //     * Return `true` if this field was explicitly marked as being covariant.
@@ -4855,14 +4961,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     * Initialize a newly created parameter element to have the given [name].
     //     */
     //    FieldFormalParameterElementImpl.forNode(Identifier name)
-    //      : super.forNode(name);
+    //      : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    FieldFormalParameterElementImpl.forSerialized(
     //      UnlinkedParam unlinkedParam, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedParam, enclosingElement);
+    //      : base.forSerialized(unlinkedParam, enclosingElement);
 
 
     //  FieldElement get field {
@@ -4907,7 +5013,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            _type ??= field?.type ?? DynamicTypeImpl.instance;
     //        }
-    //        return super.type;
+    //        return base.type;
     //    }
 
 
@@ -4946,7 +5052,7 @@ namespace Dart2CSharpTranspiler.Parser
     ///**
     // * Initialize a newly created function element to have the given [name].
     // */
-    //FunctionElementImpl.forNode(Identifier name) : super.forNode(name);
+    //FunctionElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //  /**
     //   * Initialize a newly created function element to have no name and the given
@@ -4959,7 +5065,7 @@ namespace Dart2CSharpTranspiler.Parser
     // */
     //FunctionElementImpl.forSerialized(
     //    UnlinkedExecutable serializedExecutable, ElementImpl enclosingElement)
-    //      : super.forSerialized(serializedExecutable, enclosingElement);
+    //      : base.forSerialized(serializedExecutable, enclosingElement);
 
     //  /**
     //   * Synthesize an unnamed function element that takes [parameters] and returns
@@ -4985,7 +5091,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     //String get identifier
     //{
-    //    String identifier = super.identifier;
+    //    String identifier = base.identifier;
     //    Element enclosing = this.enclosingElement;
     //    if (enclosing is ExecutableElement) {
     //        identifier += "@$nameOffset";
@@ -5031,7 +5137,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    {
     //        buffer.write(name);
     //    }
-    //    super.appendTo(buffer);
+    //    base.appendTo(buffer);
     //}
 
 
@@ -5087,7 +5193,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    }
     //    else
     //    {
-    //        return const <FunctionElement>[];
+    //        return new List<FunctionElement>{};
     //    }
     //}
     //}
@@ -5127,7 +5233,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    final EntityRef _entityRef;
 
     //    FunctionElementImpl_forLUB(ElementImpl enclosingElement, this._entityRef)
-    //      : super.forSerialized(null, enclosingElement);
+    //      : base.forSerialized(null, enclosingElement);
 
 
     //  bool get isSynthetic => true;
@@ -5219,7 +5325,7 @@ namespace Dart2CSharpTranspiler.Parser
     // */
     //GenericFunctionTypeElementImpl.forSerialized(
     //    ElementImpl enclosingElement, this._entityRef)
-    //      : super.forSerialized(enclosingElement);
+    //      : base.forSerialized(enclosingElement);
 
 
     //TypeParameterizedElementMixin get enclosingTypeParameterContext {
@@ -5242,7 +5348,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                _entityRef.syntheticParams, this);
     //        }
     //    }
-    //    return _parameters ?? const <ParameterElement>[];
+    //    return _parameters ?? new List<ParameterElement>{};
     //}
 
     ///**
@@ -5359,7 +5465,7 @@ namespace Dart2CSharpTranspiler.Parser
 
 
     //  void visitChildren(ElementVisitor visitor) {
-    //    super.visitChildren(visitor);
+    //    base.visitChildren(visitor);
     //    _safelyVisitPossibleChild(returnType, visitor);
     //    safelyVisitChildren(typeParameters, visitor);
     //    safelyVisitChildren(parameters, visitor);
@@ -5403,14 +5509,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    GenericTypeAliasElementImpl.forNode(Identifier name)
     //      : _unlinkedTypedef = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    GenericTypeAliasElementImpl.forSerialized(
     //      this._unlinkedTypedef, CompilationUnitElementImpl enclosingUnit)
-    //      : super.forSerialized(enclosingUnit);
+    //      : base.forSerialized(enclosingUnit);
 
 
     //  int get codeLength {
@@ -5418,7 +5524,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedTypedef.codeRange?.length;
     //        }
-    //        return super.codeLength;
+    //        return base.codeLength;
     //    }
 
 
@@ -5427,7 +5533,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedTypedef.codeRange?.offset;
     //        }
-    //        return super.codeOffset;
+    //        return base.codeOffset;
     //    }
 
 
@@ -5439,12 +5545,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedTypedef.documentationComment?.text;
     //        }
-    //        return super.documentationComment;
+    //        return base.documentationComment;
     //    }
 
 
     //    CompilationUnitElement get enclosingElement =>
-    //      super.enclosingElement as CompilationUnitElement;
+    //      base.enclosingElement as CompilationUnitElement;
 
 
     //    TypeParameterizedElementMixin get enclosingTypeParameterContext => null;
@@ -5513,7 +5619,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            return _metadata ??=
     //                _buildAnnotations(enclosingUnit, _unlinkedTypedef.annotations);
     //        }
-    //        return super.metadata;
+    //        return base.metadata;
     //    }
 
 
@@ -5522,12 +5628,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedTypedef.name;
     //        }
-    //        return super.name;
+    //        return base.name;
     //    }
 
 
     //  int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == 0 && _unlinkedTypedef != null)
     //        {
     //            return _unlinkedTypedef.nameOffset;
@@ -5537,7 +5643,7 @@ namespace Dart2CSharpTranspiler.Parser
 
 
     //  List<ParameterElement> get parameters =>
-    //      function?.parameters ?? const <ParameterElement>[];
+    //      function?.parameters ?? new List<ParameterElement>{};
 
 
     //    DartType get returnType => function?.returnType;
@@ -5659,7 +5765,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     //  void visitChildren(ElementVisitor visitor)
     //    {
-    //        super.visitChildren(visitor);
+    //        base.visitChildren(visitor);
     //        safelyVisitChildren(typeParameters, visitor);
     //        function?.accept(visitor);
     //    }
@@ -5692,9 +5798,9 @@ namespace Dart2CSharpTranspiler.Parser
     //  List<String> get hiddenNames {
     //        if (_unlinkedCombinator != null)
     //        {
-    //            _hiddenNames ??= _unlinkedCombinator.hides.toList(growable: false);
+    //            _hiddenNames ??= _unlinkedCombinator.hides.ToList(growable: false);
     //        }
-    //        return _hiddenNames ?? const <String>[];
+    //        return _hiddenNames ?? new List<String>{};
     //    }
 
     //    void set hiddenNames(List < String > hiddenNames) {
@@ -5782,7 +5888,7 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    ImportElementImpl.forSerialized(this._unlinkedImport, this._linkedDependency,
     //      LibraryElementImpl enclosingLibrary)
-    //      : super.forSerialized(enclosingLibrary);
+    //      : base.forSerialized(enclosingLibrary);
 
 
     //  List<NamespaceCombinator> get combinators {
@@ -5793,7 +5899,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                _combinators = _buildCombinators(_unlinkedImport.combinators);
     //            }
     //        }
-    //        return _combinators ?? const <NamespaceCombinator>[];
+    //        return _combinators ?? new List<NamespaceCombinator>{};
     //    }
 
     //    void set combinators(List < NamespaceCombinator > combinators) {
@@ -5853,7 +5959,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedImport.isImplicit;
     //        }
-    //        return super.isSynthetic;
+    //        return base.isSynthetic;
     //    }
 
 
@@ -5869,17 +5975,17 @@ namespace Dart2CSharpTranspiler.Parser
     //                    library.definingCompilationUnit, _unlinkedImport.annotations);
     //            }
     //        }
-    //        return super.metadata;
+    //        return base.metadata;
     //    }
 
     //    void set metadata(List < ElementAnnotation > metadata) {
     //        _assertNotResynthesized(_unlinkedImport);
-    //        super.metadata = metadata;
+    //        base.metadata = metadata;
     //    }
 
 
     //  int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == 0 && _unlinkedImport != null)
     //        {
     //            if (_unlinkedImport.isImplicit)
@@ -5938,14 +6044,14 @@ namespace Dart2CSharpTranspiler.Parser
     //        return _selectedUri ??=
     //            _selectUri(_unlinkedImport.uri, _unlinkedImport.configurations);
     //    }
-    //    return super.uri;
+    //    return base.uri;
     //}
 
 
     //  void set uri(String uri)
     //{
     //    _assertNotResynthesized(_unlinkedImport);
-    //    super.uri = uri;
+    //    base.uri = uri;
     //}
 
 
@@ -5956,14 +6062,14 @@ namespace Dart2CSharpTranspiler.Parser
     //      }
     //      return _unlinkedImport.uriEnd;
     //    }
-    //    return super.uriEnd;
+    //    return base.uriEnd;
     //  }
 
 
     //  void set uriEnd(int uriEnd)
     //{
     //    _assertNotResynthesized(_unlinkedImport);
-    //    super.uriEnd = uriEnd;
+    //    base.uriEnd = uriEnd;
     //}
 
 
@@ -5974,14 +6080,14 @@ namespace Dart2CSharpTranspiler.Parser
     //      }
     //      return _unlinkedImport.uriOffset;
     //    }
-    //    return super.uriOffset;
+    //    return base.uriOffset;
     //  }
 
 
     //  void set uriOffset(int uriOffset)
     //{
     //    _assertNotResynthesized(_unlinkedImport);
-    //    super.uriOffset = uriOffset;
+    //    base.uriOffset = uriOffset;
     //}
 
 
@@ -5995,7 +6101,7 @@ namespace Dart2CSharpTranspiler.Parser
 
 
     //  void visitChildren(ElementVisitor visitor) {
-    //    super.visitChildren(visitor);
+    //    base.visitChildren(visitor);
     //    prefix?.accept(visitor);
     //}
 
@@ -6018,7 +6124,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    }
     //    else
     //    {
-    //        return const <NamespaceCombinator>[];
+    //        return new List<NamespaceCombinator>{};
     //    }
     //}
     //}
@@ -6060,14 +6166,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    LabelElementImpl.forNode(
     //      Identifier name, this._onSwitchStatement, this._onSwitchMember)
-    //      : super.forNode(name);
+    //      : base.forNode(name);
 
 
     //  String get displayName => name;
 
 
     //    ExecutableElement get enclosingElement =>
-    //      super.enclosingElement as ExecutableElement;
+    //      base.enclosingElement as ExecutableElement;
 
     //    /**
     //     * Return `true` if this label is associated with a `switch` member (`case` or
@@ -6090,821 +6196,909 @@ namespace Dart2CSharpTranspiler.Parser
     /**
      * A concrete implementation of a [LibraryElement].
      */
-    //class LibraryElementImpl : ElementImpl implements LibraryElement
-    //{
-    //    /**
-    //     * The analysis context in which this library is defined.
-    //     */
-    //    final AnalysisContext context;
-
-    //    final LibraryResynthesizerContext resynthesizerContext;
-
-    //    final UnlinkedUnit unlinkedDefiningUnit;
-
-    //    /**
-    //     * The compilation unit that defines this library.
-    //     */
-    //    CompilationUnitElement _definingCompilationUnit;
-
-    //    /**
-    //     * The entry point for this library, or `null` if this library does not have
-    //     * an entry point.
-    //     */
-    //    FunctionElement _entryPoint;
-
-    //    /**
-    //     * A list containing specifications of all of the imports defined in this
-    //     * library.
-    //     */
-    //    List<ImportElement> _imports;
-
-    //    /**
-    //     * A list containing specifications of all of the exports defined in this
-    //     * library.
-    //     */
-    //    List<ExportElement> _exports;
-
-    //    /**
-    //     * A list containing the strongly connected component in the import/export
-    //     * graph in which the current library resides.  Computed on demand, null
-    //     * if not present.  If _libraryCycle is set, then the _libraryCycle field
-    //     * for all libraries reachable from this library in the import/export graph
-    //     * is also set.
-    //     */
-    //    List<LibraryElement> _libraryCycle = null;
-
-    //    /**
-    //     * A list containing all of the compilation units that are included in this
-    //     * library using a `part` directive.
-    //     */
-    //    List<CompilationUnitElement> _parts = const <CompilationUnitElement>[];
-
-    //    /**
-    //     * The element representing the synthetic function `loadLibrary` that is
-    //     * defined for this library, or `null` if the element has not yet been created.
-    //     */
-    //    FunctionElement _loadLibraryFunction;
-
-
-    //  final int nameLength;
-
-    //    /**
-    //     * The export [Namespace] of this library, `null` if it has not been
-    //     * computed yet.
-    //     */
-    //    Namespace _exportNamespace;
-
-    //    /**
-    //     * The public [Namespace] of this library, `null` if it has not been
-    //     * computed yet.
-    //     */
-    //    Namespace _publicNamespace;
-
-    //  /**
-    //   * A bit-encoded form of the capabilities associated with this library.
-    //   */
-    //  int _resolutionCapabilities = 0;
-
-    //    /**
-    //     * The cached list of prefixes.
-    //     */
-    //    List<PrefixElement> _prefixes;
-
-    //    /**
-    //     * Initialize a newly created library element in the given [context] to have
-    //     * the given [name] and [offset].
-    //     */
-    //    LibraryElementImpl(this.context, String name, int offset, this.nameLength)
-    //      : resynthesizerContext = null,
-    //        unlinkedDefiningUnit = null,
-    //        super(name, offset);
-
-    //    /**
-    //     * Initialize a newly created library element in the given [context] to have
-    //     * the given [name].
-    //     */
-    //    LibraryElementImpl.forNode(this.context, LibraryIdentifier name)
-    //      : nameLength = name != null ? name.length : 0,
-    //        resynthesizerContext = null,
-    //        unlinkedDefiningUnit = null,
-    //        super.forNode(name);
-
-    //    /**
-    //     * Initialize using the given serialized information.
-    //     */
-    //    LibraryElementImpl.forSerialized(this.context, String name, int offset,
-    //      this.nameLength, this.resynthesizerContext, this.unlinkedDefiningUnit)
-    //      : super.forSerialized(null) {
-    //        _name = name;
-    //        _nameOffset = offset;
-    //        setResolutionCapability(
-    //            LibraryResolutionCapability.resolvedTypeNames, true);
-    //        setResolutionCapability(
-    //            LibraryResolutionCapability.constantExpressions, true);
-    //    }
-
-
-    //  int get codeLength {
-    //        CompilationUnitElement unit = _definingCompilationUnit;
-    //        if (unit is CompilationUnitElementImpl)
-    //        {
-    //            return unit.codeLength;
-    //        }
-    //        return null;
-    //    }
-
-
-    //  int get codeOffset {
-    //        CompilationUnitElement unit = _definingCompilationUnit;
-    //        if (unit is CompilationUnitElementImpl)
-    //        {
-    //            return unit.codeOffset;
-    //        }
-    //        return null;
-    //    }
-
-
-    //    CompilationUnitElement get definingCompilationUnit =>
-    //      _definingCompilationUnit;
-
-    //    /**
-    //     * Set the compilation unit that defines this library to the given compilation
-    //     * [unit].
-    //     */
-    //    void set definingCompilationUnit(CompilationUnitElement unit) {
-    //        assert((unit as CompilationUnitElementImpl).librarySource == unit.source);
-    //        (unit as CompilationUnitElementImpl).enclosingElement = this;
-    //        this._definingCompilationUnit = unit;
-    //    }
-
-
-    //    String get documentationComment {
-    //        if (unlinkedDefiningUnit != null)
-    //        {
-    //            return unlinkedDefiningUnit.libraryDocumentationComment?.text;
-    //        }
-    //        return super.documentationComment;
-    //    }
-
-    //    FunctionElement get entryPoint {
-    //        if (resynthesizerContext != null)
-    //        {
-    //            _entryPoint ??= resynthesizerContext.findEntryPoint();
-    //        }
-    //        return _entryPoint;
-    //    }
-
-    //    void set entryPoint(FunctionElement entryPoint) {
-    //        _entryPoint = entryPoint;
-    //    }
-
-
-    //    List<LibraryElement> get exportedLibraries {
-    //        HashSet<LibraryElement> libraries = new HashSet<LibraryElement>();
-    //    for (ExportElement element in exports)
-    //        {
-    //            LibraryElement library = element.exportedLibrary;
-    //            if (library != null)
-    //            {
-    //                libraries.add(library);
-    //            }
-    //        }
-    //        return libraries.toList(growable: false);
-    //    }
-
-
-    //    Namespace get exportNamespace {
-    //        if (resynthesizerContext != null)
-    //        {
-    //            _exportNamespace ??= resynthesizerContext.buildExportNamespace();
-    //        }
-    //        return _exportNamespace;
-    //    }
-
-    //    void set exportNamespace(Namespace exportNamespace) {
-    //        _exportNamespace = exportNamespace;
-    //    }
-
-
-    //    List<ExportElement> get exports {
-    //        if (_exports == null)
-    //        {
-    //            if (unlinkedDefiningUnit != null)
-    //            {
-    //                List<UnlinkedExportNonPublic> unlinkedNonPublicExports =
-    //                    unlinkedDefiningUnit.exports;
-    //                List<UnlinkedExportPublic> unlinkedPublicExports =
-    //                    unlinkedDefiningUnit.publicNamespace.exports;
-    //                assert(unlinkedDefiningUnit.exports.length ==
-    //                    unlinkedPublicExports.length);
-    //                int length = unlinkedNonPublicExports.length;
-    //                if (length != 0)
-    //                {
-    //                    List<ExportElement> exports = new List<ExportElement>();
-    //                    for (int i = 0; i < length; i++)
-    //                    {
-    //                        UnlinkedExportPublic serializedExportPublic =
-    //                            unlinkedPublicExports[i];
-    //                        UnlinkedExportNonPublic serializedExportNonPublic =
-    //                            unlinkedNonPublicExports[i];
-    //                        ExportElementImpl exportElement =
-    //                            new ExportElementImpl.forSerialized(
-    //                                serializedExportPublic, serializedExportNonPublic, library);
-    //                        exports.add(exportElement);
-    //                    }
-    //                    _exports = exports;
-    //                }
-    //                else
-    //                {
-    //                    _exports = const <ExportElement>[];
-    //                }
-    //            }
-    //        }
-    //        return _exports ?? const <ExportElement>[];
-    //    }
-
-    //    /**
-    //     * Set the specifications of all of the exports defined in this library to the
-    //     * given list of [exports].
-    //     */
-    //    void set exports(List < ExportElement > exports) {
-    //        _assertNotResynthesized(unlinkedDefiningUnit);
-    //    for (ExportElement exportElement in exports)
-    //        {
-    //            (exportElement as ExportElementImpl).enclosingElement = this;
-    //        }
-    //        this._exports = exports;
-    //    }
-
-
-    //  bool get hasExtUri {
-    //        if (unlinkedDefiningUnit != null)
-    //        {
-    //            List<UnlinkedImport> unlinkedImports = unlinkedDefiningUnit.imports;
-    //      for (UnlinkedImport import in unlinkedImports)
-    //            {
-    //                if (DartUriResolver.isDartExtUri(import.uri))
-    //                {
-    //                    return true;
-    //                }
-    //            }
-    //            return false;
-    //        }
-    //        return hasModifier(Modifier.HAS_EXT_URI);
-    //    }
-
-    //    /**
-    //     * Set whether this library has an import of a "dart-ext" URI.
-    //     */
-    //    void set hasExtUri(bool hasExtUri) {
-    //        setModifier(Modifier.HAS_EXT_URI, hasExtUri);
-    //    }
-
-
-    //  bool get hasLoadLibraryFunction {
-    //        if (_definingCompilationUnit.hasLoadLibraryFunction)
-    //        {
-    //            return true;
-    //        }
-    //        for (int i = 0; i < _parts.length; i++)
-    //        {
-    //            if (_parts[i].hasLoadLibraryFunction)
-    //            {
-    //                return true;
-    //            }
-    //        }
-    //        return false;
-    //    }
-
-
-    //    String get identifier => _definingCompilationUnit.source.encoding;
-
-
-    //    List<LibraryElement> get importedLibraries {
-    //        HashSet<LibraryElement> libraries = new HashSet<LibraryElement>();
-    //    for (ImportElement element in imports)
-    //        {
-    //            LibraryElement library = element.importedLibrary;
-    //            if (library != null)
-    //            {
-    //                libraries.add(library);
-    //            }
-    //        }
-    //        return libraries.toList(growable: false);
-    //    }
-
-
-    //    List<ImportElement> get imports {
-    //        if (_imports == null)
-    //        {
-    //            if (unlinkedDefiningUnit != null)
-    //            {
-    //                _imports = buildImportsFromSummary(this, unlinkedDefiningUnit.imports,
-    //                    resynthesizerContext.linkedLibrary.importDependencies);
-    //            }
-    //        }
-    //        return _imports ?? const <ImportElement>[];
-    //    }
-
-    //    /**
-    //     * Set the specifications of all of the imports defined in this library to the
-    //     * given list of [imports].
-    //     */
-    //    void set imports(List < ImportElement > imports) {
-    //        _assertNotResynthesized(unlinkedDefiningUnit);
-    //    for (ImportElement importElement in imports)
-    //        {
-    //            (importElement as ImportElementImpl).enclosingElement = this;
-    //            PrefixElementImpl prefix = importElement.prefix as PrefixElementImpl;
-    //            if (prefix != null)
-    //            {
-    //                prefix.enclosingElement = this;
-    //            }
-    //        }
-    //        this._imports = imports;
-    //        this._prefixes = null;
-    //    }
-
-
-    //  bool get isBrowserApplication =>
-    //      entryPoint != null && isOrImportsBrowserLibrary;
-
-
-    //  bool get isDartAsync => name == "dart.async";
-
-
-    //  bool get isDartCore => name == "dart.core";
-
-
-    //  bool get isInSdk {
-    //        Uri uri = definingCompilationUnit.source?.uri;
-    //        if (uri != null)
-    //        {
-    //            return DartUriResolver.isDartUri(uri);
-    //        }
-    //        return false;
-    //    }
-
-    //    /**
-    //     * Return `true` if the receiver directly or indirectly imports the
-    //     * 'dart:html' libraries.
-    //     */
-    //    bool get isOrImportsBrowserLibrary {
-    //        List<LibraryElement> visited = new List<LibraryElement>();
-    //        Source htmlLibSource = context.sourceFactory.forUri(DartSdk.DART_HTML);
-    //        visited.add(this);
-    //        for (int index = 0; index < visited.length; index++)
-    //        {
-    //            LibraryElement library = visited[index];
-    //            Source source = library.definingCompilationUnit.source;
-    //            if (source == htmlLibSource)
-    //            {
-    //                return true;
-    //            }
-    //      for (LibraryElement importedLibrary in library.importedLibraries)
-    //            {
-    //                if (!visited.contains(importedLibrary))
-    //                {
-    //                    visited.add(importedLibrary);
-    //                }
-    //            }
-    //      for (LibraryElement exportedLibrary in library.exportedLibraries)
-    //            {
-    //                if (!visited.contains(exportedLibrary))
-    //                {
-    //                    visited.add(exportedLibrary);
-    //                }
-    //            }
-    //        }
-    //        return false;
-    //    }
-
-
-    //  bool get isResynthesized {
-    //        return resynthesizerContext != null;
-    //    }
-
-
-    //    ElementKind get kind => ElementKind.LIBRARY;
-
-
-    //    LibraryElement get library => this;
-
-
-    //    List<LibraryElement> get libraryCycle {
-    //        if (_libraryCycle != null)
-    //        {
-    //            return _libraryCycle;
-    //        }
-
-    //        // Global counter for this run of the algorithm
-    //        int counter = 0;
-    //        // The discovery times of each library
-    //        Map<LibraryElementImpl, int> indices = { };
-    //        // The set of scc candidates
-    //        Set<LibraryElementImpl> active = new Set();
-    //        // The stack of discovered elements
-    //        List<LibraryElementImpl> stack = [];
-    //        // For a given library that has not yet been processed by this run of the
-    //        // algorithm, compute the strongly connected components.
-    //        int scc(LibraryElementImpl library)
-    //        {
-    //            int index = counter++;
-    //            int root = index;
-    //            indices[library] = index;
-    //            active.add(library);
-    //            stack.add(library);
-    //            LibraryElementImpl getActualLibrary(LibraryElement lib)
-    //            {
-    //                // TODO(paulberry): this means that computing a library cycle will be
-    //                // expensive for libraries resynthesized from summaries, since it will
-    //                // require fully resynthesizing all the libraries in the cycle as well
-    //                // as any libraries they import or export.  Try to find a better way.
-    //                if (lib is LibraryElementHandle)
-    //                {
-    //                    return lib.actualElement;
-    //                }
-    //                else
-    //                {
-    //                    return lib;
-    //                }
-    //            }
-
-    //            void recurse(LibraryElementImpl child)
-    //            {
-    //                if (!indices.containsKey(child))
-    //                {
-    //                    // We haven't visited this child yet, so recurse on the child,
-    //                    // returning the lowest numbered node reachable from the child.  If
-    //                    // the child can reach a root which is lower numbered than anything
-    //                    // we've reached so far, update the root.
-    //                    root = min(root, scc(child));
-    //                }
-    //                else if (active.contains(child))
-    //                {
-    //                    // The child has been visited, but has not yet been placed into a
-    //                    // component.  If the child is higher than anything we've seen so far
-    //                    // update the root appropriately.
-    //                    root = min(root, indices[child]);
-    //                }
-    //            }
-
-    //            // Recurse on all of the children in the import/export graph, filtering
-    //            // out those for which library cycles have already been computed.
-    //            library.exportedLibraries
-    //                .map(getActualLibrary)
-    //                .where((l) => l._libraryCycle == null)
-    //                .forEach(recurse);
-    //            library.importedLibraries
-    //                .map(getActualLibrary)
-    //                .where((l) => l._libraryCycle == null)
-    //                .forEach(recurse);
-
-    //            if (root == index)
-    //            {
-    //                // This is the root of a strongly connected component.
-    //                // Pop the elements, and share the component across all
-    //                // of the elements.
-    //                List<LibraryElement> component = < LibraryElement >[];
-    //                LibraryElementImpl cur = null;
-    //                do
-    //                {
-    //                    cur = stack.removeLast();
-    //                    active.remove(cur);
-    //                    component.add(cur);
-    //                    cur._libraryCycle = component;
-    //                } while (cur != library);
-    //            }
-    //            return root;
-    //        }
-
-    //        scc(library);
-    //        return _libraryCycle;
-    //    }
-
-
-    //    FunctionElement get loadLibraryFunction {
-    //        assert(_loadLibraryFunction != null);
-    //        return _loadLibraryFunction;
-    //    }
-
-
-    //    List<ElementAnnotation> get metadata {
-    //        if (_metadata == null)
-    //        {
-    //            if (unlinkedDefiningUnit != null)
-    //            {
-    //                _metadata = _buildAnnotations(
-    //                    _definingCompilationUnit as CompilationUnitElementImpl,
-    //                    unlinkedDefiningUnit.libraryAnnotations);
-    //                return _metadata;
-    //            }
-    //        }
-    //        return super.metadata;
-    //    }
-
-
-    //  List<CompilationUnitElement> get parts => _parts;
-
-    //    /**
-    //     * Set the compilation units that are included in this library using a `part`
-    //     * directive to the given list of [parts].
-    //     */
-    //    void set parts(List < CompilationUnitElement > parts) {
-    //    for (CompilationUnitElement compilationUnit in parts)
-    //        {
-    //            assert((compilationUnit as CompilationUnitElementImpl).librarySource ==
-    //                source);
-    //            (compilationUnit as CompilationUnitElementImpl).enclosingElement = this;
-    //        }
-    //        this._parts = parts;
-    //    }
-
-
-    //  List<PrefixElement> get prefixes =>
-    //      _prefixes ??= buildPrefixesFromImports(imports);
-
-
-    //    Namespace get publicNamespace {
-    //        if (resynthesizerContext != null)
-    //        {
-    //            _publicNamespace ??= resynthesizerContext.buildPublicNamespace();
-    //        }
-    //        return _publicNamespace;
-    //    }
-
-    //    void set publicNamespace(Namespace publicNamespace) {
-    //        _publicNamespace = publicNamespace;
-    //    }
-
-
-    //    Source get source {
-    //        if (_definingCompilationUnit == null)
-    //        {
-    //            return null;
-    //        }
-    //        return _definingCompilationUnit.source;
-    //    }
-
-
-    //    List<CompilationUnitElement> get units {
-    //        List<CompilationUnitElement> units = new List<CompilationUnitElement>();
-    //        units.add(_definingCompilationUnit);
-    //        units.addAll(_parts);
-    //        return units;
-    //    }
-
-
-    //    T accept<T>(ElementVisitor < T > visitor) => visitor.visitLibraryElement(this);
-
-    //    /**
-    //     * Create the [FunctionElement] to be returned by [loadLibraryFunction],
-    //     * using types provided by [typeProvider].
-    //     */
-    //    void createLoadLibraryFunction(TypeProvider typeProvider)
-    //    {
-    //        _loadLibraryFunction =
-    //            createLoadLibraryFunctionForLibrary(typeProvider, this);
-    //    }
-
-
-    //    ElementImpl getChild(String identifier) {
-    //        CompilationUnitElementImpl unitImpl = _definingCompilationUnit;
-    //        if (unitImpl.identifier == identifier)
-    //        {
-    //            return unitImpl;
-    //        }
-    //    for (CompilationUnitElement part in _parts)
-    //        {
-    //            CompilationUnitElementImpl partImpl = part;
-    //            if (partImpl.identifier == identifier)
-    //            {
-    //                return partImpl;
-    //            }
-    //        }
-    //    for (ImportElement importElement in imports)
-    //        {
-    //            ImportElementImpl importElementImpl = importElement;
-    //            if (importElementImpl.identifier == identifier)
-    //            {
-    //                return importElementImpl;
-    //            }
-    //        }
-    //    for (ExportElement exportElement in exports)
-    //        {
-    //            ExportElementImpl exportElementImpl = exportElement;
-    //            if (exportElementImpl.identifier == identifier)
-    //            {
-    //                return exportElementImpl;
-    //            }
-    //        }
-    //        return null;
-    //    }
-
-    //    ClassElement getEnum(String name)
-    //    {
-    //        ClassElement element = _definingCompilationUnit.getEnum(name);
-    //        if (element != null)
-    //        {
-    //            return element;
-    //        }
-    //    for (CompilationUnitElement part in _parts)
-    //        {
-    //            element = part.getEnum(name);
-    //            if (element != null)
-    //            {
-    //                return element;
-    //            }
-    //        }
-    //        return null;
-    //    }
-
-
-    //    List<ImportElement> getImportsWithPrefix(PrefixElement prefixElement) {
-    //        return getImportsWithPrefixFromImports(prefixElement, imports);
-    //    }
-
-
-    //    ClassElement getType(String className) {
-    //        return getTypeFromParts(className, _definingCompilationUnit, _parts);
-    //    }
-
-    //    /** Given an update to this library which may have added or deleted edges
-    //     * in the import/export graph originating from this node only, remove any
-    //     * cached library cycles in the element model which may have been invalidated.
-    //     */
-    //    void invalidateLibraryCycles()
-    //    {
-    //        // If we have pre-computed library cycle information, then we must
-    //        // invalidate the information both on this element, and on certain
-    //        // other elements.  Edges originating at this node may have been
-    //        // added or deleted.  A deleted edge that points outside of this cycle
-    //        // cannot change the cycle information for anything outside of this cycle,
-    //        // and so it is sufficient to delete the cached library information on this
-    //        // cycle.  An added edge which points to another node within the cycle
-    //        // only invalidates the cycle.  An added edge which points to a node earlier
-    //        // in the topological sort of cycles induces no invalidation (since there
-    //        // are by definition no back edges from earlier cycles in the topological
-    //        // order, and hence no possible cycle can have been introduced.  The only
-    //        // remaining case is that we have added an edge to a node which is later
-    //        // in the topological sort of cycles.  This can induce cycles, since it
-    //        // represents a new back edge.  It would be sufficient to invalidate the
-    //        // cycle information for all nodes that are between the target and the
-    //        // node in the topological order.  For simplicity, we simply invalidate
-    //        // all nodes which are reachable from the source node.
-    //        // Note that in the invalidation phase, we do not cut off when we encounter
-    //        // a node with no library cycle information, since we do not know whether
-    //        // we are in the case where invalidation has already been performed, or we
-    //        // are in the case where library cycles have simply never been computed from
-    //        // a newly reachable node.
-    //        Set<LibraryElementImpl> active = new HashSet();
-    //        void invalidate(LibraryElement element)
-    //        {
-    //            LibraryElementImpl library =
-    //                element is LibraryElementHandle ? element.actualElement : element;
-    //            if (active.add(library))
-    //            {
-    //                if (library._libraryCycle != null)
-    //                {
-    //                    library._libraryCycle.forEach(invalidate);
-    //                    library._libraryCycle = null;
-    //                }
-    //                library.exportedLibraries.forEach(invalidate);
-    //                library.importedLibraries.forEach(invalidate);
-    //            }
-    //        }
-
-    //        invalidate(this);
-    //    }
-
-    //    /**
-    //     * Set whether the library has the given [capability] to
-    //     * correspond to the given [value].
-    //     */
-    //    void setResolutionCapability(
-    //        LibraryResolutionCapability capability, bool value)
-    //    {
-    //        _resolutionCapabilities =
-    //            BooleanArray.set(_resolutionCapabilities, capability.index, value);
-    //    }
-
-
-    //  void visitChildren(ElementVisitor visitor)
-    //    {
-    //        super.visitChildren(visitor);
-    //        _definingCompilationUnit?.accept(visitor);
-    //        safelyVisitChildren(exports, visitor);
-    //        safelyVisitChildren(imports, visitor);
-    //        safelyVisitChildren(_parts, visitor);
-    //    }
-
-    //    static List<ImportElement> buildImportsFromSummary(LibraryElement library,
-    //        List<UnlinkedImport> unlinkedImports, List<int> importDependencies)
-    //    {
-    //        int length = unlinkedImports.length;
-    //        if (length != 0)
-    //        {
-    //            List<ImportElement> imports = new List<ImportElement>();
-    //            for (int i = 0; i < length; i++)
-    //            {
-    //                int dependency = importDependencies[i];
-    //                ImportElementImpl importElement = new ImportElementImpl.forSerialized(
-    //                    unlinkedImports[i], dependency, library);
-    //                imports.add(importElement);
-    //            }
-    //            return imports;
-    //        }
-    //        else
-    //        {
-    //            return const <ImportElement>[];
-    //        }
-    //    }
-
-    //    static List<PrefixElement> buildPrefixesFromImports(
-    //        List<ImportElement> imports)
-    //    {
-    //        HashSet<PrefixElement> prefixes = new HashSet<PrefixElement>();
-    //    for (ImportElement element in imports)
-    //        {
-    //            PrefixElement prefix = element.prefix;
-    //            if (prefix != null)
-    //            {
-    //                prefixes.add(prefix);
-    //            }
-    //        }
-    //        return prefixes.toList(growable: false);
-    //    }
-
-    //    static FunctionElementImpl createLoadLibraryFunctionForLibrary(
-    //        TypeProvider typeProvider, LibraryElement library)
-    //    {
-    //        FunctionElementImpl function =
-    //            new FunctionElementImpl(FunctionElement.LOAD_LIBRARY_NAME, -1);
-    //        function.isSynthetic = true;
-    //        function.enclosingElement = library;
-    //        function.returnType = typeProvider.futureDynamicType;
-    //        function.type = new FunctionTypeImpl(function);
-    //        return function;
-    //    }
-
-    //    /**
-    //     * Return the [LibraryElementImpl] of the given [element].
-    //     */
-    //    static LibraryElementImpl getImpl(LibraryElement element)
-    //    {
-    //        if (element is LibraryElementHandle)
-    //        {
-    //            return getImpl(element.actualElement);
-    //        }
-    //        return element as LibraryElementImpl;
-    //    }
-
-    //    static List<ImportElement> getImportsWithPrefixFromImports(
-    //        PrefixElement prefixElement, List<ImportElement> imports)
-    //    {
-    //        int count = imports.length;
-    //        List<ImportElement> importList = new List<ImportElement>();
-    //        for (int i = 0; i < count; i++)
-    //        {
-    //            if (identical(imports[i].prefix, prefixElement))
-    //            {
-    //                importList.add(imports[i]);
-    //            }
-    //        }
-    //        return importList;
-    //    }
-
-    //    static ClassElement getTypeFromParts(
-    //        String className,
-    //        CompilationUnitElement definingCompilationUnit,
-    //        List<CompilationUnitElement> parts)
-    //    {
-    //        ClassElement type = definingCompilationUnit.getType(className);
-    //        if (type != null)
-    //        {
-    //            return type;
-    //        }
-    //    for (CompilationUnitElement part in parts)
-    //        {
-    //            type = part.getType(className);
-    //            if (type != null)
-    //            {
-    //                return type;
-    //            }
-    //        }
-    //        return null;
-    //    }
-
-    //    /**
-    //     * Return `true` if the [library] has the given [capability].
-    //     */
-    //    static bool hasResolutionCapability(
-    //        LibraryElement library, LibraryResolutionCapability capability)
-    //    {
-    //        return library is LibraryElementImpl &&
-    //            BooleanArray.get(library._resolutionCapabilities, capability.index);
-    //    }
-    //    }
+    public class LibraryElementImpl : ElementImpl, LibraryElement
+    {
+        /**
+         * The analysis context in which this library is defined.
+         */
+        public readonly AnalysisContext context;
+
+        public readonly LibraryResynthesizerContext resynthesizerContext;
+
+        public readonly UnlinkedUnit unlinkedDefiningUnit;
+
+        /**
+         * The compilation unit that defines this library.
+         */
+        public CompilationUnitElement _definingCompilationUnit;
+
+        /**
+         * The entry point for this library, or `null` if this library does not have
+         * an entry point.
+         */
+        public FunctionElement _entryPoint;
+
+        /**
+         * A list containing specifications of all of the imports defined in this
+         * library.
+         */
+        public List<ImportElement> _imports;
+
+        /**
+         * A list containing specifications of all of the exports defined in this
+         * library.
+         */
+        public List<ExportElement> _exports;
+
+        /**
+         * A list containing the strongly connected component in the import/export
+         * graph in which the current library resides.  Computed on demand, null
+         * if not present.  If _libraryCycle is set, then the _libraryCycle field
+         * for all libraries reachable from this library in the import/export graph
+         * is also set.
+         */
+        List<LibraryElement> _libraryCycle = null;
+
+        /**
+         * A list containing all of the compilation units that are included in this
+         * library using a `part` directive.
+         */
+        public List<CompilationUnitElement> _parts = new List<CompilationUnitElement> { };
+
+        /**
+         * The element representing the synthetic function `loadLibrary` that is
+         * defined for this library, or `null` if the element has not yet been created.
+         */
+        public FunctionElement _loadLibraryFunction;
+
+
+        public readonly int nameLength;
+
+        /**
+         * The export [Namespace] of this library, `null` if it has not been
+         * computed yet.
+         */
+        public Namespace _exportNamespace;
+
+        /**
+         * The public [Namespace] of this library, `null` if it has not been
+         * computed yet.
+         */
+        public Namespace _publicNamespace;
+
+        /**
+         * A bit-encoded form of the capabilities associated with this library.
+         */
+        public int _resolutionCapabilities = 0;
+
+        /**
+         * The cached list of prefixes.
+         */
+        public List<PrefixElement> _prefixes;
+
+        /**
+         * Initialize a newly created library element in the given [context] to have
+         * the given [name] and [offset].
+         */
+        public LibraryElementImpl(AnalysisContext context, String name, int offset, int nameLength) : base(name, offset)
+        {
+            this.context = context;
+            this.nameLength = nameLength;
+            resynthesizerContext = null;
+            unlinkedDefiningUnit = null;
+        }
+        /**
+         * Initialize a newly created library element in the given [context] to have
+         * the given [name].
+         */
+        public LibraryElementImpl(AnalysisContext context, LibraryIdentifier name) : base(name)
+        {
+            this.context = context;
+            nameLength = name != null ? name.length : 0;
+            resynthesizerContext = null;
+            unlinkedDefiningUnit = null;
+        }
+
+        /**
+         * Initialize using the given serialized information.
+         */
+        public LibraryElementImpl(this.context, String name, int offset,
+           this.nameLength, this.resynthesizerContext, this.unlinkedDefiningUnit)
+           : base(null)
+        {
+            _name = name;
+            _nameOffset = offset;
+            setResolutionCapability(
+                LibraryResolutionCapability.resolvedTypeNames, true);
+            setResolutionCapability(
+                LibraryResolutionCapability.constantExpressions, true);
+        }
+
+
+        public int? codeLength
+        {
+            get
+            {
+                CompilationUnitElement unit = _definingCompilationUnit;
+                if (unit is CompilationUnitElementImpl)
+                {
+                    return unit.codeLength;
+                }
+                return null;
+            }
+        }
+
+        public int? codeOffset
+        {
+            get
+            {
+                CompilationUnitElement unit = _definingCompilationUnit;
+                if (unit is CompilationUnitElementImpl)
+                {
+                    return unit.codeOffset;
+                }
+                return null;
+            }
+        }
+
+        public CompilationUnitElement definingCompilationUnit
+        {
+            get => _definingCompilationUnit;
+            /**
+             * Set the compilation unit that defines this library to the given compilation
+             * [unit].
+             */
+            set
+            {
+                assert((unit as CompilationUnitElementImpl).librarySource == unit.source);
+                (unit as CompilationUnitElementImpl).enclosingElement = this;
+                this._definingCompilationUnit = unit;
+            }
+        }
+
+
+        public String documentationComment
+        {
+            get
+            {
+                if (unlinkedDefiningUnit != null)
+                {
+                    return unlinkedDefiningUnit.libraryDocumentationComment?.text;
+                }
+                return base.documentationComment;
+            }
+        }
+
+        public FunctionElement entryPoint
+        {
+            get
+            {
+                if (resynthesizerContext != null)
+                {
+                    if (_entryPoint == null)
+                        _entryPoint = resynthesizerContext.findEntryPoint();
+                }
+                return _entryPoint;
+            }
+            set
+            {
+                _entryPoint = value;
+            }
+        }
+
+
+        public List<LibraryElement> exportedLibraries
+        {
+            get
+            {
+                HashSet<LibraryElement> libraries = new HashSet<LibraryElement>();
+                foreach (ExportElement element in exports)
+                {
+                    LibraryElement library = element.exportedLibrary;
+                    if (library != null)
+                    {
+                        libraries.Add(library);
+                    }
+                }
+                return libraries.ToList();
+            }
+        }
+
+        public Namespace exportNamespace
+        {
+            get
+            {
+                if (resynthesizerContext != null)
+                {
+                    if (_exportNamespace == null)
+                        _exportNamespace = resynthesizerContext.buildExportNamespace();
+                }
+                return _exportNamespace;
+            }
+
+            set
+            {
+                _exportNamespace = exportNamespace;
+            }
+        }
+
+
+        public List<ExportElement> exports
+        {
+            get
+            {
+                if (_exports == null)
+                {
+                    if (unlinkedDefiningUnit != null)
+                    {
+                        List<UnlinkedExportNonPublic> unlinkedNonPublicExports =
+                            unlinkedDefiningUnit.exports;
+                        List<UnlinkedExportPublic> unlinkedPublicExports =
+                            unlinkedDefiningUnit.publicNamespace.exports;
+                        assert(unlinkedDefiningUnit.exports.length ==
+
+                            unlinkedPublicExports.Count);
+                        int length = unlinkedNonPublicExports.Count;
+                        if (length != 0)
+                        {
+                            List<ExportElement> exports = new List<ExportElement>();
+                            for (int i = 0; i < length; i++)
+                            {
+                                UnlinkedExportPublic serializedExportPublic =
+                                    unlinkedPublicExports[i];
+                                UnlinkedExportNonPublic serializedExportNonPublic =
+                                    unlinkedNonPublicExports[i];
+                                ExportElementImpl exportElement =
+                                    new ExportElementImpl.forSerialized(
+                                        serializedExportPublic, serializedExportNonPublic, library);
+                                exports.Add(exportElement);
+                            }
+                            _exports = exports;
+                        }
+                        else
+                        {
+                            _exports = new List<ExportElement> { };
+                        }
+                    }
+                }
+                return _exports ?? new List<ExportElement> { };
+            }
+
+            /**
+             * Set the specifications of all of the exports defined in this library to the
+             * given list of [exports].
+             */
+            set
+            {
+                //_assertNotResynthesized(unlinkedDefiningUnit);
+                foreach (ExportElement exportElement in value)
+                {
+                    (exportElement as ExportElementImpl).enclosingElement = this;
+                }
+                this._exports = exports;
+            }
+        }
+
+
+        public bool hasExtUri
+        {
+            get
+            {
+                if (unlinkedDefiningUnit != null)
+                {
+                    List<UnlinkedImport> unlinkedImports = unlinkedDefiningUnit.imports;
+                    foreach (UnlinkedImport import in unlinkedImports)
+                    {
+                        if (DartUriResolver.isDartExtUri(import.uri))
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                return hasModifier(Modifier.HAS_EXT_URI);
+            }
+
+            /**
+             * Set whether this library has an import of a "dart-ext" URI.
+             */
+            set
+            {
+                setModifier(Modifier.HAS_EXT_URI, value);
+            }
+        }
+
+        public bool hasLoadLibraryFunction
+        {
+            get
+            {
+                if (_definingCompilationUnit.hasLoadLibraryFunction)
+                {
+                    return true;
+                }
+                for (int i = 0; i < _parts.Count; i++)
+                {
+                    if (_parts[i].hasLoadLibraryFunction)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
+
+        public String identifier => _definingCompilationUnit.source.encoding;
+
+
+        List<LibraryElement> importedLibraries
+        {
+            get
+            {
+                HashSet<LibraryElement> libraries = new HashSet<LibraryElement>();
+                foreach (ImportElement element in imports)
+                {
+                    LibraryElement library = element.importedLibrary;
+                    if (library != null)
+                    {
+                        libraries.Add(library);
+                    }
+                }
+                return libraries.ToList();
+            }
+        }
+
+        public List<ImportElement> imports
+        {
+            get
+            {
+                if (_imports == null)
+                {
+                    if (unlinkedDefiningUnit != null)
+                    {
+                        _imports = buildImportsFromSummary(this, unlinkedDefiningUnit.imports,
+                            resynthesizerContext.linkedLibrary.importDependencies);
+                    }
+                }
+                return _imports ?? new List<ImportElement> { };
+            }
+            set
+            {
+                /**
+                 * Set the specifications of all of the imports defined in this library to the
+                 * given list of [imports].
+                 */
+
+                _assertNotResynthesized(unlinkedDefiningUnit);
+                foreach (ImportElement importElement in imports)
+                {
+                    (importElement as ImportElementImpl).enclosingElement = this;
+                    PrefixElementImpl prefix = importElement.prefix as PrefixElementImpl;
+                    if (prefix != null)
+                    {
+                        prefix.enclosingElement = this;
+                    }
+                }
+                this._imports = imports;
+                this._prefixes = null;
+            }
+        }
+
+        public bool isBrowserApplication =>
+                  entryPoint != null && isOrImportsBrowserLibrary;
+
+
+        public bool isDartAsync => name == "dart.async";
+
+
+        public bool isDartCore => name == "dart.core";
+
+
+        public bool isInSdk
+        {
+            get
+            {
+                Uri uri = definingCompilationUnit.source?.uri;
+                if (uri != null)
+                {
+                    return DartUriResolver.isDartUri(uri);
+                }
+                return false;
+            }
+        }
+        /**
+         * Return `true` if the receiver directly or indirectly imports the
+         * 'dart:html' libraries.
+         */
+        public bool isOrImportsBrowserLibrary
+        {
+            get
+            {
+                List<LibraryElement> visited = new List<LibraryElement>();
+                Source htmlLibSource = context.sourceFactory.forUri(DartSdk.DART_HTML);
+                visited.Add(this);
+                foreach (int index = 0; index < visited.length; index++)
+            {
+                    LibraryElement library = visited[index];
+                    Source source = library.definingCompilationUnit.source;
+                    if (source == htmlLibSource)
+                    {
+                        return true;
+                    }
+                    foreach (LibraryElement importedLibrary in library.importedLibraries)
+                    {
+                        if (!visited.contains(importedLibrary))
+                        {
+                            visited.Add(importedLibrary);
+                        }
+                    }
+                    foreach (LibraryElement exportedLibrary in library.exportedLibraries)
+                    {
+                        if (!visited.contains(exportedLibrary))
+                        {
+                            visited.Add(exportedLibrary);
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+
+        public bool isResynthesized
+        {
+            get
+            {
+                return resynthesizerContext != null;
+            }
+        }
+
+        public ElementKind kind => ElementKind.LIBRARY;
+
+
+        public LibraryElement library => this;
+
+
+        List<LibraryElement> libraryCycle
+        {
+            get
+            {
+                if (_libraryCycle != null)
+                {
+                    return _libraryCycle;
+                }
+
+                // Global counter for this run of the algorithm
+                int counter = 0;
+                // The discovery times of each library
+                Dictionary<LibraryElementImpl, int> indices = new Dictionary<LibraryElementImpl, int>();
+                // The set of scc candidates
+                HashSet<LibraryElementImpl> active = new HashSet<LibraryElementImpl>();
+                // The stack of discovered elements
+                List<LibraryElementImpl> stack = new List<LibraryElementImpl>;
+                // For a given library that has not yet been processed by this run of the
+                // algorithm, compute the strongly connected components.
+                int scc(LibraryElementImpl library)
+                {
+                    int index = counter++;
+                    int root = index;
+                    indices[library] = index;
+                    active.Add(library);
+                    stack.Add(library);
+                    LibraryElementImpl getActualLibrary(LibraryElement lib)
+                    {
+                        // TODO(paulberry): this means that computing a library cycle will be
+                        // expensive for libraries resynthesized from summaries, since it will
+                        // require fully resynthesizing all the libraries in the cycle as well
+                        // as any libraries they import or export.  Try to find a better way.
+                        if (lib is LibraryElementHandle)
+                        {
+                            return lib.actualElement;
+                        }
+                        else
+                        {
+                            return lib;
+                        }
+                    }
+
+                    void recurse(LibraryElementImpl child)
+                    {
+                        if (!indices.containsKey(child))
+                        {
+                            // We haven't visited this child yet, so recurse on the child,
+                            // returning the lowest numbered node reachable from the child.  If
+                            // the child can reach a root which is lower numbered than anything
+                            // we've reached so far, update the root.
+                            root = min(root, scc(child));
+                        }
+                        else if (active.contains(child))
+                        {
+                            // The child has been visited, but has not yet been placed into a
+                            // component.  If the child is higher than anything we've seen so far
+                            // update the root appropriately.
+                            root = min(root, indices[child]);
+                        }
+                    }
+
+                    // Recurse on all of the children in the import/export graph, filtering
+                    // out those for which library cycles have already been computed.
+                    library.exportedLibraries
+                        .map(getActualLibrary)
+                        .where((l) => l._libraryCycle == null)
+                        .forEach(recurse);
+                    library.importedLibraries
+                        .map(getActualLibrary)
+                        .where((l) => l._libraryCycle == null)
+                        .forEach(recurse);
+
+                    if (root == index)
+                    {
+                        // This is the root of a strongly connected component.
+                        // Pop the elements, and share the component across all
+                        // of the elements.
+                        List<LibraryElement> component = List < LibraryElement >{ };
+                        LibraryElementImpl cur = null;
+                        do
+                        {
+                            cur = stack.removeLast();
+                            active.Remove(cur);
+                            component.Add(cur);
+                            cur._libraryCycle = component;
+                        } while (cur != library);
+                    }
+                    return root;
+                }
+
+                scc(library);
+                return _libraryCycle;
+            }
+        }
+
+        FunctionElement loadLibraryFunction
+        {
+            get
+            {
+                assert(_loadLibraryFunction != null);
+                return _loadLibraryFunction;
+            }
+        }
+
+
+        List<ElementAnnotation> metadata
+        {
+            get
+            {
+                if (_metadata == null)
+                {
+                    if (unlinkedDefiningUnit != null)
+                    {
+                        _metadata = _buildAnnotations(
+                            _definingCompilationUnit as CompilationUnitElementImpl,
+                            unlinkedDefiningUnit.libraryAnnotations);
+                        return _metadata;
+                    }
+                }
+                return base.metadata;
+            }
+        }
+
+        /**
+         * Set the compilation units that are included in this library using a `part`
+         * directive to the given list of [parts].
+         */
+        public List<CompilationUnitElement> parts
+        {
+            get => _parts;
+            set
+            {
+                foreach (CompilationUnitElement compilationUnit in parts)
+                {
+                    assert((compilationUnit as CompilationUnitElementImpl).librarySource ==
+                        source);
+                    (compilationUnit as CompilationUnitElementImpl).enclosingElement = this;
+                }
+                this._parts = parts;
+            }
+        }
+
+
+        public List<PrefixElement> prefixes =>
+                  _prefixes ??= buildPrefixesFromImports(imports);
+
+
+        public Namespace publicNamespace
+        {
+            get
+            {
+                if (resynthesizerContext != null)
+                {
+                    _publicNamespace ??= resynthesizerContext.buildPublicNamespace();
+                }
+                return _publicNamespace;
+            }
+            set
+            {
+                _publicNamespace = value;
+            }
+        }
+
+
+        public Source source
+        {
+            get
+            {
+                if (_definingCompilationUnit == null)
+                {
+                    return null;
+                }
+                return _definingCompilationUnit.source;
+            }
+        }
+
+        public List<CompilationUnitElement> units
+        {
+            get
+            {
+                List<CompilationUnitElement> units = new List<CompilationUnitElement>();
+                units.Add(_definingCompilationUnit);
+                units.addAll(_parts);
+                return units;
+            }
+        }
+
+        public T accept<T>(ElementVisitor<T> visitor) => visitor.visitLibraryElement(this);
+
+        /**
+         * Create the [FunctionElement] to be returned by [loadLibraryFunction],
+         * using types provided by [typeProvider].
+         */
+        public void createLoadLibraryFunction(TypeProvider typeProvider)
+        {
+            _loadLibraryFunction =
+                createLoadLibraryFunctionForLibrary(typeProvider, this);
+        }
+
+
+        public ElementImpl getChild(String identifier)
+        {
+            CompilationUnitElementImpl unitImpl = _definingCompilationUnit;
+            if (unitImpl.identifier == identifier)
+            {
+                return unitImpl;
+            }
+            foreach (CompilationUnitElement part in _parts)
+            {
+                CompilationUnitElementImpl partImpl = part;
+                if (partImpl.identifier == identifier)
+                {
+                    return partImpl;
+                }
+            }
+            foreach (ImportElement importElement in imports)
+            {
+                ImportElementImpl importElementImpl = importElement;
+                if (importElementImpl.identifier == identifier)
+                {
+                    return importElementImpl;
+                }
+            }
+            foreach (ExportElement exportElement in exports)
+            {
+                ExportElementImpl exportElementImpl = exportElement;
+                if (exportElementImpl.identifier == identifier)
+                {
+                    return exportElementImpl;
+                }
+            }
+            return null;
+        }
+
+        public ClassElement getEnum(String name)
+        {
+            ClassElement element = _definingCompilationUnit.getEnum(name);
+            if (element != null)
+            {
+                return element;
+            }
+            foreach (CompilationUnitElement part in _parts)
+            {
+                element = part.getEnum(name);
+                if (element != null)
+                {
+                    return element;
+                }
+            }
+            return null;
+        }
+
+
+        public List<ImportElement> getImportsWithPrefix(PrefixElement prefixElement)
+        {
+            return getImportsWithPrefixFromImports(prefixElement, imports);
+        }
+
+
+        public ClassElement getType(String className)
+        {
+            return getTypeFromParts(className, _definingCompilationUnit, _parts);
+        }
+
+        /** Given an update to this library which may have added or deleted edges
+         * in the import/export graph originating from this node only, remove any
+         * cached library cycles in the element model which may have been invalidated.
+         */
+        public void invalidateLibraryCycles()
+        {
+            // If we have pre-computed library cycle information, then we must
+            // invalidate the information both on this element, and on certain
+            // other elements.  Edges originating at this node may have been
+            // added or deleted.  A deleted edge that points outside of this cycle
+            // cannot change the cycle information for anything outside of this cycle,
+            // and so it is sufficient to delete the cached library information on this
+            // cycle.  An added edge which points to another node within the cycle
+            // only invalidates the cycle.  An added edge which points to a node earlier
+            // in the topological sort of cycles induces no invalidation (since there
+            // are by definition no back edges from earlier cycles in the topological
+            // order, and hence no possible cycle can have been introduced.  The only
+            // remaining case is that we have added an edge to a node which is later
+            // in the topological sort of cycles.  This can induce cycles, since it
+            // represents a new back edge.  It would be sufficient to invalidate the
+            // cycle information for all nodes that are between the target and the
+            // node in the topological order.  For simplicity, we simply invalidate
+            // all nodes which are reachable from the source node.
+            // Note that in the invalidation phase, we do not cut off when we encounter
+            // a node with no library cycle information, since we do not know whether
+            // we are in the case where invalidation has already been performed, or we
+            // are in the case where library cycles have simply never been computed from
+            // a newly reachable node.
+            HashSet<LibraryElementImpl> active = new HashSet<LibraryElementImpl>();
+
+            void invalidate(LibraryElement element)
+            {
+                LibraryElementImpl library =
+                    element is LibraryElementHandle ? element.actualElement : element;
+                if (active.Add(library))
+                {
+                    if (library._libraryCycle != null)
+                    {
+                        library._libraryCycle.forEach(invalidate);
+                        library._libraryCycle = null;
+                    }
+                    library.exportedLibraries.forEach(invalidate);
+                    library.importedLibraries.forEach(invalidate);
+                }
+            }
+
+            invalidate(this);
+        }
+
+        /**
+         * Set whether the library has the given [capability] to
+         * correspond to the given [value].
+         */
+        void setResolutionCapability(
+            LibraryResolutionCapability capability, bool value)
+        {
+            _resolutionCapabilities =
+                BooleanArray.set(_resolutionCapabilities, capability.index, value);
+        }
+
+
+        void visitChildren(ElementVisitor visitor)
+        {
+            base.visitChildren(visitor);
+            _definingCompilationUnit?.accept(visitor);
+            safelyVisitChildren(exports, visitor);
+            safelyVisitChildren(imports, visitor);
+            safelyVisitChildren(_parts, visitor);
+        }
+
+        static List<ImportElement> buildImportsFromSummary(LibraryElement library,
+            List<UnlinkedImport> unlinkedImports, List<int> importDependencies)
+        {
+            int length = unlinkedImports.length;
+            if (length != 0)
+            {
+                List<ImportElement> imports = new List<ImportElement>();
+                for (int i = 0; i < length; i++)
+                {
+                    int dependency = importDependencies[i];
+                    ImportElementImpl importElement = new ImportElementImpl.forSerialized(
+                        unlinkedImports[i], dependency, library);
+                    imports.Add(importElement);
+                }
+                return imports;
+            }
+            else
+            {
+                return new List<ImportElement> { };
+            }
+        }
+
+        static List<PrefixElement> buildPrefixesFromImports(
+            List<ImportElement> imports)
+        {
+            HashSet<PrefixElement> prefixes = new HashSet<PrefixElement>();
+            foreach (ImportElement element in imports)
+            {
+                PrefixElement prefix = element.prefix;
+                if (prefix != null)
+                {
+                    prefixes.Add(prefix);
+                }
+            }
+            return prefixes.ToList(growable: false);
+        }
+
+        static FunctionElementImpl createLoadLibraryFunctionForLibrary(
+            TypeProvider typeProvider, LibraryElement library)
+        {
+            FunctionElementImpl function =
+                new FunctionElementImpl(FunctionElement.LOAD_LIBRARY_NAME, -1);
+            function.isSynthetic = true;
+            function.enclosingElement = library;
+            function.returnType = typeProvider.futureDynamicType;
+            function.type = new FunctionTypeImpl(function);
+            return function;
+        }
+
+        /**
+         * Return the [LibraryElementImpl] of the given [element].
+         */
+        static LibraryElementImpl getImpl(LibraryElement element)
+        {
+            if (element is LibraryElementHandle)
+            {
+                return getImpl(element.actualElement);
+            }
+            return element as LibraryElementImpl;
+        }
+
+        static List<ImportElement> getImportsWithPrefixFromImports(
+            PrefixElement prefixElement, List<ImportElement> imports)
+        {
+            int count = imports.Count;
+            List<ImportElement> importList = new List<ImportElement>();
+            for (int i = 0; i < count; i++)
+            {
+                if (identical(imports[i].prefix, prefixElement))
+                {
+                    importList.Add(imports[i]);
+                }
+            }
+            return importList;
+        }
+
+        static ClassElement getTypeFromParts(
+            String className,
+            CompilationUnitElement definingCompilationUnit,
+            List<CompilationUnitElement> parts)
+        {
+            ClassElement type = definingCompilationUnit.getType(className);
+            if (type != null)
+            {
+                return type;
+            }
+        for (CompilationUnitElement part in parts)
+            {
+                type = part.getType(className);
+                if (type != null)
+                {
+                    return type;
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Return `true` if the [library] has the given [capability].
+         */
+        static bool hasResolutionCapability(
+            LibraryElement library, LibraryResolutionCapability capability)
+        {
+            return library is LibraryElementImpl &&
+                BooleanArray.get(library._resolutionCapabilities, capability.index);
+        }
+    }
 
     ///**
     // * Enum of possible resolution capabilities that a [LibraryElementImpl] has.
@@ -6993,7 +7187,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created local variable element to have the given [name].
     //     */
-    //    LocalVariableElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    LocalVariableElementImpl.forNode(Identifier name) : base.forNode(name);
 
 
     //  String get identifier {
@@ -7059,14 +7253,14 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created method element to have the given [name].
     //     */
-    //    MethodElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    MethodElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    MethodElementImpl.forSerialized(
     //      UnlinkedExecutable serializedExecutable, ClassElementImpl enclosingClass)
-    //      : super.forSerialized(serializedExecutable, enclosingClass);
+    //      : base.forSerialized(serializedExecutable, enclosingClass);
 
     //  /**
     //   * Set whether this method is abstract.
@@ -7079,7 +7273,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     //  String get displayName
     //{
-    //    String displayName = super.displayName;
+    //    String displayName = base.displayName;
     //    if ("unary-" == displayName) {
     //        return "-";
     //    }
@@ -7087,11 +7281,11 @@ namespace Dart2CSharpTranspiler.Parser
     //}
 
 
-    //ClassElement get enclosingElement => super.enclosingElement as ClassElement;
+    //ClassElement get enclosingElement => base.enclosingElement as ClassElement;
 
 
     //TypeParameterizedElementMixin get enclosingTypeParameterContext =>
-    //    super.enclosingElement as ClassElementImpl;
+    //    base.enclosingElement as ClassElementImpl;
 
 
     //  bool get isOperator {
@@ -7129,11 +7323,11 @@ namespace Dart2CSharpTranspiler.Parser
 
     //String get name
     //{
-    //    String name = super.name;
+    //    String name = base.name;
     //    if (name == '-' && parameters.isEmpty) {
     //        return 'unary-';
     //    }
-    //    return super.name;
+    //    return base.name;
     //}
 
 
@@ -7142,7 +7336,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     //  void appendTo(StringBuffer buffer) {
     //    buffer.write(displayName);
-    //    super.appendTo(buffer);
+    //    base.appendTo(buffer);
     //}
 
 
@@ -7178,7 +7372,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        DartType type = parameter.isCovariant ? objectType : parameter.type;
     //        return new ParameterElementImpl.synthetic(
     //            parameter.name, type, parameter.parameterKind);
-    //    }).toList();
+    //    }).ToList();
 
     //    return new FunctionElementImpl.synthetic(covariantParameters, returnType)
     //        .type;
@@ -7216,14 +7410,14 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created class element to have the given [name].
     //     */
-    //    MixinElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    MixinElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    MixinElementImpl.forSerialized(
     //      UnlinkedClass unlinkedClass, CompilationUnitElementImpl enclosingUnit)
-    //      : super.forSerialized(unlinkedClass, enclosingUnit);
+    //      : base.forSerialized(unlinkedClass, enclosingUnit);
 
 
     //  bool get isAbstract => true;
@@ -7245,7 +7439,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                        .map((EntityRef t) => context.resolveTypeRef(this, t))
     //                        .where(_isInterfaceTypeInterface)
     //                        .cast<InterfaceType>()
-    //                        .toList(growable: false);
+    //                        .ToList(growable: false);
     //                }
     //                if (constraints == null || constraints.isEmpty)
     //                {
@@ -7254,7 +7448,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                _superclassConstraints = constraints;
     //            }
     //        }
-    //        return _superclassConstraints ?? const <InterfaceType>[];
+    //        return _superclassConstraints ?? new List<InterfaceType>{};
     //    }
 
     //    void set superclassConstraints(List < InterfaceType > superclassConstraints) {
@@ -7277,7 +7471,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                _superInvokedNames = _unlinkedClass.superInvokedNames;
     //            }
     //        }
-    //        return _superInvokedNames ?? const <String>[];
+    //        return _superInvokedNames ?? new List<String>{};
     //    }
 
     //    void set superInvokedNames(List < String > superInvokedNames) {
@@ -7619,7 +7813,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    ElementLocation get location => null;
 
 
-    //  List<ElementAnnotation> get metadata => const <ElementAnnotation>[];
+    //  List<ElementAnnotation> get metadata => new List<ElementAnnotation>{};
 
 
     //  int get nameLength => displayName != null ? displayName.length : 0;
@@ -7722,9 +7916,9 @@ namespace Dart2CSharpTranspiler.Parser
     //     * A list the array of executable elements that were used to compose this
     //     * element.
     //     */
-    //    List<ExecutableElement> _elements = const <MethodElement>[];
+    //    List<ExecutableElement> _elements = new List<MethodElement>{};
 
-    //    MultiplyInheritedMethodElementImpl(Identifier name) : super.forNode(name) {
+    //    MultiplyInheritedMethodElementImpl(Identifier name) : base.forNode(name) {
     //        isSynthetic = true;
     //    }
 
@@ -7748,10 +7942,10 @@ namespace Dart2CSharpTranspiler.Parser
     //     * A list the array of executable elements that were used to compose this
     //     * element.
     //     */
-    //    List<ExecutableElement> _elements = const <PropertyAccessorElement>[];
+    //    List<ExecutableElement> _elements = new List<PropertyAccessorElement>{};
 
     //    MultiplyInheritedPropertyAccessorElementImpl(Identifier name)
-    //      : super.forNode(name) {
+    //      : base.forNode(name) {
     //        isSynthetic = true;
     //    }
 
@@ -7789,14 +7983,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    NonParameterVariableElementImpl.forNode(Identifier name)
     //      : _unlinkedVariable = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    NonParameterVariableElementImpl.forSerialized(
     //      this._unlinkedVariable, ElementImpl enclosingElement)
-    //      : super.forSerialized(enclosingElement);
+    //      : base.forSerialized(enclosingElement);
 
 
     //  int get codeLength {
@@ -7804,7 +7998,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedVariable.codeRange?.length;
     //        }
-    //        return super.codeLength;
+    //        return base.codeLength;
     //    }
 
 
@@ -7813,7 +8007,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedVariable.codeRange?.offset;
     //        }
-    //        return super.codeOffset;
+    //        return base.codeOffset;
     //    }
 
 
@@ -7822,7 +8016,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedVariable.documentationComment?.text;
     //        }
-    //        return super.documentationComment;
+    //        return base.documentationComment;
     //    }
 
 
@@ -7831,13 +8025,13 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedVariable.type == null;
     //        }
-    //        return super.hasImplicitType;
+    //        return base.hasImplicitType;
     //    }
 
 
     //  void set hasImplicitType(bool hasImplicitType) {
     //        _assertNotResynthesized(_unlinkedVariable);
-    //        super.hasImplicitType = hasImplicitType;
+    //        base.hasImplicitType = hasImplicitType;
     //    }
 
 
@@ -7859,7 +8053,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                }
     //            }
     //        }
-    //        return super.initializer;
+    //        return base.initializer;
     //    }
 
     //    /**
@@ -7868,7 +8062,7 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    void set initializer(FunctionElement function) {
     //        _assertNotResynthesized(_unlinkedVariable);
-    //        super.initializer = function;
+    //        base.initializer = function;
     //    }
 
 
@@ -7877,13 +8071,13 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedVariable.isConst;
     //        }
-    //        return super.isConst;
+    //        return base.isConst;
     //    }
 
 
     //  void set isConst(bool isConst) {
     //        _assertNotResynthesized(_unlinkedVariable);
-    //        super.isConst = isConst;
+    //        base.isConst = isConst;
     //    }
 
 
@@ -7892,13 +8086,13 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedVariable.isFinal;
     //        }
-    //        return super.isFinal;
+    //        return base.isFinal;
     //    }
 
 
     //  void set isFinal(bool isFinal) {
     //        _assertNotResynthesized(_unlinkedVariable);
-    //        super.isFinal = isFinal;
+    //        base.isFinal = isFinal;
     //    }
 
 
@@ -7908,7 +8102,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            return _metadata ??=
     //                _buildAnnotations(enclosingUnit, _unlinkedVariable.annotations);
     //        }
-    //        return super.metadata;
+    //        return base.metadata;
     //    }
 
 
@@ -7917,12 +8111,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedVariable.name;
     //        }
-    //        return super.name;
+    //        return base.name;
     //    }
 
 
     //  int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == 0)
     //        {
     //            if (_unlinkedVariable != null)
@@ -7942,7 +8136,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            declaredType = enclosingUnit.resynthesizerContext
     //                .resolveTypeRef(this, _unlinkedVariable.type, declaredType: true);
     //        }
-    //        return super.type;
+    //        return base.type;
     //    }
 
 
@@ -8016,14 +8210,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    ParameterElementImpl.forNode(Identifier name)
     //      : unlinkedParam = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    ParameterElementImpl.forSerialized(
     //      this.unlinkedParam, ElementImpl enclosingElement)
-    //      : super.forSerialized(enclosingElement);
+    //      : base.forSerialized(enclosingElement);
 
     //    /**
     //     * Initialize using the given serialized information.
@@ -8080,7 +8274,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return unlinkedParam.codeRange?.length;
     //        }
-    //        return super.codeLength;
+    //        return base.codeLength;
     //    }
 
 
@@ -8089,7 +8283,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return unlinkedParam.codeRange?.offset;
     //        }
-    //        return super.codeOffset;
+    //        return base.codeOffset;
     //    }
 
 
@@ -8119,13 +8313,13 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return unlinkedParam.type == null && !unlinkedParam.isFunctionTyped;
     //        }
-    //        return super.hasImplicitType;
+    //        return base.hasImplicitType;
     //    }
 
 
     //  void set hasImplicitType(bool hasImplicitType) {
     //        _assertNotResynthesized(unlinkedParam);
-    //        super.hasImplicitType = hasImplicitType;
+    //        base.hasImplicitType = hasImplicitType;
     //    }
 
     //    /**
@@ -8172,7 +8366,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                }
     //            }
     //        }
-    //        return super.initializer;
+    //        return base.initializer;
     //    }
 
     //    /**
@@ -8181,7 +8375,7 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    void set initializer(FunctionElement function) {
     //        _assertNotResynthesized(unlinkedParam);
-    //        super.initializer = function;
+    //        base.initializer = function;
     //    }
 
 
@@ -8190,13 +8384,13 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return false;
     //        }
-    //        return super.isConst;
+    //        return base.isConst;
     //    }
 
 
     //  void set isConst(bool isConst) {
     //        _assertNotResynthesized(unlinkedParam);
-    //        super.isConst = isConst;
+    //        base.isConst = isConst;
     //    }
 
 
@@ -8240,13 +8434,13 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return unlinkedParam.isFinal;
     //        }
-    //        return super.isFinal;
+    //        return base.isFinal;
     //    }
 
 
     //  void set isFinal(bool isFinal) {
     //        _assertNotResynthesized(unlinkedParam);
-    //        super.isFinal = isFinal;
+    //        base.isFinal = isFinal;
     //    }
 
 
@@ -8268,7 +8462,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            return _metadata ??=
     //                _buildAnnotations(enclosingUnit, unlinkedParam.annotations);
     //        }
-    //        return super.metadata;
+    //        return base.metadata;
     //    }
 
 
@@ -8277,12 +8471,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return unlinkedParam.name;
     //        }
-    //        return super.name;
+    //        return base.name;
     //    }
 
 
     //  int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == 0)
     //        {
     //            if (unlinkedParam != null)
@@ -8327,13 +8521,13 @@ namespace Dart2CSharpTranspiler.Parser
 
 
     //    List<ParameterElement> get parameters {
-    //        return const <ParameterElement>[];
+    //        return new List<ParameterElement>{};
     //    }
 
 
     //    DartType get type {
     //        _resynthesizeTypeAndParameters();
-    //        return super.type;
+    //        return base.type;
     //    }
 
 
@@ -8349,7 +8543,7 @@ namespace Dart2CSharpTranspiler.Parser
 
 
     //    List<TypeParameterElement> get typeParameters {
-    //        return const <TypeParameterElement>[];
+    //        return new List<TypeParameterElement>{};
     //    }
 
 
@@ -8421,7 +8615,7 @@ namespace Dart2CSharpTranspiler.Parser
 
     //  void visitChildren(ElementVisitor visitor)
     //    {
-    //        super.visitChildren(visitor);
+    //        base.visitChildren(visitor);
     //        safelyVisitChildren(parameters, visitor);
     //    }
 
@@ -8483,7 +8677,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        }
     //        else
     //        {
-    //            return const <ParameterElement>[];
+    //            return new List<ParameterElement>{};
     //        }
     //    }
     //}
@@ -8512,7 +8706,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            return enclosingUnit.resynthesizerContext
     //                .inheritsCovariant(variable._unlinkedVariable.inheritsCovariantSlot);
     //        }
-    //        return super.inheritsCovariant;
+    //        return base.inheritsCovariant;
     //    }
 
 
@@ -8623,27 +8817,27 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    PrefixElementImpl.forNode(Identifier name)
     //      : _unlinkedImport = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    PrefixElementImpl.forSerialized(
     //      this._unlinkedImport, LibraryElementImpl enclosingLibrary)
-    //      : super.forSerialized(enclosingLibrary);
+    //      : base.forSerialized(enclosingLibrary);
 
 
     //  String get displayName => name;
 
 
     //    LibraryElement get enclosingElement =>
-    //      super.enclosingElement as LibraryElement;
+    //      base.enclosingElement as LibraryElement;
 
 
-    //    String get identifier => "_${super.identifier}";
+    //    String get identifier => "_${base.identifier}";
 
 
-    //  List<LibraryElement> get importedLibraries => const <LibraryElement>[];
+    //  List<LibraryElement> get importedLibraries => new List<LibraryElement>{};
 
 
     //    ElementKind get kind => ElementKind.PREFIX;
@@ -8659,12 +8853,12 @@ namespace Dart2CSharpTranspiler.Parser
     //                return _name = library.unlinkedDefiningUnit.references[prefixId].name;
     //            }
     //        }
-    //        return super.name;
+    //        return base.name;
     //    }
 
 
     //  int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == 0 && _unlinkedImport != null)
     //        {
     //            return _unlinkedImport.prefixOffset;
@@ -8679,7 +8873,7 @@ namespace Dart2CSharpTranspiler.Parser
     //  void appendTo(StringBuffer buffer)
     //    {
     //        buffer.write("as ");
-    //        super.appendTo(buffer);
+    //        base.appendTo(buffer);
     //    }
     //    }
 
@@ -8704,14 +8898,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     * Initialize a newly created property accessor element to have the given
     //     * [name].
     //     */
-    //    PropertyAccessorElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    PropertyAccessorElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    PropertyAccessorElementImpl.forSerialized(
     //      UnlinkedExecutable serializedExecutable, ElementImpl enclosingElement)
-    //      : super.forSerialized(serializedExecutable, enclosingElement);
+    //      : base.forSerialized(serializedExecutable, enclosingElement);
 
     //    /**
     //     * Initialize a newly created synthetic property accessor element to be
@@ -8758,7 +8952,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        assert(name.endsWith('='));
     //        return name.substring(0, name.length - 1);
     //    }
-    //    return super.displayName;
+    //    return base.displayName;
     //}
 
 
@@ -8834,9 +9028,9 @@ namespace Dart2CSharpTranspiler.Parser
     //        return serializedExecutable.name;
     //    }
     //    if (isSetter) {
-    //        return "${super.name}=";
+    //        return "${base.name}=";
     //    }
-    //    return super.name;
+    //    return base.name;
     //}
 
     ///**
@@ -8856,7 +9050,7 @@ namespace Dart2CSharpTranspiler.Parser
     //  void appendTo(StringBuffer buffer) {
     //    buffer.write(isGetter ? "get " : "set ");
     //    buffer.write(variable.displayName);
-    //    super.appendTo(buffer);
+    //    base.appendTo(buffer);
     //}
 
 
@@ -8888,7 +9082,7 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    PropertyAccessorElementImpl_ImplicitGetter(
     //      PropertyInducingElementImpl property)
-    //      : super.forVariable(property) {
+    //      : base.forVariable(property) {
     //        property.getter = this;
     //        enclosingElement = property.enclosingElement;
     //    }
@@ -8929,7 +9123,7 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    PropertyAccessorElementImpl_ImplicitSetter(
     //      PropertyInducingElementImpl property)
-    //      : super.forVariable(property) {
+    //      : base.forVariable(property) {
     //        property.setter = this;
     //        enclosingElement = property.enclosingElement;
     //    }
@@ -8990,14 +9184,14 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created element to have the given [name].
     //     */
-    //    PropertyInducingElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    PropertyInducingElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    PropertyInducingElementImpl.forSerialized(
     //      UnlinkedVariable unlinkedVariable, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedVariable, enclosingElement);
+    //      : base.forSerialized(unlinkedVariable, enclosingElement);
 
     //    [Obsolete]
 
@@ -9026,7 +9220,7 @@ namespace Dart2CSharpTranspiler.Parser
     //                _type = DynamicTypeImpl.instance;
     //            }
     //        }
-    //        return super.type;
+    //        return base.type;
     //    }
     //    }
 
@@ -9167,9 +9361,9 @@ namespace Dart2CSharpTranspiler.Parser
     //    List<String> get shownNames {
     //        if (_unlinkedCombinator != null)
     //        {
-    //            _shownNames ??= _unlinkedCombinator.shows.toList(growable: false);
+    //            _shownNames ??= _unlinkedCombinator.shows.ToList(growable: false);
     //        }
-    //        return _shownNames ?? const <String>[];
+    //        return _shownNames ?? new List<String>{};
     //    }
 
     //    void set shownNames(List < String > shownNames) {
@@ -9210,14 +9404,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     * Initialize a newly created top-level variable element to have the given
     //     * [name].
     //     */
-    //    TopLevelVariableElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    TopLevelVariableElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    TopLevelVariableElementImpl.forSerialized(
     //      UnlinkedVariable unlinkedVariable, ElementImpl enclosingElement)
-    //      : super.forSerialized(unlinkedVariable, enclosingElement);
+    //      : base.forSerialized(unlinkedVariable, enclosingElement);
 
 
     //  bool get isStatic => true;
@@ -9271,14 +9465,14 @@ namespace Dart2CSharpTranspiler.Parser
     //     */
     //    TypeParameterElementImpl.forNode(Identifier name)
     //      : _unlinkedTypeParam = null,
-    //        super.forNode(name);
+    //        base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    TypeParameterElementImpl.forSerialized(
     //      this._unlinkedTypeParam, TypeParameterizedElementMixin enclosingElement)
-    //      : super.forSerialized(enclosingElement);
+    //      : base.forSerialized(enclosingElement);
 
     //    /**
     //     * Initialize a newly created synthetic type parameter element to have the
@@ -9318,7 +9512,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedTypeParam.codeRange?.length;
     //        }
-    //        return super.codeLength;
+    //        return base.codeLength;
     //    }
 
 
@@ -9327,7 +9521,7 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedTypeParam.codeRange?.offset;
     //        }
-    //        return super.codeOffset;
+    //        return base.codeOffset;
     //    }
 
 
@@ -9343,7 +9537,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            return _metadata ??=
     //                _buildAnnotations(enclosingUnit, _unlinkedTypeParam.annotations);
     //        }
-    //        return super.metadata;
+    //        return base.metadata;
     //    }
 
 
@@ -9352,12 +9546,12 @@ namespace Dart2CSharpTranspiler.Parser
     //        {
     //            return _unlinkedTypeParam.name;
     //        }
-    //        return super.name;
+    //        return base.name;
     //    }
 
 
     //    int get nameOffset {
-    //        int offset = super.nameOffset;
+    //        int offset = base.nameOffset;
     //        if (offset == 0 && _unlinkedTypeParam != null)
     //        {
     //            return _unlinkedTypeParam.nameOffset;
@@ -9442,7 +9636,7 @@ namespace Dart2CSharpTranspiler.Parser
     //            }
     //        }
     //    }
-    //    return _typeParameterElements ?? const <TypeParameterElement>[];
+    //    return _typeParameterElements ?? new List<TypeParameterElement>{};
     //}
 
     ///**
@@ -9452,7 +9646,7 @@ namespace Dart2CSharpTranspiler.Parser
     //List<TypeParameterType> get typeParameterTypes {
     //    return _typeParameterTypes ??= typeParameters
     //        .map((TypeParameterElement e) => e.type)
-    //        .toList(growable: false);
+    //        .ToList(growable: false);
     //  }
 
     //  /**
@@ -9516,11 +9710,11 @@ namespace Dart2CSharpTranspiler.Parser
     //    final List<PropertyAccessorElementImpl> accessors =
 
 
-    //        < PropertyAccessorElementImpl >[];
+    //        < PropertyAccessorElementImpl >{};
     //    final List<TopLevelVariableElementImpl> implicitVariables =
 
 
-    //        < TopLevelVariableElementImpl >[];
+    //        < TopLevelVariableElementImpl >{};
     //}
 
     /**
@@ -9533,100 +9727,101 @@ namespace Dart2CSharpTranspiler.Parser
     //    final List<PropertyAccessorElementImpl> implicitAccessors =
 
 
-    //        < PropertyAccessorElementImpl >[];
+    //        < PropertyAccessorElementImpl >{};
 
     //    UnitExplicitTopLevelVariables(int numberOfVariables)
     //        : variables = numberOfVariables != 0
     //            ? new List<TopLevelVariableElementImpl>(numberOfVariables)
-    //            : const <TopLevelVariableElementImpl>[];
+    //            : new List<TopLevelVariableElementImpl>{};
     //}
 
     /**
      * A concrete implementation of a [UriReferencedElement].
      */
-    //abstract class UriReferencedElementImpl : ElementImpl
-    //    implements UriReferencedElement
-    //{
-    //  /**
-    //   * The offset of the URI in the file, or `-1` if this node is synthetic.
-    //   */
-    //  int _uriOffset = -1;
+    public abstract class UriReferencedElementImpl : ElementImpl, IUriReferencedElement
+    {
+        /**
+         * The offset of the URI in the file, or `-1` if this node is synthetic.
+         */
+        int _uriOffset = -1;
 
-    //  /**
-    //   * The offset of the character immediately following the last character of
-    //   * this node's URI, or `-1` if this node is synthetic.
-    //   */
-    //  int _uriEnd = -1;
+        /**
+         * The offset of the character immediately following the last character of
+         * this node's URI, or `-1` if this node is synthetic.
+         */
+        int _uriEnd = -1;
 
-    //    /**
-    //     * The URI that is specified by this directive.
-    //     */
-    //    String _uri;
+        /**
+         * The URI that is specified by this directive.
+         */
+        String _uri;
 
-    //    /**
-    //     * Initialize a newly created import element to have the given [name] and
-    //     * [offset]. The offset may be `-1` if the element is synthetic.
-    //     */
-    //    UriReferencedElementImpl(String name, int offset) : super(name, offset);
+        /**
+         * Initialize a newly created import element to have the given [name] and
+         * [offset]. The offset may be `-1` if the element is synthetic.
+         */
+        public UriReferencedElementImpl(String name, int offset) : base(name, offset)
+        {
 
-    //    /**
-    //     * Initialize using the given serialized information.
-    //     */
-    //    UriReferencedElementImpl.forSerialized(ElementImpl enclosingElement)
-    //      : super.forSerialized(enclosingElement);
+        }
 
-    //    /**
-    //     * Return the URI that is specified by this directive.
-    //     */
-    //    String get uri => _uri;
+        /**
+         * Initialize using the given serialized information.
+         */
+        public UriReferencedElementImpl(ElementImpl enclosingElement)
+          : base(enclosingElement) { }
 
-    //    /**
-    //     * Set the URI that is specified by this directive to be the given [uri].
-    //     */
-    //    void set uri(String uri) {
-    //        _uri = uri;
-    //    }
+        /**
+         * Return the URI that is specified by this directive.
+         */
+        public String uri
+        {
+            get => _uri;
+            set
+            {
+                /**
+                       * Set the URI that is specified by this directive to be the given [uri].
+                       */
+                _uri = value;
+            }
+        }
+          
 
-    //    /**
-    //     * Return the offset of the character immediately following the last character
-    //     * of this node's URI, or `-1` if this node is synthetic.
-    //     */
-    //    int get uriEnd => _uriEnd;
+        /**
+         * Return the offset of the character immediately following the last character
+         * of this node's URI, or `-1` if this node is synthetic.
+         */
+        public int uriEnd
+        {
+            get => _uriEnd;
+            set => _uriEnd = codeOffset;
+        }
 
-    //    /**
-    //     * Set the offset of the character immediately following the last character of
-    //     * this node's URI to the given [offset].
-    //     */
-    //    void set uriEnd(int offset) {
-    //        _uriEnd = offset;
-    //    }
 
-    //    /**
-    //     * Return the offset of the URI in the file, or `-1` if this node is synthetic.
-    //     */
-    //    int get uriOffset => _uriOffset;
+        /**
+         * Return the offset of the URI in the file, or `-1` if this node is synthetic.
+         */
+        public int uriOffset
+        {
+            get => _uriOffset;
+            set => _uriOffset = value;
+        }
 
-    //    /**
-    //     * Set the offset of the URI in the file to the given [offset].
-    //     */
-    //    void set uriOffset(int offset) {
-    //        _uriOffset = offset;
-    //    }
 
-    //    String _selectUri(
-    //        String defaultUri, List<UnlinkedConfiguration> configurations)
-    //    {
-    //    for (UnlinkedConfiguration configuration in configurations)
-    //        {
-    //            if (context.declaredVariables.get(configuration.name) ==
-    //                configuration.value)
-    //            {
-    //                return configuration.uri;
-    //            }
-    //        }
-    //        return defaultUri;
-    //    }
-    //    }
+        public String _selectUri(
+            String defaultUri, List<UnlinkedConfiguration> configurations)
+        {
+            foreach (UnlinkedConfiguration configuration in configurations)
+            {
+                if (context.declaredVariables.get(configuration.name) ==
+                    configuration.value)
+                {
+                    return configuration.uri;
+                }
+            }
+            return defaultUri;
+        }
+    }
 
     /**
      * A concrete implementation of a [VariableElement].
@@ -9659,13 +9854,13 @@ namespace Dart2CSharpTranspiler.Parser
     //    /**
     //     * Initialize a newly created variable element to have the given [name].
     //     */
-    //    VariableElementImpl.forNode(Identifier name) : super.forNode(name);
+    //    VariableElementImpl.forNode(Identifier name) : base.forNode(name);
 
     //    /**
     //     * Initialize using the given serialized information.
     //     */
     //    VariableElementImpl.forSerialized(ElementImpl enclosingElement)
-    //      : super.forSerialized(enclosingElement);
+    //      : base.forSerialized(enclosingElement);
 
     //    /**
     //     * If this element represents a constant variable, and it has an initializer,
@@ -9795,7 +9990,7 @@ namespace Dart2CSharpTranspiler.Parser
     //    
     //    void visitChildren(ElementVisitor visitor)
     //    {
-    //        super.visitChildren(visitor);
+    //        base.visitChildren(visitor);
     //        _initializer?.accept(visitor);
     //    }
     //    }
